@@ -5,8 +5,8 @@ Nounou is a JVM-based interface for loading neurophysiological data, written mai
 ## Package Goals
 
 1. **to provide an adapter to dynamically load neurophysiology data** into MATLAB, Mathematica, Scala REPL, and Java (and Python). 
-     - Other file readers are designed to read whole data files into memory at once. This can become quite problematic for large/long files.
-     - Nounou is designed around data streams, where the data can be loaded as-needed on demand from disk/network.
+     - Other file readers are usually designed to read whole data files into memory at once. This can become quite problematic for large/long files.
+     - Nounou is designed around data streams, where the data can be loaded as-needed on demand from disk/network (Takagaki, 2011).
      - Nounou can handle channel layout data within the main data structure to facilitate geometric analyses. This was originally for voltage-sensitive dye/intrinsic imaging, but is applicable for ECoG arrays and multishank electrodes too.
 2. **to provide building blocks for computationally intensive neurophysiology analysis algorithms**, such as flow-analysis [1]. 
 3. (perhaps at some point) to provide a rudimentary JavaFX-based graphical interface for browsing neurophysiology data
@@ -25,10 +25,9 @@ Many of Nounou's routines are based on the numerical processing library [breeze]
      - The object-oriented nature of Scala is key to keep track of complex data structures
      - The functional programming capabilities of Scala make parallelization and streaming safer/much easier
      - Scala is both theoretically well concieved and also practical. It is cool.
-- Why not Python: speed issues with uncompiled Python and there is already a relatively large Python project available  ([neo](http://neuralensemble.org/neo/))
+- Why not Python: speed issues with uncompiled Python; there is already a relatively large active Python project available  ([neo](http://neuralensemble.org/neo/))
 (A Python bridge should be relatively simple to make at some point)
      
-
 
 ## Documentation
 
