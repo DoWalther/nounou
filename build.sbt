@@ -1,8 +1,14 @@
-name := "nounous"
+name := "nounou"
 
 scalaVersion := "2.11.6"
 
 publishMavenStyle := true
+
+//publishArtifact in (Compile, packageBin) := true
+
+//publishArtifact in (Compile, packageDoc) := true
+
+//publishArtifact in (Compile, packageSrc) := true
 
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.1.7" % "test",
@@ -23,3 +29,9 @@ resolvers ++= Seq(
     Resolver.sonatypeRepo("releases"),
     Resolver.typesafeRepo("releases")
     )
+
+assemblyJarName in assembly := "nounou.jar"
+
+test in assembly := {}
+
+//settings = standardSettings ++ SbtOneJar.oneJarSettings

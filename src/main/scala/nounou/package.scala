@@ -1,6 +1,8 @@
 import _root_.nounou.util.LoggingExt
 import com.google.gson.Gson
 
+//ToDo SL: help with documentation
+
 /**This library allows streamed reading and basic analyses of neurophysiology data
   * in Scala/Java and via the JVM on Mathematica and Matlab.
   *
