@@ -2,9 +2,7 @@
   <artifact type="jar" name="nounou-lib">
     <output-path>$PROJECT_DIR$/out/artifacts/nounou</output-path>
     <root id="archive" name="nounou-lib.jar">
-      <element id="module-output" name="nounou" />
       <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/net.sourceforge.f2j/arpack_combined_all/jars/arpack_combined_all-0.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.eclipse.jgit/org.eclipse.jgit/jars/org.eclipse.jgit-3.7.1.201504261725-r.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.spire-math/spire_2.11/jars/spire_2.11-0.7.4.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.1.3.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/com.github.fommil.netlib/netlib-native_ref-linux-x86_64/jars/netlib-native_ref-linux-x86_64-1.1-natives.jar" path-in-jar="/" />
@@ -46,6 +44,7 @@
       <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/com.typesafe.scala-logging/scala-logging-api_2.11/jars/scala-logging-api_2.11-2.1.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/junit/junit/jars/junit-4.8.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/org.eclipse.jgit-3.7.0.201502260915-r.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

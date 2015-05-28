@@ -17,7 +17,9 @@ libraryDependencies ++= Seq(
   "org.scalanlp" %% "breeze" % "0.11.2",
   "org.scalanlp" %% "breeze-natives" % "0.11.2",
   "com.google.code.gson" % "gson" % "2.3.1",
-  "org.eclipse.jgit" % "org.eclipse.jgit" % "3.7.1.201504261725-r",
+//  "org.eclipse.jgit" % "org.eclipse.jgit" % "3.7.1.201504261725-r",
+//  load jgit from downloaded/modified .jar, to circumvent .jar signature for repackaging
+//ToDo: maybe rebuild from code?
   "commons-io" % "commons-io" % "2.4"
 )
 //  "org.scalanlp" %% "breeze-macros" % "0.3.1",
