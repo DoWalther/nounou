@@ -2,6 +2,7 @@ import _root_.nounou.util.LoggingExt
 import com.google.gson.Gson
 
 //ToDo SL: help with documentation
+//ToDo SL: play around with scala-assembly to create correct ueber deployment (assembly/assemblyPackageDependency, merges currently fail)
 
 /**This library allows streamed reading and basic analyses of neurophysiology data
   * in Scala/Java and via the JVM on Mathematica and Matlab.
@@ -12,6 +13,8 @@ import com.google.gson.Gson
 package object nounou extends LoggingExt {
 
   val gson = new Gson
+
+  //ToDo 4: synchronize this somehow with the SBT version
   /**Global [[nounou]] version number defined here*/
   val version = 0.5
 
