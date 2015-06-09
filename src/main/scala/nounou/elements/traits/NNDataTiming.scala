@@ -96,6 +96,7 @@ class NNDataTiming( val sampleRate: Double,
     ( for(seg <- 0 until segmentCount) yield {sum += segmentLength(seg); sum} ).toArray.+:(0).dropRight(1)
   }
   final def segmentStartFrame(segment: Int) = segmentStartFrames.apply(segment)
+  final def cumulativeStartFrame(frame: Int, segment: Int) = segmentStartFrame(segment) + frame
 
   // </editor-fold>
 

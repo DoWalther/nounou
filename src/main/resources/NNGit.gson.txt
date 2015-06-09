@@ -1,1 +1,1 @@
-{"head":"cd12a20c201b1514a62c38c78ce89d88382ac6ce","branch":"master","remotes":["https://ktakagak@iwebdav.ifn-magdeburg.de/lingit/nounou.git","https://ktakagaki@github.com/ktakagaki/nounou.git"],"gitDirectory":"C:\\prog\\nounou\\.git"}
+{"head":"c3c6a99c6196419cb5868db4e1f92a842e8b09f4","branch":"master","remotes":["https://ktakagak@iwebdav.ifn-magdeburg.de/lingit/nounou.git","https://ktakagaki@github.com/ktakagaki/nounou.git"],"gitDirectory":"C:\\prog\\nounou\\.git"}

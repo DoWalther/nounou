@@ -32,6 +32,7 @@ class NNDataFilter( private var parenVar: NNData ) extends NNData {
   // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" setActive/getActive ">
+
   private var _active = true
 
   /** Sets whether the filter is active or not. When not active, just passes
@@ -72,14 +73,20 @@ class NNDataFilter( private var parenVar: NNData ) extends NNData {
 //  override def readFrameImpl(frame: Int): DV[Int] = _parent.readFrameImpl(frame)
 //  override def readFrameImpl(frame: Int, channels: Array[Int]): DV[Int] = _parent.readFrameImpl(frame, channels)
 
-  override def getTiming() = parenVar.timing()
-  override def getScale() = parenVar.scale()
+  // <editor-fold defaultstate="collapsed" desc=" timing, scale, layout ">
+
+  override def getTiming() = parenVar.getTiming()
+  override def getScale() = parenVar.getScale()
+  override def getLayout() = parenVar.getLayout()
+
   override def setTiming( timing: NNDataTiming ) =
     throw loggerError(s"Cannot set timing for data filter ${this.getClass.getCanonicalName}.")
   override def setScale( scale: NNDataScale ) =
     throw loggerError(s"Cannot set scale for data filter ${this.getClass.getCanonicalName}.")
+  override def setLayout( layout: NNDataLayout ) =
+    throw loggerError(s"Cannot set layout for data filter ${this.getClass.getCanonicalName}.")
 
-  /*override def layout: NNLayout = _parent.layout()*/
+  // </editor-fold>
 
   override def isCompatible(target: NNElement) = false
 

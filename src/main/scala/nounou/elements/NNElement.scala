@@ -10,7 +10,9 @@ import nounou.util.LoggingExt
 /** Base class for all data elements.
   */
 abstract class NNElement extends LoggingExt {
+
   //ToDo3: consider add: pt info, rec info, rec start time/date, etc
+
   /**'''[NNElement]''' getCanonicalName, buffered for serialization with GSON. */
   val className = this.getClass.getCanonicalName
   //This temporary val is necessary to trigger initialization of `object NNGit`

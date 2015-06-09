@@ -40,16 +40,16 @@ abstract class NNData extends NNElement
   private val _children = scala.collection.mutable.Set[NNData]()
   /**'''[NNData: data source]''' Adds a new child to this data source, which will be notified for changes.
     * Be sure to clear children if the children are to be garbage collected.*/
-  def setChild(x: NNData): Unit = _children.+=(x)
+  final def setChild(x: NNData): Unit = _children.+=(x)
   /**'''[NNData: data source]''' Adds new children to this data source, which will be notified for changes.
     * Be sure to clear children if the children are to be garbage collected.*/
   final def setChildren(xs: TraversableOnce[NNData]): Unit = xs.map( setChild(_) )
   /**'''[NNData: data source]''' Children of this data source which should be notified upon changes.*/
-  def getChildren() = _children
+  final def getChildren() = _children
   /**'''[NNData: data source]''' Clear all children of this data source.*/
-  def clearChildren(): Unit = _children.clear()
+  final def clearChildren(): Unit = _children.clear()
   /**'''[NNData: data source]''' Clear specified child of this data source.*/
-  def clearChild(x: NNData): Unit = _children.-=(x)
+  final def clearChild(x: NNData): Unit = _children.-=(x)
   /**'''[NNData: data source]''' Clear specified children of this data source.*/
   final def clearChildren(xs: TraversableOnce[NNData]): Unit = xs.map( clearChild(_) )
 
