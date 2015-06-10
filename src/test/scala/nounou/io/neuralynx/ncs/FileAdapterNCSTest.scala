@@ -1,15 +1,12 @@
-package nounou.io
+package nounou.io.neuralynx.ncs
 
 import java.math.BigInteger
 
 import breeze.linalg.DenseVector
-import breeze.numerics.pow
 import nounou._
-import nounou.elements.NNElement
 import nounou.elements.data.NNDataChannel
 import nounou.io.neuralynx.NNDataChannelNCS
 import org.scalatest.FunSuite
-import java.io.File
 
 /**
 * @author ktakagaki

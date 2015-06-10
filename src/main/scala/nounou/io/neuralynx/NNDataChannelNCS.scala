@@ -13,6 +13,9 @@ import nounou.elements.traits.{NNDataScale, NNDataTiming}
   */
 class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileNCS {
 
+  //ToDo update this
+  val channelName = file.getCanonicalFile.toString
+
   def NNDataChannelNCS(fileName: String) = new NNDataChannelNCS( new File(fileName) )
 
   final val xBits = 1024
@@ -29,6 +32,7 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
   @transient
   private var dwChannelNum: Long = -1
   private def readNCSRecordHeaderTS(record: Int): Long = {
+    //println( s"seek: ${recordStartByte(record)}")
     handle.seek( recordStartByte(record) )
     val qwTimestamp = handle.readUInt64Shifted()
 
@@ -74,8 +78,17 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
     thisRecTS = readNCSRecordHeaderTS(currentRecord)
     //ToDo 3: Implement cases where timestamps skip just a slight amount d/t DAQ problems
 
+    loggerRequire( thisRecTS > lastRecTS,
+      s"timestamp in record $currentRecord has gone back in time $lastRecTS -> $thisRecTS ")
+
     if(thisRecTS > lastRecTS + headerRecordTSIncrement){
     //new segment!
+
+      if( thisRecTS - lastRecTS > 86400000000L ){
+        logger.warn(s"timestamp in record $currentRecord has jumped more than 24 hours: " +
+          s"$lastRecTS -> $thisRecTS ")
+      }
+
       //Append timestamp for record rec as a new segment start
       tempStartTimestamps = tempStartTimestamps :+ thisRecTS
       //Append length of previous segment as segment length

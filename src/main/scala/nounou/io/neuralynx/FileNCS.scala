@@ -9,8 +9,6 @@ import breeze.io.RandomAccessFile
  */
 trait FileNCS extends FileNeuralynx {
 
-  val channelName = file.getName
-
   /**Number of bytes per record in NCS files*/
   final val recordBytes = 1044
   /**Number of samples per record in NCS files*/
@@ -18,7 +16,8 @@ trait FileNCS extends FileNeuralynx {
   /**Size of non-data bytes at head of each record in NCS files*/
   final val recordNonDataHead = recordBytes - recordSampleCount * 2
 
-  override def recordStartByte(record: Int) = (headerBytes + recordBytes * record)
+  //ToDo 1: check the following
+  override def recordStartByte(record: Int) = (headerBytes.toLong + recordBytes.toLong * record.toLong)
 
   lazy val headerAcqEntName = nlxHeaderParserS("AcqEntName", "NoName")
   lazy val headerRecordSize = nlxHeaderParserI("RecordSize", "0")

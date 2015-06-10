@@ -2,7 +2,7 @@ package nounou.io.neuralynx
 
 import java.io.File
 
-import breeze.io.RandomAccessFile
+import breeze.io.{ByteConverterLittleEndian, RandomAccessFile}
 import nounou.elements.NNElement
 import nounou.io.FileLoader
 import nounou.util.LoggingExt
@@ -16,7 +16,7 @@ import nounou.util.LoggingExt
 trait FileNeuralynx {
 
   val file: File
-  lazy val handle: RandomAccessFile = new RandomAccessFile(file)
+  lazy val handle: RandomAccessFile = new RandomAccessFile(file, "r")(ByteConverterLittleEndian)
   lazy val fileName = file.getCanonicalPath
 
   // <editor-fold defaultstate="collapsed" desc=" header related ">
@@ -47,7 +47,7 @@ trait FileNeuralynx {
   val recordBytes: Int
 
   /**Method to calculate start of each record within the file, in bytes*/
-  def recordStartByte(record: Int): Int
+  def recordStartByte(record: Int): Long
 
 
 }
