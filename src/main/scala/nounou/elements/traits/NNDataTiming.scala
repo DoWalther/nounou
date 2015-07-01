@@ -111,8 +111,8 @@ class NNDataTiming( val sampleRate: Double,
     * only be used if the data only contains one segment.
     */
   final def segmentLength(): Int = segmentLength( -1 )
-  final def segmentLengthReal( segment: Int ): Int =
-    segmentLengthImpl( segmentLength(segment) )
+//  final def segmentLengthReal( segment: Int ): Int =
+//    segmentLengthImpl( segmentLength(segment) )
 
   /** Implementation of [[segmentLength(Int)]]. Segment number must be a valid number
     * in the range [0, segmentCount).

@@ -4,10 +4,7 @@ import java.io.File
 
 import breeze.io.RandomAccessFile
 
-/**
- * Created by ktakagaki on 15/05/28.
- */
-trait FileNCS extends FileNeuralynx {
+trait FileNCSConstants extends FileNeuralynxConstants {
 
   /**Number of bytes per record in NCS files*/
   final val recordBytes = 1044
@@ -15,6 +12,13 @@ trait FileNCS extends FileNeuralynx {
   final val recordSampleCount= 512
   /**Size of non-data bytes at head of each record in NCS files*/
   final val recordNonDataHead = recordBytes - recordSampleCount * 2
+
+}
+/**
+ * Created by ktakagaki on 15/05/28.
+ */
+trait FileNCS extends FileNeuralynx with FileNCSConstants {
+
 
   //ToDo 1: check the following
   override def recordStartByte(record: Int) = (headerBytes.toLong + recordBytes.toLong * record.toLong)

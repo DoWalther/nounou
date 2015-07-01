@@ -4,14 +4,14 @@ import java.io.File
 
 import breeze.io.RandomAccessFile
 import breeze.linalg.{DenseVector => DV, convert}
-import nounou.elements.data.NNDataChannel
+import nounou.elements.data.{NNDataChannelNumbered, NNDataChannel}
 import nounou.elements.ranges.SampleRangeValid
 import nounou.elements.traits.{NNDataScale, NNDataTiming}
 
 
 /**A specialized immutable [[nounou.elements.data.NNDataChannel]] for NCS files.
   */
-class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileNCS {
+class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileNCS with NNDataChannelNumbered {
 
   //ToDo update this
   val channelName = file.getCanonicalFile.toString

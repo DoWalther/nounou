@@ -8,12 +8,19 @@ import nounou.io.FileLoader
 import nounou.util.LoggingExt
 
 
+trait FileNeuralynxConstants {
+
+  /**The total number of bytes in the initial Neuralynx text header.*/
+  final val headerBytes = 16384
+
+}
+
 /**
  *
 * @author ktakagaki
 * //@date 12/16/13
 */
-trait FileNeuralynx {
+trait FileNeuralynx extends LoggingExt with FileNeuralynxConstants {
 
   val file: File
   lazy val handle: RandomAccessFile = new RandomAccessFile(file, "r")(ByteConverterLittleEndian)
@@ -21,13 +28,20 @@ trait FileNeuralynx {
 
   // <editor-fold defaultstate="collapsed" desc=" header related ">
 
-  /**The total number of bytes in the initial Neuralynx text header.*/
-  final val headerBytes = 16384
 
-  @transient
-  lazy val headerText = {
+  var headerText = {
     handle.seek(0)
     new String(handle.readUInt8(headerBytes).map(_.toChar))
+  }
+
+  var headerAppendText = ""
+
+  def headerAppended = headerText + headerAppendText
+
+  def headerFullLength = {
+    val tempHeadAp= headerAppended
+    if( tempHeadAp.length > headerBytes ) logger.warn("headerText with appended material is longer than headerBytes")
+    tempHeadAp.padTo(headerBytes, " ").toString()
   }
 
   def nlxHeaderParserS(valueName: String, default: String): String = {
