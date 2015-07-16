@@ -14,6 +14,7 @@ trait FileNCSConstants extends FileNeuralynxConstants {
   final val recordNonDataHead = recordBytes - recordSampleCount * 2
 
 }
+
 /**
  * Created by ktakagaki on 15/05/28.
  */

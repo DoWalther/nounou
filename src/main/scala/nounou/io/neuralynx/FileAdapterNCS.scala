@@ -29,6 +29,7 @@ class FileAdapterNCS  extends FileLoader with FileSaver with FileNCSConstants wi
   override def save(data: Array[NNElement], fileName: String): Unit = {
     ???
   }
+
   def save( data: NNDataChannel, fileName: String ): Unit = {
     val headerText = "### Nounou output of Neuralynx NCS data/n" +
                     data.toStringFull().split("\n").map("### " + _ ).mkString("\n")
@@ -40,28 +41,29 @@ class FileAdapterNCS  extends FileLoader with FileSaver with FileNCSConstants wi
       case _ => 0
     }
 
-    for( seg <- 0 until data.timing.segmentCount){
+    for( seg <- 0 until data.timing.segmentCount) {
 
       val segLength = data.timing.segmentLength(seg)
       val pages = segLength / recordSampleCount
-      if( pages*recordSampleCount != segLength ){
+      if (pages * recordSampleCount != segLength) {
         logger.warn(s"Segment $seg has a sample count which is not a multiple of the page length $recordSampleCount. " +
-          s"The final ${segLength - pages*recordSampleCount } samples will be truncated for writing.")
+          s"The final ${segLength - pages * recordSampleCount} samples will be truncated for writing.")
       }
 
-      for(page <- 0 until pages){
-        handle.writeUInt64Shifted( data.timing.segmentStartTss(seg) )
-        handle.writeUInt32( channelNumber )
-        handle.writeUInt32( data.timing.sampleRate.toInt )
-        handle.writeUInt32( recordSampleCount )
-        handle.writeInt16( data.readTrace(
-                              new SampleRange(page*recordSampleCount, page*recordSampleCount+511, 1, seg) )
-                           .map( (v: Int) => ( v.toDouble / data.scale.xBitsD ).toShort )
+      for (page <- 0 until pages) {
+        handle.writeUInt64Shifted(data.timing.segmentStartTss(seg))
+        handle.writeUInt32(channelNumber)
+        handle.writeUInt32(data.timing.sampleRate.toInt)
+        handle.writeUInt32(recordSampleCount)
+        handle.writeInt16(data.readTrace(
+          new SampleRange(page * recordSampleCount, page * recordSampleCount + 511, 1, seg))
+          .map((v: Int) => (v.toDouble / data.scale.xBitsD).toShort)
         )
       }
+    }
+    handle.close()
   }
 
-  handle.close()
 
 }
 

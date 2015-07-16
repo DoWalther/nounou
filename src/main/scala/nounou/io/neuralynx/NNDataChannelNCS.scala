@@ -15,6 +15,7 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
 
   //ToDo update this
   val channelName = file.getCanonicalFile.toString
+  var channelNumber = -1
 
   def NNDataChannelNCS(fileName: String) = new NNDataChannelNCS( new File(fileName) )
 

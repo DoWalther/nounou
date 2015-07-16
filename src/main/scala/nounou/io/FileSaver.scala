@@ -36,6 +36,7 @@ trait FileSaver {
 }
 
 object FileSaver extends LoggingExt {
+
   private lazy val savers = ServiceLoader.load(classOf[FileSaver]).iterator.asScala
   private val possibleSaverBuffer = new mutable.HashMap[String, FileSaver]()
 
