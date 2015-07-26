@@ -14,7 +14,7 @@ import scala.collection.mutable
   *
  * Created by ktakagaki on 15/03/24.
  */
-trait FileLoader {
+trait FileLoader extends LoggingExt {
 
 //  /**Factory method returning single instance.*/
 //  def create(): FileLoader
@@ -34,47 +34,26 @@ trait FileLoader {
 
 }
 
-object FileLoader extends LoggingExt {
-  private lazy val loaders = ServiceLoader.load(classOf[FileLoader]).iterator.asScala
-  private val possibleLoaderBuffer = new mutable.HashMap[String, FileLoader]()
+/** This [[FileLoader]] instance serves as a placeholder in the loader list
+  * for extensions which have already been
+  * searched for in the META-INF and do not exist.
+  */
+final class FileLoaderNone extends FileLoader{
 
-  final def load(fileName: String): Array[NNElement] = {
-    val ext = nounou.util.getFileExtension(fileName)
-    val loader = possibleLoaderBuffer.get(ext) match {
-      //If the loader for this extension has already been loaded
-      case l: Some[FileLoader] => l.get
-      case _ => {
-        val possibleLoaders: Iterator[FileLoader] = loaders.filter( _.canLoadFile(fileName))
-        val possibleLoader = if( possibleLoaders.hasNext ){
-          val tempret = possibleLoaders.next
-          if( possibleLoaders.hasNext ) {
-            logger.info(s"Multiple possible loaders for file $fileName found. Will take first instance, ${tempret.getClass.getName}")
-          }
-          tempret
-        } else {
-          throw loggerError(s"Cannot find loader for file: $fileName")
-        }
-        possibleLoaderBuffer.+=( (ext, possibleLoader) )
-        possibleLoader
-      }
-    }
-    loader.load(fileName)
+  override val canLoadExtensions: Array[String] = Array[String]()
+
+  /** Actual loading of file. */
+  override def load(file: File): Array[NNElement] = {
+    throw loggerError(s"The file ${file} has no valid loader yet.")
   }
-  final def load(fileNames: Array[String]): Array[NNElement] = {
-    var tempElements = fileNames.flatMap( load(_) ).toVector
 
-    //filters out NNDataChannel objects and joins them into one NNData if they are compatible
-    val tempElementsNNDC = tempElements.filter(_.isInstanceOf[NNDataChannel])
-    if( tempElementsNNDC.length > 1 ){
-      if( tempElementsNNDC(0).isCompatible(tempElementsNNDC.tail) ) {
-      tempElements = tempElements.filter(!_.isInstanceOf[NNDataChannel]).+:(
-          new NNDataChannelArray(tempElementsNNDC.map(_.asInstanceOf[NNDataChannel]))
-      )} else {
-        loggerError("multiple files containing data channels were not compatible with each other!")
-      }
-    }
-
-    tempElements.toArray
-
-  }
 }
+
+
+///** This singleton FileLoader object is the main point of use for file loading.
+//  * It maintains a list of available loaders in the system (from Meta-Inf)
+//  * and uses the first valid loader to realize the [[FileLoader.load]] functions.
+//   */
+//object FileLoader extends LoggingExt {
+//
+//}

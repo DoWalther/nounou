@@ -5,17 +5,22 @@ package nounou
 import java.util.ServiceLoader
 
 import com.google.gson.Gson
-import nounou.elements.NNElement
-import nounou.elements.data.NNData
-import nounou.elements.data.filters.NNDataFilterMedianSubtract
-import nounou.io.FileLoader
-import nounou.elements.ranges._
+import scala.collection.JavaConverters._
 import breeze.linalg.DenseVector
+import nounou.elements.NNElement
+import nounou.elements.data.{NNDataChannelArray, NNDataChannel, NNData}
+import nounou.elements.data.filters.NNDataFilterMedianSubtract
+import nounou.io.{FileLoaderNone, FileLoader}
+import nounou.elements.ranges._
+//import nounou.io.FileLoader._
 import nounou.util.{LoggingExt, NNGit}
+
+import scala.collection.mutable
 
 
 /**A static class which encapsulates convenience functions for using nounou, with
- * an emphasis on use from Mathematica/MatLab/Java
+ * an emphasis on use from Mathematica/MatLab/Java (avoidance of Java-unfriendly Scala constructs)
+  *
  * @author ktakagaki
  * //@date 2/17/14.
  */
@@ -25,11 +30,66 @@ object NN extends LoggingExt {
       "Welcome to nounou, a Scala/Java adapter for neurophysiological data.\n" +
       NNGit.infoPrintout
 
-  def load(fileName: String): Array[NNElement] = FileLoader.load(fileName)
-  def load(fileNames: Array[String]): Array[NNElement] = FileLoader.load(fileNames)
+  // <editor-fold defaultstate="collapsed" desc=" file loading ">
 
+  /** List of valid loaders available in the system (from META-INF)
+    */
+  private lazy val loaders = ServiceLoader.load(classOf[FileLoader]).iterator.asScala
+  private val possibleLoaderBuffer = new mutable.HashMap[String, FileLoader]()
 
+  /** This singleton FileLoader object is the main point of use for file loading.
+    * It maintains a list of available loaders in the system (from Meta-Inf)
+    * and uses the first valid loader to realize the [[FileLoader.load]] functions.
+    */
+  final def load(fileName: String): Array[NNElement] = {
 
+    val fileExtension = nounou.util.getFileExtension(fileName)
+
+    val loader = possibleLoaderBuffer.get(fileExtension) match {
+
+      //If the loader for this extension has already been loaded
+      //This includes the case where no real loader was found for a given extension, and FileLoaderNull was loaded as a marker
+      case l: Some[FileLoader] => l.get
+
+      //If the given extension has not been tested yet, it will be searched for within the available loaders
+      case _ => {
+        val possibleLoaders: Iterator[FileLoader] = loaders.filter( _.canLoadFile(fileName))
+        val possibleLoader = if( possibleLoaders.hasNext ){
+          val tempret = possibleLoaders.next
+          if( possibleLoaders.hasNext ) {
+            logger.info(s"Multiple possible loaders for file $fileName found. Will take first instance, ${tempret.getClass.getName}")
+          }
+          tempret
+        } else {
+          throw loggerError(s"Cannot find loader for file: $fileName")
+        }
+        possibleLoaderBuffer.+=( (fileExtension, possibleLoader) )
+        possibleLoader
+      }
+    }
+    loader.load(fileName)
+  }
+
+  final def load(fileNames: Array[String]): Array[NNElement] = {
+
+    var tempElements = fileNames.flatMap( load(_) ).toVector
+
+    //filters out NNDataChannel objects and joins them into one NNData if they are compatible
+    val tempElementsNNDC = tempElements.filter(_.isInstanceOf[NNDataChannel])
+    if( tempElementsNNDC.length > 1 ){
+      if( tempElementsNNDC(0).isCompatible(tempElementsNNDC.tail) ) {
+        tempElements = tempElements.filter(!_.isInstanceOf[NNDataChannel]).+:(
+          new NNDataChannelArray(tempElementsNNDC.map(_.asInstanceOf[NNDataChannel]))
+        )} else {
+        loggerError("multiple files containing data channels were not compatible with each other!")
+      }
+    }
+
+    tempElements.toArray
+
+  }
+
+  // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" options ">
 
@@ -39,19 +99,48 @@ object NN extends LoggingExt {
 
   // <editor-fold defaultstate="collapsed" desc=" frame ranges ">
 
+  /**This is the full signature for creating a [[nounou.elements.ranges.SampleRange SampleRange]].*/
   final def SampleRange(start: Int, last: Int, step: Int, segment: Int) = new SampleRange(start, last, step, segment)
   final def SampleRangeReal(start: Int, last: Int, step: Int, segment: Int) = new SampleRangeReal(start, last, step, segment)
   final def SampleRangeValid(start: Int, last: Int, step: Int, segment: Int) = new SampleRangeValid(start, last, step, segment)
+
 //The following are deprecated due to the ambiguity between step and segment variables
 //  final def SampleRange(start: Int, last: Int, step: Int)               = new SampleRange(start, last, step, -1)
 //  final def SampleRange(start: Int, last: Int, segment: Int)            = new SampleRange(start, last, -1,   segment)
 //  final def SampleRange(start: Int, last: Int)                          = new SampleRange(start,    last,     -1,       -1)
-  final def SampleRange( range: (Int, Int) )                            = new SampleRange(range._1, range._2, -1,       -1)
-  final def SampleRange( range: (Int, Int), segment: Int)               = new SampleRange(range._1, range._2, -1,       segment)
-  final def SampleRange( range: (Int, Int, Int) )                       = new SampleRange(range._1, range._2, range._3, -1)
-  final def SampleRange( range: (Int, Int, Int), segment: Int )         = new SampleRange(range._1, range._2, range._3, segment)
+  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+    *
+    * @param range Tuple containing start and end. segment=-1 is assumed.
+    */
+  final def SampleRange( range: (Int, Int) )                            = new SampleRange(start = range._1, last = range._2, step = -1, segment = -1)
+  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+    *
+    * @param range Tuple containing start and end.
+    * @param segment Which segment to read from
+    */
+  final def SampleRange( range: (Int, Int), segment: Int)               = new SampleRange(start = range._1, last = range._2, step = -1, segment)
+  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+    *
+    * @param range Tuple containing start, end, and step. segment=-1 is assumed.
+    */
+  final def SampleRange( range: (Int, Int, Int) )                       = new SampleRange(start = range._1, last = range._2, step = range._3, segment = -1)
+  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+    *
+    * @param range Tuple containing start, end, and step
+    * @param segment Which segment to read from
+    */
+  final def SampleRange( range: (Int, Int, Int), segment: Int )         = new SampleRange(start = range._1, last = range._2, step = range._3, segment)
+  /** Java-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+    *
+    * @param range Array containing start, end, and optionally, step
+    * @param segment Which segment to read from
+    */
   final def SampleRange( range: Array[Int], segment: Int ): SampleRangeSpecifier =
     nounou.elements.ranges.SampleRange.convertArrayToSampleRange(range, segment)
+  /** Java-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+    *
+    * @param range Array containing start, end, and optionally, step. segment = -1 is assumed.
+    */
   final def SampleRange( range: Array[Int] ): SampleRangeSpecifier = SampleRange( range, -1 )
 
   final def SampleRangeAll(step: Int, segment: Int) = new SampleRangeAll(step, segment)

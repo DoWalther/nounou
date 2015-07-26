@@ -35,32 +35,38 @@ trait FileSaver {
 
 }
 
-object FileSaver extends LoggingExt {
 
-  private lazy val savers = ServiceLoader.load(classOf[FileSaver]).iterator.asScala
-  private val possibleSaverBuffer = new mutable.HashMap[String, FileSaver]()
-
-  final def save(data: Array[NNElement], fileName: String): Unit = {
-    val ext = nounou.util.getFileExtension(fileName)
-//    val saver = possibleSaverBuffer.get(ext) match {
-//      //If the loader for this extension has already been loaded
-//      case l: Some[FileSaver] => l.get
-//      case _ => {
-//        val possibleSavers: Iterator[FileSaver] = savers.filter( _.canSaveFile(fileName))
-//        val possibleSaver = if( possibleSavers.hasNext ){
-//          val tempret = possibleSavers.next
-//          if( possibleSavers.hasNext ) {
-//            logger.info(s"Multiple possible savers for file $fileName found. Will take first instance, ${tempret.getClass.getName}")
-//          }
-//          tempret
-//        } else {
-//          throw loggerError(s"Cannot find saver for file: $fileName")
-//        }
-//        possibleSaverBuffer.+=( (ext, possibleSaver) )
-//        possibleSaver
-//      }
-//    }
-//    saver.save(data, fileName)
-  }
-
-}
+//
+///** This singleton FileSaver object is the main point of use for file saving.
+//  * It maintains a list of available savers in the system (from Meta-Inf)
+//  * and uses the first valid saver to realize the [[FileLoader.load]] functions.
+//  */
+//object FileSaver extends LoggingExt {
+//
+//  private lazy val savers = ServiceLoader.load(classOf[FileSaver]).iterator.asScala
+//  private val possibleSaverBuffer = new mutable.HashMap[String, FileSaver]()
+//
+//  final def save(data: Array[NNElement], fileName: String): Unit = {
+//    val ext = nounou.util.getFileExtension(fileName)
+////    val saver = possibleSaverBuffer.get(ext) match {
+////      //If the loader for this extension has already been loaded
+////      case l: Some[FileSaver] => l.get
+////      case _ => {
+////        val possibleSavers: Iterator[FileSaver] = savers.filter( _.canSaveFile(fileName))
+////        val possibleSaver = if( possibleSavers.hasNext ){
+////          val tempret = possibleSavers.next
+////          if( possibleSavers.hasNext ) {
+////            logger.info(s"Multiple possible savers for file $fileName found. Will take first instance, ${tempret.getClass.getName}")
+////          }
+////          tempret
+////        } else {
+////          throw loggerError(s"Cannot find saver for file: $fileName")
+////        }
+////        possibleSaverBuffer.+=( (ext, possibleSaver) )
+////        possibleSaver
+////      }
+////    }
+////    saver.save(data, fileName)
+//  }
+//
+//}
