@@ -15,7 +15,7 @@ class NNDataChannelPreloaded(val data: DV[Int], timingEntry: NNDataTiming, scale
 
   //ToDo2 test the DV length against segment lengths
   //override lazy val segmentLengths = Array( data.length )
-  override def readPointImpl(frame: Int, segment: Int): Int = data( timing.segmentStartFrame(segment) + frame)
+  override def readPointImpl(frame: Int, segment: Int): Int = data( timing.cumulativeFrame(frame, segment))
 
 }
 

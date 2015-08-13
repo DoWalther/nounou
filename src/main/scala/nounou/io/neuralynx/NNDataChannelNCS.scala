@@ -2,7 +2,6 @@ package nounou.io.neuralynx
 
 import java.io.File
 
-import breeze.io.RandomAccessFile
 import breeze.linalg.{DenseVector => DV, convert}
 import nounou.elements.data.{NNDataChannelNumbered, NNDataChannel}
 import nounou.elements.ranges.SampleRangeValid
@@ -32,10 +31,10 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
 
   @transient
   private var dwChannelNum: Long = -1
-  private def readNCSRecordHeaderTS(record: Int): Long = {
+  private def readNCSRecordHeaderTS(record: Int): BigInt = {
     //println( s"seek: ${recordStartByte(record)}")
     handle.seek( recordStartByte(record) )
-    val qwTimestamp = handle.readUInt64Shifted()
+    val qwTimestamp = handle.readUInt64()
 
     //dwChannelNumber... must advance by 4 bytes anyway
     val tempDwChannelNum = handle.readUInt32
@@ -69,7 +68,7 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
   currentRecord = 0
   @transient private var thisRecTS = readNCSRecordHeaderTS(currentRecord)
   @transient private var lastRecTS = thisRecTS
-  @transient private var tempStartTimestamps = Vector[Long]( lastRecTS )
+  @transient private var tempStartTimestamps = Vector[BigInt]( lastRecTS )
   @transient private var tempLengths = Vector[Int]()
   @transient private var tempSegmentStartCumulativeFrame = 0
 
@@ -109,8 +108,7 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
 
   setTiming( new NNDataTiming(headerSampleRate,
                               tempLengths.toArray,
-                              tempStartTimestamps.toArray,
-                              BigInt(9223372036854775807L)+1 )
+                              tempStartTimestamps.toArray)
   )
   setScale( new NNDataScale(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
                             absGain = 1.0E6 * headerADBitVolts / xBitsD,
@@ -123,7 +121,7 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
   // <editor-fold defaultstate="collapsed" desc=" data implementations ">
 
   override def readPointImpl(frame: Int, segment: Int): Int = {
-    val (record, index) = cumulativeFrameToRecordIndex( timing.cumulativeStartFrame(frame, segment) )
+    val (record, index) = cumulativeFrameToRecordIndex( timing.cumulativeFrame(frame, segment) )
     handle.seek( recordIndexStartByte( record, index ) )
     handle.readInt16 * scale.xBits
   }
@@ -131,9 +129,9 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
   override def readTraceDVImpl(range: SampleRangeValid): DV[Int] = {
     //println("XDataChannelNCS " + range.toString())
     var (currentRecord: Int, currentIndex: Int) =
-      cumulativeFrameToRecordIndex( timing.cumulativeStartFrame(range.start, range.segment) )
+      cumulativeFrameToRecordIndex( timing.cumulativeFrame(range.start, range.segment) )
     val (endReadRecord: Int, endReadIndex: Int) =
-      cumulativeFrameToRecordIndex( timing.cumulativeStartFrame(range.last, range.segment) )
+      cumulativeFrameToRecordIndex( timing.cumulativeFrame(range.last, range.segment) )
       //range is inclusive of lastValid
 
     //println( "curr " + (currentRecord, currentIndex).toString )

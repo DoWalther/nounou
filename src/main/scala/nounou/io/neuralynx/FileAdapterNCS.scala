@@ -10,6 +10,7 @@ import nounou.elements.ranges.{SampleRange, SampleRangeValid}
 import nounou.elements.traits.{NNDataScale, NNDataTiming}
 import nounou.io.{FileLoader, FileSaver}
 import nounou.util.LoggingExt
+import spire.math.ULong
 
 class FileAdapterNCS  extends FileLoader with FileSaver with FileNCSConstants with LoggingExt {
 
@@ -51,7 +52,7 @@ class FileAdapterNCS  extends FileLoader with FileSaver with FileNCSConstants wi
       }
 
       for (page <- 0 until pages) {
-        handle.writeUInt64Shifted(data.timing.segmentStartTss(seg))
+        handle.writeUInt64( ULong.fromBigInt( data.timing.segmentStartTimestamps(seg) ) )
         handle.writeUInt32(channelNumber)
         handle.writeUInt32(data.timing.sampleRate.toInt)
         handle.writeUInt32(recordSampleCount)

@@ -71,7 +71,7 @@ class SampleRange(val start: Int, val last: Int, val step: Int, val segment: Int
 
   /** Read -1 as the default value for the timing.
     */
-  override final def getRealStep(timing: NNDataTiming): Int =  if ( step == -1 ) timing.defaultStep else step
+  override final def getRealStep(timing: NNDataTiming): Int =  if ( step == -1 ) 1 else step
 
   override final def getRealSegment(timing: NNDataTiming) = timing.getRealSegment( segment )
 

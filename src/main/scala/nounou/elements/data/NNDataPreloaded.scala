@@ -15,7 +15,7 @@ class NNDataPreloaded( val data: Array[DV[Int]], timingEntry: NNDataTiming, scal
     override def getChannelCount: Int = data.length
 
     override def readPointImpl(channel: Int, frame: Int, segment: Int) =
-      data(channel)(timing.segmentStartFrame(segment) + frame)
+      data(channel)(timing.cumulativeFrame(frame, segment))
 
     override def readTraceDVImpl(channel: Int, rangeFrValid: SampleRangeValid) = {
       data( channel )(

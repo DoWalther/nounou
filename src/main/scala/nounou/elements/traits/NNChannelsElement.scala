@@ -3,9 +3,10 @@ package nounou.elements.traits
 import nounou.elements.NNElement
 import nounou.util.LoggingExt
 
-/**This subclass of NNElement objects encapsulates the channel count information for
-  * electrophysiological and imaging data. Envisioned uses are for [[nounou.elements.data.NNData]],
-  * [[nounou.elements.layouts.NNDataLayout]].
+/**This trait of NNElement objects encapsulates the channel count information for
+  * electrophysiological and imaging data. Envisioned uses are for:
+  *   + [[nounou.elements.data.NNData]],
+  *   + [[nounou.elements.layouts.NNDataLayout]].
   * Channel names/count are intentionally mutable for [[nounou.elements.data.filters.NNDataFilter]]
   * objects which conduct binning and therefore may change dynamically.
  */

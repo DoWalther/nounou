@@ -284,7 +284,9 @@ abstract class NNData extends NNElement
   override def isCompatible(that: NNElement): Boolean = {
     that match {
       case x: NNData => {
-        (timing().isCompatible(x.timing())) && scale().isCompatible(x.scale())
+        ( //This is not enforced, may append objects with separate channel counts: channelCount() == x.channelCount()  &&
+          timing().isCompatible(x.timing())) &&
+          scale().isCompatible(x.scale())
         //&& this.layout.isCompatible(x.layout)
         //not channel info
       }

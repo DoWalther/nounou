@@ -1,6 +1,6 @@
 name := "nounou"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.7"
 
 publishMavenStyle := true
 
@@ -32,8 +32,8 @@ resolvers ++= Seq(
     Resolver.typesafeRepo("releases")
     )
 
-assemblyJarName in assembly := "nounou.jar"
-
-test in assembly := {}
+//assemblyJarName in assembly := "nounou.jar"
+//
+//test in assembly := {}
 
 //settings = standardSettings ++ SbtOneJar.oneJarSettings
