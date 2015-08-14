@@ -4,11 +4,15 @@ import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.TreeSet
 import scala.collection.immutable.TreeMap
 
-/**Database to encapsulate marked events in data recording.
-  * Events are stored as [[NNEvent]] objects, which encapsulate timestamp, duration, code, and comment string.
-  * An [[NNEvents]] database consists of TreeSet(s) of XEvents.
+/** Mutable database object to encapsulate marked events in data recordings.
+  *
+  * Events are stored as [[NNEvent]] objects, which are immutable objects encapsulating
+  * timestamp, duration, code, and comment string.
+  * An [[NNEvents]] database consists of TreeSet(s) of [[NNEvent]]s.
+  *
   * Each event "port" has its own TreeSet---this allows different ports to have events with exactly the same timing.
   * (TreeSet's with black-red trees cannot support keys with equivalent sorting values)
+  *
   * @author ktakagaki
  */
 class NNEvents extends NNElement {
@@ -16,16 +20,32 @@ class NNEvents extends NNElement {
   private var _database: TreeMap[Int, TreeSet[NNEvent]] = new TreeMap[Int, TreeSet[NNEvent]]()
 
   def lengths: Array[Int] = _database.values.map( _.size ).toArray
+
+  /** Returns a list of the ports that are registered in this database.
+    * Ports with no events can be registered as well.
+    */
   def ports: Array[Int] = _database.keys.toArray
+
+  /** Returns the number of ports that have events registered in this database
+    * Ports with no events can be registered as well.
+    */
   def portCount: Int = _database.size
 
+  /** Alias for [[addEvent( port: Int, event: NNEvent ): Unit*]]
+    */
   def addEvent( portEvent: (Int, NNEvent) ): Unit = addEvent(portEvent._1, portEvent._2)
-  def addEvent( port: Int, xEvent: NNEvent ): Unit = {
-    loggerRequire(port >= 0, "port specification {} must be >= zero!", port.toString)
+  def addEvent( port: Int, event: NNEvent ): Unit = {
+    addPort(port)
+    _database(port).+=(event)
+  }
+
+  /** Adds a port and initializes the TreeSet[NNEvent] data structure for it.
+    */
+  def addPort( port: Int ): Unit = {
     if( !_database.contains(port) ){
+      loggerRequire(port >= 0, "port specification {} must be >= zero!", port.toString)
       _database = _database.+(port -> new TreeSet[NNEvent]())
     }
-    _database(port).+=(xEvent)
   }
 
   // <editor-fold defaultstate="collapsed" desc=" filterByPort/filterByPortCode ">
@@ -34,18 +54,21 @@ class NNEvents extends NNElement {
     if( _database.contains(port) ) _database(port)
     else new TreeSet[NNEvent]()
   }
-  def filterByPortA(port: Int) = filterByPort(port).toArray
+//  def filterByPortA(port: Int) = filterByPort(port).toArray
 
   def filterByPortCode(port: Int, code: Int): TreeSet[NNEvent] = {
     filterByPort(port).filter( p => p.code == code )
   }
-  def filterByPortCodeA(port: Int, code: Int) = filterByPortCode(port, code).toArray
+//  def filterByPortCodeA(port: Int, code: Int) = filterByPortCode(port, code).toArray
 
   // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" expandZeroEvents ">
 
-  def expandZeroEvents(): Unit = {
+  /** Takes each event with !0 duration and expands them to two 0 duration events,
+   * one with the port code for the beginning, and one resetting it to port code=0.
+   */
+  def expandDurationEventsToStartAndReset(): Unit = {
     _database = _database.map( ( ev:(Int, TreeSet[NNEvent]) ) => ( ev._1, {
       var tempTreeSet = TreeSet[NNEvent]()
       ev._2.foreach(
@@ -64,15 +87,15 @@ class NNEvents extends NNElement {
   // </editor-fold>
 
 
-  // <editor-fold defaultstate="collapsed" desc=" toArray/toArrayArray ">
-
-  def toArray(): Array[(Int, NNEvent)] = {
-    val tempret: ArrayBuffer[(Int, NNEvent)] = new ArrayBuffer[(Int, NNEvent)]()
-    _database.keys.foreach( key => _database(key).foreach( event => tempret.+=( (key, event) ) ) )
-    tempret.toArray
-  }
-
-  // </editor-fold>
+//  // <editor-fold defaultstate="collapsed" desc=" toArray/toArrayArray ">
+//
+//  def toArray(): Array[(Int, NNEvent)] = {
+//    val tempret: ArrayBuffer[(Int, NNEvent)] = new ArrayBuffer[(Int, NNEvent)]()
+//    _database.keys.foreach( key => _database(key).foreach( event => tempret.+=( (key, event) ) ) )
+//    tempret.toArray
+//  }
+//
+//  // </editor-fold>
 
 
 //  lazy val maxDuration: Long = events.map( _._2.duration).max
