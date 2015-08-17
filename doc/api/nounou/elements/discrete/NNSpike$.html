@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>NNSpike - nounou.elements.discrete.NNSpike</title>
-          <meta name="description" content="NNSpike - nounou.elements.discrete.NNSpike" />
-          <meta name="keywords" content="NNSpike nounou.elements.discrete.NNSpike" />
+          <title>NNSpike - nounou.elements.spikes.NNSpike</title>
+          <meta name="description" content="NNSpike - nounou.elements.spikes.NNSpike" />
+          <meta name="keywords" content="NNSpike nounou.elements.spikes.NNSpike" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -14,26 +14,26 @@
       <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
       
       <script type="text/javascript">
-         if(top === self) {
-            var url = '../../../index.html';
-            var hash = 'nounou.elements.discrete.NNSpike$';
-            var anchor = window.location.hash;
-            var anchor_opt = '';
-            if (anchor.length >= 1)
-              anchor_opt = '@' + anchor.substring(1);
-            window.location.href = url + '#' + hash + anchor_opt;
-         }
-   	  </script>
+          if(top === self) {
+          var url = '../../../index.html';
+          var hash = 'nounou.elements.spikes.NNSpike$';
+          var anchor = window.location.hash;
+          var anchor_opt = '';
+          if (anchor.length >= 1)
+          anchor_opt = '@' + anchor.substring(1);
+          window.location.href = url + '#' + hash + anchor_opt;
+          }
+      </script>
     
         </head>
         <body class="value">
       <div id="definition">
         <a href="NNSpike.html" title="See companion class"><img src="../../../lib/object_to_class_big.png" /></a>
-        <p id="owner"><a href="../../package.html" class="extype" name="nounou">nounou</a>.<a href="../package.html" class="extype" name="nounou.elements">elements</a>.<a href="package.html" class="extype" name="nounou.elements.discrete">discrete</a></p>
+        <p id="owner"><a href="../../package.html" class="extype" name="nounou">nounou</a>.<a href="../package.html" class="extype" name="nounou.elements">elements</a>.<a href="package.html" class="extype" name="nounou.elements.spikes">discrete</a></p>
         <h1><a href="NNSpike.html" title="See companion class">NNSpike</a></h1><h3><span class="morelinks"><div>
             Related Docs:
             <a href="NNSpike.html" title="See companion class">class NNSpike</a>
-            | <a href="package.html" class="extype" name="nounou.elements.discrete">package discrete</a>
+            | <a href="package.html" class="extype" name="nounou.elements.spikes">package discrete</a>
           </div></span></h3><span class="permalink">
       <a href="../../../index.html#nounou.elements.discrete.NNSpike$" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
@@ -71,7 +71,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="nounou.elements.discrete.NNSpike"><span>NNSpike</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="nounou.elements.spikes.NNSpike"><span>NNSpike</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -409,8 +409,8 @@ throw loggerError(&quot;This is an error with params {}&quot;, param1.toString)
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="nounou.elements.discrete.NNSpike#readSpikeFrame" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="readSpikeFrame(xData:nounou.elements.data.NNData,channels:Array[Int],frame:Int,segment:Int,length:Int):nounou.elements.discrete.NNSpike"></a>
+    </li><li name="nounou.elements.spikes.NNSpike#readSpikeFrame" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="readSpikeFrame(xData:nounou.elements.data.NNData,channels:Array[Int],frame:Int,segment:Int,length:Int):nounou.elements.spikes.NNSpike"></a>
       <a id="readSpikeFrame(NNData,Array[Int],Int,Int,Int):NNSpike"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -418,7 +418,7 @@ throw loggerError(&quot;This is an error with params {}&quot;, param1.toString)
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readSpikeFrame</span><span class="params">(<span name="xData">xData: <a href="../data/NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></span>, <span name="channels">channels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>, <span name="length">length: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="NNSpike.html" class="extype" name="nounou.elements.discrete.NNSpike">NNSpike</a></span>
+        <span class="name">readSpikeFrame</span><span class="params">(<span name="xData">xData: <a href="../data/NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></span>, <span name="channels">channels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>, <span name="length">length: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">NNSpike</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#nounou.elements.discrete.NNSpike$@readSpikeFrame(xData:nounou.elements.data.NNData,channels:Array[Int],frame:Int,segment:Int,length:Int):nounou.elements.discrete.NNSpike" title="Permalink" target="_top">
@@ -426,8 +426,8 @@ throw loggerError(&quot;This is an error with params {}&quot;, param1.toString)
       </a>
     </span>
       
-    </li><li name="nounou.elements.discrete.NNSpike#readSpikeFrames" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="readSpikeFrames(xData:nounou.elements.data.NNData,channels:Array[Int],xFrames:Array[Int],length:Int,trigger:Int):Array[nounou.elements.discrete.NNSpike]"></a>
+    </li><li name="nounou.elements.spikes.NNSpike#readSpikeFrames" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="readSpikeFrames(xData:nounou.elements.data.NNData,channels:Array[Int],xFrames:Array[Int],length:Int,trigger:Int):Array[nounou.elements.spikes.NNSpike]"></a>
       <a id="readSpikeFrames(NNData,Array[Int],Array[Int],Int,Int):Array[NNSpike]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -435,7 +435,7 @@ throw loggerError(&quot;This is an error with params {}&quot;, param1.toString)
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readSpikeFrames</span><span class="params">(<span name="xData">xData: <a href="../data/NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></span>, <span name="channels">channels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="xFrames">xFrames: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="length">length: <span class="extype" name="scala.Int">Int</span></span>, <span name="trigger">trigger: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="NNSpike.html" class="extype" name="nounou.elements.discrete.NNSpike">NNSpike</a>]</span>
+        <span class="name">readSpikeFrames</span><span class="params">(<span name="xData">xData: <a href="../data/NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></span>, <span name="channels">channels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="xFrames">xFrames: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="length">length: <span class="extype" name="scala.Int">Int</span></span>, <span name="trigger">trigger: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">NNSpike</a>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#nounou.elements.discrete.NNSpike$@readSpikeFrames(xData:nounou.elements.data.NNData,channels:Array[Int],xFrames:Array[Int],length:Int,trigger:Int):Array[nounou.elements.discrete.NNSpike]" title="Permalink" target="_top">

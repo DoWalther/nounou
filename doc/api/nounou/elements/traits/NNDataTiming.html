@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>NNDataTiming - nounou.elements.traits.NNDataTiming</title>
-          <meta name="description" content="NNDataTiming - nounou.elements.traits.NNDataTiming" />
-          <meta name="keywords" content="NNDataTiming nounou.elements.traits.NNDataTiming" />
+          <title>NNDataTiming - nounou.elements.NNDataTiming</title>
+          <meta name="description" content="NNDataTiming - nounou.elements.NNDataTiming" />
+          <meta name="keywords" content="NNDataTiming nounou.elements.NNDataTiming" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -51,7 +51,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This trait of NNElement objects (especially <a href="../data/NNData.html" class="extype" name="nounou.elements.data.NNData">nounou.elements.data.NNData</a> encapsulates
 segment, frame, and sampling information for electrophysiological and imaging data.</p><p>Envisioned uses are for <a href="../data/NNData.html" class="extype" name="nounou.elements.data.NNData">nounou.elements.data.NNData</a>,
-<a href="../layouts/NNDataLayout.html" class="extype" name="nounou.elements.layouts.NNDataLayout">nounou.elements.layouts.NNDataLayout</a>, and <span class="extype" name="nounou.elements.discrete.NNSpikes">nounou.elements.discrete.NNSpikes</span>.
+<a href="../layouts/NNDataLayout.html" class="extype" name="nounou.elements.layouts.NNDataLayout">nounou.elements.layouts.NNDataLayout</a>, and <span class="extype" name="nounou.elements.spikes.NNSpikes">nounou.elements.spikes.NNSpikes</span>.
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a>, <a href="../../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.LazyLogging">LazyLogging</span>, <span class="extype" name="com.typesafe.scalalogging.Logging">Logging</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -72,7 +72,7 @@ segment, frame, and sampling information for electrophysiological and imaging da
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="nounou.elements.traits.NNDataTiming"><span>NNDataTiming</span></li><li class="in" name="nounou.elements.NNElement"><span>NNElement</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="nounou.elements.NNDataTiming"><span>NNDataTiming</span></li><li class="in" name="nounou.elements.NNElement"><span>NNElement</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -93,7 +93,7 @@ segment, frame, and sampling information for electrophysiological and imaging da
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="nounou.elements.traits.NNDataTiming#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(sampleRate:Double,segmentLengths:Array[Int],segmentStartTss:Array[Long],timestampOffset:java.math.BigInteger):nounou.elements.traits.NNDataTiming"></a>
+      <a id="&lt;init&gt;(sampleRate:Double,segmentLengths:Array[Int],segmentStartTss:Array[Long],timestampOffset:java.math.BigInteger):nounou.elements.NNDataTiming"></a>
       <a id="&lt;init&gt;:NNDataTiming"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -110,7 +110,7 @@ segment, frame, and sampling information for electrophysiological and imaging da
     </span>
       
     </li><li name="nounou.elements.traits.NNDataTiming#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(sampleRate:Double,segmentLengths:Array[Int],segmentStartTss:Array[Long],timestampOffset:BigInt):nounou.elements.traits.NNDataTiming"></a>
+      <a id="&lt;init&gt;(sampleRate:Double,segmentLengths:Array[Int],segmentStartTss:Array[Long],timestampOffset:BigInt):nounou.elements.NNDataTiming"></a>
       <a id="&lt;init&gt;:NNDataTiming"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -669,7 +669,7 @@ if necessary.
     </span>
       <p class="shortcomment cmt"><u><b>SHOULD OVERRIDE</b></u><u> Whether an NNElement is compatible with another for merging, etc.
 </u></p><div class="fullcomment"><div class="comment cmt"><p><u><b>SHOULD OVERRIDE</b></u><u> Whether an NNElement is compatible with another for merging, etc.
-</u></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNDataTiming">NNDataTiming</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+</u></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.NNDataTiming">NNDataTiming</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
     </li><li name="nounou.elements.NNElement#isCompatible" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isCompatible(that:Seq[nounou.elements.NNElement]):Boolean"></a>
       <a id="isCompatible(Seq[NNElement]):Boolean"></a>
@@ -1187,7 +1187,7 @@ a value of -1 (default) is also possible.
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNDataTiming">NNDataTiming</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.NNDataTiming">NNDataTiming</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a> → AnyRef → Any</dd></dl></div>
     </li><li name="nounou.elements.traits.NNDataTiming#toStringFull" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toStringFull():String"></a>
       <a id="toStringFull():String"></a>
@@ -1206,7 +1206,7 @@ a value of -1 (default) is also possible.
     </span>
       <p class="shortcomment cmt">Output string with short git head.</p><div class="fullcomment"><div class="comment cmt"><p>Output string with short git head. Each implementation (eg <a href="../data/filters/NNDataFilter.html" class="extype" name="nounou.elements.data.filters.NNDataFilter">nounou.elements.data.filters.NNDataFilter</a>
 objects should update this to provide information specific to the specific filter, etc.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNDataTiming">NNDataTiming</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.NNDataTiming">NNDataTiming</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
     </li><li name="nounou.elements.traits.NNDataTiming#totalLength" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="totalLength:Int"></a>
       <a id="totalLength:Int"></a>
