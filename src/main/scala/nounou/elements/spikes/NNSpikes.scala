@@ -13,7 +13,7 @@ object NNSpikes extends LoggingExt {
 
 }
 
-/** A database of [[nounou.elements.NNSpike]] objects for display and processing. Also encapsulates
+/** A database of [[nounou.elements.spikes.NNSpike]] objects for display and processing. Also encapsulates
   * a trode layout compatible with the spike data, and a copy of the XData upon which the
   * waveforms were based.
     *
