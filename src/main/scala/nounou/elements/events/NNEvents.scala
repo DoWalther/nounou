@@ -1,8 +1,9 @@
-package nounou.elements
+package nounou.elements.events
 
-import scala.collection.mutable.ArrayBuffer
-import scala.collection.mutable.TreeSet
+import nounou.elements.NNElement
+
 import scala.collection.immutable.TreeMap
+import scala.collection.mutable.TreeSet
 
 /** Mutable database object to encapsulate marked events in data recordings.
   *

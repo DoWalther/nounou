@@ -4,10 +4,9 @@ import java.io.File
 
 import breeze.io.{ByteConverterLittleEndian, RandomAccessFile}
 import breeze.linalg.{DenseVector => DV, convert}
-import nounou.elements.NNElement
+import nounou.elements.{NNDataScale, NNElement}
 import nounou.elements.data.{NNDataChannelNumbered, NNDataChannel, NNData}
 import nounou.elements.ranges.{SampleRange, SampleRangeValid}
-import nounou.elements.traits.{NNDataScale, NNDataTiming}
 import nounou.io.{FileLoader, FileSaver}
 import nounou.util.LoggingExt
 import spire.math.ULong

@@ -1,11 +1,11 @@
 package nounou.elements.data.filters
 
 import _root_.nounou.elements.ranges.SampleRangeValid
+import nounou.elements.NNDataTiming
 import nounou.elements.data.NNData
 import breeze.signal.support.FIRKernel1D
 import breeze.signal._
 import breeze.linalg.{DenseVector => DV, min}
-import nounou.elements.traits.NNDataTiming
 
 /**
  * @author ktakagaki

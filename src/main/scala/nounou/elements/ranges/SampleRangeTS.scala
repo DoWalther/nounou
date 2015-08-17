@@ -1,7 +1,7 @@
 package nounou.elements.ranges
 
 import nounou._
-import nounou.elements.traits.NNDataTiming
+import nounou.elements.NNDataTiming
 
 /**Encapsulates a TS(timestamp, Long)-based frame range, with appropriate values.
  * @author ktakagaki

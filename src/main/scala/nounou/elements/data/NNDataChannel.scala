@@ -1,9 +1,8 @@
 package nounou.elements.data
 
 import nounou._
-import nounou.elements.NNElement
-import java.io.DataInput
-import nounou.elements.traits.{NNDataTimingElement, NNDataScaleElement, NNDataTiming, NNDataScale}
+import nounou.elements.{NNDataScaleElement, NNDataTimingElement, NNElement}
+import nounou.elements.NNDataScaleElement
 import breeze.linalg.{DenseVector => DV}
 import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid, SampleRangeAll}
 

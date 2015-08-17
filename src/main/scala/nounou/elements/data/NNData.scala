@@ -1,10 +1,9 @@
 package nounou.elements.data
 
-import nounou.elements.NNElement
+import nounou.elements.{NNDataScaleElement, NNDataTimingElement, NNChannelsElement, NNElement}
 import nounou.elements.layouts.NNDataLayout
 import scala.collection.immutable.Vector
 import nounou._
-import nounou.elements.traits._
 import breeze.linalg.{DenseVector => DV}
 import nounou.elements.ranges.{SampleRange, SampleRangeValid, SampleRangeSpecifier}
 

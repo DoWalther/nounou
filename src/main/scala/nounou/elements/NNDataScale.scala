@@ -1,7 +1,6 @@
-package nounou.elements.traits
+package nounou.elements
 
 import breeze.linalg.DenseVector
-import nounou.elements.NNElement
 
 
 /**This trait of XData and XDataChannel objects encapsulates scaling and unit information for

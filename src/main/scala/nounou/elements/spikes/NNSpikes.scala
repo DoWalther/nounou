@@ -1,24 +1,27 @@
-//package nounou.elements
-//
+package nounou.elements.spikes
+
+import nounou.elements.{NNDataScaleElement, NNDataTimingElement, NNElement}
+import nounou.util.LoggingExt
+
 //import nounou.elements.layouts.NNDataLayoutTrode
-//import nounou.elements.traits.{NNDataScaleElement, NNDataTimingElement}
-//
 //import scala.collection.immutable.TreeMap
 //import nounou.elements.data.{NNData}
 //import nounou.util.LoggingExt
 //import breeze.linalg.DenseVector
 //
-//object NNSpikes extends LoggingExt {
-//
-//}
-//
-///** A database of [[NNSpike]] objects for display and processing. Also encapsulates
-//  * a trode layout compatible with the spike data, and a copy of the XData upon which the
-//  * waveforms were based.
-//    *
-//    */
-//class NNSpikes(val trodeLayout: NNDataLayoutTrode, val waveFormLength: Int)
-//  extends NNElement with NNDataTimingElement with NNDataScaleElement {
+object NNSpikes extends LoggingExt {
+
+}
+
+/** A database of [[nounou.elements.NNSpike]] objects for display and processing. Also encapsulates
+  * a trode layout compatible with the spike data, and a copy of the XData upon which the
+  * waveforms were based.
+    *
+    */
+class NNSpikes()//val trodeLayout: NNDataLayoutTrode, val waveFormLength: Int)
+  extends NNElement with NNDataTimingElement with NNDataScaleElement {
+
+  }
 //
 //  override def toString() = s"NNSpikes( waveFormLength=$waveFormLength, trodeCount=${trodeLayout.trodeCount})"
 //

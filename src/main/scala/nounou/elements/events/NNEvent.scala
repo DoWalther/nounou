@@ -1,4 +1,4 @@
-package nounou.elements
+package nounou.elements.events
 
 object NNEvent {
   implicit object NNEventOrdering extends Ordering[NNEvent] {

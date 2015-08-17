@@ -3,9 +3,9 @@ package nounou.io.neuralynx
 import java.io.File
 
 import breeze.linalg.{DenseVector => DV, convert}
+import nounou.elements.{NNDataScale, NNDataTiming}
 import nounou.elements.data.{NNDataChannelNumbered, NNDataChannel}
 import nounou.elements.ranges.SampleRangeValid
-import nounou.elements.traits.{NNDataScale, NNDataTiming}
 
 
 /**A specialized immutable [[nounou.elements.data.NNDataChannel]] for NCS files.

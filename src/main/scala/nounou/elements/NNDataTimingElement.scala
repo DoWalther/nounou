@@ -1,6 +1,4 @@
-package nounou.elements.traits
-
-import nounou.elements.NNElement
+package nounou.elements
 
 /**
  * Created by ktakagaki on 15/03/12.
@@ -9,7 +7,7 @@ trait NNDataTimingElement extends NNElement {
 
   private var _timing: NNDataTiming = null
 
-  /**  '''[NNDataTimingElement]''' Alias for [[nounou.elements.traits.NNDataTimingElement.getTiming]].*/
+  /**  '''[NNDataTimingElement]''' Alias for [[nounou.elements.NNDataTimingElement.getTiming]].*/
   final def timing(): NNDataTiming = getTiming()
   /**'''[NNDataTimingElement]''' */
   def getTiming(): NNDataTiming = {

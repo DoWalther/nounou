@@ -2,8 +2,7 @@ package nounou.elements.layouts
 
 import java.util
 
-import nounou.elements.NNElement
-import nounou.elements.traits.NNChannelsElement
+import nounou.elements.{NNChannelsElement, NNElement}
 
 import scala.collection.mutable
 

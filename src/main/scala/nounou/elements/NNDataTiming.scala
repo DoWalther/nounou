@@ -1,10 +1,7 @@
-package nounou.elements.traits
+package nounou.elements
 
-import java.math.BigInteger
 import breeze.numerics.round
-import nounou.elements.NNElement
 import nounou.elements.ranges.SampleRangeSpecifier
-import spire.math.ULong
 
 /** This class encapsulates the following timing information about electrophysiological/imaging data:
   *   + sample rate (Double, in Hz)
@@ -18,13 +15,13 @@ import spire.math.ULong
   *           segment. From this information, it can calculate the timestamp of any event in between
   *
   * This class should be used within [[nounou.elements.NNElement]] children by expanding the
-  * [[nounou.elements.traits.NNDataTimingElement]] trait, which will allow one NNDataTiming
+  * [[nounou.elements.NNDataTimingElement]] trait, which will allow one NNDataTiming
   * object to be set for each NNDataTimingElement.
   *
   * Envisioned uses are for the following children of [[nounou.elements.NNElement]]:
   *   + [[nounou.elements.data.NNData]]
   *   + [[nounou.elements.layouts.NNDataLayout]]
-  *   + [[nounou.elements.discrete.NNSpikes]]
+  *   + [[nounou.elements.spikes.NNSpikes]]
   *
   * @param sampleRate Sample rate in Hz.
   * @param _segmentLengths Total number of frames in each segment. Must be specified and non-null.
@@ -136,7 +133,7 @@ class NNDataTiming( val sampleRate: Double,
     }
 
   /**Total length in frames of data. Use
-    * [[nounou.elements.traits.NNDataTiming.segmentLength(seg* segmentLength(Int)]] to
+    * [[NNDataTiming.segmentLength(seg* segmentLength(Int)]] to
     * get the length of specific segments, for data which have more than one segment.
     */
   lazy val totalLength: Int = segmentLengths.foldLeft(0)( _ + _ )

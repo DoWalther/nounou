@@ -1,6 +1,5 @@
-package nounou.elements.traits
+package nounou.elements
 
-import nounou.elements.NNElement
 import nounou.elements.layouts.NNDataLayout
 
 /**

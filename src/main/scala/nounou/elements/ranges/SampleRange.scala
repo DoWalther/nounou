@@ -2,7 +2,7 @@ package nounou.elements.ranges
 
 import breeze.linalg.{max, min}
 import nounou._
-import nounou.elements.traits.NNDataTiming
+import nounou.elements.NNDataTiming
 import nounou.util.LoggingExt
 
 object SampleRange {

@@ -31,7 +31,7 @@ class FileAdapterNCSTest extends FunSuite {
     //trait XFrames
     assert( dataObj.timing.segmentLength(0) == 2546176 )
     assert( dataObj.timing.segmentLength(8) == 3902976 )
-    assert( dataObj.timing.segmentStartFrames(1) == 2546176)
+    assert( dataObj.timing.segmentStartFrame(1) == 2546176)
     assert( dataObj.timing.segmentCount == 94 )
 //    intercept[IllegalArgumentException] {
 //      dataObj.timing.length

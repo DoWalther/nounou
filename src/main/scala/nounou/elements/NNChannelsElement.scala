@@ -1,7 +1,4 @@
-package nounou.elements.traits
-
-import nounou.elements.NNElement
-import nounou.util.LoggingExt
+package nounou.elements
 
 /**This trait of NNElement objects encapsulates the channel count information for
   * electrophysiological and imaging data. Envisioned uses are for:
@@ -16,7 +13,7 @@ trait NNChannelsElement extends NNElement {
     */
   def getChannelCount: Int
 
-  /** '''[NNChannelsElement]''' Alias for [[nounou.elements.traits.NNChannelsElement!.getChannelCount]].
+  /** '''[NNChannelsElement]''' Alias for [[nounou.elements.NNChannelsElement!.getChannelCount]].
     */
   final def channelCount(): Int = getChannelCount
 

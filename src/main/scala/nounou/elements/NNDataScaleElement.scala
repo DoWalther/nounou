@@ -1,7 +1,4 @@
-package nounou.elements.traits
-
-import breeze.linalg.DenseVector
-import nounou.elements.NNElement
+package nounou.elements
 
 /**
  * Created by ktakagaki on 15/03/12.
