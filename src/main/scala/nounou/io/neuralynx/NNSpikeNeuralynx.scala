@@ -58,22 +58,29 @@ abstract class NNSpikeNeuralynx(
 }
 
 object NNSpikeNeuralynx extends LoggingExt {
-  def convertNNSpikeToNNSpikeNeuralynx(spike: NNSpike): NNSpikeNeuralynx ={
 
+  val emptyScNumber = 0L
+  val emptyParams = Vector.tabulate(8)( (v: Int) => 0L )
+
+  def convertNNSpikeToNNSpikeNeuralynx(spike: NNSpike): NNSpikeNeuralynx =
+    convertNNSpikeToNNSpikeNeuralynxImpl(spike, emptyScNumber, emptyParams)
+  def convertNNSpikeToNNSpikeNeuralynx(spike: NNSpike, dwScNumber: Long, dnParams: Vector[Long]): NNSpikeNeuralynx =
+    convertNNSpikeToNNSpikeNeuralynxImpl(spike, dwScNumber, dnParams)
+
+  private def convertNNSpikeToNNSpikeNeuralynxImpl(spike: NNSpike, dwScNumber: Long, dnParams: Vector[Long]): NNSpikeNeuralynx = {
     loggerRequire(
       spike.waveform.forall( (v: Int) => (Short.MinValue.toInt <= v && v <= Short.MaxValue.toInt) ),
       "All values of waveform must be within bounds of Short to comply with the Neuralynx spike formats.")
     val waveformShort = spike.waveform.map(_.toShort)
-    val emptyScNumber = 0L
-    val emptyParams = Vector.tabulate(8)( (v: Int) => 0L )
 
     spike.channels match {
-      case 1 => new NNSpikeNSE(spike.timestamp, emptyScNumber, spike.unitNo, emptyParams, waveformShort)
-      case 2 => new NNSpikeNST(spike.timestamp, emptyScNumber, spike.unitNo, emptyParams, waveformShort)
-      case 4 => new NNSpikeNTT(spike.timestamp, emptyScNumber, spike.unitNo, emptyParams, waveformShort)
+      case 1 => new NNSpikeNSE(spike.timestamp, dwScNumber, spike.unitNo, dnParams, waveformShort)
+      case 2 => new NNSpikeNST(spike.timestamp, dwScNumber, spike.unitNo, dnParams, waveformShort)
+      case 4 => new NNSpikeNTT(spike.timestamp, dwScNumber, spike.unitNo, dnParams, waveformShort)
       case _ => throw loggerError("Neuralynx can only support spikes with 1,2,or 4 channels")
     }
   }
+
 }
 
 final class NNSpikeNSE(
