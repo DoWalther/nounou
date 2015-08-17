@@ -10,7 +10,7 @@ import breeze.linalg.DenseVector
 import nounou.elements.NNElement
 import nounou.elements.data.{NNDataChannelArray, NNDataChannel, NNData}
 import nounou.elements.data.filters.NNDataFilterMedianSubtract
-import nounou.io.{FileLoaderNone, FileLoader}
+import nounou.io.{FileSaver, FileLoaderNull, FileLoader}
 import nounou.elements.ranges._
 //import nounou.io.FileLoader._
 import nounou.util.{LoggingExt, NNGit}
@@ -30,66 +30,12 @@ object NN extends LoggingExt {
       "Welcome to nounou, a Scala/Java adapter for neurophysiological data.\n" +
       NNGit.infoPrintout
 
-  // <editor-fold defaultstate="collapsed" desc=" file loading ">
+  final def load(fileName: String): Array[NNElement] = FileLoader.load(fileName)
+  final def load(fileNames: Array[String]): Array[NNElement] = FileLoader.load(fileNames)
+  final def save(fileName: String, data: NNElement): Unit  = FileSaver.save( fileName, data)
+  final def save(fileName: String, data: Array[NNElement]): Unit  = FileSaver.save(fileName, data)
 
-  /** List of valid loaders available in the system (from META-INF)
-    */
-  private lazy val loaders = ServiceLoader.load(classOf[FileLoader]).iterator.asScala
-  private val possibleLoaderBuffer = new mutable.HashMap[String, FileLoader]()
 
-  /** This singleton FileLoader object is the main point of use for file loading.
-    * It maintains a list of available loaders in the system (from Meta-Inf)
-    * and uses the first valid loader to realize the [[FileLoader.load]] functions.
-    */
-  final def load(fileName: String): Array[NNElement] = {
-
-    val fileExtension = nounou.util.getFileExtension(fileName)
-
-    val loader = possibleLoaderBuffer.get(fileExtension) match {
-
-      //If the loader for this extension has already been loaded
-      //This includes the case where no real loader was found for a given extension, and FileLoaderNull was loaded as a marker
-      case l: Some[FileLoader] => l.get
-
-      //If the given extension has not been tested yet, it will be searched for within the available loaders
-      case _ => {
-        val possibleLoaders: Iterator[FileLoader] = loaders.filter( _.canLoadFile(fileName))
-        val possibleLoader = if( possibleLoaders.hasNext ){
-          val tempret = possibleLoaders.next
-          if( possibleLoaders.hasNext ) {
-            logger.info(s"Multiple possible loaders for file $fileName found. Will take first instance, ${tempret.getClass.getName}")
-          }
-          tempret
-        } else {
-          throw loggerError(s"Cannot find loader for file: $fileName")
-        }
-        possibleLoaderBuffer.+=( (fileExtension, possibleLoader) )
-        possibleLoader
-      }
-    }
-    loader.load(fileName)
-  }
-
-  final def load(fileNames: Array[String]): Array[NNElement] = {
-
-    var tempElements = fileNames.flatMap( load(_) ).toVector
-
-    //filters out NNDataChannel objects and joins them into one NNData if they are compatible
-    val tempElementsNNDC = tempElements.filter(_.isInstanceOf[NNDataChannel])
-    if( tempElementsNNDC.length > 1 ){
-      if( tempElementsNNDC(0).isCompatible(tempElementsNNDC.tail) ) {
-        tempElements = tempElements.filter(!_.isInstanceOf[NNDataChannel]).+:(
-          new NNDataChannelArray(tempElementsNNDC.map(_.asInstanceOf[NNDataChannel]))
-        )} else {
-        loggerError("multiple files containing data channels were not compatible with each other!")
-      }
-    }
-
-    tempElements.toArray
-
-  }
-
-  // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" options ">
 

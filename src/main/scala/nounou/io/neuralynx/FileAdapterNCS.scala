@@ -14,23 +14,25 @@ import spire.math.ULong
 class FileAdapterNCS  extends FileLoader with FileSaver with FileNCSConstants with LoggingExt {
 
   override val canLoadExtensions = Array("ncs")
-
-  override def canSaveClass(obj: NNElement): Boolean = obj match {
-    case x: NNData => true
-    case x: NNDataChannel => true
-    case _ => false
-  }
-
   override def load(file: File): Array[NNElement] = Array(new NNDataChannelNCS(file))
+
+  override val canSaveExtensions = Array("ncs")
+  override def canSaveObjectArray(data: Array[NNElement]): Boolean =
+    data.forall( _ match {
+                            case x: NNData => true
+                            case x: NNDataChannel => true
+                            case _ => false
+                          }
+    )
 
   /** Actual saving of file.
     * @param fileName if the filename does not end with the correct extension, it will be appended. If it exists, it will be given a postscript.
     */
-  override def save(data: Array[NNElement], fileName: String): Unit = {
-    ???
+  override def save(fileName: String, data: Array[NNElement]): Unit = {
+    ??? //ToDo: if NNData, dissect into NNDataChannels and separate filenames
   }
 
-  def save( data: NNDataChannel, fileName: String ): Unit = {
+  def save(fileName: String, data: NNDataChannel): Unit = {
     val headerText = "### Nounou output of Neuralynx NCS data/n" +
                     data.toStringFull().split("\n").map("### " + _ ).mkString("\n")
     val handle = new RandomAccessFile( new File(fileName), "w")(ByteConverterLittleEndian)
@@ -72,7 +74,7 @@ object FileAdapterNCS {
   val instance = new FileAdapterNCS
 
   def load( file: String ): Array[NNElement] = instance.load(file)
-  def save(data: Array[NNElement], fileName: String): Unit = instance.save(data, fileName)
+  def save(fileName: String, data: Array[NNElement]): Unit = instance.save(fileName,data)
 
 }
 
