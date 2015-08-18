@@ -47,6 +47,8 @@ trait FileNeuralynx extends LoggingExt with FileNeuralynxConstants{
   lazy val handle: RandomAccessFile = new RandomAccessFile(file, "r")(ByteConverterLittleEndian)
   lazy val fileName = file.getCanonicalPath
 
+  /**The number of records in the nse file, depends on the file length of the handle.*/
+  lazy val headerRecordCount = ((handle.length - headerBytes).toDouble/recordBytes.toDouble).toInt
 
   // <editor-fold defaultstate="collapsed" desc=" header related ">
 
@@ -94,6 +96,20 @@ trait FileNeuralynx extends LoggingExt with FileNeuralynxConstants{
 
   def nlxHeaderParserI(valueName: String, default: String) = nlxHeaderParserS(valueName: String, default: String).toInt
 
+
   // </editor-fold>
+
+  lazy val headerCheetahRev = nlxHeaderParserS("CheetahRev", "-1")
+  lazy val headerAcqEntName = nlxHeaderParserS("AcqEntName", "NoName")
+  lazy val headerRecordType = nlxHeaderParserS("FileType", "")
+  lazy val headerRecordSize = nlxHeaderParserI("RecordSize", "0")
+  /**Sample rate, Hz*/
+  lazy val headerSampleRate = nlxHeaderParserD("SamplingFrequency", "1")
+  lazy val headerADBitVolts = nlxHeaderParserD("ADBitVolts", "1")
+
+  def checkValidFile(): Boolean = {
+    (originalFileHeader.take(1) == "#") &&
+      (headerCheetahRev != "-1")    //ToDo 3: more complicated testing on cheetah rev version?
+  }
 
 }

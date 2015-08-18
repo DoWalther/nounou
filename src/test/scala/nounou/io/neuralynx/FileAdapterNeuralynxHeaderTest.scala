@@ -47,6 +47,7 @@ class FileAdapterNeuralynxHeaderTest extends FunSuite {
      assert( dataObj.headerBytes == 16384 )
 
      dataObj.headerAppendText="## Hello Kenta!"
+     assert( dataObj.checkValidFile() )
 
      println( dataObj.fullHeader )
 

@@ -1,1 +1,1 @@
-{"head":"06cde355a939ffb00d1867e97e153638bfbf177f","branch":"master","remotes":["https://ktakagaki@github.com/ktakagaki/nounou.git"],"gitDirectory":"C:\\prog\\nounou\\.git"}
+{"head":"3cc31723ae141d3f2622c7f26ab9e5a96b19674c","branch":"master","remotes":["https://ktakagaki@github.com/ktakagaki/nounou.git"],"gitDirectory":"C:\\prog\\nounou\\.git"}

@@ -29,25 +29,19 @@ trait FileNCSConstants extends FileNeuralynxConstants {
  */
 trait FileNCS extends FileNeuralynx with FileNCSConstants {
 
-  // <editor-fold defaultstate="collapsed" desc=" header reading ">
+    // <editor-fold defaultstate="collapsed" desc=" header reading ">
 
+    require(headerRecordType == "CSC", s"NCE file with non-standard record type: $headerRecordType")
+    require(headerRecordSize == recordBytes, s"NCS file with non-standard record size: $headerRecordSize")
+    require(headerSampleRate >= 1000d, s"NCS file with non-standard sampling frequency: $headerSampleRate")
 
-  lazy val headerAcqEntName = nlxHeaderParserS("AcqEntName", "NoName")
-  lazy val headerRecordSize = nlxHeaderParserI("RecordSize", "0")
-  require(headerRecordSize == recordBytes,
-    s"NCS file with non-standard record size: $headerRecordSize")
-  /**Sample rate, Hz*/
-  lazy val headerSampleRate = nlxHeaderParserD("SamplingFrequency", "1")
-  require(headerSampleRate >= 1000d, //tempSampleFreqD == sampleRate,
-    s"NCS file with non-standard sampling frequency: $headerSampleRate")
-  lazy val headerADBitVolts = nlxHeaderParserD("ADBitVolts", "1")
+    // </editor-fold>
 
-  // </editor-fold>
+    /** Standard timestamp increment for contiguous records, depends on sample rate from header. */
+    lazy val headerRecordTSIncrement = (1000000D * recordBytes.toDouble / headerSampleRate).toLong
 
-  /**The number of records in the ncs file, depends on the file length of the handle.*/
-  lazy val headerRecordCount = ((handle.length - headerBytes).toDouble/recordBytes.toDouble).toInt
+    override def checkValidFile(): Boolean = {
+      super.checkValidFile() && (headerRecordType == "CSC")
+    }
 
-  /**Standard timestamp increment for contiguous records, depends on sample rate from header.*/
-  lazy val headerRecordTSIncrement = (1000000D * recordBytes.toDouble/headerSampleRate).toLong
-
-}
+  }

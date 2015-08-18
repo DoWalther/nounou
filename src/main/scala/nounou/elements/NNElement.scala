@@ -14,7 +14,7 @@ abstract class NNElement extends LoggingExt {
   //ToDo3: consider add: pt info, rec info, rec start time/date, etc
 
   /**'''[NNElement]''' getCanonicalName, buffered for serialization with GSON. */
-  val className = this.getClass.getCanonicalName
+  lazy val className = this.getClass.getCanonicalName
   //This temporary val is necessary to trigger initialization of `object NNGit`
   def nnGitObj = nounou.util.NNGit
   /**'''[NNElement]''' Git HEAD of the current revision, buffered for serialization with GSON.*/
