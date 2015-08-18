@@ -26,6 +26,7 @@ object FileSaver {
   private lazy val savers = ServiceLoader.load(classOf[FileSaver]).iterator.asScala
   private val possibleSaverBuffer = new mutable.HashMap[String, List[FileSaver]]()
 
+  final def save(fileName: String, data: NNElement): Unit = save(fileName, Array(data))
   final def save(fileName: String, data: Array[NNElement]): Unit = {
 
     val fileExtension = nounou.util.getFileExtension(fileName)
@@ -77,8 +78,9 @@ trait FileSaver extends LoggingExt {
 
   /**'''__MUST OVERRIDE__''' A list of __lower-case__ extensions which can be saved.*/
   val canSaveExtensions: Array[String]
-  /** Standard file extension name (in lower case) with which to save, when no valid extension given.*/
-  final val standardExtension: String = canSaveExtensions(0)
+  /** Standard file extension name (in lower case) with which to save, when no valid extension given.
+    * Specified as "lazy" so that inheriting classes can first define [[canSaveExtensions]]*/
+  final lazy val standardExtension: String = canSaveExtensions(0)
 
   /**Whether the given file can be saved. For now, based simply on a match with the file extension.*/
   final def canSaveFile(file: File): Boolean = canSaveFile( file.getName )

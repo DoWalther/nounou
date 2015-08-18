@@ -33,8 +33,9 @@ class FileAdapterNCS  extends FileLoader with FileSaver with FileNCSConstants wi
   }
 
   def save(fileName: String, data: NNDataChannel): Unit = {
-    val headerText = "### Nounou output of Neuralynx NCS data/n" +
-                    data.toStringFull().split("\n").map("### " + _ ).mkString("\n")
+    val headerText =
+      "## One channel of continuous data output to a Neuralynx NCS file\n" +
+        data.toStringFull().split("\n").map("## " + _ ).mkString("\n")
     val handle = new RandomAccessFile( new File(fileName), "w")(ByteConverterLittleEndian)
     handle.writeUInt8( headerText.toArray.map(_.toShort) )
 
@@ -46,19 +47,19 @@ class FileAdapterNCS  extends FileLoader with FileSaver with FileNCSConstants wi
     for( seg <- 0 until data.timing.segmentCount) {
 
       val segLength = data.timing.segmentLength(seg)
-      val pages = segLength / recordSampleCount
-      if (pages * recordSampleCount != segLength) {
-        logger.warn(s"Segment $seg has a sample count which is not a multiple of the page length $recordSampleCount. " +
-          s"The final ${segLength - pages * recordSampleCount} samples will be truncated for writing.")
+      val pages = segLength / recordNCSSampleCount
+      if (pages * recordNCSSampleCount != segLength) {
+        logger.warn(s"Segment $seg has a sample count which is not a multiple of the page length $recordNCSSampleCount. " +
+          s"The final ${segLength - pages * recordNCSSampleCount} samples will be truncated for writing.")
       }
 
       for (page <- 0 until pages) {
         handle.writeUInt64( ULong.fromBigInt( data.timing.segmentStartTimestamps(seg) ) )
         handle.writeUInt32(channelNumber)
         handle.writeUInt32(data.timing.sampleRate.toInt)
-        handle.writeUInt32(recordSampleCount)
+        handle.writeUInt32(recordNCSSampleCount)
         handle.writeInt16(data.readTrace(
-          new SampleRange(page * recordSampleCount, page * recordSampleCount + 511, 1, seg))
+          new SampleRange(page * recordNCSSampleCount, page * recordNCSSampleCount + 511, 1, seg))
           .map((v: Int) => (v.toDouble / data.scale.xBitsD).toShort)
         )
       }

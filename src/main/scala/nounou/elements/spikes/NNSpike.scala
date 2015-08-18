@@ -22,8 +22,9 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
   loggerRequire( waveform.length % channels == 0, "The given waveform length is not equally divisible by the channel count!")
   val singleWaveformLength = waveform.length / channels
 
-  def this(timestamp: BigInteger, waveform: Array[Int], channels: Int = 1, unitNo: Long = 0L) =
+  def this(timestamp: BigInteger, waveform: Array[Int], channels: Int, unitNo: Long) =
         this(timestamp, waveform.toVector, channels, unitNo)
+  def this(timestamp: BigInteger, waveform: Array[Int]) = this(timestamp, waveform, 1, 0L)
 
   override def toString = s"NNSpike(ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}} )"
 

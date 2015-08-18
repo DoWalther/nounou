@@ -20,7 +20,7 @@ import scala.collection.mutable
   * non-standard file extensions (will get warining; not recommended).
   *
   */
-object FileLoader {
+object FileLoader extends LoggingExt {
 
   /** List of valid loaders available in the system (from /resources/META-INF/services/nounou.io.FileLoader)
     */
@@ -125,3 +125,38 @@ final class FileLoaderNull extends FileLoader{
   }
 
 }
+
+
+//trait FileAdapter extends LoggingExt {
+//
+//  /** Must be overridden, list of extensions (in lower case) which can be read.
+//    */
+//  val canLoadExt: Array[String]
+//  /** Must be overridden, list of extensions (in upper case) which can be read.
+//    */
+//  val canWriteExt: Array[String]
+//
+////  //Adds loader to program loader library
+////  FileAdapter.loaders.++=( canLoadExt.map( str => (str, this)) )
+////  //Adds writer to program loader library
+////  FileAdapter.writers.++=( canWriteExt.map( str => (str, this)) )
+
+
+//  //Writing and saving will be delegated to the actual class to be written or saved.
+//
+////  /** Inheriting classes will implement data writers by implementing implicit instances of this trait.
+////    * This design pattern allows the write( fileName, data ) to take multiple forms of "data."
+////    * Some adapters might write only XData, others XEvents....
+////    *
+////    * @tparam Data
+////    */
+////  trait CanWrite[Data]{
+////    def apply(data: Data, fileName: String/*, options: OptFileAdapter*/)
+////  }
+////
+////  final def save(data: X, fileName: String): Unit = saveImpl(data, fileName/*, options: OptFileAdapter*/)
+////
+////  /** The minimal requirement which a file loader must satisfy. Default is to throw error (i.e. cannot load files;
+////    * used for writer objects.)
+////    */
+////  def saveImpl(data: X, fileName: String/*, options: OptFileAdapter*/): Unit

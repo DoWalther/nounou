@@ -2,19 +2,21 @@ package nounou.io.neuralynx
 
 import java.io.File
 
+import breeze.io.{RandomAccessFile, ByteConverterLittleEndian}
 import breeze.linalg.{DenseVector => DV, convert}
 import nounou.elements.{NNDataScale, NNDataTiming}
 import nounou.elements.data.{NNDataChannelNumbered, NNDataChannel}
 import nounou.elements.ranges.SampleRangeValid
 
 
-/**A specialized immutable [[nounou.elements.data.NNDataChannel]] for NCS files.
+/** A specialized immutable [[nounou.elements.data.NNDataChannel]] for NCS files.
+  * This class encapsulates the file handle, and can load data from file dynamically on request.
   */
 class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileNCS with NNDataChannelNumbered {
 
   //ToDo update this
-  val channelName = file.getCanonicalFile.toString
-  var channelNumber = -1
+  override val channelName = file.getCanonicalFile.toString
+  override var channelNumber = -1
 
   def NNDataChannelNCS(fileName: String) = new NNDataChannelNCS( new File(fileName) )
 
@@ -54,8 +56,8 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
 
     //dwNumValidSamples
     val dwNumValidSamples = handle.readUInt32
-    require(dwNumValidSamples == recordSampleCount,
-      s"Currently can only deal with records which are $recordSampleCount samples long, $dwNumValidSamples is error in rec $currentRecord.")
+    require(dwNumValidSamples == recordNCSSampleCount,
+      s"Currently can only deal with records which are $recordNCSSampleCount samples long, $dwNumValidSamples is error in rec $currentRecord.")
 
     qwTimestamp
   }
@@ -160,7 +162,7 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
       tempRet(currentTempRetPos until writeEnd ) := convert( DV(handle.readInt16(512 - currentIndex)), Int)  * scale.xBits
       currentRecord += 1
       currentTempRetPos = writeEnd
-      handle.jumpBytes(recordNonDataHead)
+      handle.jumpBytes(recordNonNCSSampleHead)
 
       //read data from subsequent records, excluding lastValid record
       while (currentRecord < endReadRecord) {
@@ -169,7 +171,7 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
           convert( DV(handle.readInt16(512 /*- currentIndex*/)), Int) * scale.xBits
         currentRecord += 1
         currentTempRetPos = writeEnd
-        handle.jumpBytes(recordNonDataHead)
+        handle.jumpBytes(recordNonNCSSampleHead)
       }
 
       //read data contained in lastValid record
