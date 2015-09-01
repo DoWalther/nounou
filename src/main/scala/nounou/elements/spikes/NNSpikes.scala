@@ -3,6 +3,8 @@ package nounou.elements.spikes
 import nounou.elements.{NNDataScaleElement, NNDataTimingElement, NNElement}
 import nounou.util.LoggingExt
 
+import scala.collection.mutable.TreeSet
+
 //import nounou.elements.layouts.NNDataLayoutTrode
 //import scala.collection.immutable.TreeMap
 //import nounou.elements.data.{NNData}
@@ -13,31 +15,33 @@ object NNSpikes extends LoggingExt {
 
 }
 
-/** A database of [[nounou.elements.spikes.NNSpike]] objects for display and processing. Also encapsulates
-  * a trode layout compatible with the spike data, and a copy of the XData upon which the
-  * waveforms were based.
+/** A mutable database of [[nounou.elements.spikes.NNSpike]] objects for display and processing.
+  * Based on a [[scala.collection.mutable.TreeSet]], with enforcing of NNSpike compatiblity.
     *
     */
 class NNSpikes()//val trodeLayout: NNDataLayoutTrode, val waveFormLength: Int)
   extends NNElement with NNDataTimingElement with NNDataScaleElement {
 
+  override def toStringFullImplParams() = s"no.=${_database.size}, "
+  override def toStringFullImplTail() = ""
+
+  private val _database = new TreeSet[NNSpike]()( Ordering.by[NNSpike, BigInt]( (x: NNSpike) => x.timestamp) )
+  private var prototypeSpike: NNSpike = null
+
+  def add(elem: NNSpike): Boolean = {
+    if( prototypeSpike == null ){
+      //if this is the first spike added to the database
+      prototypeSpike = elem
+    } else if(!prototypeSpike.isCompatible(elem)) {
+      //if more than one spike has already been loaded, and they are incompatible with new spike
+      throw loggerError(s"Tried to add an incompatible spike: ${elem}")
+    }
+
+    _database.add(elem)
   }
-//
-//  override def toString() = s"NNSpikes( waveFormLength=$waveFormLength, trodeCount=${trodeLayout.trodeCount})"
-//
-//  def NNSpikes( data: NNData, waveFormLength: Int ) = new NNSpikes(
-//    data.layout match {
-//      case x: NNDataLayoutTrode => x
-//      case _ => NNDataLayoutTrode.singleChannels(data.channelCount())
-//    }, waveFormLength)
-//
-//  val channelCount = trodeLayout.channelCount
-//
-// private lazy val spikes: Array[TreeMap[Long, NNSpike]] =
-//   Array.tabulate[TreeMap[Long, NNSpike]](trodeLayout.trodeCount)((f: Int) => new TreeMap[Long, NNSpike])
-////  xTrodes_=(xtr)
-////  xData_=(xdat)
-//
+
+  }
+
 //  def readSpikeTs(trode: Int): Array[Long] = {
 //    loggerRequire(trodeLayout.isValidTrode(trode), "trode={} is invalid", trode.toString, spikes.length.toString)
 //    spikes(trode).map( p => p._1 ).toArray

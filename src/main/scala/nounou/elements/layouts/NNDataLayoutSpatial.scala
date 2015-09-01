@@ -13,7 +13,8 @@ import nounou.elements.NNElement
  */
 abstract class NNDataLayoutSpatial extends NNDataLayout {
 
-  override def toString() = "XLayout(fieldX="+fieldX+", fY="+fieldY+", fWidth="+fieldWidth+", fHeight="+fieldHeight+")"
+  override def toStringFullImplParams() = "fieldX="+fieldX+", fY="+fieldY+", fWidth="+fieldWidth+", fHeight="+fieldHeight + ", "
+  override def toStringFullImplTail() = ""
 
   @transient protected var initialized = false
   @transient protected var fieldCache: Rectangle = null

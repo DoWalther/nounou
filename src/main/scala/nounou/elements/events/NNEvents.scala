@@ -136,8 +136,7 @@ class NNEvents extends NNElement {
 
   // </editor-fold>
 
-  override def toString() = {
-    "XEvents( "// + length + " events total" + " )"
-  }
+  override def toStringFullImplParams() = s"no.=${_database.size}, "
+  override def toStringFullImplTail() = ""
 
 }

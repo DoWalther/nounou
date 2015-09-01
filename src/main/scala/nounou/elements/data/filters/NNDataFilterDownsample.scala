@@ -18,15 +18,6 @@ class NNDataFilterDownsample( private val parentVal: NNData, protected var facto
 
   def this(parentVal: NNData) = this(parentVal, 10)
 
-  // <editor-fold defaultstate="collapsed" desc=" toString/toStringFull ">
-
-  override def toString() = {
-    if(factor == 1) "XDataFilterDownsample: off (factor=1)"
-    else "XDataFilterDownsample: factor=" + factor
-  }
-
-  // </editor-fold>
-
   // <editor-fold defaultstate="collapsed" desc=" factor-related ">
 
   protected var timingBuffer: NNDataTiming = parentVal.timing()

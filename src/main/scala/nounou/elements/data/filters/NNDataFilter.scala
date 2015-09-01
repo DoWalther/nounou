@@ -11,7 +11,7 @@ import breeze.linalg.{DenseVector => DV}
   * objects to create a filter block for the filter chain.
   * @param parenVar the parent data object
   */
-class NNDataFilter( private var parenVar: NNData ) extends NNData {
+abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
   setParent(parenVar)
 

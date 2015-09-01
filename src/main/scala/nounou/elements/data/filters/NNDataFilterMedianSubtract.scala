@@ -18,6 +18,13 @@ class NNDataFilterMedianSubtract( private var parenVar: NNData ) extends NNDataF
   private var _windowLength = 1
   private val upstreamBuff: NNData = new NNDataFilterBuffer(parenVar)
 
+  override def toStringFullImplParams() = {
+    if(_windowLength==1) "off/no median subtract, "
+    else s"windowLength=$windowLength, "
+  }
+  override def toStringFullImplTail() = ""
+
+
   var windowLengthHalf = 0
   def setWindowLength( value: Int ): Unit = {
     loggerRequire( value > 0, "Parameter windowLength must be bigger than 0, invalid value: {}", value.toString)

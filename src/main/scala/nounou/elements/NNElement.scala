@@ -28,20 +28,31 @@ abstract class NNElement extends LoggingExt {
   /**'''[NNElement]'''*/
   def toJsonString: String = nounou.gson.toJson( this )
 
-  override def toString(): String = getClass.getName
+  override final def toString(): String = getClass.getName
+
+  /** The contents of the toStringFull string, excluding the class head and trailing git Head.
+    */
+  def toStringFullImplParams(): String
+  /** The second and later rows of the toStringFull string.
+    */
+  def toStringFullImplTail(): String
   /**Output string with short git head. Each implementation (eg [[nounou.elements.data.filters.NNDataFilter]]
     * objects should update this to provide information specific to the specific filter, etc.
     */
-  def toStringFull(): String = {
-    var tempout = toString().dropRight(1) + s"$gitHeadShort)/n" //+
-    //"============================================================/n" +
+  final def toStringFull(): String = {
+    var tempout = toString().dropRight(1) + toStringFullImplParams + s"$gitHeadShort)/n" +
+    "============================================================/n" +
+    toStringFullImplTail()
+
     tempout.dropRight(1)
   }
 
-  /** __'''SHOULD OVERRIDE'''____ Whether an NNElement is compatible with another for merging, etc.
+  /** __'''SHOULD OVERRIDE'''__ Whether an [[nounou.elements.NNElement]] is compatible with another for merging
+    * (eg [[nounou.elements.data.NNData]])
+    *  or comparison (eg [[nounou.elements.spikes.NNSpike]]) etc.
     */
   def isCompatible(that: NNElement): Boolean
-  /** __'''SHOULD OVERRIDE'''____ Whether NNElements are compatible with another for merging, etc.
+  /** Whether multiple [[nounou.elements.NNElement]]s are compatible with another for merging, etc.
     */
   final def isCompatible(that: Seq[NNElement]): Boolean = that.forall( this.isCompatible(_) )
 

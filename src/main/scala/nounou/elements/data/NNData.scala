@@ -18,8 +18,9 @@ import nounou.elements.ranges.{SampleRange, SampleRangeValid, SampleRangeSpecifi
 abstract class NNData extends NNElement
     with NNChannelsElement with NNDataScaleElement with NNDataTimingElement {
 
-  override def toString(): String =
-    s"NNData(${channelCount} ch, ${timing().segmentCount} seg, fs=${timing().sampleRate})"
+  override def toStringFullImplParams() = s"${channelCount} ch, ${timing().segmentCount} seg, fs=${timing().sampleRate}, "
+  override def toStringFullImplTail() = ""
+
 
   /** Provides a textual representation of the child hierarchy starting from this data object.
     * If multiple NNDataFilter objects (e.g. an [[nounou.elements.data.filters.NNDataFilterFIR]] object)

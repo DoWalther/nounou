@@ -22,11 +22,11 @@ class NNDataFilterFIR(private var _parent: NNData ) extends NNDataFilter( _paren
   var kernelOmega1: Double = 1d
   var multiplier = 256L
 
-  override def toString() = {
-    if(kernel == null) "XDataFilterFIR: kernel null (off)"
-    else "XDataFilterFIR:\n" +
-         "   kernel " + kernel.toString()
+  override def toStringFullImplParams() = {
+    if(kernel == null) "kernel null/off, "
+    else kernel.toString() + ", "
   }
+  override def toStringFullImplTail() = ""
 
   // <editor-fold defaultstate="collapsed" desc=" get/set filter settings ">
 

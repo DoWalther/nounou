@@ -75,7 +75,7 @@ object FileAdapterNCS {
   val instance = new FileAdapterNCS
 
   def load( file: String ): Array[NNElement] = instance.load(file)
-  def save(fileName: String, data: Array[NNElement]): Unit = instance.save(fileName,data)
+  def save( fileName: String, data: Array[NNElement]): Unit = instance.save(fileName,data)
 
 }
 

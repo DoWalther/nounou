@@ -63,17 +63,8 @@ abstract class NNDataChannel extends NNElement
     }
   }
 
-  override def toString() = {
-    s"NNDataChannel(${timing().segmentCount} segments, fs=${timing().sampleRate}, $gitHeadShort)"
-  }
-  override def toStringFull(): String = toString()
-//  {
-//    var tempout = toString().dropRight(1) + " )/n" //+
-//      //"============================================================/n" +
-//      //"seg#/tsegmentLength/tsegmentStartTs/n"
-//    tempout.dropRight(1)
-//  }
-
+  override def toStringFullImplParams() = s"${timing().segmentCount} segments, fs=${timing().sampleRate},  "
+  override def toStringFullImplTail() = ""
 
 }
 

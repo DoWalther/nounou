@@ -26,7 +26,8 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
         this(timestamp, waveform.toVector, channels, unitNo)
   def this(timestamp: BigInteger, waveform: Array[Int]) = this(timestamp, waveform, 1, 0L)
 
-  override def toString = s"NNSpike(ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}} )"
+  def toStringFullImplParams() = s"ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}, "
+  def toStringFullImplTail() = ""
 
   // <editor-fold defaultstate="collapsed" desc=" Java accessors ">
 
@@ -47,7 +48,14 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
 
 //  def toArray() = Array.tabulate(channels)(p => waveform( :: , p ).toArray )
 
-  override def isCompatible(that: NNElement) = false
+  override def isCompatible(that: NNElement) = that match {
+    case x: NNSpike => {
+      getClass == x.getClass &&
+      waveform.length == x.waveform.length &&
+      channels == x.channels
+    }
+
+  }
 
 }
 
@@ -70,15 +78,3 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
 //  //  }
 //
 //}
-
-
-//class NNSpikeFrame(override val time : Long,
-//                  override val waveform: Array[Array[Int]],
-//                  unitNo: Int = 0,
-//                  val segment: Int)
-//  extends NNSpike(time, waveform, unitNo){
-//
-//    lazy val frame = time.toInt
-//
-//}
-//

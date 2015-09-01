@@ -14,11 +14,6 @@ import nounou.NN._
 class NNDataFilterDecimate( parentVar: NNData )
     extends NNDataFilterDownsample( parentVar ) {
 
-  override def toString() = {
-    if(factor == 1) "XDataFilterDecimate: off (factor=1)"
-    else "XDataFilterDecimate: factor=" + factor
-  }
-
     var kernel: FIRKernel1D[Long] = null
 
     override def setFactor( factor: Int ): Unit = {

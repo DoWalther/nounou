@@ -19,6 +19,9 @@ import nounou.elements.layouts.NNDataLayout
   setTiming( array(0).timing() )
   setScale( array(0).scale() )
 
+  override def toStringFullImplParams() = s"${timing().segmentCount} segments, fs=${timing().sampleRate},  "
+  override def toStringFullImplTail() = ""
+
   def this( array: Array[NNDataChannel] ) = this( array.toVector )
 //  def this( array: Array[NNDataChannel], layout: NNLayout ) = this( array.toVector, layout )
 

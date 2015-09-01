@@ -335,10 +335,8 @@ class NNDataTiming( val sampleRate: Double,
     }
   }
 
-  override def toString(): String =
-    this.getClass.getName + s"(fs=$sampleRate, segmentCount=$segmentCount, $gitHeadShort)"
-
-  override def toStringFull(): String = {
+  override def toStringFullImplParams() = s"fs=$sampleRate, segmentCount=$segmentCount, "
+  override def toStringFullImplTail() = {
     var tempout = toString()+ "\n"    +
     "   seg#\t\tsegLen\t\tsegStartTs\n"
 

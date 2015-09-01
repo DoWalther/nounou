@@ -14,6 +14,8 @@ import nounou.elements.ranges.SampleRangeValid
   */
 class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileNCS with NNDataChannelNumbered {
 
+  override def toStringFullImplParams() = super.toStringFullImplParams() + s"file=${file.getCanonicalPath}, "
+
   //ToDo update this
   override val channelName = file.getCanonicalFile.toString
   override var channelNumber = -1

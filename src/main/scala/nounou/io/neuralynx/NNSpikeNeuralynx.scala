@@ -85,11 +85,27 @@ object NNSpikeNeuralynx extends LoggingExt {
 
 final class NNSpikeNSE(
         qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Short] ) extends
-      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 1)
+      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 1) {
+
+  override def reassignUnitNo(newUnitNo: Long): NNSpike =
+    new NNSpikeNSE(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
+
+
+}
 final class NNSpikeNST(
         qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Short] ) extends
-      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 2)
+      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 2) {
+
+  override def reassignUnitNo(newUnitNo: Long): NNSpike =
+    new NNSpikeNST(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
+
+}
 final class NNSpikeNTT(
         qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Short] ) extends
-      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 4)
+      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 4){
+
+  override def reassignUnitNo(newUnitNo: Long): NNSpike =
+    new NNSpikeNTT(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
+
+}
 

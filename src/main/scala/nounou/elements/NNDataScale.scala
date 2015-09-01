@@ -30,6 +30,10 @@ class NNDataScale(
                      */
                    val xBits: Int = 1024) extends NNElement {
 
+  override def toStringFullImplParams() = s"min/max=${minValue}/${maxValue}, " +
+    s"absGain/Offset/Unit=${absGain}/${absOffset}/${absUnit}, xBits=${xBits}, "
+  override def toStringFullImplTail() = ""
+
   /**(xBits:Int).toDouble
     */
   final lazy val xBitsD = xBits.toDouble
