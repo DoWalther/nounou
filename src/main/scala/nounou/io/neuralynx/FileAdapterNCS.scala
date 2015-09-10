@@ -54,7 +54,7 @@ class FileAdapterNCS  extends FileLoader with FileSaver with FileNCSConstants wi
       }
 
       for (page <- 0 until pages) {
-        handle.writeUInt64( ULong.fromBigInt( data.timing.segmentStartTimestamps(seg) ) )
+        handle.writeUInt64( ULong.fromBigInt( data.timing.segmentStartTss(seg) ) )
         handle.writeUInt32(channelNumber)
         handle.writeUInt32(data.timing.sampleRate.toInt)
         handle.writeUInt32(recordNCSSampleCount)

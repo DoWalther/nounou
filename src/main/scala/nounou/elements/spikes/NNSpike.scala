@@ -22,9 +22,15 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
   loggerRequire( waveform.length % channels == 0, "The given waveform length is not equally divisible by the channel count!")
   val singleWaveformLength = waveform.length / channels
 
-  def this(timestamp: BigInteger, waveform: Array[Int], channels: Int, unitNo: Long) =
+  def this(timestamp: BigInt, waveform: Array[Int], channels: Int, unitNo: Long) =
         this(timestamp, waveform.toVector, channels, unitNo)
-  def this(timestamp: BigInteger, waveform: Array[Int]) = this(timestamp, waveform, 1, 0L)
+  def this(timestamp: BigInt, waveform: Array[Int], channels: Int) =
+        this(timestamp, waveform.toVector, channels)
+  def this(timestamp: BigInteger, waveform: Array[Int], channels: Int, unitNo: Long) =
+        this(BigInt(timestamp), waveform.toVector, channels, unitNo)
+  def this(timestamp: BigInteger, waveform: Array[Int], channels: Int) =
+        this(BigInt(timestamp), waveform.toVector, channels)
+//  def this(timestamp: BigInteger, waveform: Array[Int]) = this(timestamp, waveform, 1, 0L)
 
   def toStringFullImplParams() = s"ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}, "
   def toStringFullImplTail() = ""

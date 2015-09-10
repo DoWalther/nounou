@@ -96,10 +96,10 @@ object NN extends LoggingExt {
 
   // <editor-fold defaultstate="collapsed" desc=" RangeTs ">
 
-  final def SampleRangeTs(startTs: Long, endTS: Long, stepTS: Long): SampleRangeTS =
-    new SampleRangeTS(startTs, endTS, stepTS)
-  final def FrameRangeTs(startTs: Long, endTS: Long): SampleRangeTS =
-    new SampleRangeTS(startTs, endTS, -1L)
+  final def SampleRangeTs(startTs: Long, endTS: Long, stepTS: Long): SampleRangeTs =
+    new SampleRangeTs(startTs, endTS, stepTS)
+  final def FrameRangeTs(startTs: Long, endTS: Long): SampleRangeTs =
+    new SampleRangeTs(startTs, endTS, -1L)
 
 //  final def RangeTs(stamps: Array[Long], preTS: Long, postTS: Long): Array[ranges.RangeTs] =
 //    stamps.map( (s: Long) => ranges.RangeTs(s-preTS, s+postTS) )

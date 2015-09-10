@@ -36,7 +36,7 @@ class NNDataFilterDownsample( private val parentVal: NNData, protected var facto
         parentVal.timing.sampleRate / factor,
         (for(seg <- 0 until parentVal.timing.segmentCount)
         yield ( (parentVal.timing.segmentLength(seg) - 1).toDouble/factor).round.toInt + 1 ).toArray,
-        parentVal.timing.segmentStartTimestamps
+        parentVal.timing.segmentStartTss
         )
       //logger.info( "changed factor to {}", factor.toString )
       changedData()

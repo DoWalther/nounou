@@ -30,7 +30,7 @@ object SampleRange {
   * @see [[nounou.elements.ranges.SampleRangeReal SampleRangeReal]] marked to be a real range (not default, etc.)
   * @see [[nounou.elements.ranges.SampleRangeValid SampleRangeValid]] marked to be a valid range (not outside of defined data)
   * @see [[nounou.elements.ranges.SampleRangeAll SampleRangeAll]] marker for total sample range
-  * @see [[nounou.elements.ranges.SampleRangeTS SampleRangeTS]] range defined in timestamp units
+  * @see [[nounou.elements.ranges.SampleRangeTs SampleRangeTS]] range defined in timestamp units
   *
   * @author ktakagaki
   * //@date 2/9/14.
