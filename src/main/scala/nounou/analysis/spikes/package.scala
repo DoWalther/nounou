@@ -25,9 +25,9 @@ package object spikes {
     loggerRequire(frames>=0, "Must have a non-negative blackout frame quantity!")
 
   }
-  /**Blackout time in frames*/
-  case class OptThresholdMedianFactor(factor: Double) extends OptAnalysisUnits{
-    loggerRequire(factor>=1, "Must have a threshold median factor bigger than 1!")
+  /**How many SDs away to take as the spike threshold?*/
+  case class OptThresholdSDFactor(factor: Double) extends OptAnalysisUnits{
+    loggerRequire(factor>=1, "Must have a threshold SD factor bigger than 1!")
 
   }
 
