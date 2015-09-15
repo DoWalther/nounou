@@ -3,7 +3,7 @@ package nounou.elements.spikes
 import java.math.BigInteger
 
 import nounou.elements.NNElement
-import breeze.linalg.{DenseVector, DenseMatrix}
+import breeze.linalg.{min, max, DenseVector, DenseMatrix}
 
 /**An immutable class to encapsulate a single spike waveform in a neurophysiological recording,
   * to be accumulated into a [[nounou.elements.spikes.NNSpikes]] database.
@@ -20,7 +20,13 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
   loggerRequire( channels >= 1, s"Waveform must have at least one channel, $channels is invalid!")
   loggerRequire( waveform.length > 0, s"Waveform must have some samples, sample count ${waveform.length} is invalid!")
   loggerRequire( waveform.length % channels == 0, "The given waveform length is not equally divisible by the channel count!")
+
+  @transient
   val singleWaveformLength = waveform.length / channels
+  @transient
+  lazy val waveformMax: Int = max( waveform )
+  @transient
+  lazy val waveformMin: Int = min( waveform )
 
   def this(timestamp: BigInt, waveform: Array[Int], channels: Int, unitNo: Long) =
         this(timestamp, waveform.toVector, channels, unitNo)
