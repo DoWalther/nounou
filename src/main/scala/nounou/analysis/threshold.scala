@@ -19,8 +19,8 @@ object threshold {
 //  val OptThresholdDirectionBoth = OptThresholdDirection(0)
 //  val OptThresholdDirectionNegative = OptThresholdDirection(-1)
 
-  def apply(data: Array[Int], threshold: Int, opts: Opt*): Array[Int] = apply(data, threshold, opts)
-  def apply(data: Array[Int], threshold: Int, opts: Seq[Opt]): Array[Int] = {
+//  def apply(data: Array[Int], threshold: Int, opts: Opt*): Array[Int] = apply(data, threshold, opts)
+  def apply(data: Array[Int], threshold: Int, opts: Opt*): Array[Int] = {
 
     // <editor-fold defaultstate="collapsed" desc=" Handle options ">
 

@@ -1,6 +1,5 @@
 package nounou.elements.data.filters
 
-import nounou._
 import nounou.elements.{NNDataScale, NNDataTiming, NNElement}
 import nounou.elements.data.NNData
 import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid}
@@ -13,17 +12,22 @@ import breeze.linalg.{DenseVector => DV}
   */
 abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
-  setParent(parenVar)
+  //Note: this constructor statement will be run before all inheriting child constructor statements!
+  setParent(parenVar, true)
 
   // <editor-fold defaultstate="collapsed" desc=" set/getParent ">
 
-  def setParent(parent: NNData): Unit = {
+  def setParent(parent: NNData, constructorCall: Boolean = false): Unit = {
     parenVar.clearChild(this)
     parenVar = parent
     parenVar.setChild(this)
-    changedData()
-    changedTiming()
-    changedLayout()
+
+    if(constructorCall){
+      //Do not run these update functions when constructing class
+      changedData()
+      changedTiming()
+      changedLayout()
+    }
   }
 
   def getParent(): NNData = parenVar
@@ -32,7 +36,7 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
   // <editor-fold defaultstate="collapsed" desc=" setActive/getActive ">
 
-  private var _active = true
+  protected[NNDataFilter] var _active = true
 
   /** Sets whether the filter is active or not. When not active, just passes
     * data through unchanged.
@@ -50,11 +54,12 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
   // <editor-fold defaultstate="collapsed" desc=" adjust reading functions for active state ">
 
-  override final def readPoint(channel: Int, frame: Int, segment: Int): Int = if(_active){
-    super.readPoint(channel, frame, segment)
-  }else{
-    parenVar.readPoint(channel, frame, segment)
-  }
+  override final def readPoint(channel: Int, frame: Int, segment: Int): Int =
+    if(_active){
+      super.readPoint(channel, frame, segment)
+    }else{
+      parenVar.readPoint(channel, frame, segment)
+    }
 
   override final def readTraceDV(channel: Int, range: SampleRangeSpecifier): DV[Int] =
     if(_active){
@@ -67,6 +72,7 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 //  override def channelNames: scala.Vector[String] = _parent.channelNames
   override def getChannelCount = parenVar.channelCount
 
+  //passthrough implementations to be overridden in real filters
   override def readPointImpl(channel: Int, frame: Int, segment: Int): Int = parenVar.readPointImpl(channel, frame, segment: Int)
   override def readTraceDVImpl(channel: Int, range: SampleRangeValid): DV[Int] = parenVar.readTraceDVImpl(channel, range)
 //  override def readFrameImpl(frame: Int): DV[Int] = _parent.readFrameImpl(frame)
@@ -74,16 +80,17 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
   // <editor-fold defaultstate="collapsed" desc=" timing, scale, layout ">
 
+  //passthrough definitions, only override for changes in sampling rate, layout, etc.
   override def getTiming() = parenVar.getTiming()
-  override def getScale() = parenVar.getScale()
+  override def getScale() =  parenVar.getScale()
   override def getLayout() = parenVar.getLayout()
 
-  override def setTiming( timing: NNDataTiming ) =
-    throw loggerError(s"Cannot set timing for data filter ${this.getClass.getCanonicalName}.")
-  override def setScale( scale: NNDataScale ) =
-    throw loggerError(s"Cannot set scale for data filter ${this.getClass.getCanonicalName}.")
-  override def setLayout( layout: NNDataLayout ) =
-    throw loggerError(s"Cannot set layout for data filter ${this.getClass.getCanonicalName}.")
+  final override def setTiming( timing: NNDataTiming ) =
+    throw loggerError("Cannot set timing for a data filter manually")
+  final override def setScale( scale: NNDataScale ) =
+    throw loggerError("Cannot set scale for data filter for a data filter manually")
+  final override def setLayout( layout: NNDataLayout ) =
+    throw loggerError("Cannot set layout for data filter for a data filter manually")
 
   // </editor-fold>
 

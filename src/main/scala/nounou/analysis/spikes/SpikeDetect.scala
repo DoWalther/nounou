@@ -22,7 +22,7 @@ object SpikeDetect extends LoggingExt {
   def thresholdSpikes(data: NNData,
                           channels: Array[Int],
                           frameRange: SampleRangeSpecifier,
-                          opts: Seq[Opt]): NNSpikes = {
+                          opts: Opt*): NNSpikes = {
 
     // <editor-fold defaultstate="collapsed" desc=" Option handling ">
 
@@ -39,7 +39,7 @@ object SpikeDetect extends LoggingExt {
 
     // </editor-fold>
 
-    val pooledSpikes = channels.flatMap( spikeThresholdAbsMedian(data, _, frameRange, opts) ).distinct.sorted
+    val pooledSpikes = channels.flatMap( spikeThresholdAbsMedian(data, _, frameRange,  opts: _*) ).distinct.sorted
     var tempRetIndexes: List[Int] = Nil
 
     var currentIndex = 0
@@ -129,8 +129,8 @@ object SpikeDetect extends LoggingExt {
     rangeList.par.flatMap(
       (r: SampleRangeValid) => {
         val analysisData = data.readTrace(channel, r)
-        val thresholdValue = convert(optThresholdSDFactor * median(abs(analysisData)) /0.6745, Int)
-        threshold(analysisData, thresholdValue, opts).map( (x: Int) => x + r.start )
+        val thresholdValue = convert(optThresholdSDFactor * median( DenseVector( abs(analysisData) ) ) /0.6745, Int)
+        threshold(analysisData, thresholdValue, opts: _*).map( (x: Int) => x + r.start )
       }
     ).seq.toArray.distinct.sorted
 

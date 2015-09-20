@@ -16,6 +16,8 @@ import nounou.elements.ranges.{SampleRangeValid, SampleRange}
 class NNDataFilterMedianSubtract( private var parenVar: NNData ) extends NNDataFilter( parenVar ) {
 
   private var _windowLength = 1
+  private var windowLengthHalf = 0
+  _active = false
   private val upstreamBuff: NNData = new NNDataFilterBuffer(parenVar)
 
   override def toStringFullImplParams() = {
@@ -25,12 +27,16 @@ class NNDataFilterMedianSubtract( private var parenVar: NNData ) extends NNDataF
   override def toStringFullImplTail() = ""
 
 
-  var windowLengthHalf = 0
+
   def setWindowLength( value: Int ): Unit = {
     loggerRequire( value > 0, "Parameter windowLength must be bigger than 0, invalid value: {}", value.toString)
     loggerRequire( isOdd(value), "Parameter windowLength must be odd to account correctly for overhangs, invalid value: {}", value.toString)
-    _windowLength = value
-    windowLengthHalf = (_windowLength-1)/2
+    if(_windowLength != value){
+      _windowLength = value
+      windowLengthHalf = (_windowLength-1)/2
+      setActive( if(_windowLength == 1) false else true )
+      changedData()
+    }
   }
   def getWindowLength(): Int = _windowLength
   def windowLength_=( value: Int ) = setWindowLength( value )

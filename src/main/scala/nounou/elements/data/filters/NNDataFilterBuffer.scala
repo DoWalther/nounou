@@ -21,10 +21,10 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
 
   val bufferPageLength: Int = (32768 / 2) //default page length will be 32 kB
   lazy val garbageQueBound: Int = 1024 // * 16 //32MB in data + //1073741824 / 8 / (bufferPageLength * 2)  //default buffer maximum size will be 128 MB
-  val maxInt64: Long = Long.MaxValue // pow(2d, 64d).toLong
+  //val maxInt64: Long = Long.MaxValue // pow(2d, 64d).toLong
   val maxChannel = 131072L
   val maxSegment = 1073741824L / maxChannel
-  val maxPage = maxInt64 / maxChannel / maxSegment
+  val maxPage = Long.MaxValue / maxChannel / maxSegment
   val maxPageChannel = maxPage * maxChannel
 
   def bufferHashKey(channel: Int, startPage: Int, segment: Int): Long = startPage + maxPage*channel + maxPageChannel*segment
@@ -53,7 +53,7 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
   }
 
   def flushBuffer(): Unit = {
-    logger.debug( "flushBuffer() pre, buffer.size={}, garbageQue.length={}", buffer.size.toString, garbageQue.length.toString )
+    logger.debug("flushBuffer() pre, buffer.size={}, garbageQue.length={}", buffer.size.toString, garbageQue.length.toString)
     buffer.clear()
     garbageQue.clear()
   }
