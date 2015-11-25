@@ -1,9 +1,8 @@
 package nounou.elements.data.filters
 
-import nounou.elements.ranges.{SampleRangeValid, SampleRange}
-import nounou.elements.data.NNData
-import scala.beans.BooleanBeanProperty
 import breeze.linalg.DenseVector
+import nounou.elements.data.NNData
+import nounou.elements.ranges.SampleRangeValid
 
 /**
  * @author ktakagaki

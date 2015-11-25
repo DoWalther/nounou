@@ -2,8 +2,6 @@ package nounou.elements.layouts
 
 import javafx.scene.shape.Rectangle
 
-import breeze.numerics.round
-
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 

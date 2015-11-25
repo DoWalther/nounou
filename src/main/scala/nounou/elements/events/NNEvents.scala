@@ -88,6 +88,10 @@ class NNEvents extends NNElement {
   // </editor-fold>
 
 
+  def getCodes(  port: Int  ): Array[Int] = filterByPort(port).toArray.map( _.code )
+  def getTimestamps(  port: Int  ): Array[Array[BigInt]] =
+    filterByPort(port).toArray.map( (e: NNEvent) => Array(e.timestamp, e.duration) )
+  def getComments(  port: Int  ): Array[String] = filterByPort(port).toArray.map( _.comment )
 //  // <editor-fold defaultstate="collapsed" desc=" toArray/toArrayArray ">
 //
 //  def toArray(): Array[(Int, NNEvent)] = {

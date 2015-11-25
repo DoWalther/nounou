@@ -1,17 +1,16 @@
 package nounou.analysis
 
-import breeze.linalg.DenseVector
-import breeze.numerics._
+import nounou.NN.OptThresholdBlackout
 import nounou.Opt
 
 import scala.collection.mutable.ArrayBuffer
 
-/**
- * Created by ktakagaki on 15/09/15.
- */
+/** Thresholds a data array.
+  * To be transferred to breeze in the near future, once options are cleared up.
+  * Created by ktakagaki on 15/09/15.
+  */
 object threshold {
 
-  case class OptThresholdBlackout(frames: Int) extends Opt
 //  case class OptThresholdDirection(direction: Int) extends Opt {
 //    loggerRequire(-1 <= direction && direction <= 1, s"Direction must be -1, 0 or 1, not $direction")
 //  }
@@ -19,13 +18,11 @@ object threshold {
 //  val OptThresholdDirectionBoth = OptThresholdDirection(0)
 //  val OptThresholdDirectionNegative = OptThresholdDirection(-1)
 
-//  def apply(data: Array[Int], threshold: Int, opts: Opt*): Array[Int] = apply(data, threshold, opts)
   def apply(data: Array[Int], threshold: Int, opts: Opt*): Array[Int] = {
 
     // <editor-fold defaultstate="collapsed" desc=" Handle options ">
 
-    var optThresholdBlackout = 0
-
+    var optThresholdBlackout = 1
     for( opt <- opts ) opt match {
       case OptThresholdBlackout(frames: Int) => optThresholdBlackout = frames
       case _ => {}
@@ -36,11 +33,8 @@ object threshold {
     /** Values to return */
     val tempReturn: ArrayBuffer[Int] =  new ArrayBuffer[Int]()
 
-    var thresholdTriggered = false
     var count = 0
-
-    //go forward until first subthreshold
-    while(data(count) > threshold){ count += 1 }
+    var thresholdTriggered = false
 
     //main loop
     while(count < data.length){
@@ -55,8 +49,9 @@ object threshold {
           thresholdTriggered = true
           tempReturn.append( count )
           count += optThresholdBlackout
+        }else{
+          count += 1
         }
-        count += 1
 
       }
 

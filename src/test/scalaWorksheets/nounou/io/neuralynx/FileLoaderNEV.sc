@@ -1,6 +1,6 @@
-import breeze.io.{ByteConverterLittleEndian, RandomAccessFile}
 import java.io.File
 
+import breeze.io.{ByteConverterLittleEndian, RandomAccessFile}
 import nounou.io.neuralynx.FileAdapterNCS
 
 /**
@@ -16,24 +16,6 @@ val file = new File( getClass.getResource("/_testFiles/Neuralynx/t130911/Events.
 val fHand = new RandomAccessFile(file, "r")(ByteConverterLittleEndian)
 
 new String(fHand.readUInt8((FileAdapterNCS.headerBytes)).map(_.toChar))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 fHand.readInt16(3)

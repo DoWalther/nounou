@@ -1,11 +1,10 @@
 package nounou.elements.data.filters
 
+import breeze.linalg.DenseVector
+import nounou.elements.data.NNData
 import nounou.elements.ranges.SampleRangeValid
 
 import scala.collection.mutable.{ArrayBuffer, WeakHashMap}
-import nounou.elements.data.NNData
-import breeze.linalg.DenseVector
-import breeze.numerics.pow
 
 
 //ToDo: HashMap to Int or Long Hash key

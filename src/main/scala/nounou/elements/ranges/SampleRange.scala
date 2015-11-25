@@ -1,6 +1,5 @@
 package nounou.elements.ranges
 
-import breeze.linalg.{max, min}
 import nounou._
 import nounou.elements.NNDataTiming
 import nounou.util.LoggingExt
@@ -46,9 +45,9 @@ class SampleRange(val start: Int, val last: Int, val step: Int, val segment: Int
 
   // <editor-fold defaultstate="collapsed" desc=" range info accessors ">
 
-  override final def getSampleRangeReal(timing: NNDataTiming): SampleRangeReal = { //Range.Inclusive = {
+  override final def getSampleRangeReal(timing: NNDataTiming): SampleRangeReal = {
     val realSegment = getRealSegment(timing)
-    if(0<=start){
+    if(0 <= start){
       val segmentLength = timing.segmentLength(realSegment)
       if( last < segmentLength){
         new SampleRangeValid( start, last, getRealStep(timing), realSegment)
@@ -58,7 +57,7 @@ class SampleRange(val start: Int, val last: Int, val step: Int, val segment: Int
     else new SampleRangeReal( start, last, getRealStep(timing), realSegment)
   }
 
-  override final def getSampleRangeValid(timing: NNDataTiming): SampleRangeValid = { //Range.Inclusive = {
+  override final def getSampleRangeValid(timing: NNDataTiming): SampleRangeValid = {
     new SampleRangeValid( firstValid(timing), lastValid(timing), getRealStep(timing), getRealSegment(timing) )
   }
 
@@ -233,9 +232,8 @@ class SampleRange(val start: Int, val last: Int, val step: Int, val segment: Int
 /**Extends FrameRange but with the enforced assumption that all defaults are instantiated.
  */
 class SampleRangeReal(val start: Int, val last: Int, val step: Int, val segment: Int) extends SampleRangeSpecifier {
-//  extends Range.Inclusive(start, end, step) {
 
-  override def toString() = s"FrameRangeReal($start, $last, step=$step, segment=$segment)"
+  override def toString() = s"SampleRangeReal($start, $last, step=$step, segment=$segment)"
   loggerRequire(start <= last, s"Start $start must be < last $last")
   loggerRequire(1 <= step, s"Step $step must be >= 1")
   loggerRequire(0 <= segment, s"Segment $segment must be >= 0")
@@ -264,7 +262,7 @@ class SampleRangeValid(override val start: Int, override val last: Int, override
 
   loggerRequire(0 <= start, s"Start $start must be >= 0")
 
-  override def toString() = s"FrameRangeValid($start, $last, step=$step, segment=$segment)"
+  override def toString() = s"SampleRangeValid($start, $last, step=$step, segment=$segment)"
 
   final def toRangeInclusive() = new Range.Inclusive(start, last, step)
   final def toRangeInclusive(increment: Int) = new Range.Inclusive(start + increment, last + increment, step)

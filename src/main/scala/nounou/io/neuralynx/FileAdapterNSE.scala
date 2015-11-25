@@ -3,9 +3,8 @@ package nounou.io.neuralynx
 import java.io.File
 
 import nounou.elements.NNElement
-import nounou.elements.data.{NNDataChannel, NNData}
-import nounou.elements.spikes.NNSpikes
-import nounou.io.{FileSaver, FileLoader}
+import nounou.io.FileLoader
+import nounou.io.neuralynx.fileObjects.FileNSE
 import nounou.util.LoggingExt
 
 /**
@@ -15,8 +14,10 @@ class FileAdapterNSE extends FileLoader /*with FileSaver*/ with LoggingExt {
 
   override val canLoadExtensions: Array[String] = Array("nse")
   override def load(file: File): Array[NNElement] = {
-    val ret = new NNSpikesNeuralynx(file)
-    loggerRequire(ret.checkValidFile(), s"File ${file.getName} is not a valid NSE file!")
+    val fileNSE = new FileNSE(file)
+
+    val ret = new NNSpikesNeuralynx()
+    //loggerRequire(ret.isValid(), s"File ${file.getName} is not a valid NSE file!")
 
 
     ???
@@ -30,5 +31,7 @@ class FileAdapterNSE extends FileLoader /*with FileSaver*/ with LoggingExt {
 //      case _ => false
 //    }
 //    )
+
+
 
 }

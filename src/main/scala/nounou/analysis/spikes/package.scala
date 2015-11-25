@@ -13,16 +13,16 @@ package object spikes {
 
   /**How many frames of data to record in a spike waveform before the peak.
     * If this option value is 8, the peak will be at sample number 9.*/
-  case class OptPrepeakFr(frames: Int) extends OptAnalysisUnits {
-    loggerRequire(frames>=0, "Must have a non-negative prepeak frame count!")
+  case class OptPretriggerFr(frames: Int) extends OptAnalysisUnits {
+    loggerRequire(frames>=1, "Must have a pre-trigger frame count >=1!")
   }
   /**How many frames of data to record in a spike waveform*/
   case class OptWaveformFr(frames: Int) extends OptAnalysisUnits {
-    loggerRequire(frames>=0, "Must have a non-negative frame count!")
+    loggerRequire(frames>=16, "Must have a waveform frame count of at least 16!")
   }
   /**Blackout time in frames*/
   case class OptBlackoutFr(frames: Int) extends OptAnalysisUnits{
-    loggerRequire(frames>=0, "Must have a non-negative blackout frame quantity!")
+    loggerRequire(frames>=1, "Must have a blackout frame quantity >=1!")
 
   }
   /**How many SDs away to take as the spike threshold?*/

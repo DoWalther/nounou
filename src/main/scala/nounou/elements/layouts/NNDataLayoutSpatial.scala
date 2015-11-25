@@ -1,6 +1,7 @@
 package nounou.elements.layouts
 
 import javafx.scene.shape.Rectangle
+
 import nounou.elements.NNElement
 
 /**Immutable layout object, encapsulating how different channels are

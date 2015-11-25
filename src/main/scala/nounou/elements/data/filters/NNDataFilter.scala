@@ -1,10 +1,10 @@
 package nounou.elements.data.filters
 
-import nounou.elements.{NNDataScale, NNDataTiming, NNElement}
-import nounou.elements.data.NNData
-import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid}
-import nounou.elements.layouts.NNDataLayout
 import breeze.linalg.{DenseVector => DV}
+import nounou.elements.data.NNData
+import nounou.elements.layouts.NNDataLayout
+import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid}
+import nounou.elements.{NNDataScale, NNDataTiming, NNElement}
 
 /** A passthrough object, which is inherited by various NNDataFilter
   * objects to create a filter block for the filter chain.

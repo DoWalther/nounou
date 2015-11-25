@@ -1,10 +1,9 @@
 package nounou.util
 
-import java.io.{FileWriter, BufferedWriter, FileReader}
+import java.io.{BufferedWriter, FileWriter}
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 
-import com.google.gson.Gson
 import nounou.NN
 import org.apache.commons.io.IOUtils
 import org.eclipse.jgit.lib.Repository

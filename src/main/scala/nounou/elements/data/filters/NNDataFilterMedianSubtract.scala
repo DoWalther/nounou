@@ -1,12 +1,11 @@
 package nounou.elements.data.filters
 
-import nounou.elements.data.NNData
-
-import breeze.numerics.isOdd
-import breeze.stats.median
 import breeze.linalg.{DenseVector => DV}
-import breeze.signal.{filterMedian, OptOverhang}
-import nounou.elements.ranges.{SampleRangeValid, SampleRange}
+import breeze.numerics.isOdd
+import breeze.signal.{OptOverhang, filterMedian}
+import breeze.stats.median
+import nounou.elements.data.NNData
+import nounou.elements.ranges.{SampleRange, SampleRangeValid}
 
 /**This filter applies a median subtraction, which is a non-linear form of high-pass which is
   * less biased by extreme transients like spiking.

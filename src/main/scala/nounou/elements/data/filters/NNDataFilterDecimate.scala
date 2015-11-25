@@ -1,11 +1,11 @@
 package nounou.elements.data.filters
 
+import breeze.linalg.{DenseVector => DV, convert}
+import breeze.signal._
+import breeze.signal.support.FIRKernel1D
 import nounou.NN._
-  import nounou.elements.data.NNData
-  import breeze.linalg.{DenseVector => DV, convert}
-  import breeze.signal._
-  import nounou.elements.ranges.{SampleRangeReal, SampleRangeValid}
-  import breeze.signal.support.FIRKernel1D
+import nounou.elements.data.NNData
+import nounou.elements.ranges.{SampleRangeReal, SampleRangeValid}
 
 /**
  * @author ktakagaki

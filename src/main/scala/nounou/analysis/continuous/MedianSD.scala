@@ -1,8 +1,8 @@
 package nounou.analysis.continuous
 
 import breeze.linalg.{DenseVector, randomInt}
-import breeze.stats.median
 import breeze.numerics._
+import breeze.stats.median
 import nounou.NN._
 import nounou.elements.data.NNData
 import nounou.elements.ranges.SampleRangeSpecifier

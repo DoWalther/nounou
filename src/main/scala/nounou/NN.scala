@@ -2,27 +2,24 @@ package nounou
 
 //import breeze.linalg.DenseVector
 
-import java.util.ServiceLoader
-
-import com.google.gson.Gson
-import scala.collection.JavaConverters._
 import breeze.linalg.DenseVector
 import nounou.elements.NNElement
-import nounou.elements.data.{NNDataChannelArray, NNDataChannel, NNData}
+import nounou.elements.data.NNData
 import nounou.elements.data.filters.NNDataFilterMedianSubtract
-import nounou.io.{FileSaver, FileLoaderNull, FileLoader}
 import nounou.elements.ranges._
+import nounou.io.{FileLoader, FileSaver}
 //import nounou.io.FileLoader._
 import nounou.util.{LoggingExt, NNGit}
 
-import scala.collection.mutable
-
 
 /**A static class which encapsulates convenience functions for using nounou, with
- * an emphasis on use from Mathematica/MatLab/Java (avoidance of Java-unfriendly Scala constructs)
+  * an emphasis on use from Mathematica/MatLab/Java (avoidance of Java-unfriendly Scala constructs).
+  *
+  * Many of these functions would be put in the companion object as an apply method in
+  * idiomatic Scala, (i.e. SampleRange.apply(start, last, step, segment), but are
+  * consolidated here instead to facilitate access through Java.
   *
  * @author ktakagaki
- * //@date 2/17/14.
  */
 object NN extends LoggingExt {
 
@@ -30,20 +27,25 @@ object NN extends LoggingExt {
       "Welcome to nounou, a Scala/Java adapter for neurophysiological data.\n" +
       NNGit.infoPrintout
 
+  // <editor-fold defaultstate="collapsed" desc=" file loading/saving ">
+
   final def load(fileName: String): Array[NNElement] = FileLoader.load(fileName)
   final def load(fileNames: Array[String]): Array[NNElement] = FileLoader.load(fileNames)
   final def save(fileName: String, data: NNElement): Unit  = FileSaver.save( fileName, data)
   final def save(fileName: String, data: Array[NNElement]): Unit  = FileSaver.save(fileName, data)
 
-
+  // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" options ">
 
   def OptNull() = nounou.OptNull
+  case class OptThresholdBlackout(frames: Int) extends Opt {
+    loggerRequire(frames > 0, "blackout must be >0")
+  }
 
   // </editor-fold>
 
-  // <editor-fold defaultstate="collapsed" desc=" frame ranges ">
+  // <editor-fold defaultstate="collapsed" desc=" sample ranges ">
 
   /**This is the full signature for creating a [[nounou.elements.ranges.SampleRange SampleRange]].*/
   final def SampleRange(start: Int, last: Int, step: Int, segment: Int) = new SampleRange(start, last, step, segment)
@@ -137,46 +139,3 @@ object NN extends LoggingExt {
 
 //final def XSpikes(waveformLength: Int, xTrodes: XTrodes ) = new XSpikes(waveformLength, xTrodes)
 //  final def newNNData: NNData = new NNData
-
-
-//  // <editor-fold defaultstate="collapsed" desc=" RangeTsEvent ">
-//
-//  def RangeTsEvent(eventTs: Long, preFrames: Int, postFrames: Int) =
-//    ranges.RangeTsEvent(eventTs, preFrames, postFrames)
-//
-//  def RangeTsEvent(eventTs: Array[Long], preFrames: Int, postFrames: Int) =
-//    ranges.RangeTsEvent(eventTs, preFrames, postFrames)
-//
-//  // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc=" RangeMs ">
-
-////  final def RangeMs(startMs: Double, lastMs: Double, stepMs: Double, optSegment: OptSegment) =
-////    ranges.RangeMs(startMs, lastMs, stepMs, optSegment)
-//  final def RangeMs(startMs: Double, lastMs: Double, stepMs: Double) =
-//    ranges.RangeMs(startMs, lastMs, stepMs)
-////  final def RangeMs(startMs: Double, lastMs: Double, optSegment: OptSegment) =
-////    ranges.RangeMs(startMs, lastMs, optSegment)
-//  final def RangeMs(startMs: Double, lastMs: Double)=
-//    ranges.RangeMs(startMs, lastMs)
-
-// </editor-fold>
-// <editor-fold defaultstate="collapsed" desc=" RangeMsEvent ">
-
-//  final def RangeMsEvent(eventMs: Double, preMs: Double, postMs: Double, stepMs: Double, optSegment: OptSegment) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs, stepMs, optSegment)
-//  final def RangeMsEvent(eventMs: Double, preMs: Double, postMs: Double, optSegment: OptSegment) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs, optSegment)
-//  final def RangeMsEvent(eventMs: Double, preMs: Double, postMs: Double, stepMs: Double) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs, stepMs)
-//  final def RangeMsEvent(eventMs: Double, preMs: Double, postMs: Double) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs)
-////  final def RangeMsEvent(eventMs: Array[Double], preMs: Double, postMs: Double, optSegment: OptSegment) =
-////    ranges.RangeMsEvent(eventMs, preMs, postMs, optSegment)
-//  final def RangeMsEvent(eventMs: Array[Double], preMs: Double, postMs: Double) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs)
-////  final def RangeMsEvent(eventMs: Array[Double], preMs: Double, postMs: Double, stepMs: Double, optSegment: OptSegment) =
-////    ranges.RangeMsEvent(eventMs, preMs, postMs, stepMs, optSegment)
-//  final def RangeMsEvent(eventMs: Array[Double], preMs: Double, postMs: Double, stepMs: Double) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs, stepMs)
-
-// </editor-fold>

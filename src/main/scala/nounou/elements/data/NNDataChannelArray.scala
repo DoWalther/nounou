@@ -1,10 +1,7 @@
 package nounou.elements.data
 
 import _root_.nounou.elements.ranges.SampleRangeValid
-import breeze.linalg.{DenseVector, min}
-import nounou._
-import nounou.elements.{NNDataTiming, NNElement}
-import nounou.elements.layouts.NNDataLayout
+import nounou.elements.NNElement
 
 /**Immutable data object to encapsulate arrays of [[NNDataChannel]] objects
   *

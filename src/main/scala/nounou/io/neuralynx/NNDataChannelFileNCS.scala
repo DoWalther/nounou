@@ -2,25 +2,65 @@ package nounou.io.neuralynx
 
 import java.io.File
 
-import breeze.io.{RandomAccessFile, ByteConverterLittleEndian}
 import breeze.linalg.{DenseVector => DV, convert}
-import nounou.elements.{NNDataScale, NNDataTiming}
-import nounou.elements.data.{NNDataChannelNumbered, NNDataChannel}
+import nounou.elements.data.{NNDataChannel, NNDataChannelNumbered}
 import nounou.elements.ranges.SampleRangeValid
+import nounou.elements.{NNDataScale, NNDataTiming}
+import nounou.io.neuralynx.fileObjects.{FileNeuralynx}
+import nounou.io.neuralynx.headers.NNHeaderNCS
 
 
 /** A specialized immutable [[nounou.elements.data.NNDataChannel]] for NCS files.
   * This class encapsulates the file handle, and can load data from file dynamically on request.
   */
-class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileNCS with NNDataChannelNumbered {
+class NNDataChannelFileNCS(val file: File)
+  extends FileNeuralynx[NNHeaderNCS](file, NNHeaderNCS.factory ) with NNDataChannel with NNDataChannelNumbered {
+
+  // <editor-fold defaultstate="collapsed" desc=" toString related ">
 
   override def toStringFullImplParams() = super.toStringFullImplParams() + s"file=${file.getCanonicalPath}, "
 
-  //ToDo update this
+  // </editor-fold>
+
+  // <editor-fold defaultstate="collapsed" desc=" from FileNCS ">
+
+  /**Number of bytes per record in NCS files*/
+  override final val recordSize = 1044
+
+  // <editor-fold defaultstate="collapsed" desc=" header reading and checks ">
+
+  require(header.headerSampleRate >= 1000d, s"NCS file with non-standard sampling frequency: ${header.headerSampleRate}")
+
+  // </editor-fold>
+
+  /**Number of samples per record in NCS files*/
+  final val recordNCSSampleCount= 512
+  /**Size of non-data bytes at head of each record in NCS files*/
+  final val recordNonNCSSampleHead = recordSize - recordNCSSampleCount * 2
+
+  final def recordIndexStartByte(record: Int, index: Int) = {
+    recordStartByte(record) + 20L + (index * 2)
+  }
+
+  def cumulativeFrameToRecordIndex(cumFrame: Int) = {
+    ( cumFrame / recordNCSSampleCount, cumFrame % recordNCSSampleCount)
+  }
+
+
+  /** Standard timestamp increment for contiguous records, depends on sample rate from header. */
+  lazy val headerRecordTSIncrement = (1000000D * recordSize.toDouble / header.headerSampleRate).toLong
+
+  //    override def isValid(): Boolean = {
+  //      super.isValid() && (headerRecordType == "CSC")
+  //    }
+
+  // </editor-fold>
+
+  //ToDo update these
   override val channelName = file.getCanonicalFile.toString
   override var channelNumber = -1
 
-  def NNDataChannelNCS(fileName: String) = new NNDataChannelNCS( new File(fileName) )
+  def NNDataChannelNCS(fileName: String) = new NNDataChannelFileNCS( new File(fileName) )
 
   final val xBits = 1024
   final lazy val xBitsD = xBits.toDouble
@@ -52,8 +92,8 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
 
     //dwSampleFreq
     val dwSampleFreq = handle.readUInt32.toDouble
-    require(dwSampleFreq == headerSampleRate,
-      s"Reported sampling frequency $dwSampleFreq for rec $record is different from header $headerSampleRate)"
+    require(dwSampleFreq == header.headerSampleRate,
+      s"Reported sampling frequency $dwSampleFreq for rec $record is different from header $header.headerSampleRate)"
     )
 
     //dwNumValidSamples
@@ -110,12 +150,12 @@ class NNDataChannelNCS(override val file: File) extends NNDataChannel with FileN
 
   // </editor-fold>
 
-  setTiming( new NNDataTiming(headerSampleRate,
+  setTiming( new NNDataTiming(header.headerSampleRate,
                               tempLengths.toArray,
                               tempStartTimestamps.toArray)
   )
   setScale( new NNDataScale(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
-                            absGain = 1.0E6 * headerADBitVolts / xBitsD,
+                            absGain = 1.0E6 * header.headerADBitVolts / xBitsD,
                             absOffset = this.absOffset,
                             absUnit = this.absUnit)
   )

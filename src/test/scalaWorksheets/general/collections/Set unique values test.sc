@@ -1,5 +1,3 @@
-import nounou.elements.spikes.NNSpike
-
 import scala.collection.mutable
 
 class TestClass(val a: Int, val b: String)

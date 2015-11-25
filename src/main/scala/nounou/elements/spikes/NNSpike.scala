@@ -2,13 +2,14 @@ package nounou.elements.spikes
 
 import java.math.BigInteger
 
+import breeze.linalg.{max, min}
+import breeze.numerics.abs
 import nounou.elements.NNElement
-import breeze.linalg.{min, max, DenseVector, DenseMatrix}
 
 /**An immutable class to encapsulate a single spike waveform in a neurophysiological recording,
   * to be accumulated into a [[nounou.elements.spikes.NNSpikes]] database.
   *
-  * @param timestamp the timestamp corresponding to the beginning of the waveform window
+  * @param timestamp the timestamp corresponding to the beginning of the waveform window: note that this is not the threshold crossing point
   * @param waveform the waveform data, given as concatenated waveforms from each channel
   * @param channels number of channels
   * @param unitNo the classified unit of this spike. 0 indicates an unclassified unit.
@@ -16,10 +17,14 @@ import breeze.linalg.{min, max, DenseVector, DenseMatrix}
 class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: Int = 1, val unitNo: Long = 0L)
   extends NNElement {
 
+  // <editor-fold defaultstate="collapsed" desc=" argument checks ">
+
   loggerRequire( waveform != null, "Waveform must contain a non-null vector of Int values.")
   loggerRequire( channels >= 1, s"Waveform must have at least one channel, $channels is invalid!")
   loggerRequire( waveform.length > 0, s"Waveform must have some samples, sample count ${waveform.length} is invalid!")
   loggerRequire( waveform.length % channels == 0, "The given waveform length is not equally divisible by the channel count!")
+
+  // </editor-fold>
 
   @transient
   val singleWaveformLength = waveform.length / channels
@@ -27,6 +32,9 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
   lazy val waveformMax: Int = max( waveform )
   @transient
   lazy val waveformMin: Int = min( waveform )
+  @transient
+  lazy val waveformAbsMax: Int = max( waveform.map( abs(_) ) )
+
 
   def this(timestamp: BigInt, waveform: Array[Int], channels: Int, unitNo: Long) =
         this(timestamp, waveform.toVector, channels, unitNo)

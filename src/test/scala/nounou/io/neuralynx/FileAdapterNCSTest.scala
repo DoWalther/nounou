@@ -1,11 +1,8 @@
-package nounou.io.neuralynx.ncs
-
-import java.math.BigInteger
+package nounou.io.neuralynx
 
 import breeze.linalg.DenseVector
 import nounou._
 import nounou.elements.data.NNDataChannel
-import nounou.io.neuralynx.NNDataChannelNCS
 import org.scalatest.FunSuite
 
 /**
@@ -19,8 +16,8 @@ class FileAdapterNCSTest extends FunSuite {
   //new File( "C:\\prog\\_gh\\_kt\\nounou.testfiles\\Neuralynx\\E04LC\\CSC1.ncs" )
   val data = NN.load(testFileE04LC_CSC1).apply(0)
   assert( data.isInstanceOf[NNDataChannel] )
-  assert( data.isInstanceOf[NNDataChannelNCS] )
-  val dataObj = data.asInstanceOf[NNDataChannelNCS]
+  assert( data.isInstanceOf[NNDataChannelFileNCS] )
+  val dataObj = data.asInstanceOf[NNDataChannelFileNCS]
 
   test("readInfo"){
 

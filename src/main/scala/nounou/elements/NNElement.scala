@@ -9,7 +9,7 @@ import nounou.util.LoggingExt
 
 /** Base class for all data elements.
   */
-abstract class NNElement extends LoggingExt {
+trait NNElement extends LoggingExt {
 
   //ToDo3: consider add: pt info, rec info, rec start time/date, etc
 
@@ -27,6 +27,8 @@ abstract class NNElement extends LoggingExt {
 
   /**'''[NNElement]'''*/
   def toJsonString: String = nounou.gson.toJson( this )
+
+  // <editor-fold defaultstate="collapsed" desc=" toString and related ">
 
   override final def toString(): String = getClass.getName
 
@@ -46,6 +48,8 @@ abstract class NNElement extends LoggingExt {
 
     tempout.dropRight(1)
   }
+
+  // </editor-fold>
 
   /** __'''SHOULD OVERRIDE'''__ Whether an [[nounou.elements.NNElement]] is compatible with another for merging
     * (eg [[nounou.elements.data.NNData]])

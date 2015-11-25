@@ -10,9 +10,9 @@ object NNEvent {
 
 /**An immutable class to encapsulate a single event in a neurophysiological recording.
  */
-class NNEvent(val timestamp: BigInt, val duration: Long, val code: Int, val comment: String) {
+case class NNEvent(val timestamp: BigInt, val duration: BigInt, val code: Int, val comment: String) {
 
-  def this(timestamp: BigInt, duration: Long, code: Int) = this(timestamp, duration, code, "")
+  def this(timestamp: BigInt, duration: BigInt, code: Int) = this(timestamp, duration, code, "")
 
   override def toString = s"NNEvent(ts=$timestamp, dur=$duration, code=$code, $comment)"
 

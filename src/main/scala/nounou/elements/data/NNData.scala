@@ -1,11 +1,10 @@
 package nounou.elements.data
 
-import nounou.elements.{NNDataScaleElement, NNDataTimingElement, NNChannelsElement, NNElement}
-import nounou.elements.layouts.NNDataLayout
-import scala.collection.immutable.Vector
-import nounou._
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements.ranges.{SampleRange, SampleRangeValid, SampleRangeSpecifier}
+import nounou._
+import nounou.elements.layouts.NNDataLayout
+import nounou.elements.ranges.{SampleRange, SampleRangeSpecifier, SampleRangeValid}
+import nounou.elements.{NNChannelsElement, NNDataScaleElement, NNDataTimingElement, NNElement}
 
 /** Base class for data encoded as Int arrays, this is the main data element for an experiment,
   * whether it be electrophysiolgical or high-sampling-rate imaging.

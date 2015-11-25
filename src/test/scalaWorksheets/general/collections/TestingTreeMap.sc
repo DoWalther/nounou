@@ -1,4 +1,4 @@
-import scala.collection.immutable.{TreeMap, HashMap}
+import scala.collection.immutable.TreeMap
 import scala.collection.mutable
 
 /**
