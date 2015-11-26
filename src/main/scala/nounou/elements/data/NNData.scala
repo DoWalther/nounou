@@ -18,8 +18,8 @@ abstract class NNData extends NNElement
     with NNChannelsElement with NNDataScaleElement with NNDataTimingElement
     with NNDataSpikeReader {
 
-  override def toStringFullImplParams() = s"${channelCount} ch, ${timing().segmentCount} seg, fs=${timing().sampleRate}, "
-  override def toStringFullImplTail() = ""
+  override def toStringImpl() = s"${channelCount} ch, ${timing().segmentCount} seg, fs=${timing().sampleRate}, "
+  override def toStringFullImpl() = ""
 
 
   /** Provides a textual representation of the child hierarchy starting from this data object.

@@ -77,8 +77,8 @@ object NNSpikes extends LoggingExt {
 class NNSpikes( private val _database: TreeSet[NNSpike] )//val trodeLayout: NNDataLayoutTrode, val waveFormLength: Int)
   extends NNElement /*with NNDataTimingElement with NNDataScaleElement*/ {
 
-  override def toStringFullImplParams() = s"no.=${_database.size}, "
-  override def toStringFullImplTail() = ""
+  override def toStringImpl() = s"no.=${_database.size}, "
+  override def toStringFullImpl() = ""
 
   def this() {
     this( new TreeSet[NNSpike]()(Ordering.by[NNSpike, BigInt]((x: NNSpike) => x.timestamp))  )

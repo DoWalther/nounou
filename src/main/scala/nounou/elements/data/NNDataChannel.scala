@@ -62,8 +62,8 @@ trait NNDataChannel extends NNElement
     }
   }
 
-  override def toStringFullImplParams() = s"${timing().segmentCount} segments, fs=${timing().sampleRate},  "
-  override def toStringFullImplTail() = ""
+  override def toStringImpl() = s"${timing().segmentCount} segments, fs=${timing().sampleRate},  "
+  override def toStringFullImpl() = ""
 
 }
 

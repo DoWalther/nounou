@@ -30,23 +30,25 @@ trait NNElement extends LoggingExt {
 
   // <editor-fold defaultstate="collapsed" desc=" toString and related ">
 
-  override final def toString(): String = getClass.getName
+  override final def toString(): String = getClass.getName + "(" + toStringImpl + ")"
 
-  /** The contents of the toStringFull string, excluding the class head and trailing git Head.
+  /** The contents of the [[toString()]] output to be given within parenthesis after the class name.
     */
-  def toStringFullImplParams(): String
-  /** The second and later rows of the toStringFull string.
+  def toStringImpl(): String
+  /** Lines to be output for [[toStringFull()]], after [[toString()]] output and line divider.
     */
-  def toStringFullImplTail(): String
-  /**Output string with short git head. Each implementation (eg [[nounou.elements.data.filters.NNDataFilter]]
-    * objects should update this to provide information specific to the specific filter, etc.
+  def toStringFullImpl(): String
+  /**Usually multiline output string, starting with [[toString()]] output and then
+    * more detailed information, where available.
     */
   final def toStringFull(): String = {
-    var tempout = toString().dropRight(1) + toStringFullImplParams + s"$gitHeadShort)/n" +
-    "============================================================/n" +
-    toStringFullImplTail()
-
-    tempout.dropRight(1)
+    val tempTail =
+      if( toStringFullImpl() == "" ){ "" }
+      else {
+        ("/n============================================================/n" +
+        toStringFullImpl())
+      }
+    toString().dropRight(1) + s", $gitHeadShort)" + tempTail
   }
 
   // </editor-fold>

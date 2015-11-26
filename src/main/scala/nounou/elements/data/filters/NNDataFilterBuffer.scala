@@ -33,8 +33,8 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
 
   logger.debug("initialized XDataFilterTrBuffer w/ bufferPageLength={} and garbageQueBound={}", bufferPageLength.toString, garbageQueBound.toString)
 
-  override def toStringFullImplParams() = s"pageLen=${bufferPageLength}, queBound=${garbageQueBound}, "
-  override def toStringFullImplTail() = ""
+  override def toStringImpl() = s"pageLen=${bufferPageLength}, queBound=${garbageQueBound}, "
+  override def toStringFullImpl() = ""
 
   // <editor-fold defaultstate="collapsed" desc=" changes (XDataSource related) and flushing ">
 

@@ -140,7 +140,7 @@ class NNEvents extends NNElement {
 
   // </editor-fold>
 
-  override def toStringFullImplParams() = s"no.=${_database.size}, "
-  override def toStringFullImplTail() = ""
+  override def toStringImpl() = s"no.=${_database.size}, "
+  override def toStringFullImpl() = ""
 
 }

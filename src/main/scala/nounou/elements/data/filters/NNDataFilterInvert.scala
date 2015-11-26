@@ -28,11 +28,11 @@ class NNDataFilterInvert(private var _parent: NNData ) extends NNDataFilter( _pa
     case _ => throw loggerError("argument for setInverted() must be 1 or -1")
   }
 
-  override def toStringFullImplParams() = {
+  override def toStringImpl() = {
     if(inverted) "on/inverted, "
     else "off/not inverted, "
   }
-  override def toStringFullImplTail() = ""
+  override def toStringFullImpl() = ""
 
   override def readPointImpl(channel: Int, frame: Int, segment: Int): Int =
     if(inverted){

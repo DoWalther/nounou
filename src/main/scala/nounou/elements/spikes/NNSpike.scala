@@ -46,8 +46,8 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
         this(BigInt(timestamp), waveform.toVector, channels)
 //  def this(timestamp: BigInteger, waveform: Array[Int]) = this(timestamp, waveform, 1, 0L)
 
-  def toStringFullImplParams() = s"ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}, "
-  def toStringFullImplTail() = ""
+  def toStringImpl() = s"ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}, "
+  def toStringFullImpl() = ""
 
   // <editor-fold defaultstate="collapsed" desc=" Java accessors ">
 

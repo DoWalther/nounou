@@ -16,11 +16,11 @@ class NNHeaderNeuralynx(originalHeaderText: String, headerBytes: Int) extends NN
 
   /** The second and later rows of the toStringFull string.
     */
-  override def toStringFullImplTail(): String = ???
+  override def toStringFullImpl(): String = ???
 
   /** The contents of the toStringFull string, excluding the class head and trailing git Head.
     */
-  override def toStringFullImplParams(): String = ???
+  override def toStringImpl(): String = ???
 
   /** Text to append when writing neuralynx header again to file.
     * For the most part, you should start new header lines with "## ", so that they are handled as

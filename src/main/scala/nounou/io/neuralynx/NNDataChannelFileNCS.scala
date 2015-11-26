@@ -18,7 +18,7 @@ class NNDataChannelFileNCS(val file: File)
 
   // <editor-fold defaultstate="collapsed" desc=" toString related ">
 
-  override def toStringFullImplParams() = super.toStringFullImplParams() + s"file=${file.getCanonicalPath}, "
+  override def toStringImpl() = super.toStringImpl() + s"file=${file.getCanonicalPath}, "
 
   // </editor-fold>
 

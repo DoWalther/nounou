@@ -16,8 +16,8 @@ import nounou.elements.NNElement
   setTiming( array(0).timing() )
   setScale( array(0).scale() )
 
-  override def toStringFullImplParams() = s"${timing().segmentCount} segments, fs=${timing().sampleRate},  "
-  override def toStringFullImplTail() = ""
+  override def toStringImpl() = s"${timing().segmentCount} segments, fs=${timing().sampleRate},  "
+  override def toStringFullImpl() = ""
 
   def this( array: Array[NNDataChannel] ) = this( array.toVector )
 //  def this( array: Array[NNDataChannel], layout: NNLayout ) = this( array.toVector, layout )
