@@ -10,7 +10,7 @@ class NNDataPreloaded( val data: Array[DV[Int]], timingEntry: NNDataTiming, scal
   extends NNData  {
 
     setScale(scaleEntry)
-    setTiming(timingEntry)
+    override val timing = timingEntry
 
     override def getChannelCount: Int = data.length
 

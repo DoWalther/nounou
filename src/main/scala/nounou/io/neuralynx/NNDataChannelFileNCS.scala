@@ -150,10 +150,9 @@ class NNDataChannelFileNCS(val file: File)
 
   // </editor-fold>
 
-  setTiming( new NNDataTiming(header.headerSampleRate,
+  override val timing = new NNDataTiming(header.headerSampleRate,
                               tempLengths.toArray,
                               tempStartTimestamps.toArray)
-  )
   setScale( new NNDataScale(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
                             absGain = 1.0E6 * header.headerADBitVolts / xBitsD,
                             absOffset = this.absOffset,

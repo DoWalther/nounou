@@ -81,12 +81,12 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
   // <editor-fold defaultstate="collapsed" desc=" timing, scale, layout ">
 
   //passthrough definitions, only override for changes in sampling rate, layout, etc.
-  override def getTiming() = parenVar.getTiming()
+  override def timing() = parenVar.getTiming()
   override def getScale() =  parenVar.getScale()
   override def getLayout() = parenVar.getLayout()
 
-  final override def setTiming( timing: NNDataTiming ) =
-    throw loggerError("Cannot set timing for a data filter manually")
+//  final override def setTiming( timing: NNDataTiming ) =
+//    throw loggerError("Cannot set timing for a data filter manually")
   final override def setScale( scale: NNDataScale ) =
     throw loggerError("Cannot set scale for data filter for a data filter manually")
   final override def setLayout( layout: NNDataLayout ) =

@@ -35,7 +35,7 @@ abstract class NNData extends NNElement
     })
   }
 
-  // <editor-fold defaultstate="collapsed" desc=" DataSource related ">
+  // <editor-fold defaultstate="collapsed" desc=" DataSource and child related ">
 
   private val _children = scala.collection.mutable.Set[NNData]()
   /**'''[NNData: data source]''' Adds a new child to this data source, which will be notified for changes.

@@ -1,5 +1,7 @@
 package nounou.elements
 
+import java.text.DecimalFormat
+
 import breeze.numerics.round
 import nounou.elements.ranges.SampleRangeSpecifier
 
@@ -335,17 +337,22 @@ class NNDataTiming( val sampleRate: Double,
     }
   }
 
-  override def toStringFullImplParams() = s"fs=$sampleRate, segmentCount=$segmentCount, "
-  override def toStringFullImplTail() = {
-    var tempout = toString()+ "\n"    +
-    "   seg#\t\tsegLen\t\tsegStartTs\n"
+  // <editor-fold defaultstate="collapsed" desc=" toString related ">
 
+  private val formatter = new DecimalFormat("###,###.0")
+  override def toStringImpl() = s"fs=$sampleRate, segmentCount=$segmentCount"
+  override def toStringFullImpl() = {
+    var tempout =
+    "   seg#\t\tsegLen (s)\t\tsegStartTs\t\tmin\n"
     for( seg <- 0 until segmentCount) {
-      tempout = tempout + s"   $seg\t\t	${segmentLength(seg)}\t" +
-        s"${segmentStartTss(seg)}\n"
+      tempout = tempout + s"   $seg\t\t	${segmentLength(seg)} " +
+        s"(${formatter.format(segmentLength(seg).toDouble/sampleRate)})\t" +
+        s"${segmentStartTss(seg)}\t" +
+        s"(${formatter.format(segmentStartTss(seg).toDouble/sampleRate/60d)})"
     }
     tempout.dropRight(1)
   }
 
+  // </editor-fold>
 
 }

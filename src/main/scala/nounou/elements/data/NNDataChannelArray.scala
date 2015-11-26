@@ -13,40 +13,17 @@ import nounou.elements.NNElement
   loggerRequire( array != null && array.length > 0, "input Vector must be non-negative, non-empty" )
   loggerRequire( array.length == 1 || array(0).isCompatible( array.tail ), "input Array must have compatible components")
 
-  setTiming( array(0).timing() )
+  override val timing = array(0).timing
+//  setTiming( array(0).timing() )
   setScale( array(0).scale() )
 
-  override def toStringImpl() = s"${timing().segmentCount} segments, fs=${timing().sampleRate},  "
+  override def toStringImpl() = s"${timing.segmentCount} segments, fs=${timing.sampleRate},  "
   override def toStringFullImpl() = ""
 
   def this( array: Array[NNDataChannel] ) = this( array.toVector )
 //  def this( array: Array[NNDataChannel], layout: NNLayout ) = this( array.toVector, layout )
 
   def apply(channel: Int) = array(channel)
-
-//  override def segmentLengthImpl(segment: Int) = {
-//    array(0).segmentLengthImpl(segment)
-//    //val tempsl =
-//      array(0).segmentLengths
-//      new Array[Int]( array(0).segmentCount )
-//    //println( "XDCA tempsl " + tempsl.toVector.toString )
-//    for(s <- 0 until tempsl.length) tempsl(s) = min( DenseVector(array.map(_.segmentLength(s)).toArray) )
-//    //println( "XDCA tempsl post " + tempsl.toVector.toString )
-//    tempsl
-//  }
-//  override lazy val segmentStartTs = array(0).segmentStartTs
-//  override lazy val sampleRate = array(0).sampleRate
-
-//  // (from XChannelsImmutable)
-//  override lazy val channelNames = array.map(_.channelName).toVector
-
-//  // (from XAbsoluteImmutable)
-//  override lazy val absGain = array(0).absGain
-//  override lazy val absOffset = array(0).absOffset
-//  override lazy val absUnit = array(0).absUnit
-//  override lazy val scaleMax = array(0).scaleMax
-//  override lazy val scaleMin = array(0).scaleMin
-
 
   override def readPointImpl(channel: Int, frame: Int, segment: Int) =
     array(channel).readPointImpl(frame, segment)
@@ -95,13 +72,6 @@ import nounou.elements.NNElement
   }
 
   // </editor-fold>
-//  /** Number of segments in data.
-//    */
-//  override def segmentCount: Int = array(0).segmentCount
-//
-//  /** OVERRIDE: End timestamp for each segment. Implement by overriding _endTimestamp
-//    */
-//  override def segmentEndTs: Array[Long] = array(0).segmentEndTs
 
   override def getChannelCount: Int = array.length
 

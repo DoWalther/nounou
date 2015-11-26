@@ -19,6 +19,7 @@ class NNDataFilterDownsample( private val parentVal: NNData, protected var facto
   // <editor-fold defaultstate="collapsed" desc=" factor-related ">
 
   protected var timingBuffer: NNDataTiming = parentVal.timing()
+  override def timing(): NNDataTiming = timingBuffer
 
   final def factor(): Int = getFactor()
   /** Java-style alias for [[factor]].
@@ -41,7 +42,6 @@ class NNDataFilterDownsample( private val parentVal: NNData, protected var facto
     }
   }
 
-  override def getTiming(): NNDataTiming = timingBuffer
 
 //  //override def sampleRate: Double = _parent.sampleRate / factor
 //  override def segmentLengthImpl(segment: Int): Int =

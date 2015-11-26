@@ -1,6 +1,7 @@
 package nounou.elements.data.filters
 
 import breeze.linalg.DenseVector
+import nounou.elements.NNDataTiming
 import nounou.elements.data.NNData
 import nounou.elements.ranges.SampleRangeValid
 
@@ -14,6 +15,8 @@ import scala.collection.mutable.{ArrayBuffer, WeakHashMap}
 /** Buffer filter, which will save intermediate calculation results for an XData object.
   */
 class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_parent) {
+
+  override def timing(): NNDataTiming = _parent.timing()
 
   var buffer: WeakHashMap[Long, DenseVector[Int]] = new ReadingHashMapBuffer()
   var garbageQue: ArrayBuffer[Long] = new ArrayBuffer[Long]()
