@@ -2,7 +2,7 @@ package nounou.elements.ranges
 
 import java.math.BigInteger
 
-import nounou.elements.NNDataTiming
+import nounou.elements._timing.NNDataTiming
 
 /**Encapsulates a TS(timestamp, Long)-based frame range, with appropriate values.
  * @author ktakagaki

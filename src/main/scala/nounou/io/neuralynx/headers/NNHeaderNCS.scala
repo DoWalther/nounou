@@ -1,27 +1,33 @@
 package nounou.io.neuralynx.headers
 
+import nounou.io.neuralynx.fileObjects.{FileNCS}
+
 /**
   * Created by ktakagaki on 15/11/24.
   */
-class NNHeaderNCS(originalHeaderText: String, headerBytes: Int)
-  extends NNHeaderNeuralynx(originalHeaderText, headerBytes) {
+class NNHeaderNCS(originalHeaderText: String)
+  extends NNHeaderNeuralynx(originalHeaderText) {
 
-  override def isValid() = {
-    super.isValid() && (headerRecordType == "CSC")
-  }
+  final lazy val headerRecordType = nlxHeaderValueS("FileType", "CSC")
+  final lazy val headerRecordSize = nlxHeaderValueI("RecordSize", FileNCS.recordSize.toString)
 
   lazy val headerAcqEntName = nlxHeaderValueS("AcqEntName", "NoName")
-  //lazy val headerRecordType = nlxHeaderValueS("FileType", "")
-  //lazy val headerRecordSize = nlxHeaderValueI("RecordSize", "0")
   /**Sample rate, Hz*/
   lazy val headerSampleRate = nlxHeaderValueD("SamplingFrequency", "1")
-  lazy val headerADBitVolts = nlxHeaderValueD("ADBitVolts", "1")
+  lazy val headerADBitVolts = nlxHeaderValueD("ADBitVolts", "3.05185e-009")
 
-}
-
-object NNHeaderNCS{
-
-  /**Factory constructor to pass into FileNeuralynx for generic header creation*/
-  def factory(originalHeaderText: String, headerBytes: Int) = new NNHeaderNCS(originalHeaderText, headerBytes)
+  override def toNeuralynxHeaderStringImpl() = {
+    "######## Neuralynx Data File Header\n" +
+      s"## Output by Nounou v ${version}\n" +
+      s"## Output time ${System.currentTimeMillis()}\n" +
+      s" -CheetahRev $headerCheetahRev\n" +
+      s" -FileType $headerRecordType\n" +
+      s" -RecordSize $headerRecordSize\n" +
+      s" -SamplingFrequency $headerSampleRate\n" +
+      s" -ADBitVolts $headerADBitVolts\n" +
+      //  -ADMaxValue 32767
+      //  -NumADChannels 1
+      {if(originalHeaderPresent) commentLines(originalHeaderText) else ""}
+  }
 
 }

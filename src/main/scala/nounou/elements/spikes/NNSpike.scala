@@ -51,13 +51,13 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
 
   // <editor-fold defaultstate="collapsed" desc=" Java accessors ">
 
-  /**Java accessor for timestamp, returns [[java.math.BigInteger]], which is immutable.*/
+  /**Java accessor for timestamp, returns a [java.math.BigInteger], which is immutable.*/
   def getTimestamp(): BigInteger = timestamp.bigInteger
   /**Java accessor for waveform, returns an Array[Int] clone.*/
   def getWaveform(): Array[Int] = waveform.toArray[Int]
-  /**Java accessor for channels, alias for [[channels()]].*/
+  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.channels]].*/
   def getChannels(): Int = channels
-  /**Java accessor for channels, alias for [[unitNo()]].*/
+  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.unitNo]].*/
   def getUnitNo(): Long = unitNo
 
   // </editor-fold>

@@ -12,11 +12,11 @@ import nounou.io.{FileLoader, FileSaver}
 import nounou.util.{LoggingExt, NNGit}
 
 
-/**A static class which encapsulates convenience functions for using nounou, with
-  * an emphasis on use from Mathematica/MatLab/Java (avoidance of Java-unfriendly Scala constructs).
+/** The static convenience frontend to use all main functionality of nounou from Mathematica/MatLab/Java
+  * (with avoidance of Java-unfriendly Scala constructs).
   *
-  * Many of these functions would be put in the companion object as an apply method in
-  * idiomatic Scala, (i.e. SampleRange.apply(start, last, step, segment), but are
+  * In idiomatic Scala, Many of these functions would be put in
+  * companion objects as an apply method (i.e. SampleRange.apply(start, last, step, segment). These are
   * consolidated here instead to facilitate access through Java.
   *
  * @author ktakagaki

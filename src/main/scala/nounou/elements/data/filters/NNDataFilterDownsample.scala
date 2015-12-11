@@ -2,7 +2,7 @@ package nounou.elements.data.filters
 
 import _root_.nounou.elements.ranges.SampleRangeValid
 import breeze.linalg.{DenseVector => DV, min}
-import nounou.elements.NNDataTiming
+import nounou.elements._timing.NNDataTiming
 import nounou.elements.data.NNData
 
 /**

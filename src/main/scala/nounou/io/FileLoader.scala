@@ -5,18 +5,19 @@ import java.util.ServiceLoader
 
 import nounou.elements.NNElement
 import nounou.elements.data.{NNDataChannel, NNDataChannelArray}
+import nounou.io.neuralynx.fileAdapters.FileAdapterNCS
 import nounou.util.LoggingExt
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable
 
 /** This singleton FileLoader object is the main point of use for file saving
-  * (use via [[nounou.NN.load()]]).
+  * (use via [[nounou.NN.load(fileNames:Arr*]]).
   * It maintains a list of available loaders in the system (from /resources/META-INF/services/nounou.io.FileLoader),
   * and uses the first loader which can load the specified file extension.
   *
   * Alternatively, specific FileLoader objects can be used, such as:
-  * [[nounou.io.neuralynx.FileAdapterNCS.load()]]. In this case, you can try to read from files with
+  * [[nounou.io.neuralynx.fileAdapters.FileAdapterNCS.load(file:java\.io\.F*]]. In this case, you can try to read from files with
   * non-standard file extensions (will get warining; not recommended).
   *
   */
@@ -89,7 +90,7 @@ object FileLoader extends LoggingExt {
   * double inheritance of classes is not possible in Scala.
   *
   * The interface is subject to slight changes in the near future due to
-  * handling of files which output multiple [[NNElement]] objects.
+  * handling of files which output multiple [[nounou.elements.NNElement]] objects.
   * Some of these objects need to be integrated into a bigger object,
   * this will be written in to the trait.
  */

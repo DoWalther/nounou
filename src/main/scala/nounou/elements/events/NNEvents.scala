@@ -1,8 +1,12 @@
 package nounou.elements.events
 
+import java.math.BigInteger
+
 import nounou.elements.NNElement
+import nounou.elements.headers.NNHeader
 
 import scala.collection.immutable.TreeMap
+import scala.collection.mutable
 import scala.collection.mutable.TreeSet
 
 /** Mutable database object to encapsulate marked events in data recordings.
@@ -20,6 +24,11 @@ class NNEvents extends NNElement {
 
   private var _database: TreeMap[Int, TreeSet[NNEvent]] = new TreeMap[Int, TreeSet[NNEvent]]()
 
+  var header: NNHeader = null
+//  private var _header: NNHeader = null
+//  override def header(): NNHeader = _header
+//  def setHeader(header: NNHeader): Unit = {_header = header}
+
   def lengths: Array[Int] = _database.values.map( _.size ).toArray
 
   /** Returns a list of the ports that are registered in this database.
@@ -32,7 +41,7 @@ class NNEvents extends NNElement {
     */
   def portCount: Int = _database.size
 
-  /** Alias for [[addEvent( port: Int, event: NNEvent ): Unit*]]
+  /** Alias for [[addEvent(port:Int* addEvent(Int,NNEvent)]]
     */
   def addEvent( portEvent: (Int, NNEvent) ): Unit = addEvent(portEvent._1, portEvent._2)
   def addEvent( port: Int, event: NNEvent ): Unit = {
@@ -55,12 +64,10 @@ class NNEvents extends NNElement {
     if( _database.contains(port) ) _database(port)
     else new TreeSet[NNEvent]()
   }
-//  def filterByPortA(port: Int) = filterByPort(port).toArray
 
   def filterByPortCode(port: Int, code: Int): TreeSet[NNEvent] = {
     filterByPort(port).filter( p => p.code == code )
   }
-//  def filterByPortCodeA(port: Int, code: Int) = filterByPortCode(port, code).toArray
 
   // </editor-fold>
 
@@ -92,16 +99,17 @@ class NNEvents extends NNElement {
   def getTimestamps(  port: Int  ): Array[Array[BigInt]] =
     filterByPort(port).toArray.map( (e: NNEvent) => Array(e.timestamp, e.duration) )
   def getComments(  port: Int  ): Array[String] = filterByPort(port).toArray.map( _.comment )
-//  // <editor-fold defaultstate="collapsed" desc=" toArray/toArrayArray ">
-//
-//  def toArray(): Array[(Int, NNEvent)] = {
-//    val tempret: ArrayBuffer[(Int, NNEvent)] = new ArrayBuffer[(Int, NNEvent)]()
-//    _database.keys.foreach( key => _database(key).foreach( event => tempret.+=( (key, event) ) ) )
-//    tempret.toArray
-//  }
-//
-//  // </editor-fold>
-
+  def getPortEventList(): Array[(Int, NNEvent)] = getPortEventList( true )
+  def getPortEventList( expandDuration: Boolean ): Array[(Int, NNEvent)] = {
+    val temp = _database.toArray.flatMap((pEventSet: (Int, mutable.TreeSet[NNEvent])) => pEventSet._2.map( (pEventSet._1, _) ) )
+    (if(expandDuration){
+        temp.flatMap((pEvent: (Int, NNEvent)) => {
+          pEvent._2.expandDuration().map( (pEvent._1, _) )
+        })
+    }else{
+        temp
+    }).sortBy( _._2.timestamp )
+  }
 
 //  lazy val maxDuration: Long = events.map( _._2.duration).max
 //  lazy val uniqueEventCodes = events.map(_._2.code).toList.distinct.toVector

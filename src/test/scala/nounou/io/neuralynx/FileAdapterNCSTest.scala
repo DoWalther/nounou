@@ -16,8 +16,8 @@ class FileAdapterNCSTest extends FunSuite {
   //new File( "C:\\prog\\_gh\\_kt\\nounou.testfiles\\Neuralynx\\E04LC\\CSC1.ncs" )
   val data = NN.load(testFileE04LC_CSC1).apply(0)
   assert( data.isInstanceOf[NNDataChannel] )
-  assert( data.isInstanceOf[NNDataChannelFileNCS] )
-  val dataObj = data.asInstanceOf[NNDataChannelFileNCS]
+  assert( data.isInstanceOf[NNDataChannelFileReadNCS] )
+  val dataObj = data.asInstanceOf[NNDataChannelFileReadNCS]
 
   test("readInfo"){
 

@@ -2,14 +2,16 @@ package nounou.elements.data
 
 import breeze.linalg.{DenseVector => DV}
 import nounou._
+import nounou.elements._scale.NNDataScaleElement
+import nounou.elements._timing.NNDataTimingElement
 import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid}
-import nounou.elements.{NNDataScaleElement, NNDataTimingElement, NNElement}
+import nounou.elements.NNElement
 
 /**
  * Created by Kenta on 12/14/13.
  */
-trait NNDataChannel extends NNElement
-                              with NNDataTimingElement with NNDataScaleElement {
+trait NNDataChannel extends NNDataTimingElement with NNDataScaleElement {
+
 
   /**MUST OVERRIDE: name of the given channel.*/
   val channelName: String

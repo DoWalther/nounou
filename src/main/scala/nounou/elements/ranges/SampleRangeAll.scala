@@ -1,6 +1,6 @@
 package nounou.elements.ranges
 
-import nounou.elements.NNDataTiming
+import nounou.elements._timing.NNDataTiming
 
 
 class SampleRangeAll(val step: Int, val segment: Int) extends SampleRangeSpecifier {

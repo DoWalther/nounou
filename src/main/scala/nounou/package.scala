@@ -16,7 +16,7 @@ package object nounou extends LoggingExt {
 
   //ToDo 4: synchronize this somehow with the SBT version
   /**Global [[nounou]] version number defined here*/
-  val version = 0.5
+  val version = 0.6
 
   // <editor-fold defaultstate="collapsed" desc=" rangeInclusiveToFrameRange ">
 

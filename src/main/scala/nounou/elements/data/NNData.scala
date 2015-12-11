@@ -2,9 +2,11 @@ package nounou.elements.data
 
 import breeze.linalg.{DenseVector => DV}
 import nounou._
-import nounou.elements.layouts.NNDataLayout
+import nounou.elements._scale.NNDataScaleElement
+import nounou.elements._layout.NNDataLayout
+import nounou.elements._timing.NNDataTimingElement
 import nounou.elements.ranges.{SampleRange, SampleRangeSpecifier, SampleRangeValid}
-import nounou.elements.{NNChannelsElement, NNDataScaleElement, NNDataTimingElement, NNElement}
+import nounou.elements.{NNChannelsElement, NNElement}
 
 /** Base class for data encoded as Int arrays, this is the main data element for an experiment,
   * whether it be electrophysiolgical or high-sampling-rate imaging.
@@ -98,7 +100,6 @@ abstract class NNData extends NNElement
   }
 
   // </editor-fold>
-
 
   // <editor-fold defaultstate="collapsed" desc=" readXXX ">
 

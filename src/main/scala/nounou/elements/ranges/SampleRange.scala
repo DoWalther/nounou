@@ -1,7 +1,7 @@
 package nounou.elements.ranges
 
 import nounou._
-import nounou.elements.NNDataTiming
+import nounou.elements._timing.NNDataTiming
 import nounou.util.LoggingExt
 
 object SampleRange {
@@ -87,8 +87,8 @@ class SampleRange(val start: Int, val last: Int, val step: Int, val segment: Int
   }
 
   /** How many units to:
-    * = add to the end (when counting from start) or
-    * = to subtract from the start (when counting backwards from end)
+    * - add to the end (when counting from start) or
+    * - to subtract from the start (when counting backwards from end)
     * to get to the next step value
     */
   protected[ranges] def intervalMod(start: Int, end: Int, step: Int): Int = {

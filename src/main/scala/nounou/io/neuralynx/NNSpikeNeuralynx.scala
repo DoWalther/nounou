@@ -43,7 +43,7 @@ abstract class NNSpikeNeuralynx(
 
   // <editor-fold defaultstate="collapsed" desc=" Java accessors ">
 
-  /**Java accessor for qwTimeStamp, returns [[java.math.BigInteger]], which is immutable.*/
+  /**Java accessor for qwTimeStamp, returns [java.math.BigInteger], which is immutable.*/
   def getQwTimeStamp(): BigInteger = qwTimeStamp.bigInteger
   /**Java accessor for dwScNumber.*/
   def getDwScNumber(): Long = dwScNumber

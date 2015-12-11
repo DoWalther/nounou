@@ -3,8 +3,9 @@ package nounou.elements.spikes
 import java.math.BigInteger
 
 import nounou.analysis.spikes.OptWaveformFr
+import nounou.elements._timing.{NNDataTimingElement, NNDataTiming}
 import nounou.elements.data.NNData
-import nounou.elements.{NNDataTiming, NNDataTimingElement, NNElement}
+import nounou.elements.NNElement
 import nounou.util.LoggingExt
 import nounou.{NN, Opt}
 
@@ -70,8 +71,8 @@ object NNSpikes extends LoggingExt {
 
 }
 
-/** A mutable database of [[nounou.elements.spikes.NNSpike]] objects for display and processing.
-  * Based on a [[scala.collection.mutable.TreeSet]], with enforcing of NNSpike compatiblity.
+/** A mutable database of [[nounou.elements.spikes.NNSpike NNSpike]] objects for display and processing.
+  * Based on a [scala.collection.mutable.TreeSet[A] mutable.TreeSet], with enforcing of NNSpike compatiblity.
     *
     */
 class NNSpikes( private val _database: TreeSet[NNSpike] )//val trodeLayout: NNDataLayoutTrode, val waveFormLength: Int)

@@ -1,18 +1,27 @@
 package nounou.io.neuralynx.headers
 
+import nounou.io.neuralynx.fileObjects.FileNEV
+
 /**
   * Created by ktakagaki on 15/11/24.
   */
-class NNHeaderNEV(originalHeaderText: String, headerBytes: Int)
-  extends NNHeaderNeuralynx(originalHeaderText, headerBytes) {
+class NNHeaderNEV(override val originalHeaderText: String)
+  extends NNHeaderNeuralynx(originalHeaderText) {
 
-    require(headerRecordType == "Event", s"NEV file with non-standard record type: $headerRecordType")
+  def this() = this("")
 
+  final lazy val headerRecordType = nlxHeaderValueS("FileType", "Event")
+  final lazy val headerRecordSize = nlxHeaderValueI("RecordSize", FileNEV.recordSize.toString)
+
+
+  override def toNeuralynxHeaderStringImpl() = {
+    "######## Neuralynx Data File Header\n" +
+    s"## Output by Nounou v ${version}\n" +
+    s"## Output time ${System.currentTimeMillis()}\n" +
+    s" -CheetahRev $headerCheetahRev\n" +
+    s" -FileType $headerRecordType\n" +
+    s" -RecordSize $headerRecordSize\n" +
+    {if(originalHeaderPresent) commentLines(originalHeaderText) else ""}
   }
 
-object NNHeaderNEV{
-
-  /**Factory constructor to pass into FileNeuralynx for generic header creation*/
-  def factory(originalHeaderText: String, headerBytes: Int) = new NNHeaderNEV(originalHeaderText, headerBytes)
-
-}
+  }

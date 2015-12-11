@@ -4,13 +4,22 @@ import java.io.File
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 
-import nounou.elements.layouts.NNDataLayoutHexagonal
+import nounou.elements.headers.NNHeader
+import nounou.elements._layout.NNDataLayoutHexagonal
 import nounou.util.LoggingExt
 
 /** Base class for all data elements.
+  * Mainly provides:
+  *   + git tracking, versioning
+  *   + toString printout basics
+  *   + JSON serialization
+  *   + logging capabilities
   */
 trait NNElement extends LoggingExt {
 
+//  /** '''[NNElement]''' __'''SHOULD OVERRIDE'''__
+//    */
+//  def header(): NNHeader = null
   //ToDo3: consider add: pt info, rec info, rec start time/date, etc
 
   /**'''[NNElement]''' getCanonicalName, buffered for serialization with GSON. */
@@ -20,7 +29,8 @@ trait NNElement extends LoggingExt {
   /**'''[NNElement]''' Git HEAD of the current revision, buffered for serialization with GSON.*/
   lazy val gitHead = nnGitObj.getGitHead
   /**'''[NNElement]''' Git HEAD shortened to first 10 characters.*/
-  @transient lazy val gitHeadShort = gitHead.take(10)
+  @transient
+  lazy val gitHeadShort = gitHead.take(10)
 
   /**'''[NNElement]''' Reads global [[nounou]] version number, buffered for serialization with GSON.*/
   val version = nounou.version
@@ -32,13 +42,13 @@ trait NNElement extends LoggingExt {
 
   override final def toString(): String = getClass.getName + "(" + toStringImpl + ")"
 
-  /** The contents of the [[toString()]] output to be given within parenthesis after the class name.
+  /** The contents of the [[nounou.elements.NNElement.toString()*]] output to be given within parenthesis after the class name.
     */
   def toStringImpl(): String
-  /** Lines to be output for [[toStringFull()]], after [[toString()]] output and line divider.
+  /** Lines to be output for [[nounou.elements.NNElement.toStringFull()*]], after [[nounou.elements.NNElement.toString()*]] output and line divider.
     */
   def toStringFullImpl(): String
-  /**Usually multiline output string, starting with [[toString()]] output and then
+  /**Usually multiline output string, starting with [[nounou.elements.NNElement.toString()*]] output and then
     * more detailed information, where available.
     */
   final def toStringFull(): String = {

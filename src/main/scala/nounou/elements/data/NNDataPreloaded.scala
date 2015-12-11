@@ -1,8 +1,9 @@
 package nounou.elements.data
 
 import breeze.linalg.{DenseMatrix => DM, DenseVector => DV}
+import nounou.elements._scale.NNDataScale
+import nounou.elements._timing.NNDataTiming
 import nounou.elements.ranges.SampleRangeValid
-import nounou.elements.{NNDataScale, NNDataTiming}
 
 /**NNData class with internal representation as data array.
  */

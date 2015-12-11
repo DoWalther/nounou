@@ -3,6 +3,7 @@ package nounou.io.neuralynx
 import java.io.File
 
 import breeze.io.RandomAccessFile
+import nounou.io.neuralynx.fileAdapters.FileAdapterNCS
 import org.scalatest.FunSuite
 
 /**
@@ -36,13 +37,13 @@ class FileAdapterNeuralynxHeaderTest extends FunSuite {
    test("headerHandling") {
 
      val data = FileAdapterNCS.load( testFileE04LC_CSC1 ).apply(0)
-     assert( data.isInstanceOf[NNDataChannelFileNCS] )
-     val dataObj = data.asInstanceOf[NNDataChannelFileNCS]
+     assert( data.isInstanceOf[NNDataChannelFileReadNCS] )
+     val dataObj = data.asInstanceOf[NNDataChannelFileReadNCS]
 
      //assert( dataObj.header.originalFileHeader.length == 760)
      assert( dataObj.headerBytes == 16384 )
 
-     dataObj.header.headerAppendText="## Hello Kenta!"
+     //dataObj.header.headerAppendText="## Hello Kenta!"
      //assert( dataObj.isValidFile() )
 
      //println( dataObj.fullHeader )
