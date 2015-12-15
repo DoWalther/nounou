@@ -3,6 +3,7 @@ package nounou
 //import breeze.linalg.DenseVector
 
 import breeze.linalg.DenseVector
+import breeze.numerics.sin
 import nounou.elements.NNElement
 import nounou.elements.data.NNData
 import nounou.elements.data.filters.NNDataFilterMedianSubtract
@@ -27,11 +28,31 @@ object NN extends LoggingExt {
       "Welcome to nounou, a Scala/Java adapter for neurophysiological data.\n" +
       NNGit.infoPrintout
 
+  /**Test method for DW*/
+  final def testArray(): Array[Double] = sin( breeze.linalg.DenseVector.tabulate(100)( _.toDouble/50d * 2d * math.Pi )).toArray
+
   // <editor-fold defaultstate="collapsed" desc=" file loading/saving ">
 
+  /**Load a file into appropriate subtypes of [[nounou.elements.NNElement]]
+    * @return an array of [[nounou.elements.NNElement]] objects
+    */
   final def load(fileName: String): Array[NNElement] = FileLoader.load(fileName)
+  /**Load a list of files into appropriate subtypes of [[nounou.elements.NNElement]].
+    * If multiple files are compatible (e.g. multiple Neuralynx channel data files with compatible timings),
+    * they will be joined.
+    * @return an array of [[nounou.elements.NNElement]] objects
+    */
   final def load(fileNames: Array[String]): Array[NNElement] = FileLoader.load(fileNames)
+  /**Save an [[nounou.elements.NNElement]] object into the given file.
+    *File type will be inferred from the filename extension.
+    *
+    * @return an array of [[nounou.elements.NNElement]] objects
+    */
   final def save(fileName: String, data: NNElement): Unit  = FileSaver.save( fileName, data)
+  /**Save an array of [[nounou.elements.NNElement]] object into the given file.
+    *This allows you to specify multiple types of data Array(NNData, NNEvents, NNSpikes)
+    *for saving into compound file formats (e.g. NEX).
+    */
   final def save(fileName: String, data: Array[NNElement]): Unit  = FileSaver.save(fileName, data)
 
   // </editor-fold>
@@ -39,6 +60,9 @@ object NN extends LoggingExt {
   // <editor-fold defaultstate="collapsed" desc=" options ">
 
   def OptNull() = nounou.OptNull
+
+  /**Option to be used in [[nounou.analysis.threshold]]
+    */
   case class OptThresholdBlackout(frames: Int) extends Opt {
     loggerRequire(frames > 0, "blackout must be >0")
   }
@@ -56,41 +80,43 @@ object NN extends LoggingExt {
 //  final def SampleRange(start: Int, last: Int, step: Int)               = new SampleRange(start, last, step, -1)
 //  final def SampleRange(start: Int, last: Int, segment: Int)            = new SampleRange(start, last, -1,   segment)
 //  final def SampleRange(start: Int, last: Int)                          = new SampleRange(start,    last,     -1,       -1)
-  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Tuple containing start and end. segment=-1 is assumed.
     */
   final def SampleRange( range: (Int, Int) )                            = new SampleRange(start = range._1, last = range._2, step = -1, segment = -1)
-  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Tuple containing start and end.
     * @param segment Which segment to read from
     */
   final def SampleRange( range: (Int, Int), segment: Int)               = new SampleRange(start = range._1, last = range._2, step = -1, segment)
-  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Tuple containing start, end, and step. segment=-1 is assumed.
     */
   final def SampleRange( range: (Int, Int, Int) )                       = new SampleRange(start = range._1, last = range._2, step = range._3, segment = -1)
-  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Tuple containing start, end, and step
     * @param segment Which segment to read from
     */
   final def SampleRange( range: (Int, Int, Int), segment: Int )         = new SampleRange(start = range._1, last = range._2, step = range._3, segment)
-  /** Java-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Java Array-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Array containing start, end, and optionally, step
     * @param segment Which segment to read from
     */
   final def SampleRange( range: Array[Int], segment: Int ): SampleRangeSpecifier =
     nounou.elements.ranges.SampleRange.convertArrayToSampleRange(range, segment)
-  /** Java-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Java Array-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Array containing start, end, and optionally, step. segment = -1 is assumed.
     */
   final def SampleRange( range: Array[Int] ): SampleRangeSpecifier = SampleRange( range, -1 )
 
+  /**Constructor method for a sample range specifying a whole segment
+    */
   final def SampleRangeAll(step: Int, segment: Int) = new SampleRangeAll(step, segment)
   final def SampleRangeAll() = new SampleRangeAll(1, -1)
 
