@@ -1,6 +1,7 @@
 package nounou.io.neuralynx
 
 import java.math.BigInteger
+
 import nounou.elements.spikes.NNSpike
 import nounou.util.LoggingExt
 
@@ -42,7 +43,7 @@ abstract class NNSpikeNeuralynx(
 
   // <editor-fold defaultstate="collapsed" desc=" Java accessors ">
 
-  /**Java accessor for qwTimeStamp, returns [[java.math.BigInteger]], which is immutable.*/
+  /**Java accessor for qwTimeStamp, returns [java.math.BigInteger], which is immutable.*/
   def getQwTimeStamp(): BigInteger = qwTimeStamp.bigInteger
   /**Java accessor for dwScNumber.*/
   def getDwScNumber(): Long = dwScNumber
@@ -85,11 +86,27 @@ object NNSpikeNeuralynx extends LoggingExt {
 
 final class NNSpikeNSE(
         qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Short] ) extends
-      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 1)
+      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 1) {
+
+  override def reassignUnitNo(newUnitNo: Long): NNSpike =
+    new NNSpikeNSE(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
+
+
+}
 final class NNSpikeNST(
         qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Short] ) extends
-      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 2)
+      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 2) {
+
+  override def reassignUnitNo(newUnitNo: Long): NNSpike =
+    new NNSpikeNST(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
+
+}
 final class NNSpikeNTT(
         qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Short] ) extends
-      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 4)
+      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 4){
+
+  override def reassignUnitNo(newUnitNo: Long): NNSpike =
+    new NNSpikeNTT(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
+
+}
 

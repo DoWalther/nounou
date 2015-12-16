@@ -1,11 +1,12 @@
 package nounou.elements.data.filters
 
 import _root_.nounou.elements.ranges.SampleRangeValid
+import breeze.linalg.{DenseVector => DV, convert}
+import breeze.signal._
+import breeze.signal.support.FIRKernel1D
 import nounou.NN._
 import nounou.elements.data.NNData
-import breeze.linalg.{DenseVector => DV, max, convert}
-import breeze.signal.support.FIRKernel1D
-import breeze.signal._
+
 import scala.beans.BeanProperty
 //import nounou.data.ranges.FrRange$
 
@@ -22,11 +23,11 @@ class NNDataFilterFIR(private var _parent: NNData ) extends NNDataFilter( _paren
   var kernelOmega1: Double = 1d
   var multiplier = 256L
 
-  override def toString() = {
-    if(kernel == null) "XDataFilterFIR: kernel null (off)"
-    else "XDataFilterFIR:\n" +
-         "   kernel " + kernel.toString()
+  override def toStringImpl() = {
+    if(kernel == null) "kernel null/off, "
+    else kernel.toString() + ", "
   }
+  override def toStringFullImpl() = ""
 
   // <editor-fold defaultstate="collapsed" desc=" get/set filter settings ">
 

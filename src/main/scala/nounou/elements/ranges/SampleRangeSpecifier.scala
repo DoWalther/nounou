@@ -1,6 +1,8 @@
 package nounou.elements.ranges
 
-import nounou.elements.{NNDataTimingElement, NNDataTiming}
+import java.math.BigInteger
+
+import nounou.elements._timing.{NNDataTiming, NNDataTimingElement}
 import nounou.util.LoggingExt
 
 /** This trait specifies a range of data samples to extract, for instance, when reading data traces.
@@ -8,7 +10,7 @@ import nounou.util.LoggingExt
   * ([[nounou.elements.ranges.SampleRangeAll SampleRangeAll]]) and millisecond- or timestamp(Long)-
   * dependent sample ranges. These latter specifications can only be resolved to real data frame
   * ranges using sampling information given in the actual data
-  * ([[NNTiming NNDataTiming]]).
+  * ([[nounou.elements._timing.NNDataTiming]]).
   */
 trait SampleRangeSpecifier extends LoggingExt {
 
@@ -26,16 +28,18 @@ trait SampleRangeSpecifier extends LoggingExt {
     getRealStep(nnDataTimingElement.timing())
 
   /** Returns the concrete real sample range with start (can be negative, starting before the data),
-    * end (can be beyond end of assumed data as specified in xDataTiming),
+    * end (can be beyond end of assumed data as specified in [[nounou.elements._timing.NNDataTiming NNDataTiming]]),
     * steps (must be positive int), and segment (present within assumed data).
     */
   def getSampleRangeReal(nnDataTiming: NNDataTiming): SampleRangeReal
   final def getSampleRangeReal(nnDataTimingElement: NNDataTimingElement): SampleRangeReal =
     getSampleRangeReal(nnDataTimingElement.timing())
 
-  /** Returns the concrete valid sample range with start/end (within assumed data),
+  /** Returns the concrete valid sample range with start/end (within available data, cannot overhang),
     * steps (must be positive int), and segment (present within assumed data).
-    * In contrast to [[nounou.elements.ranges.SampleRangeSpecifier.getSampleRangeReal(nnDataTiming:nounou.elements.NNDataTimingElement* getSampleRangeReal]], the resulting sample range here cuts off overhangs.
+    * In contrast to
+    * [[nounou.elements.ranges.SampleRangeSpecifier.getSampleRangeReal(nnDataTiming:nounou\.elements\._timing\.NNDataTiming* getSampleRangeReal(NNDataTiming)]],
+    * the resulting sample range here cuts off overhangs.
     */
   def getSampleRangeValid(nnDataTiming: NNDataTiming): SampleRangeValid
   final def getSampleRangeValid(nnDataTimingElement: NNDataTimingElement): SampleRangeValid =
@@ -52,44 +56,27 @@ trait SampleRangeSpecifier extends LoggingExt {
 
   // </editor-fold>
 
+  def getSampleRangeTimesFr(nnDataTiming: NNDataTiming): Array[Int] ={
+    val tempReal = getSampleRangeReal(nnDataTiming: NNDataTiming)
+    (for(c <- tempReal.start to tempReal.last by tempReal.step ) yield c).toArray
+  }
+  final def getSampleRangeTimesFr(nnDataTimingElement: NNDataTimingElement): Array[Int] =
+    getSampleRangeTimesFr(nnDataTimingElement.timing())
+
+  def getSampleRangeTimesMs(nnDataTiming: NNDataTiming): Array[Double] ={
+    val tempReal = getSampleRangeReal(nnDataTiming: NNDataTiming)
+    val tempRet = getSampleRangeTimesFr(nnDataTiming)
+    tempRet.map( nnDataTiming.convertFrToMs(_))
+  }
+  final def getSampleRangeTimesMs(nnDataTimingElement: NNDataTimingElement): Array[Double] =
+    getSampleRangeTimesMs(nnDataTimingElement.timing())
+
+  def getSampleRangeTimesTs(nnDataTiming: NNDataTiming): Array[BigInteger] ={
+    val tempReal = getSampleRangeReal(nnDataTiming: NNDataTiming)
+    val tempRet = getSampleRangeTimesFr(nnDataTiming)
+    tempRet.map( nnDataTiming.convertFrsgToTs(_, tempReal.segment).bigInteger )
+  }
+  final def getSampleRangeTimesTs(nnDataTimingElement: NNDataTimingElement): Array[BigInteger] =
+    getSampleRangeTimesTs(nnDataTimingElement.timing())
+
 }
-
-
-
-
-
-
-
-
-
-
-
-//  /** Returns the equivalent RangeFr object, to which other operations can be delegated.
-//    * This is especially relevant for classes such as [[nounou.data.ranges.RangeMs]],
-//    * where frame ranges must be realized based on the [[nounou.data.traits.XFrames]] sampling rate.
-//   */
-//  def getRangeFr(x: XFrames): RangeFr
-
-//  def getRangeSegment(xFrames: XFrames): OptSegment = {
-//    segment match {
-//      case -1 => {
-//        loggerRequire(xFrames.segmentCount==1, "RangeFrAll was specified without a segment. Only single-segment data can be specified in this way.")
-//        OptSegment(0)
-//      }
-//      case _ =>
-//        optSegment
-//    }
-//  }
-
-//  /** Returns a [[scala.Range.Inclusive]] which exclusively includes frame indexes which
-//    * are both within the specified data range and
-//    * the range provided by the [[nounou.data.traits.XFrames]] object.
-//   */
-//  def getRangeFrValid(x: XFrames): Range.Inclusive = getRangeFr(x).getRangeFrValid(x)
-
-
-
-//  def getSegment(): Int
-//  def getOptSegment(): OptSegment
-//  def getRealSegment(xFrames: XFrames) = getOptSegment.getRealSegment(xFrames)
-//  final def getRealStep(xFrames: XFrames): Int = getRealStep(xFrames.segmentLength(getRealSegment(xFrames)))

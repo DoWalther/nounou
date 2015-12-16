@@ -1,11 +1,12 @@
 package nounou.elements.data
 
-import nounou.elements.{NNDataScaleElement, NNDataTimingElement, NNChannelsElement, NNElement}
-import nounou.elements.layouts.NNDataLayout
-import scala.collection.immutable.Vector
-import nounou._
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements.ranges.{SampleRange, SampleRangeValid, SampleRangeSpecifier}
+import nounou._
+import nounou.elements._scale.NNDataScaleElement
+import nounou.elements._layout.NNDataLayout
+import nounou.elements._timing.NNDataTimingElement
+import nounou.elements.ranges.{SampleRange, SampleRangeSpecifier, SampleRangeValid}
+import nounou.elements.{NNChannelsElement, NNElement}
 
 /** Base class for data encoded as Int arrays, this is the main data element for an experiment,
   * whether it be electrophysiolgical or high-sampling-rate imaging.
@@ -16,10 +17,12 @@ import nounou.elements.ranges.{SampleRange, SampleRangeValid, SampleRangeSpecifi
   * sampling, start, length, xBits, absGain, absOffset, absUnit
   */
 abstract class NNData extends NNElement
-    with NNChannelsElement with NNDataScaleElement with NNDataTimingElement {
+    with NNChannelsElement with NNDataScaleElement with NNDataTimingElement
+    with NNDataSpikeReader {
 
-  override def toString(): String =
-    s"NNData(${channelCount} ch, ${timing().segmentCount} seg, fs=${timing().sampleRate})"
+  override def toStringImpl() = s"${channelCount} ch, ${timing().segmentCount} seg, fs=${timing().sampleRate}, "
+  override def toStringFullImpl() = ""
+
 
   /** Provides a textual representation of the child hierarchy starting from this data object.
     * If multiple NNDataFilter objects (e.g. an [[nounou.elements.data.filters.NNDataFilterFIR]] object)
@@ -34,7 +37,7 @@ abstract class NNData extends NNElement
     })
   }
 
-  // <editor-fold defaultstate="collapsed" desc=" DataSource related ">
+  // <editor-fold defaultstate="collapsed" desc=" DataSource and child related ">
 
   private val _children = scala.collection.mutable.Set[NNData]()
   /**'''[NNData: data source]''' Adds a new child to this data source, which will be notified for changes.
@@ -97,7 +100,6 @@ abstract class NNData extends NNElement
   }
 
   // </editor-fold>
-
 
   // <editor-fold defaultstate="collapsed" desc=" readXXX ">
 

@@ -2,13 +2,14 @@ package nounou.elements.spikes
 
 import java.math.BigInteger
 
+import breeze.linalg.{max, min}
+import breeze.numerics.abs
 import nounou.elements.NNElement
-import breeze.linalg.{DenseVector, DenseMatrix}
 
 /**An immutable class to encapsulate a single spike waveform in a neurophysiological recording,
   * to be accumulated into a [[nounou.elements.spikes.NNSpikes]] database.
   *
-  * @param timestamp the timestamp corresponding to the beginning of the waveform window
+  * @param timestamp the timestamp corresponding to the beginning of the waveform window: note that this is not the threshold crossing point
   * @param waveform the waveform data, given as concatenated waveforms from each channel
   * @param channels number of channels
   * @param unitNo the classified unit of this spike. 0 indicates an unclassified unit.
@@ -16,27 +17,47 @@ import breeze.linalg.{DenseVector, DenseMatrix}
 class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: Int = 1, val unitNo: Long = 0L)
   extends NNElement {
 
+  // <editor-fold defaultstate="collapsed" desc=" argument checks ">
+
   loggerRequire( waveform != null, "Waveform must contain a non-null vector of Int values.")
   loggerRequire( channels >= 1, s"Waveform must have at least one channel, $channels is invalid!")
   loggerRequire( waveform.length > 0, s"Waveform must have some samples, sample count ${waveform.length} is invalid!")
   loggerRequire( waveform.length % channels == 0, "The given waveform length is not equally divisible by the channel count!")
+
+  // </editor-fold>
+
+  @transient
   val singleWaveformLength = waveform.length / channels
+  @transient
+  lazy val waveformMax: Int = max( waveform )
+  @transient
+  lazy val waveformMin: Int = min( waveform )
+  @transient
+  lazy val waveformAbsMax: Int = max( waveform.map( abs(_) ) )
 
-  def this(timestamp: BigInteger, waveform: Array[Int], channels: Int, unitNo: Long) =
+
+  def this(timestamp: BigInt, waveform: Array[Int], channels: Int, unitNo: Long) =
         this(timestamp, waveform.toVector, channels, unitNo)
-  def this(timestamp: BigInteger, waveform: Array[Int]) = this(timestamp, waveform, 1, 0L)
+  def this(timestamp: BigInt, waveform: Array[Int], channels: Int) =
+        this(timestamp, waveform.toVector, channels)
+  def this(timestamp: BigInteger, waveform: Array[Int], channels: Int, unitNo: Long) =
+        this(BigInt(timestamp), waveform.toVector, channels, unitNo)
+  def this(timestamp: BigInteger, waveform: Array[Int], channels: Int) =
+        this(BigInt(timestamp), waveform.toVector, channels)
+//  def this(timestamp: BigInteger, waveform: Array[Int]) = this(timestamp, waveform, 1, 0L)
 
-  override def toString = s"NNSpike(ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}} )"
+  def toStringImpl() = s"ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}, "
+  def toStringFullImpl() = ""
 
   // <editor-fold defaultstate="collapsed" desc=" Java accessors ">
 
-  /**Java accessor for timestamp, returns [[java.math.BigInteger]], which is immutable.*/
+  /**Java accessor for timestamp, returns a [java.math.BigInteger], which is immutable.*/
   def getTimestamp(): BigInteger = timestamp.bigInteger
   /**Java accessor for waveform, returns an Array[Int] clone.*/
   def getWaveform(): Array[Int] = waveform.toArray[Int]
-  /**Java accessor for channels, alias for [[channels()]].*/
+  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.channels]].*/
   def getChannels(): Int = channels
-  /**Java accessor for channels, alias for [[unitNo()]].*/
+  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.unitNo]].*/
   def getUnitNo(): Long = unitNo
 
   // </editor-fold>
@@ -47,7 +68,14 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
 
 //  def toArray() = Array.tabulate(channels)(p => waveform( :: , p ).toArray )
 
-  override def isCompatible(that: NNElement) = false
+  override def isCompatible(that: NNElement) = that match {
+    case x: NNSpike => {
+      getClass == x.getClass &&
+      waveform.length == x.waveform.length &&
+      channels == x.channels
+    }
+
+  }
 
 }
 
@@ -70,15 +98,3 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
 //  //  }
 //
 //}
-
-
-//class NNSpikeFrame(override val time : Long,
-//                  override val waveform: Array[Array[Int]],
-//                  unitNo: Int = 0,
-//                  val segment: Int)
-//  extends NNSpike(time, waveform, unitNo){
-//
-//    lazy val frame = time.toInt
-//
-//}
-//

@@ -1,8 +1,9 @@
 package nounou.elements.data
 
-import nounou.elements.{NNDataScale, NNDataTiming}
-import nounou.elements.ranges.{SampleRangeValid}
 import breeze.linalg.{DenseMatrix => DM, DenseVector => DV}
+import nounou.elements._scale.NNDataScale
+import nounou.elements._timing.NNDataTiming
+import nounou.elements.ranges.SampleRangeValid
 
 /**NNData class with internal representation as data array.
  */
@@ -10,7 +11,7 @@ class NNDataPreloaded( val data: Array[DV[Int]], timingEntry: NNDataTiming, scal
   extends NNData  {
 
     setScale(scaleEntry)
-    setTiming(timingEntry)
+    override val timing = timingEntry
 
     override def getChannelCount: Int = data.length
 

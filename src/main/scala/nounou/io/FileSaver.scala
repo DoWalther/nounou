@@ -2,20 +2,22 @@ package nounou.io
 
 import java.io.File
 import java.util.ServiceLoader
+
 import nounou.NN._
-import nounou.elements.data.{NNDataChannelArray, NNDataChannel}
-import nounou.util.LoggingExt
-import scala.collection.JavaConverters._
 import nounou.elements.NNElement
+import nounou.io.neuralynx.fileAdapters.FileAdapterNCS
+import nounou.util.LoggingExt
+
+import scala.collection.JavaConverters._
 import scala.collection.mutable
 
 /** This singleton FileSaver object is the main point of use for file saving
-  * (use via [[nounou.NN.save()]]).
+  * (use via [[nounou.NN.save(fileName:String,data:Ar*]]).
   * It maintains a list of available savers in the system (from /resources/META-INF/services/nounou.io.FileSaver),
   * and uses the first saver which satisfies the specified file extension and data objects.
   *
   * Alternatively, specific FileSaver objects can be used, such as:
-  * [[nounou.io.neuralynx.FileAdapterNCS.save()]]. In this case, you can specify
+  * [[nounou.io.neuralynx.fileAdapters.FileAdapterNCS.save(*]]. In this case, you can specify
   * non-standard file extensions (will get warning; not recommended).
   *
   */
@@ -39,7 +41,7 @@ object FileSaver {
 
       //If the given extension has not been tested yet, it will be searched for within the available loaders
       case _ => {
-        val possibleSavers: List[FileSaver] = savers.filter( _.canSaveExtension(fileExtension)).toList
+        val possibleSavers: List[FileSaver] = savers.filter( _.canSave(fileExtension)).toList
 
         if( possibleSavers.length == 0 ) {
           throw loggerError(s"Cannot find saver for file name: $fileName")
@@ -83,22 +85,44 @@ trait FileSaver extends LoggingExt {
   final lazy val standardExtension: String = canSaveExtensions(0)
 
   /**Whether the given file can be saved. For now, based simply on a match with the file extension.*/
-  final def canSaveFile(file: File): Boolean = canSaveFile( file.getName )
-  /**Whether the given file can be saved. For now, based simply on a match with the file extension.*/
-  final def canSaveFile(fileName: String): Boolean = canSaveExtension( nounou.util.getFileExtension(fileName) )
-  /**Whether the given extension can be saved.*/
-  final def canSaveExtension(extension: String): Boolean = canSaveExtensions.contains( extension.toLowerCase )
+  final def canSave(file: File): Boolean = canSave( file.getName )
+  /**Whether the given file (or extension, if plain extension given)
+    * can be saved. For now, based simply on a match with [[canSaveExtensions]].*/
+  final def canSave(fileName: String): Boolean = canSaveExtensions.contains( nounou.util.getFileExtension(fileName).toLowerCase )
 
   /** Whether a certain array of objects can be saved, implement with match.*/
   def canSaveObjectArray(obj: Array[NNElement]): Boolean
 
 
-  /**Actual saving of file.
+  /**'''__MUST OVERRIDE__''' Actual saving of file. Assume that canSaveObjectArray(data)==true.
     * @param fileName if the filename does not end with the correct extension, the standard extension will be appended.
     *                 If the filename exists, it will be given a postscript after the filename.
     */
-  def save(fileName: String, data: Array[NNElement]): Unit
+  def saveImpl(fileName: String, data: Array[NNElement]): Unit
+
+  /**Checks if canSaveObjectArray(data)==true, and if so, calls saveImpl().
+    */
+  final def save(fileName: String, data: Array[NNElement]): Unit = {
+    if(canSaveObjectArray(data)) saveImpl(fileName, data)
+    else throw loggerError("data input {} cannot be saved with this FileSaver object!", data.toString )
+  }
   final def save(fileName: String, data: NNElement): Unit = save(fileName, Array(data))
 
 }
 
+/** This [[FileLoader]] instance serves as a placeholder in the loader list
+  * for extensions which have already been
+  * searched for in the META-INF and do not exist.
+  */
+final class FileSaverNull(override val canSaveExtensions: Array[String]) extends FileSaver{
+
+  def this(canSaveExtension: String) {
+    this( Array[String](canSaveExtension) )
+  }
+
+  override def saveImpl(fileName: String, data: Array[NNElement]): Unit = {
+    throw loggerError(s"The file ${fileName} has no valid FileSaver yet.")
+  }
+
+  override def canSaveObjectArray(obj: Array[NNElement]): Boolean = false
+}

@@ -1,6 +1,6 @@
 package nounou.elements.data
 
-trait NNDataChannelNumbered{
+trait NNDataChannelNumbered {
 
   /** Channel number pre-assigned to a channel by eg DAQ system
     */

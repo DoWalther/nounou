@@ -14,6 +14,7 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.1.7" % "test",
   "ch.qos.logback" % "logback-classic" % "1.1.3",
   "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
+//  "org.scalanlp" %% "breeze_2.11" % "0.12-SNAPSHOT",
   "org.scalanlp" %% "breeze" % "0.11.2",
   "org.scalanlp" %% "breeze-natives" % "0.11.2",
   "com.google.code.gson" % "gson" % "2.3.1",

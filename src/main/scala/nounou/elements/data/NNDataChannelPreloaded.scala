@@ -1,7 +1,8 @@
 package nounou.elements.data
 
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements.{NNDataScale, NNDataTiming}
+import nounou.elements._scale.NNDataScale
+import nounou.elements._timing.NNDataTiming
 
 /**
  * Created by ktakagaki on 15/05/21.
@@ -10,7 +11,7 @@ class NNDataChannelPreloaded(val data: DV[Int], timingEntry: NNDataTiming, scale
                              override val channelName: String
                               )  extends NNDataChannel {
 
-  setTiming(timingEntry)
+  override val timing = timingEntry
   setScale(scaleEntry)
 
   //ToDo2 test the DV length against segment lengths

@@ -1,16 +1,17 @@
 package nounou.elements.data
 
-import nounou._
-import nounou.elements.{NNDataScaleElement, NNDataTimingElement, NNElement}
-import nounou.elements.NNDataScaleElement
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid, SampleRangeAll}
+import nounou._
+import nounou.elements._scale.NNDataScaleElement
+import nounou.elements._timing.NNDataTimingElement
+import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid}
+import nounou.elements.NNElement
 
 /**
  * Created by Kenta on 12/14/13.
  */
-abstract class NNDataChannel extends NNElement
-                              with NNDataTimingElement with NNDataScaleElement {
+trait NNDataChannel extends NNDataTimingElement with NNDataScaleElement {
+
 
   /**MUST OVERRIDE: name of the given channel.*/
   val channelName: String
@@ -63,17 +64,8 @@ abstract class NNDataChannel extends NNElement
     }
   }
 
-  override def toString() = {
-    s"NNDataChannel(${timing().segmentCount} segments, fs=${timing().sampleRate}, $gitHeadShort)"
-  }
-  override def toStringFull(): String = toString()
-//  {
-//    var tempout = toString().dropRight(1) + " )/n" //+
-//      //"============================================================/n" +
-//      //"seg#/tsegmentLength/tsegmentStartTs/n"
-//    tempout.dropRight(1)
-//  }
-
+  override def toStringImpl() = s"${timing().segmentCount} segments, fs=${timing().sampleRate},  "
+  override def toStringFullImpl() = ""
 
 }
 

@@ -3,20 +3,21 @@ package nounou.io
 import java.io.File
 import java.util.ServiceLoader
 
-import nounou.NN._
-import nounou.elements.data.{NNDataChannelArray, NNDataChannel}
-import nounou.util.LoggingExt
-import scala.collection.JavaConverters._
 import nounou.elements.NNElement
+import nounou.elements.data.{NNDataChannel, NNDataChannelArray}
+import nounou.io.neuralynx.fileAdapters.FileAdapterNCS
+import nounou.util.LoggingExt
+
+import scala.collection.JavaConverters._
 import scala.collection.mutable
 
 /** This singleton FileLoader object is the main point of use for file saving
-  * (use via [[nounou.NN.load()]]).
+  * (use via [[nounou.NN.load(fileNames:Arr*]]).
   * It maintains a list of available loaders in the system (from /resources/META-INF/services/nounou.io.FileLoader),
   * and uses the first loader which can load the specified file extension.
   *
   * Alternatively, specific FileLoader objects can be used, such as:
-  * [[nounou.io.neuralynx.FileAdapterNCS.load()]]. In this case, you can try to read from files with
+  * [[nounou.io.neuralynx.fileAdapters.FileAdapterNCS.load(file:java\.io\.F*]]. In this case, you can try to read from files with
   * non-standard file extensions (will get warining; not recommended).
   *
   */
@@ -39,7 +40,7 @@ object FileLoader extends LoggingExt {
 
       //If the given extension has not been tested yet, it will be searched for within the available loaders
       case _ => {
-        val possibleLoaders: Iterator[FileLoader] = loaders.filter( _.canLoadExtension(fileExtension))
+        val possibleLoaders: Iterator[FileLoader] = loaders.filter( _.canLoad(fileExtension))
         val possibleLoader = if( possibleLoaders.hasNext ){
           val tempret = possibleLoaders.next
           if( possibleLoaders.hasNext ) {
@@ -89,7 +90,7 @@ object FileLoader extends LoggingExt {
   * double inheritance of classes is not possible in Scala.
   *
   * The interface is subject to slight changes in the near future due to
-  * handling of files which output multiple [[NNElement]] objects.
+  * handling of files which output multiple [[nounou.elements.NNElement]] objects.
   * Some of these objects need to be integrated into a bigger object,
   * this will be written in to the trait.
  */
@@ -98,11 +99,10 @@ trait FileLoader extends LoggingExt {
   /**'''__MUST OVERRIDE__''' A list of __lower-case__ extensions which can be loaded.*/
   val canLoadExtensions: Array[String]
   /**Whether the given file can be loaded. For now, based simply on a match with the file extension.*/
-  final def canLoadFile(file: File): Boolean = canLoadFile( file.getName )
-  /**Whether the given file can be loaded. For now, based simply on a match with the file extension.*/
-  final def canLoadFile(fileName: String): Boolean = canLoadExtension( nounou.util.getFileExtension(fileName) )
-  /**Whether the given extension can be loaded. For now, based simply on a match with the file extension.*/
-  final def canLoadExtension(extension: String): Boolean = canLoadExtensions.contains( extension.toLowerCase )
+  final def canLoad(file: File): Boolean = canLoad( file.getName )
+  /**Whether the given file (or extension, if plain extension given)
+    * can be loaded. For now, based simply on a match with [[canLoadExtensions]].*/
+  final def canLoad(fileName: String): Boolean = canLoadExtensions.contains( nounou.util.getFileExtension(fileName).toLowerCase )
 
   /**'''__MUST OVERRIDE__''' Actual loading of file.*/
   def load(file: File): Array[NNElement]
@@ -115,9 +115,11 @@ trait FileLoader extends LoggingExt {
   * for extensions which have already been
   * searched for in the META-INF and do not exist.
   */
-final class FileLoaderNull extends FileLoader{
+final class FileLoaderNull(override val canLoadExtensions: Array[String]) extends FileLoader{
 
-  override val canLoadExtensions: Array[String] = Array[String]()
+  def this(canLoadExtension: String) {
+    this( Array[String](canLoadExtension) )
+  }
 
   /** Actual loading of file. */
   override def load(file: File): Array[NNElement] = {
@@ -125,38 +127,3 @@ final class FileLoaderNull extends FileLoader{
   }
 
 }
-
-
-//trait FileAdapter extends LoggingExt {
-//
-//  /** Must be overridden, list of extensions (in lower case) which can be read.
-//    */
-//  val canLoadExt: Array[String]
-//  /** Must be overridden, list of extensions (in upper case) which can be read.
-//    */
-//  val canWriteExt: Array[String]
-//
-////  //Adds loader to program loader library
-////  FileAdapter.loaders.++=( canLoadExt.map( str => (str, this)) )
-////  //Adds writer to program loader library
-////  FileAdapter.writers.++=( canWriteExt.map( str => (str, this)) )
-
-
-//  //Writing and saving will be delegated to the actual class to be written or saved.
-//
-////  /** Inheriting classes will implement data writers by implementing implicit instances of this trait.
-////    * This design pattern allows the write( fileName, data ) to take multiple forms of "data."
-////    * Some adapters might write only XData, others XEvents....
-////    *
-////    * @tparam Data
-////    */
-////  trait CanWrite[Data]{
-////    def apply(data: Data, fileName: String/*, options: OptFileAdapter*/)
-////  }
-////
-////  final def save(data: X, fileName: String): Unit = saveImpl(data, fileName/*, options: OptFileAdapter*/)
-////
-////  /** The minimal requirement which a file loader must satisfy. Default is to throw error (i.e. cannot load files;
-////    * used for writer objects.)
-////    */
-////  def saveImpl(data: X, fileName: String/*, options: OptFileAdapter*/): Unit

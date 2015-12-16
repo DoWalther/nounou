@@ -2,27 +2,25 @@ package nounou
 
 //import breeze.linalg.DenseVector
 
-import java.util.ServiceLoader
-
-import com.google.gson.Gson
-import scala.collection.JavaConverters._
 import breeze.linalg.DenseVector
+import breeze.numerics.sin
 import nounou.elements.NNElement
-import nounou.elements.data.{NNDataChannelArray, NNDataChannel, NNData}
+import nounou.elements.data.NNData
 import nounou.elements.data.filters.NNDataFilterMedianSubtract
-import nounou.io.{FileSaver, FileLoaderNull, FileLoader}
 import nounou.elements.ranges._
+import nounou.io.{FileLoader, FileSaver}
 //import nounou.io.FileLoader._
 import nounou.util.{LoggingExt, NNGit}
 
-import scala.collection.mutable
 
-
-/**A static class which encapsulates convenience functions for using nounou, with
- * an emphasis on use from Mathematica/MatLab/Java (avoidance of Java-unfriendly Scala constructs)
+/** The static convenience frontend to use all main functionality of nounou from Mathematica/MatLab/Java
+  * (with avoidance of Java-unfriendly Scala constructs).
+  *
+  * In idiomatic Scala, Many of these functions would be put in
+  * companion objects as an apply method (i.e. SampleRange.apply(start, last, step, segment). These are
+  * consolidated here instead to facilitate access through Java.
   *
  * @author ktakagaki
- * //@date 2/17/14.
  */
 object NN extends LoggingExt {
 
@@ -30,20 +28,54 @@ object NN extends LoggingExt {
       "Welcome to nounou, a Scala/Java adapter for neurophysiological data.\n" +
       NNGit.infoPrintout
 
+  /**Test method for DW*/
+  final def testArray(): Array[Double] = sin( breeze.linalg.DenseVector.tabulate(100)( _.toDouble/50d * 2d * math.Pi )).toArray
+
+  //ToDo SL
+  def popUpSFXWindow(): Unit ={
+    //Popup up hello world here with a JavaFX Canvas
+    ???
+  }
+
+  // <editor-fold defaultstate="collapsed" desc=" file loading/saving ">
+
+  /**Load a file into appropriate subtypes of [[nounou.elements.NNElement]]
+    * @return an array of [[nounou.elements.NNElement]] objects
+    */
   final def load(fileName: String): Array[NNElement] = FileLoader.load(fileName)
+  /**Load a list of files into appropriate subtypes of [[nounou.elements.NNElement]].
+    * If multiple files are compatible (e.g. multiple Neuralynx channel data files with compatible timings),
+    * they will be joined.
+    * @return an array of [[nounou.elements.NNElement]] objects
+    */
   final def load(fileNames: Array[String]): Array[NNElement] = FileLoader.load(fileNames)
+  /**Save an [[nounou.elements.NNElement]] object into the given file.
+    *File type will be inferred from the filename extension.
+    *
+    * @return an array of [[nounou.elements.NNElement]] objects
+    */
   final def save(fileName: String, data: NNElement): Unit  = FileSaver.save( fileName, data)
+  /**Save an array of [[nounou.elements.NNElement]] object into the given file.
+    *This allows you to specify multiple types of data Array(NNData, NNEvents, NNSpikes)
+    *for saving into compound file formats (e.g. NEX).
+    */
   final def save(fileName: String, data: Array[NNElement]): Unit  = FileSaver.save(fileName, data)
 
-
+  // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" options ">
 
   def OptNull() = nounou.OptNull
 
+  /**Option to be used in [[nounou.analysis.threshold]]
+    */
+  case class OptThresholdBlackout(frames: Int) extends Opt {
+    loggerRequire(frames > 0, "blackout must be >0")
+  }
+
   // </editor-fold>
 
-  // <editor-fold defaultstate="collapsed" desc=" frame ranges ">
+  // <editor-fold defaultstate="collapsed" desc=" sample ranges ">
 
   /**This is the full signature for creating a [[nounou.elements.ranges.SampleRange SampleRange]].*/
   final def SampleRange(start: Int, last: Int, step: Int, segment: Int) = new SampleRange(start, last, step, segment)
@@ -54,41 +86,43 @@ object NN extends LoggingExt {
 //  final def SampleRange(start: Int, last: Int, step: Int)               = new SampleRange(start, last, step, -1)
 //  final def SampleRange(start: Int, last: Int, segment: Int)            = new SampleRange(start, last, -1,   segment)
 //  final def SampleRange(start: Int, last: Int)                          = new SampleRange(start,    last,     -1,       -1)
-  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Tuple containing start and end. segment=-1 is assumed.
     */
   final def SampleRange( range: (Int, Int) )                            = new SampleRange(start = range._1, last = range._2, step = -1, segment = -1)
-  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Tuple containing start and end.
     * @param segment Which segment to read from
     */
   final def SampleRange( range: (Int, Int), segment: Int)               = new SampleRange(start = range._1, last = range._2, step = -1, segment)
-  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Tuple containing start, end, and step. segment=-1 is assumed.
     */
   final def SampleRange( range: (Int, Int, Int) )                       = new SampleRange(start = range._1, last = range._2, step = range._3, segment = -1)
-  /** Scala-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Tuple containing start, end, and step
     * @param segment Which segment to read from
     */
   final def SampleRange( range: (Int, Int, Int), segment: Int )         = new SampleRange(start = range._1, last = range._2, step = range._3, segment)
-  /** Java-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Java Array-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Array containing start, end, and optionally, step
     * @param segment Which segment to read from
     */
   final def SampleRange( range: Array[Int], segment: Int ): SampleRangeSpecifier =
     nounou.elements.ranges.SampleRange.convertArrayToSampleRange(range, segment)
-  /** Java-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  /** Java Array-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Array containing start, end, and optionally, step. segment = -1 is assumed.
     */
   final def SampleRange( range: Array[Int] ): SampleRangeSpecifier = SampleRange( range, -1 )
 
+  /**Constructor method for a sample range specifying a whole segment
+    */
   final def SampleRangeAll(step: Int, segment: Int) = new SampleRangeAll(step, segment)
   final def SampleRangeAll() = new SampleRangeAll(1, -1)
 
@@ -96,10 +130,10 @@ object NN extends LoggingExt {
 
   // <editor-fold defaultstate="collapsed" desc=" RangeTs ">
 
-  final def SampleRangeTs(startTs: Long, endTS: Long, stepTS: Long): SampleRangeTS =
-    new SampleRangeTS(startTs, endTS, stepTS)
-  final def FrameRangeTs(startTs: Long, endTS: Long): SampleRangeTS =
-    new SampleRangeTS(startTs, endTS, -1L)
+  final def SampleRangeTs(startTs: Long, endTS: Long, stepTS: Long): SampleRangeTs =
+    new SampleRangeTs(startTs, endTS, stepTS)
+  final def FrameRangeTs(startTs: Long, endTS: Long): SampleRangeTs =
+    new SampleRangeTs(startTs, endTS, -1L)
 
 //  final def RangeTs(stamps: Array[Long], preTS: Long, postTS: Long): Array[ranges.RangeTs] =
 //    stamps.map( (s: Long) => ranges.RangeTs(s-preTS, s+postTS) )
@@ -137,46 +171,3 @@ object NN extends LoggingExt {
 
 //final def XSpikes(waveformLength: Int, xTrodes: XTrodes ) = new XSpikes(waveformLength, xTrodes)
 //  final def newNNData: NNData = new NNData
-
-
-//  // <editor-fold defaultstate="collapsed" desc=" RangeTsEvent ">
-//
-//  def RangeTsEvent(eventTs: Long, preFrames: Int, postFrames: Int) =
-//    ranges.RangeTsEvent(eventTs, preFrames, postFrames)
-//
-//  def RangeTsEvent(eventTs: Array[Long], preFrames: Int, postFrames: Int) =
-//    ranges.RangeTsEvent(eventTs, preFrames, postFrames)
-//
-//  // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc=" RangeMs ">
-
-////  final def RangeMs(startMs: Double, lastMs: Double, stepMs: Double, optSegment: OptSegment) =
-////    ranges.RangeMs(startMs, lastMs, stepMs, optSegment)
-//  final def RangeMs(startMs: Double, lastMs: Double, stepMs: Double) =
-//    ranges.RangeMs(startMs, lastMs, stepMs)
-////  final def RangeMs(startMs: Double, lastMs: Double, optSegment: OptSegment) =
-////    ranges.RangeMs(startMs, lastMs, optSegment)
-//  final def RangeMs(startMs: Double, lastMs: Double)=
-//    ranges.RangeMs(startMs, lastMs)
-
-// </editor-fold>
-// <editor-fold defaultstate="collapsed" desc=" RangeMsEvent ">
-
-//  final def RangeMsEvent(eventMs: Double, preMs: Double, postMs: Double, stepMs: Double, optSegment: OptSegment) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs, stepMs, optSegment)
-//  final def RangeMsEvent(eventMs: Double, preMs: Double, postMs: Double, optSegment: OptSegment) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs, optSegment)
-//  final def RangeMsEvent(eventMs: Double, preMs: Double, postMs: Double, stepMs: Double) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs, stepMs)
-//  final def RangeMsEvent(eventMs: Double, preMs: Double, postMs: Double) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs)
-////  final def RangeMsEvent(eventMs: Array[Double], preMs: Double, postMs: Double, optSegment: OptSegment) =
-////    ranges.RangeMsEvent(eventMs, preMs, postMs, optSegment)
-//  final def RangeMsEvent(eventMs: Array[Double], preMs: Double, postMs: Double) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs)
-////  final def RangeMsEvent(eventMs: Array[Double], preMs: Double, postMs: Double, stepMs: Double, optSegment: OptSegment) =
-////    ranges.RangeMsEvent(eventMs, preMs, postMs, stepMs, optSegment)
-//  final def RangeMsEvent(eventMs: Array[Double], preMs: Double, postMs: Double, stepMs: Double) =
-//    ranges.RangeMsEvent(eventMs, preMs, postMs, stepMs)
-
-// </editor-fold>

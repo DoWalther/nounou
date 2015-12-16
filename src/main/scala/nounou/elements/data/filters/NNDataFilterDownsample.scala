@@ -1,11 +1,9 @@
 package nounou.elements.data.filters
 
 import _root_.nounou.elements.ranges.SampleRangeValid
-import nounou.elements.NNDataTiming
-import nounou.elements.data.NNData
-import breeze.signal.support.FIRKernel1D
-import breeze.signal._
 import breeze.linalg.{DenseVector => DV, min}
+import nounou.elements._timing.NNDataTiming
+import nounou.elements.data.NNData
 
 /**
  * @author ktakagaki
@@ -18,18 +16,10 @@ class NNDataFilterDownsample( private val parentVal: NNData, protected var facto
 
   def this(parentVal: NNData) = this(parentVal, 10)
 
-  // <editor-fold defaultstate="collapsed" desc=" toString/toStringFull ">
-
-  override def toString() = {
-    if(factor == 1) "XDataFilterDownsample: off (factor=1)"
-    else "XDataFilterDownsample: factor=" + factor
-  }
-
-  // </editor-fold>
-
   // <editor-fold defaultstate="collapsed" desc=" factor-related ">
 
   protected var timingBuffer: NNDataTiming = parentVal.timing()
+  override def timing(): NNDataTiming = timingBuffer
 
   final def factor(): Int = getFactor()
   /** Java-style alias for [[factor]].
@@ -45,14 +35,13 @@ class NNDataFilterDownsample( private val parentVal: NNData, protected var facto
         parentVal.timing.sampleRate / factor,
         (for(seg <- 0 until parentVal.timing.segmentCount)
         yield ( (parentVal.timing.segmentLength(seg) - 1).toDouble/factor).round.toInt + 1 ).toArray,
-        parentVal.timing.segmentStartTimestamps
+        parentVal.timing.segmentStartTss
         )
       //logger.info( "changed factor to {}", factor.toString )
       changedData()
     }
   }
 
-  override def getTiming(): NNDataTiming = timingBuffer
 
 //  //override def sampleRate: Double = _parent.sampleRate / factor
 //  override def segmentLengthImpl(segment: Int): Int =

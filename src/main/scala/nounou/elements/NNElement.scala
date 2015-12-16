@@ -4,13 +4,22 @@ import java.io.File
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 
-import nounou.elements.layouts.NNDataLayoutHexagonal
+import nounou.elements.headers.NNHeader
+import nounou.elements._layout.NNDataLayoutHexagonal
 import nounou.util.LoggingExt
 
 /** Base class for all data elements.
+  * Mainly provides:
+  *   + git tracking, versioning
+  *   + toString printout basics
+  *   + JSON serialization
+  *   + logging capabilities
   */
-abstract class NNElement extends LoggingExt {
+trait NNElement extends LoggingExt {
 
+//  /** '''[NNElement]''' __'''SHOULD OVERRIDE'''__
+//    */
+//  def header(): NNHeader = null
   //ToDo3: consider add: pt info, rec info, rec start time/date, etc
 
   /**'''[NNElement]''' getCanonicalName, buffered for serialization with GSON. */
@@ -20,7 +29,8 @@ abstract class NNElement extends LoggingExt {
   /**'''[NNElement]''' Git HEAD of the current revision, buffered for serialization with GSON.*/
   lazy val gitHead = nnGitObj.getGitHead
   /**'''[NNElement]''' Git HEAD shortened to first 10 characters.*/
-  @transient lazy val gitHeadShort = gitHead.take(10)
+  @transient
+  lazy val gitHeadShort = gitHead.take(10)
 
   /**'''[NNElement]''' Reads global [[nounou]] version number, buffered for serialization with GSON.*/
   val version = nounou.version
@@ -28,20 +38,37 @@ abstract class NNElement extends LoggingExt {
   /**'''[NNElement]'''*/
   def toJsonString: String = nounou.gson.toJson( this )
 
-  override def toString(): String = getClass.getName
-  /**Output string with short git head. Each implementation (eg [[nounou.elements.data.filters.NNDataFilter]]
-    * objects should update this to provide information specific to the specific filter, etc.
+  // <editor-fold defaultstate="collapsed" desc=" toString and related ">
+
+  override final def toString(): String = getClass.getName + "(" + toStringImpl + ")"
+
+  /** The contents of the [[nounou.elements.NNElement.toString()*]] output to be given within parenthesis after the class name.
     */
-  def toStringFull(): String = {
-    var tempout = toString().dropRight(1) + s"$gitHeadShort)/n" //+
-    //"============================================================/n" +
-    tempout.dropRight(1)
+  def toStringImpl(): String
+  /** Lines to be output for [[nounou.elements.NNElement.toStringFull()*]], after [[nounou.elements.NNElement.toString()*]] output and line divider.
+    */
+  def toStringFullImpl(): String
+  /**Usually multiline output string, starting with [[nounou.elements.NNElement.toString()*]] output and then
+    * more detailed information, where available.
+    */
+  final def toStringFull(): String = {
+    val tempTail =
+      if( toStringFullImpl() == "" ){ "" }
+      else {
+        ("/n============================================================/n" +
+        toStringFullImpl())
+      }
+    toString().dropRight(1) + s", $gitHeadShort)" + tempTail
   }
 
-  /** __'''SHOULD OVERRIDE'''____ Whether an NNElement is compatible with another for merging, etc.
+  // </editor-fold>
+
+  /** __'''SHOULD OVERRIDE'''__ Whether an [[nounou.elements.NNElement]] is compatible with another for merging
+    * (eg [[nounou.elements.data.NNData]])
+    *  or comparison (eg [[nounou.elements.spikes.NNSpike]]) etc.
     */
   def isCompatible(that: NNElement): Boolean
-  /** __'''SHOULD OVERRIDE'''____ Whether NNElements are compatible with another for merging, etc.
+  /** Whether multiple [[nounou.elements.NNElement]]s are compatible with another for merging, etc.
     */
   final def isCompatible(that: Seq[NNElement]): Boolean = that.forall( this.isCompatible(_) )
 

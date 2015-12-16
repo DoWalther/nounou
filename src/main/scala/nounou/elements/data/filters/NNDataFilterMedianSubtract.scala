@@ -1,12 +1,11 @@
 package nounou.elements.data.filters
 
-import nounou.elements.data.NNData
-
-import breeze.numerics.isOdd
-import breeze.stats.median
 import breeze.linalg.{DenseVector => DV}
-import breeze.signal.{filterMedian, OptOverhang}
-import nounou.elements.ranges.{SampleRangeValid, SampleRange}
+import breeze.numerics.isOdd
+import breeze.signal.{OptOverhang, filterMedian}
+import breeze.stats.median
+import nounou.elements.data.NNData
+import nounou.elements.ranges.{SampleRange, SampleRangeValid}
 
 /**This filter applies a median subtraction, which is a non-linear form of high-pass which is
   * less biased by extreme transients like spiking.
@@ -16,14 +15,27 @@ import nounou.elements.ranges.{SampleRangeValid, SampleRange}
 class NNDataFilterMedianSubtract( private var parenVar: NNData ) extends NNDataFilter( parenVar ) {
 
   private var _windowLength = 1
+  private var windowLengthHalf = 0
+  _active = false
   private val upstreamBuff: NNData = new NNDataFilterBuffer(parenVar)
 
-  var windowLengthHalf = 0
+  override def toStringImpl() = {
+    if(_windowLength==1) "off/no median subtract, "
+    else s"windowLength=$windowLength, "
+  }
+  override def toStringFullImpl() = ""
+
+
+
   def setWindowLength( value: Int ): Unit = {
     loggerRequire( value > 0, "Parameter windowLength must be bigger than 0, invalid value: {}", value.toString)
     loggerRequire( isOdd(value), "Parameter windowLength must be odd to account correctly for overhangs, invalid value: {}", value.toString)
-    _windowLength = value
-    windowLengthHalf = (_windowLength-1)/2
+    if(_windowLength != value){
+      _windowLength = value
+      windowLengthHalf = (_windowLength-1)/2
+      setActive( if(_windowLength == 1) false else true )
+      changedData()
+    }
   }
   def getWindowLength(): Int = _windowLength
   def windowLength_=( value: Int ) = setWindowLength( value )
