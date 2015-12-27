@@ -79,13 +79,13 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
   def getBufferPage(frame: Int) = frame/bufferPageLength
   def getBufferIndex(frame: Int) = frame%bufferPageLength
 
-  override def readPointImpl(channel: Int, frame: Int, segment: Int): Int = {
+  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int = {
     loggerRequire(channel<maxChannel, "Cannot buffer more than {} channels!", maxChannel.toString)
     loggerRequire(segment<maxSegment, "Cannot buffer more than {} segments!", maxSegment.toString)
     buffer( bufferHashKey(channel, getBufferPage(frame), segment) )( getBufferIndex(frame) )
   }
 
-  override def readTraceDVImpl(channel: Int, range: SampleRangeValid): DenseVector[Int] = {
+  override def readTraceIntDVImpl(channel: Int, range: SampleRangeValid): DenseVector[Int] = {
     loggerRequire(channel<maxChannel, "Cannot buffer more than {} channels!", maxChannel.toString)
     loggerRequire(range.segment<maxSegment, "Cannot buffer more than {} segments!", maxSegment.toString)
 
@@ -138,7 +138,7 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
   // <editor-fold defaultstate="collapsed" desc=" ReadingHashMapBuffer ">
 
   //redirection function to deal with scope issues regarding super
-  private def tempTraceReader(ch: Int, rangeFrValid: SampleRangeValid) = _parent.readTraceDVImpl(ch, rangeFrValid)
+  private def tempTraceReader(ch: Int, rangeFrValid: SampleRangeValid) = _parent.readTraceIntDVImpl(ch, rangeFrValid)
 
   class ReadingHashMapBuffer extends WeakHashMap[Long, DenseVector[Int]] {
 

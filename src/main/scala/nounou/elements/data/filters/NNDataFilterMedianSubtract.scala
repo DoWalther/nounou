@@ -44,23 +44,23 @@ class NNDataFilterMedianSubtract( private var parenVar: NNData ) extends NNDataF
 
   // <editor-fold defaultstate="collapsed" desc=" calculate data ">
 
-  override def readPointImpl(channel: Int, frame: Int, segment: Int): Int =
+  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int =
     if(windowLength == 1){
-      upstreamBuff.readPointImpl(channel, frame, segment)
+      upstreamBuff.readPointIntImpl(channel, frame, segment)
     } else {
       //by calling upstream.readTrace instead of upstream.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
-      val tempData = upstreamBuff.readTraceDV(
+      val tempData = upstreamBuff.readTraceIntDV(
                           channel,
                           new SampleRange(frame - windowLengthHalf, frame + windowLengthHalf, 1, segment) )
       median(tempData).toInt
     }
 
-  override def readTraceDVImpl(channel: Int, ran: SampleRangeValid): DV[Int] =
+  override def readTraceIntDVImpl(channel: Int, ran: SampleRangeValid): DV[Int] =
     if(windowLength == 1){
-      upstreamBuff.readTraceDVImpl(channel, ran)
+      upstreamBuff.readTraceIntDVImpl(channel, ran)
     } else {
       //by calling upstream.readTrace instead of upstream.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
-      val tempData = upstreamBuff.readTraceDV(
+      val tempData = upstreamBuff.readTraceIntDV(
         channel,
         new SampleRange( ran.start - windowLengthHalf, ran.last + windowLengthHalf, 1, ran.segment) )
       tempData(windowLengthHalf to -windowLengthHalf-1) - filterMedian(tempData, windowLength, OptOverhang.None)

@@ -43,24 +43,24 @@ class NNDataFilterDecimate( parentVar: NNData )
 
 
 
-    override def readPointImpl(channel: Int, frame: Int, segment: Int): Int =
+    override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int =
       if(kernel == null){
-        parentVar.readPointImpl(channel, frame, segment)
+        parentVar.readPointIntImpl(channel, frame, segment)
       } else {
         //by calling _parent.readTrace instead of _parent.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
-        val tempData = parentVar.readTraceDV( channel, SampleRange(frame * factor - kernel.overhangPre, frame * factor + kernel.overhangPost, 1))//, OptSegment(segment) ))
+        val tempData = parentVar.readTraceIntDV( channel, SampleRange(frame * factor - kernel.overhangPre, frame * factor + kernel.overhangPost, 1))//, OptSegment(segment) ))
         val tempRet = convolve( DV( tempData.map(_.toLong).toArray ), kernel.kernel, overhang = OptOverhang.None )
         require( tempRet.length == 1, "something is wrong with the convolution!" )
         tempRet(0).toInt
       }
 
-    override def readTraceDVImpl(channel: Int, range: SampleRangeValid/*Range.Inclusive, segment: Int*/): DV[Int] =
+    override def readTraceIntDVImpl(channel: Int, range: SampleRangeValid /*Range.Inclusive, segment: Int*/): DV[Int] =
       if(kernel == null){
-          parentVar.readTraceDVImpl(channel, range/*, segment*/)
+          parentVar.readTraceIntDVImpl(channel, range/*, segment*/)
       } else {
           //by calling _parent.readTrace instead of _parent.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
           val realRange = new SampleRangeReal(range.start * factor - kernel.overhangPre, range.last * factor + kernel.overhangPost, 1, range.segment )
-          val tempData = parentVar.readTraceDV(channel, realRange)
+          val tempData = parentVar.readTraceIntDV(channel, realRange)
             //RangeFr(range.start * factor - kernel.overhangPre, range.last * factor + kernel.overhangPost, 1, OptSegment(segment) ))
 //        println("tempData: " + tempData.length)
 //        println("kernel: " + kernel.kernel.length)

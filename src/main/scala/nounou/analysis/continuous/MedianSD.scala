@@ -20,13 +20,13 @@ object MedianSD extends LoggingExt {
     val vfr = frameRange.getSampleRangeValid(data)
     if( vfr.length <= sampleLength ){
       //if the data range is short enough, take the median estimate from the whole data range
-      (median( abs(  data.readTraceDV(channel, frameRange)  ) ).toDouble / 0.6745).intValue
+      (median( abs(  data.readTraceIntDV(channel, frameRange)  ) ).toDouble / 0.6745).intValue
     } else {
       //if the data range is long, take random samples for cutoff SD estimate
       val seg = frameRange.getRealSegment(data)
       val sampleSeg =  sampleLength/100
       val samp = randomInt( 100, (0, data.timing.segmentLengths( seg )-1-sampleSeg ) ).toArray.sorted.map(
-        (p: Int) => median(abs(data.readTraceDV( channel, SampleRange(p, p + sampleSeg - 1, 1, seg)) ))
+        (p: Int) => median(abs(data.readTraceIntDV( channel, SampleRange(p, p + sampleSeg - 1, 1, seg)) ))
       )
       (median( DenseVector(samp) ).toDouble / 0.6745).intValue
     }

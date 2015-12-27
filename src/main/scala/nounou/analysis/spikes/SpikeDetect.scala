@@ -129,7 +129,7 @@ object SpikeDetect extends LoggingExt {
     val tempret =
     rangeList.par.flatMap(
       (r: SampleRangeValid) => {
-        val analysisData = data.readTrace(channel, r)
+        val analysisData = data.readTraceInt(channel, r)
         //ToDo 2: convert the following median SD estimate into a breeze function
         val thresholdValue = convert(optThresholdSDFactor * median( DenseVector( abs(analysisData) ) ) /0.6745, Int)
         val tempretInner = threshold(analysisData, thresholdValue, opts: _*).map( (x: Int) => x + r.start )

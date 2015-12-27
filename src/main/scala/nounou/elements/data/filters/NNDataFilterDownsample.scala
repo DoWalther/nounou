@@ -60,14 +60,14 @@ class NNDataFilterDownsample( private val parentVal: NNData, protected var facto
 
   // <editor-fold defaultstate="collapsed" desc=" readXXX ">
 
-  override def readPointImpl(channel: Int, frame: Int, segment: Int): Int =
-    parentVal.readPointImpl(channel, frame*factor, segment)
+  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int =
+    parentVal.readPointIntImpl(channel, frame*factor, segment)
 
-  override def readTraceDVImpl(channel: Int, range: SampleRangeValid): DV[Int] =
+  override def readTraceIntDVImpl(channel: Int, range: SampleRangeValid): DV[Int] =
     if(factor == 1){
-      parentVal.readTraceDVImpl(channel, range)
+      parentVal.readTraceIntDVImpl(channel, range)
     } else {
-      parentVal.readTraceDVImpl(channel,
+      parentVal.readTraceIntDVImpl(channel,
                 new SampleRangeValid(
                           range.start*factor,
                           min(range.last*factor, parentVal.timing.segmentLength(range.segment)-1),

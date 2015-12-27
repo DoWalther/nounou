@@ -18,7 +18,7 @@ trait NNDataSpikeReader {
 
     new NNSpike(
       /*timestamp =*/ timing().convertFrsgToTs(frame, segment),
-      /*waveform =*/ readTrace(channel, new SampleRangeReal(frame, frame + spikeLength - 1, step = 1, segment)   ),
+      /*waveform =*/ readTraceInt(channel, new SampleRangeReal(frame, frame + spikeLength - 1, step = 1, segment)   ),
       /*channels =*/ 1
     )
   }
@@ -29,7 +29,7 @@ trait NNDataSpikeReader {
 
     new NNSpike(
       /*timestamp =*/ timing().convertFrsgToTs(frame, segment),
-      /*waveform =*/ readTrace(channels, new SampleRangeReal(frame, frame + spikeLength - 1, step = 1, segment)   ).flatten,
+      /*waveform =*/ readTraceInt(channels, new SampleRangeReal(frame, frame + spikeLength - 1, step = 1, segment)   ).flatten,
       /*channels =*/ channels.length
     )
   }

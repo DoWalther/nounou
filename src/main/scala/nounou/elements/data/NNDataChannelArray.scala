@@ -25,9 +25,9 @@ import nounou.elements.NNElement
 
   def apply(channel: Int) = array(channel)
 
-  override def readPointImpl(channel: Int, frame: Int, segment: Int) =
+  override def readPointIntImpl(channel: Int, frame: Int, segment: Int) =
     array(channel).readPointImpl(frame, segment)
-  override def readTraceDVImpl(channel: Int, range: SampleRangeValid) =
+  override def readTraceIntDVImpl(channel: Int, range: SampleRangeValid) =
     array(channel).readTraceDVImpl(range)
 
   def loadDataChannel(dataChannel: NNDataChannel): NNDataChannelArray = {

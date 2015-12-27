@@ -8,7 +8,7 @@ import nounou.elements._timing.NNDataTimingElement
 import nounou.elements.ranges.{SampleRange, SampleRangeSpecifier, SampleRangeValid}
 import nounou.elements.{NNChannelsElement, NNElement}
 
-/** Base class for data encoded as Int arrays, this is the main data element for an experiment,
+/** Base trait for data encoded as Int arrays, this is the main data element for an experiment,
   * whether it be electrophysiolgical or high-sampling-rate imaging.
   *
   * This object is mutable, to allow inheritance by [[nounou.elements.data.filters.NNDataFilter]].
@@ -16,9 +16,9 @@ import nounou.elements.{NNChannelsElement, NNElement}
   * Each trace of data must share the following variables:
   * sampling, start, length, xBits, absGain, absOffset, absUnit
   */
-abstract class NNData extends NNElement
-    with NNChannelsElement with NNDataScaleElement with NNDataTimingElement
-    with NNDataSpikeReader {
+trait NNData extends NNElement
+  with NNChannelsElement with NNDataScaleElement with NNDataTimingElement
+  with NNDataSpikeReader {
 
   override def toStringImpl() = s"${channelCount} ch, ${timing().segmentCount} seg, fs=${timing().sampleRate}, "
   override def toStringFullImpl() = ""
@@ -107,30 +107,30 @@ abstract class NNData extends NNElement
 
   /** Read a single point from the data, in internal integer scaling, after checking values.
     * Implement via readPointImpl. Prefer
-    * [[nounou.elements.data.NNData.readTraceDV(channel:Int,range* readTraceDV]]
+    * [[nounou.elements.data.NNData.readTraceIntDV(channel:Int,range* readTraceDV]]
     * and readFrame()
     * when possible, as these will avoid repeated function calling overhead.
     */
-  def readPoint(channel: Int, frame: Int, segment: Int /*optSegment: OptSegment*/): Int = {
+  def readPointInt(channel: Int, frame: Int, segment: Int /*optSegment: OptSegment*/): Int = {
     val realSegment = timing.getRealSegment(segment)
     loggerRequire( timing.isRealisticFrsg(frame, realSegment), s"Unrealistic frame/segment: ${frame}/${segment})" )
     loggerRequire(isValidChannel(channel), s"Invalid channel: " + channel.toString)
 
-    if( timing.isValidFrsg(frame, realSegment) ) readPointImpl(channel, frame, realSegment)
+    if( timing.isValidFrsg(frame, realSegment) ) readPointIntImpl(channel, frame, realSegment)
     else 0
   }
-  final def readPoint(channel: Int, frame: Int): Int = readPoint(channel, frame, -1)
+  final def readPointInt(channel: Int, frame: Int): Int = readPointInt(channel, frame, -1)
 
   // <editor-fold defaultstate="collapsed" desc=" convenience readPoint variations ">
 
-  /** [[nounou.elements.data.NNData.readPoint(channel:Int,frame:Int,segment:Int)* readPoint]] but in physical units.
+  /** [[nounou.elements.data.NNData.readPointInt(channel:Int,frame:Int,segment:Int)* readPoint]] but in physical units.
     */
-  final def readPointAbs(channel: Int, frame: Int, segment: Int): Double = scale.convertIntToAbsolute( readPoint(channel, frame, segment) )
+  final def readPoint(channel: Int, frame: Int, segment: Int): Double = scale.convertIntToAbsolute( readPointInt(channel, frame, segment) )
   //final def readPointAbs(channel: Int, frame: Int, optSegment: OptSegment): Double = convertINTtoABS( readPoint(channel, frame, optSegment) )
-  /** [[nounou.elements.data.NNData.readPoint(channel:Int,frame:Int)* readPoint]]
+  /** [[nounou.elements.data.NNData.readPointInt(channel:Int,frame:Int)* readPoint]]
     * but in physical units.
     */
-  final def readPointAbs(channel: Int, frame: Int): Double = readPointAbs(channel, frame, -1)//OptSegmentAutomatic)
+  final def readPoint(channel: Int, frame: Int): Double = readPoint(channel, frame, -1)//OptSegmentAutomatic)
 
   // </editor-fold>
 
@@ -139,36 +139,36 @@ abstract class NNData extends NNElement
   /** '''__MUST OVERRIDE__''' Read a single point from the data, in internal integer scaling.
     * Assumes that channel, frame, and segment are all valid and within range.
     */
-  def readPointImpl(channel: Int, frame: Int, segment: Int): Int
+  def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int
 
   //<editor-fold defaultstate="collapsed" desc="reading a trace">
 
   /** '''__CAN OVERRIDE__''' Read a single trace from the data, in internal integer scaling.
     */
-  def readTraceDV(channel: Int, range: SampleRangeSpecifier): DV[Int] = {
+  def readTraceIntDV(channel: Int, range: SampleRangeSpecifier): DV[Int] = {
 
     loggerRequire(isValidChannel(channel), "Invalid channel: " + channel.toString)
 
     range match {
-      case ran: SampleRangeValid => readTraceDVImpl(channel, ran)
+      case ran: SampleRangeValid => readTraceIntDVImpl(channel, ran)
       case _ => {
         loggerRequire(timing.isRealisticRange(range), "Unrealistic frame/segment: " + range.toString)
         val preValidPost = range.getSampleRangeValidPrePost(this)
-        readTraceDVPVPImpl(channel, preValidPost)
+        readTraceIntDVPVPImpl(channel, preValidPost)
       }
     }
 
   }
   /** '''__CAN OVERRIDE__''' by default, calls
-    * [[nounou.elements.data.NNData.readTraceDV(channel:Int,range* readTraceDV ]]
+    * [[nounou.elements.data.NNData.readTraceIntDV(channel:Int,range* readTraceDV ]]
     */
-  def readTraceDV(channels: Array[Int],  range: SampleRangeSpecifier): Array[DV[Int]] = {
+  def readTraceIntDV(channels: Array[Int], range: SampleRangeSpecifier): Array[DV[Int]] = {
     val preValidPost = range.getSampleRangeValidPrePost(this)
-    channels.map( readTraceDVPVPImpl(_, preValidPost) )
+    channels.map( readTraceIntDVPVPImpl(_, preValidPost) )
   }
 
-  private final def readTraceDVPVPImpl(channel: Int, preValidPost: (Int, SampleRangeValid, Int)): DV[Int] = {
-    val validTrace = readTraceDVImpl(channel, preValidPost._2)
+  private final def readTraceIntDVPVPImpl(channel: Int, preValidPost: (Int, SampleRangeValid, Int)): DV[Int] = {
+    val validTrace = readTraceIntDVImpl(channel, preValidPost._2)
     preValidPost match {
       case (0, rfv, 0) => validTrace
       case (pre, rfv, 0) => DV.vertcat(DV.zeros[Int](pre), validTrace)
@@ -180,47 +180,52 @@ abstract class NNData extends NNElement
 
   // <editor-fold defaultstate="collapsed" desc=" convenience readTrace variations ">
 
-  /**Internal implementation for [[nounou.elements.data.NNData.readTrace(channel:Int)* readTrace]]
+  /**Internal implementation for [[nounou.elements.data.NNData.readTraceInt(channel:Int)* readTrace]]
     * to return a breeze.linalg.DenseVector.
     */
-  final def readTraceDV(channel: Int): DV[Int] = readTraceDV(channel, NN.SampleRangeAll())
+  final def readTraceIntDV(channel: Int): DV[Int] = readTraceIntDV(channel, NN.SampleRangeAll())
 
-  final def readTraceAbsDV(channel: Int): DV[Double]
-    = scale.convertIntToAbsolute(readTraceDV(channel))
+//  final def readTraceDV(channel: Int): DV[Double]
+//    = scale.convertIntToAbsolute(readTraceIntDV(channel))
   /** Read a single trace in absolute unit scaling (as recorded).*/
-  final def readTraceAbsDV(channel: Int,         range: SampleRangeSpecifier): DV[Double]
-    = scale.convertIntToAbsolute(readTraceDV(channel, range))
+  final def readTraceDV(channel: Int, range: SampleRangeSpecifier = NN.SampleRangeAll()): DV[Double]
+    = scale.convertIntToAbsolute(readTraceIntDV(channel, range))
   /** Read multiple traces in absolute unit scaling (as recorded).*/
-  final def readTraceAbsDV(channels: Array[Int], range: SampleRangeSpecifier): Array[DV[Double]]
-    = readTraceDV(channels, range).map( scale.convertIntToAbsolute(_) )
+  final def readTraceDV(channels: Array[Int], range: SampleRangeSpecifier): Array[DV[Double]]
+    = readTraceIntDV(channels, range).map( scale.convertIntToAbsolute(_) )
 
 
   /** Read a single trace (whole range) in internal integer scaling.
     * This should only be used for data with only 1 segment.
     */
-  final def readTrace(channel: Int) =
-                          readTraceDV(channel).toArray
-  final def readTrace(channel: Int,           range: SampleRangeSpecifier) =
-                          readTraceDV(channel, range).toArray
-  final def readTrace(channels: Array[Int],   range: SampleRangeSpecifier): Array[Array[Int]] =
-                          readTraceDV(channels, range).map(_.toArray)
-  final def readTrace(channel: Int,           range: Array[Int]): Array[Int] =
-                          readTrace(channel, NN.SampleRange(range))
-  final def readTrace(channel: Int,           range: Array[Int], segment: Int): Array[Int] =
-                          readTrace(channel, NN.SampleRange(range, segment))
+  @deprecated
+  protected[nounou] final def readTraceInt(channel: Int) =
+                          readTraceIntDV(channel).toArray
+  @deprecated
+  protected[nounou] final def readTraceInt(channel: Int, range: SampleRangeSpecifier) =
+                          readTraceIntDV(channel, range).toArray
+  @deprecated
+  protected[nounou] final def readTraceInt(channels: Array[Int], range: SampleRangeSpecifier): Array[Array[Int]] =
+                          readTraceIntDV(channels, range).map(_.toArray)
+  @deprecated
+  protected[nounou] final def readTraceInt(channel: Int, range: Array[Int]): Array[Int] =
+                          readTraceInt(channel, NN.SampleRange(range))
+  @deprecated
+  protected[nounou] final def readTraceInt(channel: Int, range: Array[Int], segment: Int): Array[Int] =
+                          readTraceInt(channel, NN.SampleRange(range, segment))
 //  final def readTraceA(channels: Array[Int], range: Array[Int]): Array[Array[Int]] =           readTraceA(channels, convertARRtoRANGE(range))
 
   /** Read a single trace in absolute unit scaling (as recorded).
     * This should only be used for data with only 1 segment.
     */
-  final def readTraceAbs(channel: Int): Array[Double] = readTraceAbsDV(channel).toArray
-  final def readTraceAbs(channel: Int,         range: SampleRangeSpecifier): Array[Double] =
-      readTraceAbsDV(channel, range).toArray
+  final def readTrace(channel: Int): Array[Double] = readTraceDV(channel).toArray
+  final def readTrace(channel: Int, range: SampleRangeSpecifier): Array[Double] =
+      readTraceDV(channel, range).toArray
 //  final def readTraceAbsA(channels: Array[Int], range: SampleRangeSpecifier): Array[Array[Double]] =         readTraceAbs(channels, range).map(_.toArray)
-  final def readTraceAbs(channel: Int,         range: Array[Int], segment: Int): Array[Double] =
-      readTraceAbs(channel, SampleRange.convertArrayToSampleRange(range, segment) )
-  final def readTraceAbs(channel: Int,         range: Array[Int]): Array[Double] =
-      readTraceAbs(channel, SampleRange.convertArrayToSampleRange(range, -1) )
+  final def readTrace(channel: Int, range: Array[Int], segment: Int): Array[Double] =
+      readTrace(channel, SampleRange.convertArrayToSampleRange(range, segment) )
+  final def readTrace(channel: Int, range: Array[Int]): Array[Double] =
+      readTrace(channel, SampleRange.convertArrayToSampleRange(range, -1) )
 //  final def readTraceAbsA(channels: Array[Int], range: Array[Int]): Array[Array[Double]] =         readTraceAbsA(channels, convertARRtoRANGE(range))
 
 
@@ -229,9 +234,9 @@ abstract class NNData extends NNElement
   /** CAN OVERRIDE: Read a single data trace from the data, in internal integer scaling.
     * Should return a defensive clone. Assumes that channel and range are within the data range!
     */
-  def readTraceDVImpl(channel: Int, rangeFrValid: SampleRangeValid/*range: Range.Inclusive, segment: Int*/): DV[Int] = {
+  def readTraceIntDVImpl(channel: Int, rangeFrValid: SampleRangeValid /*range: Range.Inclusive, segment: Int*/): DV[Int] = {
     val res = DV.zeros[Int]( rangeFrValid.length )
-    nounou.util.forJava(rangeFrValid.start, rangeFrValid.last + 1, rangeFrValid.step, (c: Int) => (res(c) = readPointImpl(channel, c, rangeFrValid.segment)))
+    nounou.util.forJava(rangeFrValid.start, rangeFrValid.last + 1, rangeFrValid.step, (c: Int) => (res(c) = readPointIntImpl(channel, c, rangeFrValid.segment)))
     res
   }
 
