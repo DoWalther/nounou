@@ -10,15 +10,18 @@ import nounou.io.neuralynx.fileObjects.FileNeuralynx
   */
 abstract class NNHeaderNeuralynx(val originalHeaderText: String) extends NNHeader {
 
+  loggerRequire( originalHeaderText != null, "originalHeaderText cannot be null!")
+
   def this() { this("") }
 
   @transient
-  final lazy val originalHeaderPresent = !(originalHeaderText == "")
+  final val originalHeaderPresent = !(originalHeaderText == "")
   // / && (headerCheetahRev != "-1")... this would be circular!!!
 
   // <editor-fold defaultstate="collapsed" desc=" common header information and validity check if text given ">
 
-  final lazy val headerCheetahRev = nlxHeaderValueS("CheetahRev", "-1")
+
+  final def headerCheetahRev = nlxHeaderValueS("CheetahRev", "-1")
   val headerRecordType: String
   val headerRecordSize: Int
   //  final lazy val headerRecordType = nlxHeaderValueS("FileType", "")
@@ -48,37 +51,11 @@ abstract class NNHeaderNeuralynx(val originalHeaderText: String) extends NNHeade
     string.split("\n").map("# "+ _).mkString("\n")
   }
 
-  /** The second and later rows of the toStringFull string.
-    */
   override def toStringFullImpl(): String = ???
 
   /** The contents of the toStringFull string, excluding the class head and trailing git Head.
     */
   override def toStringImpl(): String = "FileType = " + headerRecordType + ", CheetahRev = " + headerCheetahRev
-
-
-
-//  /** Text to append when writing neuralynx header again to file.
-//    * For the most part, you should start new header lines with "## ", so that they are handled as
-//    * comments.
-//    */
-//  var headerAppendText = ""
-//
-//  def headerAppended = originalHeaderText + "\n" + headerAppendText
-//
-//  def fullHeader: String = {
-//
-//    val tempHeadAp = headerAppended
-//
-//    if (tempHeadAp.length > FileNeuralynx.headerBytes){
-//      logger.warn("headerText with appended material is longer than headerBytes")
-//      tempHeadAp.take(FileNeuralynx.headerBytes)
-//    } else {
-//      tempHeadAp.padTo(FileNeuralynx.headerBytes, 0.toChar).toString()
-//    }
-//
-//  }
-
 
   // <editor-fold defaultstate="collapsed" desc=" parsers ">
 

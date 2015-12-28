@@ -66,7 +66,6 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   @transient
   private var dwChannelNum: Long = -1
   private def readNCSRecordHeaderTS(record: Int): BigInt = {
-    //println( s"seek: ${recordStartByte(record)}")
     handle.seek( recordStartByte(record) )
     val qwTimestamp = handle.readUInt64()
 
@@ -160,15 +159,12 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   }
 
   override def readTraceDVImpl(range: SampleRangeValid): DV[Int] = {
-    //println("XDataChannelNCS " + range.toString())
     var (currentRecord: Int, currentIndex: Int) =
       cumulativeFrameToRecordIndex( timing.cumulativeFrame(range.start, range.segment) )
     val (endReadRecord: Int, endReadIndex: Int) =
       cumulativeFrameToRecordIndex( timing.cumulativeFrame(range.last, range.segment) )
       //range is inclusive of lastValid
 
-    //println( "curr " + (currentRecord, currentIndex).toString )
-    //println( "end " + (endReadRecord, endReadIndex).toString )
     //ToDo1 program step
     //val step = range.step
 
@@ -181,7 +177,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
       //if the whole requested trace fits in one record
       val writeLen = (endReadIndex - currentIndex) + 1
       val writeEnd = currentTempRetPos + writeLen
-      //      println( "writeLen " + writeLen.toString + " writeEnd " + writeEnd.toString )
+
       //ToDo 3: improve breeze dv requirement documentation
       tempRet(currentTempRetPos until writeEnd ) := convert( DV(handle.readInt16(writeLen)), Int)  * scale.xBits
       currentTempRetPos = writeEnd

@@ -26,7 +26,6 @@ abstract class FileNeuralynx(val file: File) extends LoggingExt {
   /**Number of bytes per record, specified in each class, but should agree with
     * text information in header.headerRecordSize .*/
   val recordSize: Int
-  require(header.headerRecordSize == recordSize, s"File with non-standard record size: ${header.headerRecordSize}")
 
   //ToDo 1: check the following
   final def recordStartByte(record: Int): Long = (headerBytes.toLong + recordSize.toLong * record.toLong)
@@ -66,12 +65,14 @@ abstract class FileReadNeuralynx(override val file: File) extends FileNeuralynx(
   //Beware that the following MUST be lazy, in order to read the correct file handle during initialization.
   //Non-lazy initialization will lead to null pointer error, since this would be processed before handle is created
   //in parent class.
-  lazy val originalHeaderText: String = {
+  val originalHeaderText: String = {
     val tempString = new String(handle.readUInt8(headerBytes).map(_.toChar))
     tempString.replaceAll( """(?m)[\s\x00]+$""", "")
   }
 
-  override lazy val handle: RandomAccessFile = new RandomAccessFile(file, "w")(ByteConverterLittleEndian)
+  loggerRequire(header.headerRecordSize == recordSize, s"File with non-standard record size: ${header.headerRecordSize}")
+
+  override lazy val handle: RandomAccessFile = new RandomAccessFile(file, "r")(ByteConverterLittleEndian)
 
 }
 

@@ -5,8 +5,7 @@ import nounou.io.neuralynx.fileObjects.{FileNCS}
 /**
   * Created by ktakagaki on 15/11/24.
   */
-class NNHeaderNCS(originalHeaderText: String)
-  extends NNHeaderNeuralynx(originalHeaderText) {
+class NNHeaderNCS(originalHeaderText: String) extends NNHeaderNeuralynx(originalHeaderText) {
 
   final lazy val headerRecordType = nlxHeaderValueS("FileType", "CSC")
   final lazy val headerRecordSize = nlxHeaderValueI("RecordSize", FileNCS.recordSize.toString)
