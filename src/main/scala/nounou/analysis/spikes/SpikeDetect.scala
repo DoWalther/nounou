@@ -6,7 +6,7 @@ import breeze.stats.median
 import nounou.Opt
 import nounou.analysis.threshold
 import nounou.elements.data.NNData
-import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid}
+import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.elements.spikes.NNSpikes
 import nounou.util.LoggingExt
 
@@ -18,9 +18,9 @@ object SpikeDetect extends LoggingExt {
 //  def it() = this
 
   def thresholdSpikes(data: NNData,
-                          channels: Array[Int],
-                          frameRange: SampleRangeSpecifier,
-                          opts: Opt*): NNSpikes = {
+                      channels: Array[Int],
+                      frameRange: NNRangeSpecifier,
+                      opts: Opt*): NNSpikes = {
 
     // <editor-fold defaultstate="collapsed" desc=" Option handling ">
 
@@ -76,9 +76,9 @@ object SpikeDetect extends LoggingExt {
 
   /**Detect spikes from a single channel of data*/
   def spikeThresholdAbsMedianImpl(data: NNData,
-                      channel: Int,
-                      frameRange: SampleRangeSpecifier,
-                      opts: Opt*): NNSpikes = {
+                                  channel: Int,
+                                  frameRange: NNRangeSpecifier,
+                                  opts: Opt*): NNSpikes = {
 
     // <editor-fold defaultstate="collapsed" desc=" Handle options ">
 
@@ -105,19 +105,19 @@ object SpikeDetect extends LoggingExt {
 
     // <editor-fold defaultstate="collapsed" desc=" divide data into sub segments for processing">
 
-    var rangeList: List[SampleRangeValid] = Nil
-    val validRange = frameRange.getSampleRangeValid(data)
+    var rangeList: List[NNRangeValid] = Nil
+    val validRange = frameRange.getValidRange(data)
     loggerRequire(validRange.step == 1, "step size for spike detection must be 1! {} is invalid!", validRange.step.toString)
     var start = validRange.start
 
     if (validRange.length > optDetectionWindow) {
       //var bufferedData: Array[Array[Int]] = null
       while (start < validRange.last - optDetectionWindow) {
-        rangeList.+:(new SampleRangeValid(start, start + optDetectionWindow, 1, validRange.segment))
+        rangeList.+:(new NNRangeValid(start, start + optDetectionWindow, 1, validRange.segment))
         start += optDetectionWindow - optDetectionWindowOverlap
       }
       if (start < validRange.last) {
-        rangeList.+:(new SampleRangeValid(start, validRange.last, 1, validRange.segment))
+        rangeList.+:(new NNRangeValid(start, validRange.last, 1, validRange.segment))
       }
     } else {
         rangeList = List(validRange)
@@ -128,7 +128,7 @@ object SpikeDetect extends LoggingExt {
     /** Return variable **/
     val tempret =
     rangeList.par.flatMap(
-      (r: SampleRangeValid) => {
+      (r: NNRangeValid) => {
         val analysisData = data.readTraceInt(channel, r)
         //ToDo 2: convert the following median SD estimate into a breeze function
         val thresholdValue = convert(optThresholdSDFactor * median( DenseVector( abs(analysisData) ) ) /0.6745, Int)

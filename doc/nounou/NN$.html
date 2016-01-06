@@ -170,23 +170,130 @@ consolidated here instead to facilitate access through Java.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="nounou.NN#FrameRangeTs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="FrameRangeTs(startTs:Long,endTS:Long):nounou.elements.ranges.SampleRangeTs"></a>
-      <a id="FrameRangeTs(Long,Long):SampleRangeTs"></a>
+    </li><li name="nounou.NN#NNRange" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NNRange(range:Array[Int]):nounou.ranges.NNRangeSpecifier"></a>
+      <a id="NNRange(Array[Int]):NNRangeSpecifier"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">FrameRangeTs</span><span class="params">(<span name="startTs">startTs: <span class="extype" name="scala.Long">Long</span></span>, <span name="endTS">endTS: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="elements/ranges/SampleRangeTs.html" class="extype" name="nounou.elements.ranges.SampleRangeTs">SampleRangeTs</a></span>
+        <span class="name">NNRange</span><span class="params">(<span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <a href="ranges/NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@FrameRangeTs(startTs:Long,endTS:Long):nounou.elements.ranges.SampleRangeTs" title="Permalink" target="_top">
+      <a href="../index.html#nounou.NN$@NNRange(range:Array[Int]):nounou.ranges.NNRangeSpecifier" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Java Array-based signature alias for <a href="#NNRange(start:Int,last:Int,step:Int,segment:Int):nounou.ranges.NNRange" class="extmbr" name="nounou.NN#NNRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
+</p><div class="fullcomment"><div class="comment cmt"><p>Java Array-based signature alias for <a href="#NNRange(start:Int,last:Int,step:Int,segment:Int):nounou.ranges.NNRange" class="extmbr" name="nounou.NN#NNRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
+</p></div><dl class="paramcmts block"><dt class="param">range</dt><dd class="cmt"><p>Array containing start, end, and optionally, step. segment = -1 is assumed.</p></dd></dl></div>
+    </li><li name="nounou.NN#NNRange" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NNRange(range:Array[Int],segment:Int):nounou.ranges.NNRangeSpecifier"></a>
+      <a id="NNRange(Array[Int],Int):NNRangeSpecifier"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NNRange</span><span class="params">(<span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="ranges/NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#nounou.NN$@NNRange(range:Array[Int],segment:Int):nounou.ranges.NNRangeSpecifier" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Java Array-based signature alias for <a href="#NNRange(start:Int,last:Int,step:Int,segment:Int):nounou.ranges.NNRange" class="extmbr" name="nounou.NN#NNRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
+</p><div class="fullcomment"><div class="comment cmt"><p>Java Array-based signature alias for <a href="#NNRange(start:Int,last:Int,step:Int,segment:Int):nounou.ranges.NNRange" class="extmbr" name="nounou.NN#NNRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
+</p></div><dl class="paramcmts block"><dt class="param">range</dt><dd class="cmt"><p>Array containing start, end, and optionally, step</p></dd><dt class="param">segment</dt><dd class="cmt"><p>Which segment to read from</p></dd></dl></div>
+    </li><li name="nounou.NN#NNRange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NNRange(start:Int,last:Int,step:Int,segment:Int):nounou.ranges.NNRange"></a>
+      <a id="NNRange(Int,Int,Int,Int):NNRange"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NNRange</span><span class="params">(<span name="start">start: <span class="extype" name="scala.Int">Int</span></span>, <span name="last">last: <span class="extype" name="scala.Int">Int</span></span>, <span name="step">step: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="ranges/NNRange.html" class="extype" name="nounou.ranges.NNRange">NNRange</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#nounou.NN$@NNRange(start:Int,last:Int,step:Int,segment:Int):nounou.ranges.NNRange" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This is the full signature for creating a <a href="ranges/NNRange.html" class="extype" name="nounou.ranges.NNRange">SampleRange</a>.</p>
+    </li><li name="nounou.NN#NNRangeAll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NNRangeAll():nounou.ranges.NNRangeAll"></a>
+      <a id="NNRangeAll():NNRangeAll"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NNRangeAll</span><span class="params">()</span><span class="result">: <a href="ranges/NNRangeAll.html" class="extype" name="nounou.ranges.NNRangeAll">NNRangeAll</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#nounou.NN$@NNRangeAll():nounou.ranges.NNRangeAll" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Constructor method for a sample range specifying a whole segment
+</p>
+    </li><li name="nounou.NN#NNRangeAll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NNRangeAll(step:Int,segment:Int):nounou.ranges.NNRangeAll"></a>
+      <a id="NNRangeAll(Int,Int):NNRangeAll"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NNRangeAll</span><span class="params">(<span name="step">step: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="ranges/NNRangeAll.html" class="extype" name="nounou.ranges.NNRangeAll">NNRangeAll</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#nounou.NN$@NNRangeAll(step:Int,segment:Int):nounou.ranges.NNRangeAll" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Constructor method for a sample range specifying a whole segment.</p>
+    </li><li name="nounou.NN#NNRangeTs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NNRangeTs(startTs:java.math.BigInteger,endTs:java.math.BigInteger):nounou.ranges.NNRangeTs"></a>
+      <a id="NNRangeTs(BigInteger,BigInteger):NNRangeTs"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NNRangeTs</span><span class="params">(<span name="startTs">startTs: <span class="extype" name="java.math.BigInteger">BigInteger</span></span>, <span name="endTs">endTs: <span class="extype" name="java.math.BigInteger">BigInteger</span></span>)</span><span class="result">: <a href="ranges/NNRangeTs.html" class="extype" name="nounou.ranges.NNRangeTs">NNRangeTs</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#nounou.NN$@NNRangeTs(startTs:java.math.BigInteger,endTs:java.math.BigInteger):nounou.ranges.NNRangeTs" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       
+    </li><li name="nounou.NN#NNRangeTs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NNRangeTs(startTs:java.math.BigInteger,endTs:java.math.BigInteger,stepTs:java.math.BigInteger):nounou.ranges.NNRangeTs"></a>
+      <a id="NNRangeTs(BigInteger,BigInteger,BigInteger):NNRangeTs"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NNRangeTs</span><span class="params">(<span name="startTs">startTs: <span class="extype" name="java.math.BigInteger">BigInteger</span></span>, <span name="endTs">endTs: <span class="extype" name="java.math.BigInteger">BigInteger</span></span>, <span name="stepTs">stepTs: <span class="extype" name="java.math.BigInteger">BigInteger</span></span>)</span><span class="result">: <a href="ranges/NNRangeTs.html" class="extype" name="nounou.ranges.NNRangeTs">NNRangeTs</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#nounou.NN$@NNRangeTs(startTs:java.math.BigInteger,endTs:java.math.BigInteger,stepTs:java.math.BigInteger):nounou.ranges.NNRangeTs" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This is the full signature for creating a <a href="ranges/NNRangeTs.html" class="extype" name="nounou.ranges.NNRangeTs">SampleRangeTs</a>.</p>
     </li><li name="nounou.NN#OptNull" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="OptNull():nounou.OptNull.type"></a>
       <a id="OptNull():nounou.OptNull.type"></a>
@@ -200,223 +307,6 @@ consolidated here instead to facilitate access through Java.
       </span>
       </h4><span class="permalink">
       <a href="../index.html#nounou.NN$@OptNull():nounou.OptNull.type" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="nounou.NN#SampleRange" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="SampleRange(range:Array[Int]):nounou.elements.ranges.SampleRangeSpecifier"></a>
-      <a id="SampleRange(Array[Int]):SampleRangeSpecifier"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRange</span><span class="params">(<span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <a href="elements/ranges/SampleRangeSpecifier.html" class="extype" name="nounou.elements.ranges.SampleRangeSpecifier">SampleRangeSpecifier</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRange(range:Array[Int]):nounou.elements.ranges.SampleRangeSpecifier" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Java Array-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p><div class="fullcomment"><div class="comment cmt"><p>Java Array-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p></div><dl class="paramcmts block"><dt class="param">range</dt><dd class="cmt"><p>Array containing start, end, and optionally, step. segment = -1 is assumed.</p></dd></dl></div>
-    </li><li name="nounou.NN#SampleRange" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="SampleRange(range:Array[Int],segment:Int):nounou.elements.ranges.SampleRangeSpecifier"></a>
-      <a id="SampleRange(Array[Int],Int):SampleRangeSpecifier"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRange</span><span class="params">(<span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="elements/ranges/SampleRangeSpecifier.html" class="extype" name="nounou.elements.ranges.SampleRangeSpecifier">SampleRangeSpecifier</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRange(range:Array[Int],segment:Int):nounou.elements.ranges.SampleRangeSpecifier" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Java Array-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p><div class="fullcomment"><div class="comment cmt"><p>Java Array-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p></div><dl class="paramcmts block"><dt class="param">range</dt><dd class="cmt"><p>Array containing start, end, and optionally, step</p></dd><dt class="param">segment</dt><dd class="cmt"><p>Which segment to read from</p></dd></dl></div>
-    </li><li name="nounou.NN#SampleRange" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="SampleRange(range:(Int,Int,Int),segment:Int):nounou.elements.ranges.SampleRange"></a>
-      <a id="SampleRange((Int,Int,Int),Int):SampleRange"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRange</span><span class="params">(<span name="range">range: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="elements/ranges/SampleRange.html" class="extype" name="nounou.elements.ranges.SampleRange">SampleRange</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRange(range:(Int,Int,Int),segment:Int):nounou.elements.ranges.SampleRange" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Scala Tuple-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p><div class="fullcomment"><div class="comment cmt"><p>Scala Tuple-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p></div><dl class="paramcmts block"><dt class="param">range</dt><dd class="cmt"><p>Tuple containing start, end, and step</p></dd><dt class="param">segment</dt><dd class="cmt"><p>Which segment to read from</p></dd></dl></div>
-    </li><li name="nounou.NN#SampleRange" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="SampleRange(range:(Int,Int,Int)):nounou.elements.ranges.SampleRange"></a>
-      <a id="SampleRange((Int,Int,Int)):SampleRange"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRange</span><span class="params">(<span name="range">range: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>)</span><span class="result">: <a href="elements/ranges/SampleRange.html" class="extype" name="nounou.elements.ranges.SampleRange">SampleRange</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRange(range:(Int,Int,Int)):nounou.elements.ranges.SampleRange" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Scala Tuple-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p><div class="fullcomment"><div class="comment cmt"><p>Scala Tuple-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p></div><dl class="paramcmts block"><dt class="param">range</dt><dd class="cmt"><p>Tuple containing start, end, and step. segment=-1 is assumed.</p></dd></dl></div>
-    </li><li name="nounou.NN#SampleRange" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="SampleRange(range:(Int,Int),segment:Int):nounou.elements.ranges.SampleRange"></a>
-      <a id="SampleRange((Int,Int),Int):SampleRange"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRange</span><span class="params">(<span name="range">range: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="elements/ranges/SampleRange.html" class="extype" name="nounou.elements.ranges.SampleRange">SampleRange</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRange(range:(Int,Int),segment:Int):nounou.elements.ranges.SampleRange" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Scala Tuple-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p><div class="fullcomment"><div class="comment cmt"><p>Scala Tuple-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p></div><dl class="paramcmts block"><dt class="param">range</dt><dd class="cmt"><p>Tuple containing start and end.</p></dd><dt class="param">segment</dt><dd class="cmt"><p>Which segment to read from</p></dd></dl></div>
-    </li><li name="nounou.NN#SampleRange" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="SampleRange(range:(Int,Int)):nounou.elements.ranges.SampleRange"></a>
-      <a id="SampleRange((Int,Int)):SampleRange"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRange</span><span class="params">(<span name="range">range: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>)</span><span class="result">: <a href="elements/ranges/SampleRange.html" class="extype" name="nounou.elements.ranges.SampleRange">SampleRange</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRange(range:(Int,Int)):nounou.elements.ranges.SampleRange" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Scala Tuple-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p><div class="fullcomment"><div class="comment cmt"><p>Scala Tuple-based signature alias for <a href="#SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" class="extmbr" name="nounou.NN#SampleRange">SampleRange(start: Int, last: Int, step: Int, segment: Int)</a>
-</p></div><dl class="paramcmts block"><dt class="param">range</dt><dd class="cmt"><p>Tuple containing start and end. segment=-1 is assumed.</p></dd></dl></div>
-    </li><li name="nounou.NN#SampleRange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange"></a>
-      <a id="SampleRange(Int,Int,Int,Int):SampleRange"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRange</span><span class="params">(<span name="start">start: <span class="extype" name="scala.Int">Int</span></span>, <span name="last">last: <span class="extype" name="scala.Int">Int</span></span>, <span name="step">step: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="elements/ranges/SampleRange.html" class="extype" name="nounou.elements.ranges.SampleRange">SampleRange</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRange(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRange" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">This is the full signature for creating a <a href="elements/ranges/SampleRange.html" class="extype" name="nounou.elements.ranges.SampleRange">SampleRange</a>.</p>
-    </li><li name="nounou.NN#SampleRangeAll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SampleRangeAll():nounou.elements.ranges.SampleRangeAll"></a>
-      <a id="SampleRangeAll():SampleRangeAll"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRangeAll</span><span class="params">()</span><span class="result">: <a href="elements/ranges/SampleRangeAll.html" class="extype" name="nounou.elements.ranges.SampleRangeAll">SampleRangeAll</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRangeAll():nounou.elements.ranges.SampleRangeAll" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="nounou.NN#SampleRangeAll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SampleRangeAll(step:Int,segment:Int):nounou.elements.ranges.SampleRangeAll"></a>
-      <a id="SampleRangeAll(Int,Int):SampleRangeAll"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRangeAll</span><span class="params">(<span name="step">step: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="elements/ranges/SampleRangeAll.html" class="extype" name="nounou.elements.ranges.SampleRangeAll">SampleRangeAll</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRangeAll(step:Int,segment:Int):nounou.elements.ranges.SampleRangeAll" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Constructor method for a sample range specifying a whole segment
-</p>
-    </li><li name="nounou.NN#SampleRangeReal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SampleRangeReal(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRangeReal"></a>
-      <a id="SampleRangeReal(Int,Int,Int,Int):SampleRangeReal"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRangeReal</span><span class="params">(<span name="start">start: <span class="extype" name="scala.Int">Int</span></span>, <span name="last">last: <span class="extype" name="scala.Int">Int</span></span>, <span name="step">step: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="elements/ranges/SampleRangeReal.html" class="extype" name="nounou.elements.ranges.SampleRangeReal">SampleRangeReal</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRangeReal(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRangeReal" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="nounou.NN#SampleRangeTs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SampleRangeTs(startTs:Long,endTS:Long,stepTS:Long):nounou.elements.ranges.SampleRangeTs"></a>
-      <a id="SampleRangeTs(Long,Long,Long):SampleRangeTs"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRangeTs</span><span class="params">(<span name="startTs">startTs: <span class="extype" name="scala.Long">Long</span></span>, <span name="endTS">endTS: <span class="extype" name="scala.Long">Long</span></span>, <span name="stepTS">stepTS: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="elements/ranges/SampleRangeTs.html" class="extype" name="nounou.elements.ranges.SampleRangeTs">SampleRangeTs</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRangeTs(startTs:Long,endTS:Long,stepTS:Long):nounou.elements.ranges.SampleRangeTs" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="nounou.NN#SampleRangeValid" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SampleRangeValid(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRangeValid"></a>
-      <a id="SampleRangeValid(Int,Int,Int,Int):SampleRangeValid"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">SampleRangeValid</span><span class="params">(<span name="start">start: <span class="extype" name="scala.Int">Int</span></span>, <span name="last">last: <span class="extype" name="scala.Int">Int</span></span>, <span name="step">step: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="elements/ranges/SampleRangeValid.html" class="extype" name="nounou.elements.ranges.SampleRangeValid">SampleRangeValid</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#nounou.NN$@SampleRangeValid(start:Int,last:Int,step:Int,segment:Int):nounou.elements.ranges.SampleRangeValid" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

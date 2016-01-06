@@ -1,7 +1,7 @@
 //package nounou.elements.data.filters
 //
 //import nounou.elements.NNElement
-//import nounou.elements.ranges.SampleRangeValid
+//import nounou.ranges.SampleRangeValid
 //import nounou.elements.data.{NNDataNull, NNDataAux, NNData}
 //import nounou.elements.layouts.NNDataLayout
 //import breeze.linalg.{DenseVector => DV}

@@ -5,7 +5,7 @@ import breeze.numerics.isOdd
 import breeze.signal.{OptOverhang, filterMedian}
 import breeze.stats.median
 import nounou.elements.data.NNData
-import nounou.elements.ranges.{SampleRange, SampleRangeValid}
+import nounou.ranges.{NNRange, NNRangeValid}
 
 /**This filter applies a median subtraction, which is a non-linear form of high-pass which is
   * less biased by extreme transients like spiking.
@@ -51,18 +51,18 @@ class NNDataFilterMedianSubtract( private var parenVar: NNData ) extends NNDataF
       //by calling upstream.readTrace instead of upstream.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
       val tempData = upstreamBuff.readTraceIntDV(
                           channel,
-                          new SampleRange(frame - windowLengthHalf, frame + windowLengthHalf, 1, segment) )
+                          new NNRange(frame - windowLengthHalf, frame + windowLengthHalf, 1, segment) )
       median(tempData).toInt
     }
 
-  override def readTraceIntDVImpl(channel: Int, ran: SampleRangeValid): DV[Int] =
+  override def readTraceIntDVImpl(channel: Int, ran: NNRangeValid): DV[Int] =
     if(windowLength == 1){
       upstreamBuff.readTraceIntDVImpl(channel, ran)
     } else {
       //by calling upstream.readTrace instead of upstream.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
       val tempData = upstreamBuff.readTraceIntDV(
         channel,
-        new SampleRange( ran.start - windowLengthHalf, ran.last + windowLengthHalf, 1, ran.segment) )
+        new NNRange( ran.start - windowLengthHalf, ran.last + windowLengthHalf, 1, ran.segment) )
       tempData(windowLengthHalf to -windowLengthHalf-1) - filterMedian(tempData, windowLength, OptOverhang.None)
     }
 

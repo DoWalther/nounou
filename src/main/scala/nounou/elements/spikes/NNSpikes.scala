@@ -1,13 +1,12 @@
 package nounou.elements.spikes
 
 import java.math.BigInteger
-
+import nounou.{NN, Opt}
 import nounou.analysis.spikes.OptWaveformFr
-import nounou.elements._timing.{NNDataTimingElement, NNDataTiming}
 import nounou.elements.data.NNData
+import nounou.elements.traits.{NNTimingElement, NNTiming}
 import nounou.elements.NNElement
 import nounou.util.LoggingExt
-import nounou.{NN, Opt}
 
 import scala.collection.mutable.TreeSet
 
@@ -48,7 +47,7 @@ object NNSpikes extends LoggingExt {
 
     frameSegments.foreach( (frsg: (Int, Int) ) => {
       //val startFr = frsg._1  - optPretriggerFr
-      val sampleRange = NN.SampleRange(frsg._1 , frsg._1 + optWaveformFr -1 /*+ tempPosttriggerFr*/, 1, frsg._2)
+      val sampleRange = NN.NNRange(frsg._1 , frsg._1 + optWaveformFr -1 /*+ tempPosttriggerFr*/, 1, frsg._2)
       val wf = channels.flatMap(data.readTraceInt(_, sampleRange ))
       tempret.add( new NNSpike( data.timing.convertFrToTs(frsg._1), wf, channels = 1, unitNo = 0L) )
       Unit
@@ -114,8 +113,8 @@ class NNSpikes( private val _database: TreeSet[NNSpike] )//val trodeLayout: NNDa
   //ToDo: defensive copy BigInt/BigInteger
   def spikeTimestamps(): Array[BigInt] = _database.map( _.timestamp ).toArray
   def getSpikeTimestamps(): Array[BigInteger] = _database.map( _.getTimestamp() ).toArray
-  def getSpikeFrameSegment(data: NNDataTimingElement): Array[Array[Int]] = getSpikeFrameSegment(data.timing)
-  def getSpikeFrameSegment(data: NNDataTiming): Array[Array[Int]] = {
+  def getSpikeFrameSegment(data: NNTimingElement): Array[Array[Int]] = getSpikeFrameSegment(data.timing)
+  def getSpikeFrameSegment(data: NNTiming): Array[Array[Int]] = {
     _database.map( (sp: NNSpike) => {
       val temp = data.convertTsToFrsg( sp.timestamp ); Array( temp._1, temp._2 )
     } ).toArray

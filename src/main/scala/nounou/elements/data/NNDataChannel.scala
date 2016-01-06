@@ -2,15 +2,14 @@ package nounou.elements.data
 
 import breeze.linalg.{DenseVector => DV}
 import nounou._
-import nounou.elements._scale.NNDataScaleElement
-import nounou.elements._timing.NNDataTimingElement
-import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid}
+import nounou.elements.traits.{NNTimingElement, NNScalingElement}
+import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.elements.NNElement
 
 /**
  * Created by Kenta on 12/14/13.
  */
-trait NNDataChannel extends NNDataTimingElement with NNDataScaleElement {
+trait NNDataChannel extends NNTimingElement with NNScalingElement {
 
 
   /**MUST OVERRIDE: name of the given channel.*/
@@ -31,17 +30,19 @@ trait NNDataChannel extends NNDataTimingElement with NNDataScaleElement {
   def readPointImpl(frame: Int, segment: Int): Int
 
   //<editor-fold desc="reading a trace">
-  /** Read a single trace from the data, in internal integer scaling.
-    */
-  final def readTrace(segment: Int): Array[Int] = {
-    val range = NN.SampleRangeAll().getSampleRangeValid( timing() )
-    readTraceDVImpl(range).toArray
-  }
-  final def readTrace(range: SampleRangeSpecifier): Array[Int] = readTraceDV(range).toArray
+//  /** Read a single trace from the data, in internal integer scaling.
+//    */
+//  final def readTraceInt(segment: Int): Array[Int] = {
+//    val range = NN.NNRangeAll().getValidRange( timing() )
+//    readTraceDVImpl(range).toArray
+//  }
+  final def readTraceInt(range: NNRangeSpecifier): Array[Int] = readTraceDV(range).toArray
+
+  final def readTrace(range: NNRangeSpecifier): Array[Double] = scale.convertIntToAbsolute(readTraceInt(range))
   /** Read a single trace (within the span) from the data, in internal integer scaling.
     */
-  final def readTraceDV(range: SampleRangeSpecifier): DV[Int] = {
-    val (preLength, seg, postLength) = range.getSampleRangeValidPrePost( timing() )
+  final def readTraceDV(range: NNRangeSpecifier): DV[Int] = {
+    val (preLength, seg, postLength) = range.getRangeValidPrePost( timing() )
     DV.vertcat( DV.zeros[Int]( preLength ), readTraceDVImpl(seg), DV.zeros[Int]( postLength ) )
   }
   //</editor-fold>
@@ -49,7 +50,7 @@ trait NNDataChannel extends NNDataTimingElement with NNDataScaleElement {
   /** CAN OVERRIDE: Read a single data trace from the data, in internal integer scaling.
     * Should return a defensive clone.
     */
-  def readTraceDVImpl(range: SampleRangeValid): DV[Int] = {
+  def readTraceDVImpl(range: NNRangeValid): DV[Int] = {
     val res = DV.zeros[Int](range.length)
     nounou.util.forJava(range.start, range.last + 1, range.step, (c: Int) => (res(c) = readPointImpl(c, range.segment)))
     res

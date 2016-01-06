@@ -5,7 +5,7 @@ import breeze.signal._
 import breeze.signal.support.FIRKernel1D
 import nounou.NN._
 import nounou.elements.data.NNData
-import nounou.elements.ranges.{SampleRangeReal, SampleRangeValid}
+import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
 
 /**
  * @author ktakagaki
@@ -48,18 +48,18 @@ class NNDataFilterDecimate( parentVar: NNData )
         parentVar.readPointIntImpl(channel, frame, segment)
       } else {
         //by calling _parent.readTrace instead of _parent.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
-        val tempData = parentVar.readTraceIntDV( channel, SampleRange(frame * factor - kernel.overhangPre, frame * factor + kernel.overhangPost, 1))//, OptSegment(segment) ))
+        val tempData = parentVar.readTraceIntDV( channel, NNRange(frame * factor - kernel.overhangPre, frame * factor + kernel.overhangPost, 1, segment))//, OptSegment(segment) ))
         val tempRet = convolve( DV( tempData.map(_.toLong).toArray ), kernel.kernel, overhang = OptOverhang.None )
         require( tempRet.length == 1, "something is wrong with the convolution!" )
         tempRet(0).toInt
       }
 
-    override def readTraceIntDVImpl(channel: Int, range: SampleRangeValid /*Range.Inclusive, segment: Int*/): DV[Int] =
+    override def readTraceIntDVImpl(channel: Int, range: NNRangeValid /*Range.Inclusive, segment: Int*/): DV[Int] =
       if(kernel == null){
           parentVar.readTraceIntDVImpl(channel, range/*, segment*/)
       } else {
           //by calling _parent.readTrace instead of _parent.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
-          val realRange = new SampleRangeReal(range.start * factor - kernel.overhangPre, range.last * factor + kernel.overhangPost, 1, range.segment )
+          val realRange = new NNRangeInstantiated(range.start * factor - kernel.overhangPre, range.last * factor + kernel.overhangPost, 1, range.segment )
           val tempData = parentVar.readTraceIntDV(channel, realRange)
             //RangeFr(range.start * factor - kernel.overhangPre, range.last * factor + kernel.overhangPost, 1, OptSegment(segment) ))
 //        println("tempData: " + tempData.length)

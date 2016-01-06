@@ -17,22 +17,22 @@ class FileAdapterNeuralynxHeaderTest extends FunSuite {
    val testFileE04LC_CSC1 = getClass.getResource("/nounou/Neuralynx/E04LC/CSC1.ncs").getPath()
    //println(testFileE04LC_CSC1)
 
-   test("file reading") {
-     val handle: RandomAccessFile = new RandomAccessFile(new File(testFileE04LC_CSC1) )
-     println(handle.getFilePointer)
-//     handle.seek(16384)
-//     println(handle.readUInt64Shifted())
-//     println(handle.readUInt32())
-//     println(handle.readUInt32())
-//     println(handle.readUInt32())
-
-     handle.seek(16383)
-     println(handle.readUInt64Shifted())
-     println(handle.readUInt32())
-     println(handle.readUInt32())
-     println(handle.readUInt32())
-
-   }
+//   test("manual test of file reading") {
+//     val handle: RandomAccessFile = new RandomAccessFile(new File(testFileE04LC_CSC1) )
+//     //println(handle.getFilePointer)
+////     handle.seek(16384)
+////     println(handle.readUInt64Shifted())
+////     println(handle.readUInt32())
+////     println(handle.readUInt32())
+////     println(handle.readUInt32())
+//
+////     handle.seek(16383)
+////     println(handle.readUInt64Shifted())
+////     println(handle.readUInt32())
+////     println(handle.readUInt32())
+////     println(handle.readUInt32())
+//
+//   }
 
    test("headerHandling") {
 

@@ -30,6 +30,9 @@ class FileAdapterNCSTest extends FunSuite {
     assert( dataObj.timing.segmentLength(8) == 3902976 )
     assert( dataObj.timing.segmentStartFrame(1) == 2546176)
     assert( dataObj.timing.segmentCount == 94 )
+
+    assert( dataObj.timing.endTs == 27500375120L )
+    assert( dataObj.timing.startTs == 10237373715L )
 //    intercept[IllegalArgumentException] {
 //      dataObj.timing.length
 //    }
@@ -56,10 +59,10 @@ class FileAdapterNCSTest extends FunSuite {
 
   test("readTrace") {
 
-    assert( dataObj.readTrace( NN.SampleRange(0, 0, 1, 0) )(0) == -1528*dataObj.scale.xBits)
-    assert( dataObj.readTraceDV( NN.SampleRange(0, 4, 1, 0) ) == DenseVector(-1528,-1841, -1282, -670, -500)*dataObj.scale.xBits)
-    assert( dataObj.readTraceDV( NN.SampleRange(0, 4, 2, 0) ) == DenseVector(-1528, -1282, -500)*dataObj.scale.xBits)
-    assert( dataObj.readTraceDV( NN.SampleRange(-2, 4, 2, 0) ) == DenseVector(0, -1528, -1282, -500)*dataObj.scale.xBits)
+    assert( dataObj.readTraceInt( NN.NNRange(0, 0, 1, 0) )(0) == -1528*dataObj.scale.xBits)
+    assert( dataObj.readTraceDV( NN.NNRange(0, 4, 1, 0) ) == DenseVector(-1528,-1841, -1282, -670, -500)*dataObj.scale.xBits)
+    assert( dataObj.readTraceDV( NN.NNRange(0, 4, 2, 0) ) == DenseVector(-1528, -1282, -500)*dataObj.scale.xBits)
+    assert( dataObj.readTraceDV( NN.NNRange(-2, 4, 2, 0) ) == DenseVector(0, -1528, -1282, -500)*dataObj.scale.xBits)
 
   }
 //  test("readTrace"){

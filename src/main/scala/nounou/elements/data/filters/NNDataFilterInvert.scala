@@ -2,7 +2,7 @@ package nounou.elements.data.filters
 
 import breeze.linalg.DenseVector
 import nounou.elements.data.NNData
-import nounou.elements.ranges.SampleRangeValid
+import nounou.ranges.NNRangeValid
 
 /**
  * @author ktakagaki
@@ -41,7 +41,7 @@ class NNDataFilterInvert(private var _parent: NNData ) extends NNDataFilter( _pa
       _parent.readPointIntImpl(channel, frame, segment)
     }
 
-  override def readTraceIntDVImpl(channel: Int, range: SampleRangeValid): DenseVector[Int] =
+  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DenseVector[Int] =
     if(inverted){
       - _parent.readTraceIntDVImpl(channel, range)
     } else {

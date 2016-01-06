@@ -1,6 +1,6 @@
 package nounou.elements.data.filters
 
-import _root_.nounou.elements.ranges.SampleRangeValid
+import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
 import breeze.linalg.{DenseVector => DV, convert}
 import breeze.signal._
 import breeze.signal.support.FIRKernel1D
@@ -85,16 +85,16 @@ class NNDataFilterFIR(private var _parent: NNData ) extends NNDataFilter( _paren
   override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int = {
     //by calling _parent.readTrace instead of _parent.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
     val tempData = _parent.readTraceIntDV( channel,
-        SampleRange(frame - kernel.overhangPre, frame + kernel.overhangPost, 1, segment))
+        NNRange(frame - kernel.overhangPre, frame + kernel.overhangPost, 1, segment))
     val tempRet = convolve( DV( tempData.map(_.toLong).toArray ), kernel.kernel, overhang = OptOverhang.None )
     require( tempRet.length == 1, "something is wrong with the convolution!" )
     tempRet(0).toInt
   }
 
-  override def readTraceIntDVImpl(channel: Int, range: SampleRangeValid): DV[Int] = {
+  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DV[Int] = {
     //by calling _parent.readTrace instead of _parent.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
     val tempData = _parent.readTraceIntDV( channel,
-      SampleRangeReal( range.start - kernel.overhangPre, range.last + kernel.overhangPost, 1, range.segment))
+      new NNRangeInstantiated( range.start - kernel.overhangPre, range.last + kernel.overhangPost, 1, range.segment))
 //    println("XDataFilterFIR " + ran.toString())
     val tempRes: DV[Long] = convolve(
          convert( new DV( tempData.toArray ), Long),

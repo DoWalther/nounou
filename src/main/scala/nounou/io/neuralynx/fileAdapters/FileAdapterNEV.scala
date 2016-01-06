@@ -43,7 +43,7 @@ class FileAdapterNEV  extends FileLoader with FileSaver  with LoggingExt {
     // <editor-fold defaultstate="collapsed" desc=" read loop ">
 
     val xEventsReturn = new NNEvents()
-    xEventsReturn.header = fileAdapter.header
+    xEventsReturn.header = fileAdapter.getHeader
     /**Temporary buffer of event trigger info (to encorporate into a duration event
       * if the next call on the same port is value zero). portValue -> (qwTimeStamp, ttlInt, eventString, id)
       */
@@ -147,7 +147,7 @@ class FileAdapterNEV  extends FileLoader with FileSaver  with LoggingExt {
     val fHand = fileAdapter.handle
 
     fHand.seek(0)
-    fHand.writeUInt16(header.toNeuralynxHeaderString().toCharArray())
+    fHand.writeUInt16(header.getNeuralynxHeaderString().toCharArray())
 
     fHand.seek(fileAdapter.headerBytes)
     for (event <- dataElem.getPortEventList()) {

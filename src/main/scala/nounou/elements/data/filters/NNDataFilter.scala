@@ -1,11 +1,11 @@
 package nounou.elements.data.filters
 
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements._scale.NNDataScale
+import nounou.elements.traits.NNDataScale
 import nounou.elements.data.NNData
-import nounou.elements._layout.NNDataLayout
-import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid}
+import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.elements.NNElement
+import nounou.elements.traits.layout.NNLayout
 
 /** A passthrough object, which is inherited by various NNDataFilter
   * objects to create a filter block for the filter chain.
@@ -62,7 +62,7 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
       parenVar.readPointInt(channel, frame, segment)
     }
 
-  override final def readTraceIntDV(channel: Int, range: SampleRangeSpecifier): DV[Int] =
+  override final def readTraceIntDV(channel: Int, range: NNRangeSpecifier): DV[Int] =
     if(_active){
       super.readTraceIntDV(channel, range)
     }else{
@@ -75,7 +75,7 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
   //passthrough implementations to be overridden in real filters
   override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int = parenVar.readPointIntImpl(channel, frame, segment: Int)
-  override def readTraceIntDVImpl(channel: Int, range: SampleRangeValid): DV[Int] = parenVar.readTraceIntDVImpl(channel, range)
+  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DV[Int] = parenVar.readTraceIntDVImpl(channel, range)
 //  override def readFrameImpl(frame: Int): DV[Int] = _parent.readFrameImpl(frame)
 //  override def readFrameImpl(frame: Int, channels: Array[Int]): DV[Int] = _parent.readFrameImpl(frame, channels)
 
@@ -90,7 +90,7 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 //    throw loggerError("Cannot set timing for a data filter manually")
   final override def setScale( scale: NNDataScale ) =
     throw loggerError("Cannot set scale for data filter for a data filter manually")
-  final override def setLayout( layout: NNDataLayout ) =
+  final override def setLayout( layout: NNLayout ) =
     throw loggerError("Cannot set layout for data filter for a data filter manually")
 
   // </editor-fold>
