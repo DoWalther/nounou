@@ -1,9 +1,9 @@
 package nounou.elements.data.filters
 
 import breeze.linalg.DenseVector
-import nounou.elements._timing.NNDataTiming
 import nounou.elements.data.NNData
-import nounou.elements.ranges.SampleRangeValid
+import nounou.ranges.NNRangeValid
+import nounou.elements.traits.NNTiming
 
 import scala.collection.mutable.{ArrayBuffer, WeakHashMap}
 
@@ -16,7 +16,7 @@ import scala.collection.mutable.{ArrayBuffer, WeakHashMap}
   */
 class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_parent) {
 
-  override def timing(): NNDataTiming = _parent.timing()
+  override def timing(): NNTiming = _parent.timing()
 
   var buffer: WeakHashMap[Long, DenseVector[Int]] = new ReadingHashMapBuffer()
   var garbageQue: ArrayBuffer[Long] = new ArrayBuffer[Long]()
@@ -79,13 +79,13 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
   def getBufferPage(frame: Int) = frame/bufferPageLength
   def getBufferIndex(frame: Int) = frame%bufferPageLength
 
-  override def readPointImpl(channel: Int, frame: Int, segment: Int): Int = {
+  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int = {
     loggerRequire(channel<maxChannel, "Cannot buffer more than {} channels!", maxChannel.toString)
     loggerRequire(segment<maxSegment, "Cannot buffer more than {} segments!", maxSegment.toString)
     buffer( bufferHashKey(channel, getBufferPage(frame), segment) )( getBufferIndex(frame) )
   }
 
-  override def readTraceDVImpl(channel: Int, range: SampleRangeValid): DenseVector[Int] = {
+  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DenseVector[Int] = {
     loggerRequire(channel<maxChannel, "Cannot buffer more than {} channels!", maxChannel.toString)
     loggerRequire(range.segment<maxSegment, "Cannot buffer more than {} segments!", maxSegment.toString)
 
@@ -138,7 +138,7 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
   // <editor-fold defaultstate="collapsed" desc=" ReadingHashMapBuffer ">
 
   //redirection function to deal with scope issues regarding super
-  private def tempTraceReader(ch: Int, rangeFrValid: SampleRangeValid) = _parent.readTraceDVImpl(ch, rangeFrValid)
+  private def tempTraceReader(ch: Int, rangeFrValid: NNRangeValid) = _parent.readTraceIntDVImpl(ch, rangeFrValid)
 
   class ReadingHashMapBuffer extends WeakHashMap[Long, DenseVector[Int]] {
 
@@ -162,7 +162,7 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
     override def default( key: Long  ): DenseVector[Int] = {
       val startFrame = bufferHashKeyToPage(key) * bufferPageLength
       val endFramePlusOne: Int = scala.math.min( startFrame + bufferPageLength, timing.segmentLength( bufferHashKeyToSegment(key) ) )
-      val returnValue = tempTraceReader( bufferHashKeyToChannel(key), new SampleRangeValid(startFrame, endFramePlusOne-1, 1, bufferHashKeyToSegment(key))  )
+      val returnValue = tempTraceReader( bufferHashKeyToChannel(key), new NNRangeValid(startFrame, endFramePlusOne-1, 1, bufferHashKeyToSegment(key))  )
       this.+=( key -> returnValue )
       returnValue
     }

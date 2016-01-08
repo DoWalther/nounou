@@ -2,12 +2,14 @@ package nounou
 
 //import breeze.linalg.DenseVector
 
+import java.math.BigInteger
+
 import breeze.linalg.DenseVector
 import breeze.numerics.sin
 import nounou.elements.NNElement
 import nounou.elements.data.NNData
 import nounou.elements.data.filters.NNDataFilterMedianSubtract
-import nounou.elements.ranges._
+import nounou.ranges._
 import nounou.io.{FileLoader, FileSaver}
 //import nounou.io.FileLoader._
 import nounou.util.{LoggingExt, NNGit}
@@ -24,6 +26,7 @@ import nounou.util.{LoggingExt, NNGit}
  */
 object NN extends LoggingExt {
 
+  //ToDo 2: this is currently not using active git info. update
   override final def toString(): String =
       "Welcome to nounou, a Scala/Java adapter for neurophysiological data.\n" +
       NNGit.infoPrintout
@@ -77,66 +80,87 @@ object NN extends LoggingExt {
 
   // <editor-fold defaultstate="collapsed" desc=" sample ranges ">
 
-  /**This is the full signature for creating a [[nounou.elements.ranges.SampleRange SampleRange]].*/
-  final def SampleRange(start: Int, last: Int, step: Int, segment: Int) = new SampleRange(start, last, step, segment)
-  final def SampleRangeReal(start: Int, last: Int, step: Int, segment: Int) = new SampleRangeReal(start, last, step, segment)
-  final def SampleRangeValid(start: Int, last: Int, step: Int, segment: Int) = new SampleRangeValid(start, last, step, segment)
+  /**
+    * This is the full signature for creating a [[nounou.ranges.NNRange SampleRange]].
+    */
+  final def NNRange(start: Int, last: Int, step: Int, segment: Int) = new NNRange(start, last, step, segment)
+
+//The following two to be used internally only:
+//  final def SampleRangeInstantiated(start: Int, last: Int, step: Int, segment: Int) = new SampleRangeInstantiated(start, last, step, segment)
+//  final def SampleRangeValid(start: Int, last: Int, step: Int, segment: Int) = new SampleRangeValid(start, last, step, segment)
 
 //The following are deprecated due to the ambiguity between step and segment variables
 //  final def SampleRange(start: Int, last: Int, step: Int)               = new SampleRange(start, last, step, -1)
 //  final def SampleRange(start: Int, last: Int, segment: Int)            = new SampleRange(start, last, -1,   segment)
 //  final def SampleRange(start: Int, last: Int)                          = new SampleRange(start,    last,     -1,       -1)
-  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
-    *
-    * @param range Tuple containing start and end. segment=-1 is assumed.
-    */
-  final def SampleRange( range: (Int, Int) )                            = new SampleRange(start = range._1, last = range._2, step = -1, segment = -1)
-  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
-    *
-    * @param range Tuple containing start and end.
-    * @param segment Which segment to read from
-    */
-  final def SampleRange( range: (Int, Int), segment: Int)               = new SampleRange(start = range._1, last = range._2, step = -1, segment)
-  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
-    *
-    * @param range Tuple containing start, end, and step. segment=-1 is assumed.
-    */
-  final def SampleRange( range: (Int, Int, Int) )                       = new SampleRange(start = range._1, last = range._2, step = range._3, segment = -1)
-  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
-    *
-    * @param range Tuple containing start, end, and step
-    * @param segment Which segment to read from
-    */
-  final def SampleRange( range: (Int, Int, Int), segment: Int )         = new SampleRange(start = range._1, last = range._2, step = range._3, segment)
-  /** Java Array-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+
+  // <editor-fold defaultstate="collapsed" desc=" array based aliases for SampleRange ">
+
+//  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+//    *
+//    * @param range Tuple containing start and end. segment=-1 is assumed.
+//    */
+//  final def SampleRange( range: (Int, Int) )                            = new SampleRange(start = range._1, last = range._2, step = -1, segment = -1)
+//
+//  /**
+//    * Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+//    *
+//    * @param range Tuple containing start and end.
+//    * @param segment Which segment to read from
+//    */
+//  final def SampleRange( range: (Int, Int), segment: Int)               = new SampleRange(start = range._1, last = range._2, step = -1, segment)
+//
+//  /**
+//    * Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+//    *
+//    * @param range Tuple containing start, end, and step. segment=-1 is assumed.
+//    */
+//  final def SampleRange( range: (Int, Int, Int) )                       = new SampleRange(start = range._1, last = range._2, step = range._3, segment = -1)
+//
+//  /**
+//    * Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+//    *
+//    * @param range Tuple containing start, end, and step
+//    * @param segment Which segment to read from
+//    */
+//  final def SampleRange( range: (Int, Int, Int), segment: Int )         = new SampleRange(start = range._1, last = range._2, step = range._3, segment)
+
+  /**
+    * Java Array-based signature alias for [[NNRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Array containing start, end, and optionally, step
     * @param segment Which segment to read from
     */
-  final def SampleRange( range: Array[Int], segment: Int ): SampleRangeSpecifier =
-    nounou.elements.ranges.SampleRange.convertArrayToSampleRange(range, segment)
-  /** Java Array-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
+  final def NNRange(range: Array[Int], segment: Int ): NNRangeSpecifier =
+    nounou.ranges.NNRange.convertArrayToSampleRange(range, segment)
+
+  /** Java Array-based signature alias for [[NNRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
     *
     * @param range Array containing start, end, and optionally, step. segment = -1 is assumed.
     */
-  final def SampleRange( range: Array[Int] ): SampleRangeSpecifier = SampleRange( range, -1 )
+  final def NNRange(range: Array[Int] ): NNRangeSpecifier = NNRange( range, -1 )
 
+  // </editor-fold>
+
+  /**Constructor method for a sample range specifying a whole segment.
+    */
+  final def NNRangeAll(step: Int, segment: Int) = new NNRangeAll(step, segment)
   /**Constructor method for a sample range specifying a whole segment
     */
-  final def SampleRangeAll(step: Int, segment: Int) = new SampleRangeAll(step, segment)
-  final def SampleRangeAll() = new SampleRangeAll(1, -1)
+  final def NNRangeAll() = new NNRangeAll(1, -1)
 
   // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" RangeTs ">
 
-  final def SampleRangeTs(startTs: Long, endTS: Long, stepTS: Long): SampleRangeTs =
-    new SampleRangeTs(startTs, endTS, stepTS)
-  final def FrameRangeTs(startTs: Long, endTS: Long): SampleRangeTs =
-    new SampleRangeTs(startTs, endTS, -1L)
+  /**
+    * This is the full signature for creating a [[nounou.ranges.NNRangeTs SampleRangeTs]].
+    */
+  final def NNRangeTs(startTs: BigInteger, endTs: BigInteger, stepTs: BigInteger): NNRangeTs =
+    new NNRangeTs(startTs, endTs, stepTs)
+  final def NNRangeTs(startTs: BigInteger, endTs: BigInteger): NNRangeTs =
+    new NNRangeTs(startTs, endTs, -1L)
 
-//  final def RangeTs(stamps: Array[Long], preTS: Long, postTS: Long): Array[ranges.RangeTs] =
-//    stamps.map( (s: Long) => ranges.RangeTs(s-preTS, s+postTS) )
 
   // </editor-fold>
 

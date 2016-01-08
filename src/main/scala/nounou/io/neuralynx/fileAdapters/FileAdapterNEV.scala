@@ -43,7 +43,7 @@ class FileAdapterNEV  extends FileLoader with FileSaver  with LoggingExt {
     // <editor-fold defaultstate="collapsed" desc=" read loop ">
 
     val xEventsReturn = new NNEvents()
-    xEventsReturn.header = fileAdapter.header
+    xEventsReturn.header = fileAdapter.getHeader
     /**Temporary buffer of event trigger info (to encorporate into a duration event
       * if the next call on the same port is value zero). portValue -> (qwTimeStamp, ttlInt, eventString, id)
       */
@@ -147,10 +147,12 @@ class FileAdapterNEV  extends FileLoader with FileSaver  with LoggingExt {
     val fHand = fileAdapter.handle
 
     fHand.seek(0)
-    fHand.writeUInt16(header.toNeuralynxHeaderString().toCharArray())
+    fHand.writeUInt16(header.getNeuralynxHeaderString().toCharArray())
 
     fHand.seek(fileAdapter.headerBytes)
-    for (event <- dataElem.getPortEventList()) {
+
+    for (event <- dataElem.readPortEventArray()) {
+      ???
       //skip nstx(reserved), npkt_id(ID for originating system), npkt_data_size(==2)
       //all of these values seem to be fixed at zero, at least for cheetah 5.5.1
       fHand.skipBytes(6 - 1)
@@ -161,7 +163,7 @@ class FileAdapterNEV  extends FileLoader with FileSaver  with LoggingExt {
       val nttl = fHand.readInt16()
       //skip ncrc, ndummy1, ndummy2, dnExtra(8x Int32)
       //all of these values seem to be fixed at zero, at least for cheetah 5.5.1
-      fHand.skipBytes(38) //readInt16(3) //readInt32(8)
+      fHand.skipBytes(38)  //readInt16(3) //readInt32(8)
       //EventString
       val eventString = new String(fHand.readUInt8(128).filterNot(_ == 0).map(_.toChar))
       val portValue = NNEventNEV.toNEVPortValue(eventString)

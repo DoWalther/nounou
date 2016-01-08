@@ -45,14 +45,15 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">FileReadNEV</span><span class="result"> extends <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a> with <a href="FileNEV.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNEV">FileNEV</a></span>
+        <span class="name">FileReadNEV</span><span class="result"> extends <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a>[<a href="../headers/NNHeaderNEV.html" class="extype" name="nounou.io.neuralynx.headers.NNHeaderNEV">NNHeaderNEV</a>] with <a href="FileNEV.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNEV">FileNEV</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Created by ktakagaki on 15/05/28.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>File handler for reading Neuralynx NEV files, to be used by file adapter.
+Created by ktakagaki on 15/05/28.
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="FileNEV.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNEV">FileNEV</a>, <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a>, <a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a>, <a href="../../../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.LazyLogging">LazyLogging</span>, <span class="extype" name="com.typesafe.scalalogging.Logging">Logging</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="FileNEV.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNEV">FileNEV</a>, <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a>[<a href="../headers/NNHeaderNEV.html" class="extype" name="nounou.io.neuralynx.headers.NNHeaderNEV">NNHeaderNEV</a>], <a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a>, <a href="../../../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.LazyLogging">LazyLogging</span>, <span class="extype" name="com.typesafe.scalalogging.Logging">Logging</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -166,6 +167,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="nounou.io.neuralynx.fileObjects.FileReadNEV#_header" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="_header:nounou.io.neuralynx.headers.NNHeaderNEV"></a>
+      <a id="_header:NNHeaderNEV"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_header</span><span class="result">: <a href="../headers/NNHeaderNEV.html" class="extype" name="nounou.io.neuralynx.headers.NNHeaderNEV">NNHeaderNEV</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.FileReadNEV@_header:nounou.io.neuralynx.headers.NNHeaderNEV" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Protected header buffer to use in manual lazy initialization.</p><div class="fullcomment"><div class="comment cmt"><p>Protected header buffer to use in manual lazy initialization.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNEV">FileReadNEV</a> → <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -314,13 +332,32 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="nounou.io.neuralynx.fileObjects.FileReadNEV#getHeader" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getHeader:nounou.io.neuralynx.headers.NNHeaderNEV"></a>
+      <a id="getHeader:NNHeaderNEV"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getHeader</span><span class="result">: <a href="../headers/NNHeaderNEV.html" class="extype" name="nounou.io.neuralynx.headers.NNHeaderNEV">NNHeaderNEV</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.FileReadNEV@getHeader:nounou.io.neuralynx.headers.NNHeaderNEV" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Get encapsulating class for file-type specific neuralynx header.</p><div class="fullcomment"><div class="comment cmt"><p>Get encapsulating class for file-type specific neuralynx header.
+This is defined as a function (and not a val) to avoid initialization null pointer issues.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNEV">FileReadNEV</a> → <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a></dd></dl></div>
     </li><li name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx#handle" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="handle:breeze.io.RandomAccessFile"></a>
       <a id="handle:RandomAccessFile"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">handle</span><span class="result">: <span class="extype" name="breeze.io.RandomAccessFile">RandomAccessFile</span></span>
@@ -330,7 +367,15 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a> → <a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></dd></dl></div>
+      <p class="shortcomment cmt">The Neuralynx file handle, either a reading handle or a writing handle.</p><div class="fullcomment"><div class="comment cmt"><p>The Neuralynx file handle, either a reading handle or a writing handle.
+This val construct is somewhat delicate, since
+all non-abstract classes MUST define/override this file handle early in the constructor initialization
+sequence, or else downstream
+lazy values relying on it (originalHeaderText, etc.)
+will fail.</p><p>This is programmed this way so that the code for intializing the file handle val
+can be encapsulated in this trait (trait initialization order is
+complex, but we can assume that lazy values are handled at the end.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a> → <a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -348,29 +393,12 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="nounou.io.neuralynx.fileObjects.FileReadNEV#header" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="header:nounou.io.neuralynx.headers.NNHeaderNEV"></a>
-      <a id="header:NNHeaderNEV"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">header</span><span class="result">: <a href="../headers/NNHeaderNEV.html" class="extype" name="nounou.io.neuralynx.headers.NNHeaderNEV">NNHeaderNEV</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.FileReadNEV@header:nounou.io.neuralynx.headers.NNHeaderNEV" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNEV">FileReadNEV</a> → <a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></dd></dl></div>
     </li><li name="nounou.io.neuralynx.fileObjects.FileNeuralynx#headerBytes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="headerBytes:Int"></a>
       <a id="headerBytes:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">final </span>
+        <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
@@ -381,8 +409,9 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The total number of bytes in the initial Neuralynx text header.</p><div class="fullcomment"><div class="comment cmt"><p>The total number of bytes in the initial Neuralynx text header.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></dd></dl></div>
-    </li><li name="nounou.io.neuralynx.fileObjects.FileNeuralynx#headerRecordCount" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <p class="shortcomment cmt">Re-definition of FileNeuralynx$.headerBytes so that it can be used in chlidren.</p><div class="fullcomment"><div class="comment cmt"><p>Re-definition of FileNeuralynx$.headerBytes so that it can be used in chlidren.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></dd></dl></div>
+    </li><li name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx#headerRecordCount" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="headerRecordCount:Int"></a>
       <a id="headerRecordCount:Int"></a>
       <h4 class="signature">
@@ -398,7 +427,7 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The number of records in the file, depends on the file length of the handle.</p><div class="fullcomment"><div class="comment cmt"><p>The number of records in the file, depends on the file length of the handle.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></dd></dl></div>
+      <p class="shortcomment cmt">The number of records in the file, depends on the file length of the handle.</p><div class="fullcomment"><div class="comment cmt"><p>The number of records in the file, depends on the file length of the handle.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -535,7 +564,7 @@ throw loggerError(&quot;This is an error with params {}&quot;, param1.toString)
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">originalHeaderText</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
@@ -579,7 +608,9 @@ throw loggerError(&quot;This is an error with params {}&quot;, param1.toString)
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></dd></dl></div>
+      <p class="shortcomment cmt">The byte within a file where a specific record should start.</p><div class="fullcomment"><div class="comment cmt"><p>The byte within a file where a specific record should start.
+Depends upon FileNeuralynx.headerBytes and recordSize, which is specified in each child class.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -695,7 +726,7 @@ throw loggerError(&quot;This is an error with params {}&quot;, param1.toString)
         <div class="parent" name="nounou.io.neuralynx.fileObjects.FileNEV">
               <h3>Inherited from <a href="FileNEV.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNEV">FileNEV</a></h3>
             </div><div class="parent" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">
-              <h3>Inherited from <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a></h3>
+              <h3>Inherited from <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a>[<a href="../headers/NNHeaderNEV.html" class="extype" name="nounou.io.neuralynx.headers.NNHeaderNEV">NNHeaderNEV</a>]</h3>
             </div><div class="parent" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">
               <h3>Inherited from <a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></h3>
             </div><div class="parent" name="nounou.util.LoggingExt">

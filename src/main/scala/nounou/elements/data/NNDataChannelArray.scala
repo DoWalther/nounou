@@ -1,6 +1,6 @@
 package nounou.elements.data
 
-import _root_.nounou.elements.ranges.SampleRangeValid
+import nounou.ranges.NNRangeValid
 import nounou.elements.NNElement
 
 /**Immutable data object to encapsulate arrays of [[NNDataChannel]] objects
@@ -25,9 +25,9 @@ import nounou.elements.NNElement
 
   def apply(channel: Int) = array(channel)
 
-  override def readPointImpl(channel: Int, frame: Int, segment: Int) =
+  override def readPointIntImpl(channel: Int, frame: Int, segment: Int) =
     array(channel).readPointImpl(frame, segment)
-  override def readTraceDVImpl(channel: Int, range: SampleRangeValid) =
+  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid) =
     array(channel).readTraceDVImpl(range)
 
   def loadDataChannel(dataChannel: NNDataChannel): NNDataChannelArray = {

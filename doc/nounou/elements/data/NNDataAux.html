@@ -53,7 +53,7 @@
 This means, for instance for imaging data, parallel continuous data such as stimulus signals,
 which are simulatneously digitized.</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a>, <a href="NNDataSpikeReader.html" class="extype" name="nounou.elements.data.NNDataSpikeReader">NNDataSpikeReader</a>, <a href="../_timing/NNDataTimingElement.html" class="extype" name="nounou.elements._timing.NNDataTimingElement">NNDataTimingElement</a>, <a href="../_scale/NNDataScaleElement.html" class="extype" name="nounou.elements._scale.NNDataScaleElement">NNDataScaleElement</a>, <a href="../NNChannelsElement.html" class="extype" name="nounou.elements.NNChannelsElement">NNChannelsElement</a>, <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a>, <a href="../../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.LazyLogging">LazyLogging</span>, <span class="extype" name="com.typesafe.scalalogging.Logging">Logging</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a>, <a href="NNDataSpikeReader.html" class="extype" name="nounou.elements.data.NNDataSpikeReader">NNDataSpikeReader</a>, <a href="../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a>, <a href="../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a>, <a href="../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a>, <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a>, <a href="../../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.LazyLogging">LazyLogging</span>, <span class="extype" name="com.typesafe.scalalogging.Logging">Logging</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -71,7 +71,7 @@ which are simulatneously digitized.</p></div><div class="toggleContainer block">
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="nounou.elements.data.NNDataAux"><span>NNDataAux</span></li><li class="in" name="nounou.elements.data.NNData"><span>NNData</span></li><li class="in" name="nounou.elements.data.NNDataSpikeReader"><span>NNDataSpikeReader</span></li><li class="in" name="nounou.elements._timing.NNDataTimingElement"><span>NNDataTimingElement</span></li><li class="in" name="nounou.elements._scale.NNDataScaleElement"><span>NNDataScaleElement</span></li><li class="in" name="nounou.elements.NNChannelsElement"><span>NNChannelsElement</span></li><li class="in" name="nounou.elements.NNElement"><span>NNElement</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="nounou.elements.data.NNDataAux"><span>NNDataAux</span></li><li class="in" name="nounou.elements.data.NNData"><span>NNData</span></li><li class="in" name="nounou.elements.data.NNDataSpikeReader"><span>NNDataSpikeReader</span></li><li class="in" name="nounou.elements.traits.NNTimingElement"><span>NNTimingElement</span></li><li class="in" name="nounou.elements.traits.NNScalingElement"><span>NNScalingElement</span></li><li class="in" name="nounou.elements.traits.NNChannelsElement"><span>NNChannelsElement</span></li><li class="in" name="nounou.elements.NNElement"><span>NNElement</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -94,7 +94,7 @@ which are simulatneously digitized.</p></div><div class="toggleContainer block">
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="nounou.elements.NNChannelsElement#getChannelCount" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+              <ol><li name="nounou.elements.traits.NNChannelsElement#getChannelCount" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="getChannelCount:Int"></a>
       <a id="getChannelCount:Int"></a>
       <h4 class="signature">
@@ -111,43 +111,46 @@ which are simulatneously digitized.</p></div><div class="toggleContainer block">
       </a>
     </span>
       <p class="shortcomment cmt"><b>[NNChannelsElement]</b> Number of data channels in this layout.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNChannelsElement]</b> Number of data channels in this layout.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNChannelsElement.html" class="extype" name="nounou.elements.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readPointImpl" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="readPointImpl(channel:Int,frame:Int,segment:Int):Int"></a>
-      <a id="readPointImpl(Int,Int,Int):Int"></a>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTimingElement#timing" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="timing():nounou.elements.traits.NNTiming"></a>
+      <a id="timing():NNTiming"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readPointImpl</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">timing</span><span class="params">()</span><span class="result">: <a href="../traits/NNTiming.html" class="extype" name="nounou.elements.traits.NNTiming">NNTiming</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPointImpl(channel:Int,frame:Int,segment:Int):Int" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@timing():nounou.elements.traits.NNTiming" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readPointIntImpl" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="readPointIntImpl(channel:Int,frame:Int,segment:Int):Int"></a>
+      <a id="readPointIntImpl(Int,Int,Int):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">readPointIntImpl</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPointIntImpl(channel:Int,frame:Int,segment:Int):Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt"><b><u>MUST OVERRIDE</u></b> Read a single point from the data, in internal integer scaling.</p><div class="fullcomment"><div class="comment cmt"><p><b><u>MUST OVERRIDE</u></b> Read a single point from the data, in internal integer scaling.
 Assumes that channel, frame, and segment are all valid and within range.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements._timing.NNDataTimingElement#timing" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="timing():nounou.elements._timing.NNDataTiming"></a>
-      <a id="timing():NNDataTiming"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">timing</span><span class="params">()</span><span class="result">: <a href="../_timing/NNDataTiming.html" class="extype" name="nounou.elements._timing.NNDataTiming">NNDataTiming</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@timing():nounou.elements._timing.NNDataTiming" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../_timing/NNDataTimingElement.html" class="extype" name="nounou.elements._timing.NNDataTimingElement">NNDataTimingElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
     </li></ol>
             </div>
 
@@ -332,7 +335,7 @@ Covers sampleRate, segmentLengths, segmentEndTSs, segmentStartTSs, segmentCount
 Always remember to start with super.changedTiming(), in order to
 map to all children.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.NNChannelsElement#channelCount" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="nounou.elements.traits.NNChannelsElement#channelCount" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="channelCount():Int"></a>
       <a id="channelCount():Int"></a>
       <h4 class="signature">
@@ -348,9 +351,9 @@ map to all children.
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"><b>[NNChannelsElement]</b> Alias for <a href="../NNChannelsElement.html#getChannelCount:Int" class="extmbr" name="nounou.elements.NNChannelsElement#getChannelCount">nounou.elements.NNChannelsElement!.getChannelCount</a>.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNChannelsElement]</b> Alias for <a href="../NNChannelsElement.html#getChannelCount:Int" class="extmbr" name="nounou.elements.NNChannelsElement#getChannelCount">nounou.elements.NNChannelsElement!.getChannelCount</a>.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNChannelsElement.html" class="extype" name="nounou.elements.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
-    </li><li name="nounou.elements.NNChannelsElement#channelName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <p class="shortcomment cmt"><b>[NNChannelsElement]</b> Alias for <a href="../traits/NNChannelsElement.html#getChannelCount:Int" class="extmbr" name="nounou.elements.traits.NNChannelsElement#getChannelCount">nounou.elements.traits.NNChannelsElement!.getChannelCount</a>.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNChannelsElement]</b> Alias for <a href="../traits/NNChannelsElement.html#getChannelCount:Int" class="extmbr" name="nounou.elements.traits.NNChannelsElement#getChannelCount">nounou.elements.traits.NNChannelsElement!.getChannelCount</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
+    </li><li name="nounou.elements.traits.NNChannelsElement#channelName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="channelName(channel:Int):String"></a>
       <a id="channelName(Int):String"></a>
       <h4 class="signature">
@@ -367,8 +370,8 @@ map to all children.
       </a>
     </span>
       <p class="shortcomment cmt"><b>[NNChannelsElement]</b> Get the name of a given channel.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNChannelsElement]</b> Get the name of a given channel.
-Throws error if channel out of range and not valid</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNChannelsElement.html" class="extype" name="nounou.elements.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
-    </li><li name="nounou.elements.NNChannelsElement#channelNameImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+Throws error if channel out of range and not valid</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
+    </li><li name="nounou.elements.traits.NNChannelsElement#channelNameImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="channelNameImpl(channel:Int):String"></a>
       <a id="channelNameImpl(Int):String"></a>
       <h4 class="signature">
@@ -385,7 +388,7 @@ Throws error if channel out of range and not valid</p></div><dl class="attribute
       </a>
     </span>
       <p class="shortcomment cmt"><b><u>SHOULD OVERRIDE</u></b> <b>[NNChannelsElement]</b> Get the name of a given channel.</p><div class="fullcomment"><div class="comment cmt"><p><b><u>SHOULD OVERRIDE</u></b> <b>[NNChannelsElement]</b> Get the name of a given channel.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNChannelsElement.html" class="extype" name="nounou.elements.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
     </li><li name="nounou.elements.NNElement#className" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="className:String"></a>
       <a id="className:String"></a>
@@ -569,24 +572,24 @@ Throws error if channel out of range and not valid</p></div><dl class="attribute
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="nounou.elements.data.NNData#getLayout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getLayout():nounou.elements._layout.NNDataLayout"></a>
-      <a id="getLayout():NNDataLayout"></a>
+      <a id="getLayout():nounou.elements.traits.layout.NNLayout"></a>
+      <a id="getLayout():NNLayout"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getLayout</span><span class="params">()</span><span class="result">: <a href="../_layout/NNDataLayout.html" class="extype" name="nounou.elements._layout.NNDataLayout">NNDataLayout</a></span>
+        <span class="name">getLayout</span><span class="params">()</span><span class="result">: <a href="../traits/layout/NNLayout.html" class="extype" name="nounou.elements.traits.layout.NNLayout">NNLayout</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@getLayout():nounou.elements._layout.NNDataLayout" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@getLayout():nounou.elements.traits.layout.NNLayout" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements._scale.NNDataScaleElement#getScale" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getScale():nounou.elements._scale.NNDataScale"></a>
+    </li><li name="nounou.elements.traits.NNScalingElement#getScale" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getScale():nounou.elements.traits.NNScaling"></a>
       <a id="getScale():NNDataScale"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -594,34 +597,34 @@ Throws error if channel out of range and not valid</p></div><dl class="attribute
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getScale</span><span class="params">()</span><span class="result">: <a href="../_scale/NNDataScale.html" class="extype" name="nounou.elements._scale.NNDataScale">NNDataScale</a></span>
+        <span class="name">getScale</span><span class="params">()</span><span class="result">: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNScaling">NNDataScale</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@getScale():nounou.elements._scale.NNDataScale" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@getScale():nounou.elements.traits.NNDataScale" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt"><b>[NNDataScaleElement]</b> Get physical scaling information for data.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNDataScaleElement]</b> Get physical scaling information for data.
 This is not made final, because it will be overriden by some filters which pass through
 upstream scale information.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../_scale/NNDataScaleElement.html" class="extype" name="nounou.elements._scale.NNDataScaleElement">NNDataScaleElement</a></dd></dl></div>
-    </li><li name="nounou.elements._timing.NNDataTimingElement#getTiming" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getTiming():nounou.elements._timing.NNDataTiming"></a>
-      <a id="getTiming():NNDataTiming"></a>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a></dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTimingElement#getTiming" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getTiming():nounou.elements.traits.NNTiming"></a>
+      <a id="getTiming():NNTiming"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getTiming</span><span class="params">()</span><span class="result">: <a href="../_timing/NNDataTiming.html" class="extype" name="nounou.elements._timing.NNDataTiming">NNDataTiming</a></span>
+        <span class="name">getTiming</span><span class="params">()</span><span class="result">: <a href="../traits/NNTiming.html" class="extype" name="nounou.elements.traits.NNTiming">NNTiming</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@getTiming():nounou.elements._timing.NNDataTiming" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@getTiming():nounou.elements.traits.NNTiming" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"><b>[NNDataTimingElement]</b> Alias for <a href="../_timing/NNDataTimingElement.html#timing():nounou.elements._timing.NNDataTiming" class="extmbr" name="nounou.elements._timing.NNDataTimingElement#timing">nounou.elements._timing.NNDataTimingElement.timing</a></p><div class="fullcomment"><div class="comment cmt"><p><b>[NNDataTimingElement]</b> Alias for <a href="../_timing/NNDataTimingElement.html#timing():nounou.elements._timing.NNDataTiming" class="extmbr" name="nounou.elements._timing.NNDataTimingElement#timing">nounou.elements._timing.NNDataTimingElement.timing</a></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../_timing/NNDataTimingElement.html" class="extype" name="nounou.elements._timing.NNDataTimingElement">NNDataTimingElement</a></dd></dl></div>
+      <p class="shortcomment cmt"><b>[NNTimingElement]</b> Alias for <a href="../traits/NNTimingElement.html#timing():nounou.elements.traits.NNTiming" class="extmbr" name="nounou.elements.traits.NNTimingElement#timing">nounou.elements.traits.NNTimingElement.timing</a></p><div class="fullcomment"><div class="comment cmt"><p><b>[NNTimingElement]</b> Alias for <a href="../traits/NNTimingElement.html#timing():nounou.elements.traits.NNTiming" class="extmbr" name="nounou.elements.traits.NNTimingElement#timing">nounou.elements.traits.NNTimingElement.timing</a></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a></dd></dl></div>
     </li><li name="nounou.elements.NNElement#gitHead" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="gitHead:String"></a>
       <a id="gitHead:String"></a>
@@ -694,7 +697,7 @@ upstream scale information.
  or comparison (eg <a href="../spikes/NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">nounou.elements.spikes.NNSpike</a>) etc.</p><div class="fullcomment"><div class="comment cmt"><p><u><b>SHOULD OVERRIDE</b></u> Whether an <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">nounou.elements.NNElement</a> is compatible with another for merging
 (eg <a href="NNData.html" class="extype" name="nounou.elements.data.NNData">nounou.elements.data.NNData</a>)
  or comparison (eg <a href="../spikes/NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">nounou.elements.spikes.NNSpike</a>) etc.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a> → <a href="../_timing/NNDataTimingElement.html" class="extype" name="nounou.elements._timing.NNDataTimingElement">NNDataTimingElement</a> → <a href="../_scale/NNDataScaleElement.html" class="extype" name="nounou.elements._scale.NNDataScaleElement">NNDataScaleElement</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a> → <a href="../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a> → <a href="../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
     </li><li name="nounou.elements.NNElement#isCompatible" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isCompatible(that:Seq[nounou.elements.NNElement]):Boolean"></a>
       <a id="isCompatible(Seq[NNElement]):Boolean"></a>
@@ -730,7 +733,7 @@ upstream scale information.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="nounou.elements.NNChannelsElement#isValidChannel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="nounou.elements.traits.NNChannelsElement#isValidChannel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isValidChannel(channel:Int):Boolean"></a>
       <a id="isValidChannel(Int):Boolean"></a>
       <h4 class="signature">
@@ -748,20 +751,20 @@ upstream scale information.
     </span>
       <p class="shortcomment cmt"><b>[NNChannelsElement]</b> Is this channel valid?
 </p><div class="fullcomment"><div class="comment cmt"><p><b>[NNChannelsElement]</b> Is this channel valid?
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNChannelsElement.html" class="extype" name="nounou.elements.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNData#layout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="layout():nounou.elements._layout.NNDataLayout"></a>
-      <a id="layout():NNDataLayout"></a>
+      <a id="layout():nounou.elements.traits.layout.NNLayout"></a>
+      <a id="layout():NNLayout"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">layout</span><span class="params">()</span><span class="result">: <a href="../_layout/NNDataLayout.html" class="extype" name="nounou.elements._layout.NNDataLayout">NNDataLayout</a></span>
+        <span class="name">layout</span><span class="params">()</span><span class="result">: <a href="../traits/layout/NNLayout.html" class="extype" name="nounou.elements.traits.layout.NNLayout">NNLayout</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@layout():nounou.elements._layout.NNDataLayout" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@layout():nounou.elements.traits.layout.NNLayout" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -897,81 +900,98 @@ throw loggerError(&quot;This is an error with params {}&quot;, param1.toString)
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="nounou.elements.data.NNData#readPoint" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readPoint(channel:Int,frame:Int):Int"></a>
-      <a id="readPoint(Int,Int):Int"></a>
+      <a id="readPoint(channel:Int,frame:Int):Double"></a>
+      <a id="readPoint(Int,Int):Double"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readPoint</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">readPoint</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPoint(channel:Int,frame:Int):Int" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPoint(channel:Int,frame:Int):Double" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+      <p class="shortcomment cmt"><a href="NNData.html#readPointInt(channel:Int,frame:Int):Int" class="extmbr" name="nounou.elements.data.NNData#readPointInt">readPoint</a>
+but in physical units.</p><div class="fullcomment"><div class="comment cmt"><p><a href="NNData.html#readPointInt(channel:Int,frame:Int):Int" class="extmbr" name="nounou.elements.data.NNData#readPointInt">readPoint</a>
+but in physical units.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNData#readPoint" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readPoint(channel:Int,frame:Int,segment:Int):Int"></a>
-      <a id="readPoint(Int,Int,Int):Int"></a>
+      <a id="readPoint(channel:Int,frame:Int,segment:Int):Double"></a>
+      <a id="readPoint(Int,Int,Int):Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readPoint</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPoint(channel:Int,frame:Int,segment:Int):Double" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><a href="NNData.html#readPointInt(channel:Int,frame:Int,segment:Int):Int" class="extmbr" name="nounou.elements.data.NNData#readPointInt">readPoint</a> but in physical units.</p><div class="fullcomment"><div class="comment cmt"><p><a href="NNData.html#readPointInt(channel:Int,frame:Int,segment:Int):Int" class="extmbr" name="nounou.elements.data.NNData#readPointInt">readPoint</a> but in physical units.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readPointImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readPointImpl(channel:Int,frame:Int,segment:Int):Double"></a>
+      <a id="readPointImpl(Int,Int,Int):Double"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readPoint</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">readPointImpl</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPoint(channel:Int,frame:Int,segment:Int):Int" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPointImpl(channel:Int,frame:Int,segment:Int):Double" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readPointInt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readPointInt(channel:Int,frame:Int):Int"></a>
+      <a id="readPointInt(Int,Int):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readPointInt</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPointInt(channel:Int,frame:Int):Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readPointInt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readPointInt(channel:Int,frame:Int,segment:Int):Int"></a>
+      <a id="readPointInt(Int,Int,Int):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readPointInt</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPointInt(channel:Int,frame:Int,segment:Int):Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Read a single point from the data, in internal integer scaling, after checking values.</p><div class="fullcomment"><div class="comment cmt"><p>Read a single point from the data, in internal integer scaling, after checking values.
 Implement via readPointImpl. Prefer
-<a href="NNData.html#readTraceDV(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):breeze.linalg.DenseVector[Int]" class="extmbr" name="nounou.elements.data.NNData#readTraceDV">readTraceDV</a>
+<a href="NNData.html#readTraceIntDV(channel:Int,range:nounou.ranges.NNRangeSpecifier):breeze.linalg.DenseVector[Int]" class="extmbr" name="nounou.elements.data.NNData#readTraceIntDV">readTraceDV</a>
 and readFrame()
 when possible, as these will avoid repeated function calling overhead.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readPointAbs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readPointAbs(channel:Int,frame:Int):Double"></a>
-      <a id="readPointAbs(Int,Int):Double"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readPointAbs</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPointAbs(channel:Int,frame:Int):Double" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt"><a href="NNData.html#readPoint(channel:Int,frame:Int):Int" class="extmbr" name="nounou.elements.data.NNData#readPoint">readPoint</a>
-but in physical units.</p><div class="fullcomment"><div class="comment cmt"><p><a href="NNData.html#readPoint(channel:Int,frame:Int):Int" class="extmbr" name="nounou.elements.data.NNData#readPoint">readPoint</a>
-but in physical units.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readPointAbs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readPointAbs(channel:Int,frame:Int,segment:Int):Double"></a>
-      <a id="readPointAbs(Int,Int,Int):Double"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readPointAbs</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readPointAbs(channel:Int,frame:Int,segment:Int):Double" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt"><a href="NNData.html#readPoint(channel:Int,frame:Int,segment:Int):Int" class="extmbr" name="nounou.elements.data.NNData#readPoint">readPoint</a> but in physical units.</p><div class="fullcomment"><div class="comment cmt"><p><a href="NNData.html#readPoint(channel:Int,frame:Int,segment:Int):Int" class="extmbr" name="nounou.elements.data.NNData#readPoint">readPoint</a> but in physical units.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNDataSpikeReader#readSpike" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="readSpike(channels:Array[Int],frame:Int,segment:Int,spikeLength:Int):nounou.elements.spikes.NNSpike"></a>
@@ -1012,292 +1032,146 @@ but in physical units.
 </p><div class="fullcomment"><div class="comment cmt"><p>Reads a <a href="../spikes/NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">nounou.elements.spikes.NNSpike</a> object from the data
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNDataSpikeReader.html" class="extype" name="nounou.elements.data.NNDataSpikeReader">NNDataSpikeReader</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNData#readTrace" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTrace(channel:Int,range:Array[Int],segment:Int):Array[Int]"></a>
-      <a id="readTrace(Int,Array[Int],Int):Array[Int]"></a>
+      <a id="readTrace(channel:Int,range:Array[Int]):Array[Double]"></a>
+      <a id="readTrace(Int,Array[Int]):Array[Double]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readTrace</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+        <span class="name">readTrace</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTrace(channel:Int,range:Array[Int],segment:Int):Array[Int]" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTrace(channel:Int,range:Array[Int]):Array[Double]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNData#readTrace" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTrace(channel:Int,range:Array[Int]):Array[Int]"></a>
-      <a id="readTrace(Int,Array[Int]):Array[Int]"></a>
+      <a id="readTrace(channel:Int,range:Array[Int],segment:Int):Array[Double]"></a>
+      <a id="readTrace(Int,Array[Int],Int):Array[Double]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readTrace</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+        <span class="name">readTrace</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTrace(channel:Int,range:Array[Int]):Array[Int]" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTrace(channel:Int,range:Array[Int],segment:Int):Array[Double]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNData#readTrace" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTrace(channels:Array[Int],range:nounou.elements.ranges.SampleRangeSpecifier):Array[Array[Int]]"></a>
-      <a id="readTrace(Array[Int],SampleRangeSpecifier):Array[Array[Int]]"></a>
+      <a id="readTrace(channel:Int,range:nounou.ranges.NNRangeSpecifier):Array[Double]"></a>
+      <a id="readTrace(Int,NNRangeSpecifier):Array[Double]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readTrace</span><span class="params">(<span name="channels">channels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="range">range: <a href="../ranges/SampleRangeSpecifier.html" class="extype" name="nounou.elements.ranges.SampleRangeSpecifier">SampleRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]]</span>
+        <span class="name">readTrace</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <a href="../../ranges/NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTrace(channels:Array[Int],range:nounou.elements.ranges.SampleRangeSpecifier):Array[Array[Int]]" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTrace(channel:Int,range:nounou.ranges.NNRangeSpecifier):Array[Double]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNData#readTrace" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTrace(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):Array[Int]"></a>
-      <a id="readTrace(Int,SampleRangeSpecifier):Array[Int]"></a>
+      <a id="readTrace(channel:Int):Array[Double]"></a>
+      <a id="readTrace(Int):Array[Double]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readTrace</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <a href="../ranges/SampleRangeSpecifier.html" class="extype" name="nounou.elements.ranges.SampleRangeSpecifier">SampleRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+        <span class="name">readTrace</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTrace(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):Array[Int]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTrace" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTrace(channel:Int):Array[Int]"></a>
-      <a id="readTrace(Int):Array[Int]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readTrace</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTrace(channel:Int):Array[Int]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Read a single trace (whole range) in internal integer scaling.</p><div class="fullcomment"><div class="comment cmt"><p>Read a single trace (whole range) in internal integer scaling.
-This should only be used for data with only 1 segment.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceAbs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceAbs(channel:Int,range:Array[Int]):Array[Double]"></a>
-      <a id="readTraceAbs(Int,Array[Int]):Array[Double]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readTraceAbs</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceAbs(channel:Int,range:Array[Int]):Array[Double]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceAbs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceAbs(channel:Int,range:Array[Int],segment:Int):Array[Double]"></a>
-      <a id="readTraceAbs(Int,Array[Int],Int):Array[Double]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readTraceAbs</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceAbs(channel:Int,range:Array[Int],segment:Int):Array[Double]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceAbs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceAbs(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):Array[Double]"></a>
-      <a id="readTraceAbs(Int,SampleRangeSpecifier):Array[Double]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readTraceAbs</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <a href="../ranges/SampleRangeSpecifier.html" class="extype" name="nounou.elements.ranges.SampleRangeSpecifier">SampleRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceAbs(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):Array[Double]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceAbs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceAbs(channel:Int):Array[Double]"></a>
-      <a id="readTraceAbs(Int):Array[Double]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readTraceAbs</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Double">Double</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceAbs(channel:Int):Array[Double]" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTrace(channel:Int):Array[Double]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Read a single trace in absolute unit scaling (as recorded).</p><div class="fullcomment"><div class="comment cmt"><p>Read a single trace in absolute unit scaling (as recorded).
 This should only be used for data with only 1 segment.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceAbsDV" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceAbsDV(channels:Array[Int],range:nounou.elements.ranges.SampleRangeSpecifier):Array[breeze.linalg.DenseVector[Double]]"></a>
-      <a id="readTraceAbsDV(Array[Int],SampleRangeSpecifier):Array[DenseVector[Double]]"></a>
+    </li><li name="nounou.elements.data.NNData#readTraceDV" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceDV(channels:Array[Int],range:nounou.ranges.NNRangeSpecifier):Array[breeze.linalg.DenseVector[Double]]"></a>
+      <a id="readTraceDV(Array[Int],NNRangeSpecifier):Array[DenseVector[Double]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readTraceAbsDV</span><span class="params">(<span name="channels">channels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="range">range: <a href="../ranges/SampleRangeSpecifier.html" class="extype" name="nounou.elements.ranges.SampleRangeSpecifier">SampleRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>]]</span>
+        <span class="name">readTraceDV</span><span class="params">(<span name="channels">channels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="range">range: <a href="../../ranges/NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceAbsDV(channels:Array[Int],range:nounou.elements.ranges.SampleRangeSpecifier):Array[breeze.linalg.DenseVector[Double]]" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceDV(channels:Array[Int],range:nounou.ranges.NNRangeSpecifier):Array[breeze.linalg.DenseVector[Double]]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Read multiple traces in absolute unit scaling (as recorded).</p><div class="fullcomment"><div class="comment cmt"><p>Read multiple traces in absolute unit scaling (as recorded).</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceAbsDV" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceAbsDV(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):breeze.linalg.DenseVector[Double]"></a>
-      <a id="readTraceAbsDV(Int,SampleRangeSpecifier):DenseVector[Double]"></a>
+      <p class="shortcomment cmt">Read multiple traces in absolute unit scaling (as recorded).</p><div class="fullcomment"><div class="comment cmt"><p>Read multiple traces in absolute unit scaling (as recorded).</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../package.html" class="extype" name="nounou">nounou</a>] </dd><dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readTraceDV" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceDV(channel:Int,range:nounou.ranges.NNRangeSpecifier):breeze.linalg.DenseVector[Double]"></a>
+      <a id="readTraceDV(Int,NNRangeSpecifier):DenseVector[Double]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readTraceAbsDV</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <a href="../ranges/SampleRangeSpecifier.html" class="extype" name="nounou.elements.ranges.SampleRangeSpecifier">SampleRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>]</span>
+        <span class="name">readTraceDV</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <a href="../../ranges/NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a> = <span class="symbol"><span class="name"><a href="../../package.html">NN.NNRangeAll()</a></span></span></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceAbsDV(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):breeze.linalg.DenseVector[Double]" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceDV(channel:Int,range:nounou.ranges.NNRangeSpecifier):breeze.linalg.DenseVector[Double]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Read a single trace in absolute unit scaling (as recorded).</p><div class="fullcomment"><div class="comment cmt"><p>Read a single trace in absolute unit scaling (as recorded).</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceAbsDV" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceAbsDV(channel:Int):breeze.linalg.DenseVector[Double]"></a>
-      <a id="readTraceAbsDV(Int):DenseVector[Double]"></a>
+      <p class="shortcomment cmt">Read a single trace in absolute unit scaling (as recorded).</p><div class="fullcomment"><div class="comment cmt"><p>Read a single trace in absolute unit scaling (as recorded).</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../package.html" class="extype" name="nounou">nounou</a>] </dd><dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readTraceDVImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceDVImpl(channel:Int,rangeFrValid:nounou.ranges.NNRangeValid):breeze.linalg.DenseVector[Double]"></a>
+      <a id="readTraceDVImpl(Int,NNRangeValid):DenseVector[Double]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">final </span>
+        <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readTraceAbsDV</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>]</span>
+        <span class="name">readTraceDVImpl</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="rangeFrValid">rangeFrValid: <a href="../../ranges/NNRangeValid.html" class="extype" name="nounou.ranges.NNRangeValid">NNRangeValid</a></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceAbsDV(channel:Int):breeze.linalg.DenseVector[Double]" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceDVImpl(channel:Int,rangeFrValid:nounou.ranges.NNRangeValid):breeze.linalg.DenseVector[Double]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceDV" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceDV(channel:Int):breeze.linalg.DenseVector[Int]"></a>
-      <a id="readTraceDV(Int):DenseVector[Int]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readTraceDV</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Int">Int</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceDV(channel:Int):breeze.linalg.DenseVector[Int]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Internal implementation for <a href="NNData.html#readTrace(channel:Int):Array[Int]" class="extmbr" name="nounou.elements.data.NNData#readTrace">readTrace</a>
-to return a breeze.linalg.DenseVector.</p><div class="fullcomment"><div class="comment cmt"><p>Internal implementation for <a href="NNData.html#readTrace(channel:Int):Array[Int]" class="extmbr" name="nounou.elements.data.NNData#readTrace">readTrace</a>
-to return a breeze.linalg.DenseVector.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceDV" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceDV(channels:Array[Int],range:nounou.elements.ranges.SampleRangeSpecifier):Array[breeze.linalg.DenseVector[Int]]"></a>
-      <a id="readTraceDV(Array[Int],SampleRangeSpecifier):Array[DenseVector[Int]]"></a>
+    </li><li name="nounou.elements.data.NNData#readTraceIntDVImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceIntDVImpl(channel:Int,rangeFrValid:nounou.ranges.NNRangeValid):breeze.linalg.DenseVector[Int]"></a>
+      <a id="readTraceIntDVImpl(Int,NNRangeValid):DenseVector[Int]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">readTraceDV</span><span class="params">(<span name="channels">channels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="range">range: <a href="../ranges/SampleRangeSpecifier.html" class="extype" name="nounou.elements.ranges.SampleRangeSpecifier">SampleRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Int">Int</span>]]</span>
+        <span class="name">readTraceIntDVImpl</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="rangeFrValid">rangeFrValid: <a href="../../ranges/NNRangeValid.html" class="extype" name="nounou.ranges.NNRangeValid">NNRangeValid</a></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceDV(channels:Array[Int],range:nounou.elements.ranges.SampleRangeSpecifier):Array[breeze.linalg.DenseVector[Int]]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt"><b><u>CAN OVERRIDE</u></b> by default, calls
-<a href="NNData.html#readTraceDV(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):breeze.linalg.DenseVector[Int]" class="extmbr" name="nounou.elements.data.NNData#readTraceDV">readTraceDV </a>
-</p><div class="fullcomment"><div class="comment cmt"><p><b><u>CAN OVERRIDE</u></b> by default, calls
-<a href="NNData.html#readTraceDV(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):breeze.linalg.DenseVector[Int]" class="extmbr" name="nounou.elements.data.NNData#readTraceDV">readTraceDV </a>
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceDV" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceDV(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):breeze.linalg.DenseVector[Int]"></a>
-      <a id="readTraceDV(Int,SampleRangeSpecifier):DenseVector[Int]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readTraceDV</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <a href="../ranges/SampleRangeSpecifier.html" class="extype" name="nounou.elements.ranges.SampleRangeSpecifier">SampleRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Int">Int</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceDV(channel:Int,range:nounou.elements.ranges.SampleRangeSpecifier):breeze.linalg.DenseVector[Int]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt"><b><u>CAN OVERRIDE</u></b> Read a single trace from the data, in internal integer scaling.</p><div class="fullcomment"><div class="comment cmt"><p><b><u>CAN OVERRIDE</u></b> Read a single trace from the data, in internal integer scaling.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.data.NNData#readTraceDVImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="readTraceDVImpl(channel:Int,rangeFrValid:nounou.elements.ranges.SampleRangeValid):breeze.linalg.DenseVector[Int]"></a>
-      <a id="readTraceDVImpl(Int,SampleRangeValid):DenseVector[Int]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">readTraceDVImpl</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="rangeFrValid">rangeFrValid: <a href="../ranges/SampleRangeValid.html" class="extype" name="nounou.elements.ranges.SampleRangeValid">SampleRangeValid</a></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Int">Int</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceDVImpl(channel:Int,rangeFrValid:nounou.elements.ranges.SampleRangeValid):breeze.linalg.DenseVector[Int]" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceIntDVImpl(channel:Int,rangeFrValid:nounou.ranges.NNRangeValid):breeze.linalg.DenseVector[Int]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">CAN OVERRIDE: Read a single data trace from the data, in internal integer scaling.</p><div class="fullcomment"><div class="comment cmt"><p>CAN OVERRIDE: Read a single data trace from the data, in internal integer scaling.
 Should return a defensive clone. Assumes that channel and range are within the data range!
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements.NNChannelsElement#requireValidChannel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="nounou.elements.traits.NNChannelsElement#requireValidChannel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="requireValidChannel(channel:Int):Unit"></a>
       <a id="requireValidChannel(Int):Unit"></a>
       <h4 class="signature">
@@ -1315,9 +1189,9 @@ Should return a defensive clone. Assumes that channel and range are within the d
     </span>
       <p class="shortcomment cmt"><b>[NNChannelsElement]</b> Log error if !isValidChannel(channel)
 </p><div class="fullcomment"><div class="comment cmt"><p><b>[NNChannelsElement]</b> Log error if !isValidChannel(channel)
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNChannelsElement.html" class="extype" name="nounou.elements.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
-    </li><li name="nounou.elements._scale.NNDataScaleElement#scale" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="scale():nounou.elements._scale.NNDataScale"></a>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
+    </li><li name="nounou.elements.traits.NNScalingElement#scale" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="scale():nounou.elements.traits.NNScaling"></a>
       <a id="scale():NNDataScale"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1325,14 +1199,14 @@ Should return a defensive clone. Assumes that channel and range are within the d
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">scale</span><span class="params">()</span><span class="result">: <a href="../_scale/NNDataScale.html" class="extype" name="nounou.elements._scale.NNDataScale">NNDataScale</a></span>
+        <span class="name">scale</span><span class="params">()</span><span class="result">: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNScaling">NNDataScale</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@scale():nounou.elements._scale.NNDataScale" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@scale():nounou.elements.traits.NNDataScale" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"><b>[NNDataScaleElement]</b> Alias for <a href="../_scale/NNDataScaleElement.html#getScale():nounou.elements._scale.NNDataScale" class="extmbr" name="nounou.elements._scale.NNDataScaleElement#getScale">nounou.elements._scale.NNDataScaleElement.getScale</a>.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNDataScaleElement]</b> Alias for <a href="../_scale/NNDataScaleElement.html#getScale():nounou.elements._scale.NNDataScale" class="extmbr" name="nounou.elements._scale.NNDataScaleElement#getScale">nounou.elements._scale.NNDataScaleElement.getScale</a>.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../_scale/NNDataScaleElement.html" class="extype" name="nounou.elements._scale.NNDataScaleElement">NNDataScaleElement</a></dd></dl></div>
+      <p class="shortcomment cmt"><b>[NNDataScaleElement]</b> Alias for <a href="../traits/NNScalingElement.html#getScale():nounou.elements.traits.NNDataScale" class="extmbr" name="nounou.elements.traits.NNScalingElement#getScale">nounou.elements.traits.NNScalingElement.getScale</a>.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNDataScaleElement]</b> Alias for <a href="../traits/NNScalingElement.html#getScale():nounou.elements.traits.NNDataScale" class="extmbr" name="nounou.elements.traits.NNScalingElement#getScale">nounou.elements.traits.NNScalingElement.getScale</a>.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNData#setChild" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setChild(x:nounou.elements.data.NNData):Unit"></a>
       <a id="setChild(NNData):Unit"></a>
@@ -1370,24 +1244,24 @@ Be sure to clear children if the children are to be garbage collected.</p></div>
       <p class="shortcomment cmt"><b>[NNData: data source]</b> Adds new children to this data source, which will be notified for changes.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNData: data source]</b> Adds new children to this data source, which will be notified for changes.
 Be sure to clear children if the children are to be garbage collected.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNData#setLayout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setLayout(layout:nounou.elements._layout.NNDataLayout):Unit"></a>
-      <a id="setLayout(NNDataLayout):Unit"></a>
+      <a id="setLayout(layout:nounou.elements.traits.layout.NNLayout):Unit"></a>
+      <a id="setLayout(NNLayout):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setLayout</span><span class="params">(<span name="layout">layout: <a href="../_layout/NNDataLayout.html" class="extype" name="nounou.elements._layout.NNDataLayout">NNDataLayout</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setLayout</span><span class="params">(<span name="layout">layout: <a href="../traits/layout/NNLayout.html" class="extype" name="nounou.elements.traits.layout.NNLayout">NNLayout</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@setLayout(layout:nounou.elements._layout.NNDataLayout):Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@setLayout(layout:nounou.elements.traits.layout.NNLayout):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
-    </li><li name="nounou.elements._scale.NNDataScaleElement#setScale" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setScale(scale:nounou.elements._scale.NNDataScale):Unit"></a>
+    </li><li name="nounou.elements.traits.NNScalingElement#setScale" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setScale(scale:nounou.elements.traits.NNDataScale):Unit"></a>
       <a id="setScale(NNDataScale):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1395,14 +1269,14 @@ Be sure to clear children if the children are to be garbage collected.</p></div>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setScale</span><span class="params">(<span name="scale">scale: <a href="../_scale/NNDataScale.html" class="extype" name="nounou.elements._scale.NNDataScale">NNDataScale</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setScale</span><span class="params">(<span name="scale">scale: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNScaling">NNDataScale</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.NNDataAux@setScale(scale:nounou.elements._scale.NNDataScale):Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@setScale(scale:nounou.elements.traits.NNDataScale):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"><b>[NNDataScaleElement]</b> Set physical scaling information for data.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNDataScaleElement]</b> Set physical scaling information for data.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../_scale/NNDataScaleElement.html" class="extype" name="nounou.elements._scale.NNDataScaleElement">NNDataScaleElement</a></dd></dl></div>
+      <p class="shortcomment cmt"><b>[NNDataScaleElement]</b> Set physical scaling information for data.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNDataScaleElement]</b> Set physical scaling information for data.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -1437,6 +1311,23 @@ Be sure to clear children if the children are to be garbage collected.</p></div>
       </a>
     </span>
       <p class="shortcomment cmt"><b>[NNElement]</b></p><div class="fullcomment"><div class="comment cmt"><p><b>[NNElement]</b></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="nounou.elements.NNElement#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString(simple:Boolean):String"></a>
+      <a id="toString(Boolean):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">(<span name="simple">simple: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@toString(simple:Boolean):String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
     </li><li name="nounou.elements.NNElement#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
@@ -1620,7 +1511,180 @@ more detailed information, where available.
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="nounou.elements.data.NNData#readTraceInt" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceInt(channel:Int,range:Array[Int],segment:Int):Array[Int]"></a>
+      <a id="readTraceInt(Int,Array[Int],Int):Array[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">readTraceInt</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceInt(channel:Int,range:Array[Int],segment:Int):Array[Int]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../package.html" class="extype" name="nounou">nounou</a>] </dd><dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readTraceInt" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceInt(channel:Int,range:Array[Int]):Array[Int]"></a>
+      <a id="readTraceInt(Int,Array[Int]):Array[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">readTraceInt</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceInt(channel:Int,range:Array[Int]):Array[Int]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../package.html" class="extype" name="nounou">nounou</a>] </dd><dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readTraceInt" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceInt(channels:Array[Int],range:nounou.ranges.NNRangeSpecifier):Array[Array[Int]]"></a>
+      <a id="readTraceInt(Array[Int],NNRangeSpecifier):Array[Array[Int]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">readTraceInt</span><span class="params">(<span name="channels">channels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="range">range: <a href="../../ranges/NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceInt(channels:Array[Int],range:nounou.ranges.NNRangeSpecifier):Array[Array[Int]]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../package.html" class="extype" name="nounou">nounou</a>] </dd><dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readTraceInt" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceInt(channel:Int,range:nounou.ranges.NNRangeSpecifier):Array[Int]"></a>
+      <a id="readTraceInt(Int,NNRangeSpecifier):Array[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">readTraceInt</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <a href="../../ranges/NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceInt(channel:Int,range:nounou.ranges.NNRangeSpecifier):Array[Int]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../package.html" class="extype" name="nounou">nounou</a>] </dd><dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readTraceInt" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceInt(channel:Int):Array[Int]"></a>
+      <a id="readTraceInt(Int):Array[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">readTraceInt</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceInt(channel:Int):Array[Int]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Read a single trace (whole range) in internal integer scaling.</p><div class="fullcomment"><div class="comment cmt"><p>Read a single trace (whole range) in internal integer scaling.
+This should only be used for data with only 1 segment.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../package.html" class="extype" name="nounou">nounou</a>] </dd><dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readTraceIntDV" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceIntDV(channel:Int):breeze.linalg.DenseVector[Int]"></a>
+      <a id="readTraceIntDV(Int):DenseVector[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">readTraceIntDV</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceIntDV(channel:Int):breeze.linalg.DenseVector[Int]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Internal implementation for <a href="NNData.html#readTraceInt(channel:Int):Array[Int]" class="extmbr" name="nounou.elements.data.NNData#readTraceInt">readTrace</a>
+to return a breeze.linalg.DenseVector.</p><div class="fullcomment"><div class="comment cmt"><p>Internal implementation for <a href="NNData.html#readTraceInt(channel:Int):Array[Int]" class="extmbr" name="nounou.elements.data.NNData#readTraceInt">readTrace</a>
+to return a breeze.linalg.DenseVector.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../package.html" class="extype" name="nounou">nounou</a>] </dd><dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readTraceIntDV" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceIntDV(channels:Array[Int],range:nounou.ranges.NNRangeSpecifier):Array[breeze.linalg.DenseVector[Int]]"></a>
+      <a id="readTraceIntDV(Array[Int],NNRangeSpecifier):Array[DenseVector[Int]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">readTraceIntDV</span><span class="params">(<span name="channels">channels: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="range">range: <a href="../../ranges/NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Int">Int</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceIntDV(channels:Array[Int],range:nounou.ranges.NNRangeSpecifier):Array[breeze.linalg.DenseVector[Int]]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><b><u>CAN OVERRIDE</u></b> by default, calls
+<a href="NNData.html#readTraceIntDV(channel:Int,range:nounou.ranges.NNRangeSpecifier):breeze.linalg.DenseVector[Int]" class="extmbr" name="nounou.elements.data.NNData#readTraceIntDV">readTraceDV </a>
+</p><div class="fullcomment"><div class="comment cmt"><p><b><u>CAN OVERRIDE</u></b> by default, calls
+<a href="NNData.html#readTraceIntDV(channel:Int,range:nounou.ranges.NNRangeSpecifier):breeze.linalg.DenseVector[Int]" class="extmbr" name="nounou.elements.data.NNData#readTraceIntDV">readTraceDV </a>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li><li name="nounou.elements.data.NNData#readTraceIntDV" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readTraceIntDV(channel:Int,range:nounou.ranges.NNRangeSpecifier):breeze.linalg.DenseVector[Int]"></a>
+      <a id="readTraceIntDV(Int,NNRangeSpecifier):DenseVector[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">readTraceIntDV</span><span class="params">(<span name="channel">channel: <span class="extype" name="scala.Int">Int</span></span>, <span name="range">range: <a href="../../ranges/NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.data.NNDataAux@readTraceIntDV(channel:Int,range:nounou.ranges.NNRangeSpecifier):breeze.linalg.DenseVector[Int]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><b><u>CAN OVERRIDE</u></b> Read a single trace from the data, in internal integer scaling.</p><div class="fullcomment"><div class="comment cmt"><p><b><u>CAN OVERRIDE</u></b> Read a single trace from the data, in internal integer scaling.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
@@ -1628,12 +1692,12 @@ more detailed information, where available.
               <h3>Inherited from <a href="NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></h3>
             </div><div class="parent" name="nounou.elements.data.NNDataSpikeReader">
               <h3>Inherited from <a href="NNDataSpikeReader.html" class="extype" name="nounou.elements.data.NNDataSpikeReader">NNDataSpikeReader</a></h3>
-            </div><div class="parent" name="nounou.elements._timing.NNDataTimingElement">
-              <h3>Inherited from <a href="../_timing/NNDataTimingElement.html" class="extype" name="nounou.elements._timing.NNDataTimingElement">NNDataTimingElement</a></h3>
-            </div><div class="parent" name="nounou.elements._scale.NNDataScaleElement">
-              <h3>Inherited from <a href="../_scale/NNDataScaleElement.html" class="extype" name="nounou.elements._scale.NNDataScaleElement">NNDataScaleElement</a></h3>
-            </div><div class="parent" name="nounou.elements.NNChannelsElement">
-              <h3>Inherited from <a href="../NNChannelsElement.html" class="extype" name="nounou.elements.NNChannelsElement">NNChannelsElement</a></h3>
+            </div><div class="parent" name="nounou.elements.traits.NNTimingElement">
+              <h3>Inherited from <a href="../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a></h3>
+            </div><div class="parent" name="nounou.elements.traits.NNScalingElement">
+              <h3>Inherited from <a href="../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a></h3>
+            </div><div class="parent" name="nounou.elements.traits.NNChannelsElement">
+              <h3>Inherited from <a href="../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a></h3>
             </div><div class="parent" name="nounou.elements.NNElement">
               <h3>Inherited from <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></h3>
             </div><div class="parent" name="nounou.util.LoggingExt">

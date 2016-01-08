@@ -4,7 +4,7 @@
 //import org.scalatest.FunSuite
 //import nounou.io.{NNDataChannelNCS, FileAdapterNCS}
 //import nounou.elements.{NNDataChannel, NNDataChannelArray}
-//import nounou.elements.ranges.FrRange$
+//import nounou.ranges.FrRange$
 //
 //import scala.nounou.obj.data.filters.NNDataFilterFIR
 //

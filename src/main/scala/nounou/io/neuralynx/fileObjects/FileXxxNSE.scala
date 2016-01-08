@@ -8,14 +8,19 @@ trait FileNSE {
 }
 object FileNSE extends FileNSE
 
-/**
- * Created by ktakagaki on 15/05/28.
- */
-class FileReadNSE(file: File) extends FileReadNeuralynx(file) with FileNSE {
+/**File handler for reading Neuralynx NSE files, to be used by file adapter.
+  * Created by ktakagaki on 15/05/28.
+  */
+class FileReadNSE(file: File) extends FileReadNeuralynx[NNHeaderNSE](file) with FileNSE {
 
-  override lazy val header: NNHeaderNSE = new NNHeaderNSE( originalHeaderText )
+  //The following lazy initialization done by hand to avoid var/val initialization order issues
+  override final var _header: NNHeaderNSE = null
+  override def getHeader: NNHeaderNSE = {
+    if (_header == null) _header = new NNHeaderNSE(originalHeaderText)
+    _header
+  }
 
-  require(header.headerRecordType == "Spike", s"NSE file with non-standard record type: ${header.headerRecordType}")
+  require(getHeader.getHeaderRecordType == "Spike", s"NSE file with non-standard record type: ${getHeader.getHeaderRecordType}")
 
 }
 

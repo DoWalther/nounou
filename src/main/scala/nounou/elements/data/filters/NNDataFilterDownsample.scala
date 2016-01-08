@@ -1,9 +1,9 @@
 package nounou.elements.data.filters
 
-import _root_.nounou.elements.ranges.SampleRangeValid
+import nounou.ranges.NNRangeValid
 import breeze.linalg.{DenseVector => DV, min}
-import nounou.elements._timing.NNDataTiming
 import nounou.elements.data.NNData
+import nounou.elements.traits.NNTiming
 
 /**
  * @author ktakagaki
@@ -18,8 +18,8 @@ class NNDataFilterDownsample( private val parentVal: NNData, protected var facto
 
   // <editor-fold defaultstate="collapsed" desc=" factor-related ">
 
-  protected var timingBuffer: NNDataTiming = parentVal.timing()
-  override def timing(): NNDataTiming = timingBuffer
+  protected var timingBuffer: NNTiming = parentVal.timing()
+  override def timing(): NNTiming = timingBuffer
 
   final def factor(): Int = getFactor()
   /** Java-style alias for [[factor]].
@@ -31,7 +31,7 @@ class NNDataFilterDownsample( private val parentVal: NNData, protected var facto
       logger.trace( "factor is already {}, not changing. ", factor.toString )
     } else {
       factorVar = factor
-      timingBuffer = new NNDataTiming(
+      timingBuffer = new NNTiming(
         parentVal.timing.sampleRate / factor,
         (for(seg <- 0 until parentVal.timing.segmentCount)
         yield ( (parentVal.timing.segmentLength(seg) - 1).toDouble/factor).round.toInt + 1 ).toArray,
@@ -60,15 +60,15 @@ class NNDataFilterDownsample( private val parentVal: NNData, protected var facto
 
   // <editor-fold defaultstate="collapsed" desc=" readXXX ">
 
-  override def readPointImpl(channel: Int, frame: Int, segment: Int): Int =
-    parentVal.readPointImpl(channel, frame*factor, segment)
+  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int =
+    parentVal.readPointIntImpl(channel, frame*factor, segment)
 
-  override def readTraceDVImpl(channel: Int, range: SampleRangeValid): DV[Int] =
+  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DV[Int] =
     if(factor == 1){
-      parentVal.readTraceDVImpl(channel, range)
+      parentVal.readTraceIntDVImpl(channel, range)
     } else {
-      parentVal.readTraceDVImpl(channel,
-                new SampleRangeValid(
+      parentVal.readTraceIntDVImpl(channel,
+                new NNRangeValid(
                           range.start*factor,
                           min(range.last*factor, parentVal.timing.segmentLength(range.segment)-1),
                           range.step*factor,

@@ -5,6 +5,7 @@ import java.util.ServiceLoader
 
 import nounou.elements.NNElement
 import nounou.elements.data.{NNDataChannel, NNDataChannelArray}
+import nounou.elements.traits.NNConcatenableElement
 import nounou.io.neuralynx.fileAdapters.FileAdapterNCS
 import nounou.util.LoggingExt
 
@@ -62,7 +63,7 @@ object FileLoader extends LoggingExt {
     var tempElements = fileNames.flatMap( load(_) ).toVector
 
     //filters out NNDataChannel objects and joins them into one NNData if they are compatible
-    val tempElementsNNDC = tempElements.filter(_.isInstanceOf[NNDataChannel])
+    val tempElementsNNDC = tempElements.filter(_.isInstanceOf[NNDataChannel]).map(_.asInstanceOf[NNConcatenableElement])
     if( tempElementsNNDC.length > 1 ){
       if( tempElementsNNDC(0).isCompatible(tempElementsNNDC.tail) ) {
         tempElements = tempElements.filter(!_.isInstanceOf[NNDataChannel]).+:(

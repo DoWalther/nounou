@@ -3,9 +3,7 @@ package nounou.elements
 import java.io.File
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
-
-import nounou.elements.headers.NNHeader
-import nounou.elements._layout.NNDataLayoutHexagonal
+import nounou.elements.traits.layout.NNLayoutHexagonal
 import nounou.util.LoggingExt
 
 /** Base class for all data elements.
@@ -40,7 +38,10 @@ trait NNElement extends LoggingExt {
 
   // <editor-fold defaultstate="collapsed" desc=" toString and related ">
 
-  override final def toString(): String = getClass.getName + "(" + toStringImpl + ")"
+  override final def toString(): String = getClass.getSimpleName + "(" + toStringImpl + ")"
+  final def toString(simple: Boolean): String =
+    if(simple) toString()
+    else getClass.getName + "(" + toStringImpl + ")"
 
   /** The contents of the [[nounou.elements.NNElement.toString()*]] output to be given within parenthesis after the class name.
     */
@@ -55,22 +56,13 @@ trait NNElement extends LoggingExt {
     val tempTail =
       if( toStringFullImpl() == "" ){ "" }
       else {
-        ("/n============================================================/n" +
-        toStringFullImpl())
+        "\n================================================================================\n" +
+        toStringFullImpl()
       }
-    toString().dropRight(1) + s", $gitHeadShort)" + tempTail
+    toString(false).dropRight(1) + s", $gitHeadShort)" + tempTail
   }
 
   // </editor-fold>
-
-  /** __'''SHOULD OVERRIDE'''__ Whether an [[nounou.elements.NNElement]] is compatible with another for merging
-    * (eg [[nounou.elements.data.NNData]])
-    *  or comparison (eg [[nounou.elements.spikes.NNSpike]]) etc.
-    */
-  def isCompatible(that: NNElement): Boolean
-  /** Whether multiple [[nounou.elements.NNElement]]s are compatible with another for merging, etc.
-    */
-  final def isCompatible(that: Seq[NNElement]): Boolean = that.forall( this.isCompatible(_) )
 
 }
 
@@ -94,7 +86,7 @@ object NNElement {
     //the following casting is not elegant, but seems necessary to satisfy the scala compiler,
     //which doesn't seem to be able to infer the type of XXXXX.asInstanceOf[targetClass.type]
     tempret match {
-      case x: NNDataLayoutHexagonal => x.asInstanceOf[NNDataLayoutHexagonal]
+      case x: NNLayoutHexagonal => x.asInstanceOf[NNLayoutHexagonal]
       case x: NNElement => x
     }
   }

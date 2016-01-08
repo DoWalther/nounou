@@ -27,6 +27,6 @@ case class NNEvent(val timestamp: BigInt, val duration: BigInt, val code: Int, v
   override def toStringImpl() = s"ts=$timestamp, dur=$duration, code=$code, $comment"
   override def toStringFullImpl(): String = ""
 
-  override def isCompatible(that: _root_.nounou.elements.NNElement): Boolean = false
+//  override def isCompatible(that: _root_.nounou.elements.NNElement): Boolean = false
 
 }

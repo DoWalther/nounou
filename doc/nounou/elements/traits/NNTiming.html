@@ -1,0 +1,1318 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>NNTiming - nounou.elements.traits.NNTiming</title>
+          <meta name="description" content="NNTiming - nounou.elements.traits.NNTiming" />
+          <meta name="keywords" content="NNTiming nounou.elements.traits.NNTiming" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../index.html';
+            var hash = 'nounou.elements.traits.NNTiming';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img alt="Class" src="../../../lib/class_big.png" />
+        <p id="owner"><a href="../../package.html" class="extype" name="nounou">nounou</a>.<a href="../package.html" class="extype" name="nounou.elements">elements</a>.<a href="package.html" class="extype" name="nounou.elements.traits">traits</a></p>
+        <h1>NNTiming</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="nounou.elements.traits">package traits</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NNTiming</span><span class="result"> extends <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This class encapsulates the following timing information about electrophysiological/imaging data:</p><ul><li>sample rate (Double, in Hz)</li><li>segment lengths (Array[Int]): many data formats have multiple &quot;segments&quot; (i.e. the recording was
+          started or stopped during the session). The val segmentLengths contains an Array[Int]
+          of the number of data samples per segment. Segments can also result from data being
+          &quot;segmented,&quot; for example by an EEG technician going through a long recording and
+          extracting parts which may be interesting.</li><li>timestamps (Array[BigInt]): many data formats also have &quot;timestamps&quot; (e.g. microsecond timer
+          values for each sample). This class will keep track of the beginning timestamp of each
+          segment. From this information, it can calculate the timestamp of any event in between</li></ul><p>This class should be used within <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a> children by expanding the
+<a href="NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a> trait, which will allows one NNTiming
+object to be returned for each NNTimingElement.</p><p>Envisioned uses are for the following children of <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">nounou.elements.NNElement</a>:
+  + <a href="../data/NNData.html" class="extype" name="nounou.elements.data.NNData">nounou.elements.data.NNData</a>
+  + <a href="layout/NNLayout.html" class="extype" name="nounou.elements.traits.layout.NNLayout">nounou.elements.traits.layout.NNLayout</a>
+  + <a href="../spikes/NNSpikes.html" class="extype" name="nounou.elements.spikes.NNSpikes">nounou.elements.spikes.NNSpikes</a>
+</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a>, <a href="../../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.LazyLogging">LazyLogging</span>, <span class="extype" name="com.typesafe.scalalogging.Logging">Logging</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="nounou.elements.traits.NNTiming"><span>NNTiming</span></li><li class="in" name="nounou.elements.NNElement"><span>NNElement</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="nounou.elements.traits.NNTiming#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(sampleRate:Double,_segmentLengths:Array[Int],_segmentStartTss:Array[BigInt]):nounou.elements.traits.NNTiming"></a>
+      <a id="&lt;init&gt;:NNTiming"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NNTiming</span><span class="params">(<span name="sampleRate">sampleRate: <span class="extype" name="scala.Double">Double</span></span>, <span name="_segmentLengths">_segmentLengths: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="_segmentStartTss">_segmentStartTss: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.BigInt">BigInt</span>]</span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@&lt;init&gt;(sampleRate:Double,_segmentLengths:Array[Int],_segmentStartTss:Array[BigInt]):nounou.elements.traits.NNTiming" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">sampleRate</dt><dd class="cmt"><p>Sample rate in Hz.</p></dd><dt class="param">_segmentLengths</dt><dd class="cmt"><p>Total number of frames in each segment. Must be specified and non-null.</p></dd><dt class="param">_segmentStartTss</dt><dd class="cmt"><p>List of starting timestamps for each segment.
+                                Null will result in warning and this value set to defaults,
+                                which start at zero timestamp and assume no timestamp gaps between segments</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@##():Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="nounou.elements.NNElement#className" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="className:String"></a>
+      <a id="className:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">className</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@className:String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><b>[NNElement]</b> getCanonicalName, buffered for serialization with GSON.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNElement]</b> getCanonicalName, buffered for serialization with GSON.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@clone():Object" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTiming#convertFrToMs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="convertFrToMs(frame:Double):Double"></a>
+      <a id="convertFrToMs(Double):Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertFrToMs</span><span class="params">(<span name="frame">frame: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertFrToMs(frame:Double):Double" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="nounou.elements.traits.NNTiming#convertFrToMs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="convertFrToMs(frame:Int):Double"></a>
+      <a id="convertFrToMs(Int):Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertFrToMs</span><span class="params">(<span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertFrToMs(frame:Int):Double" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Time of the given data frame and segment (in milliseconds, with t=0 being the time for frame 0 within the segment).</p>
+    </li><li name="nounou.elements.traits.NNTiming#convertFrToTs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="convertFrToTs(frame:Int):BigInt"></a>
+      <a id="convertFrToTs(Int):BigInt"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertFrToTs</span><span class="params">(<span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.BigInt">BigInt</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertFrToTs(frame:Int):BigInt" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="nounou.elements.traits.NNTiming#convertFrsgToTs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="convertFrsgToTs(frame:Int,segment:Int):BigInt"></a>
+      <a id="convertFrsgToTs(Int,Int):BigInt"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertFrsgToTs</span><span class="params">(<span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.BigInt">BigInt</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertFrsgToTs(frame:Int,segment:Int):BigInt" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Absolute timestamp of the given data frame index (in microseconds).</p><div class="fullcomment"><div class="comment cmt"><p>Absolute timestamp of the given data frame index (in microseconds).
+Overhangs allowed, ie, invalid timestamps may be given.
+</p></div></div>
+    </li><li name="nounou.elements.traits.NNTiming#convertMsToFr" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="convertMsToFr(ms:Double):Int"></a>
+      <a id="convertMsToFr(Double):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertMsToFr</span><span class="params">(<span name="ms">ms: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertMsToFr(ms:Double):Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Closest frame/segment index to the given timestamp in ms (frame 0 within segment being time 0).</p><div class="fullcomment"><div class="comment cmt"><p>Closest frame/segment index to the given timestamp in ms (frame 0 within segment being time 0). Will give beginning or lastValid frames, if timestamp is
+out of range.
+</p></div></div>
+    </li><li name="nounou.elements.traits.NNTiming#convertMsToTs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="convertMsToTs(ms:Double):BigInt"></a>
+      <a id="convertMsToTs(Double):BigInt"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertMsToTs</span><span class="params">(<span name="ms">ms: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <span class="extype" name="scala.BigInt">BigInt</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertMsToTs(ms:Double):BigInt" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="nounou.elements.traits.NNTiming#convertTsToClosestSegment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="convertTsToClosestSegment(timestamp:BigInt):Int"></a>
+      <a id="convertTsToClosestSegment(BigInt):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertTsToClosestSegment</span><span class="params">(<span name="timestamp">timestamp: <span class="extype" name="scala.BigInt">BigInt</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertTsToClosestSegment(timestamp:BigInt):Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Closest segment index to the given timestamp.</p>
+    </li><li name="nounou.elements.traits.NNTiming#convertTsToFr" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="convertTsToFr(timestamp:BigInt):Int"></a>
+      <a id="convertTsToFr(BigInt):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertTsToFr</span><span class="params">(<span name="timestamp">timestamp: <span class="extype" name="scala.BigInt">BigInt</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertTsToFr(timestamp:BigInt):Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="nounou.elements.traits.NNTiming#convertTsToFrsg" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="convertTsToFrsg(timestamp:BigInt):(Int,Int)"></a>
+      <a id="convertTsToFrsg(BigInt):(Int,Int)"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertTsToFrsg</span><span class="params">(<span name="timestamp">timestamp: <span class="extype" name="scala.BigInt">BigInt</span></span>)</span><span class="result">: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertTsToFrsg(timestamp:BigInt):(Int,Int)" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Closest frame/segment index to the given absolute timestamp.</p><div class="fullcomment"><div class="comment cmt"><p>Closest frame/segment index to the given absolute timestamp. Will give frames which are out of range (i.e. negative, etc)
+if necessary.
+</p></div><dl class="paramcmts block"><dt class="param">timestamp</dt><dd class="cmt"><p>in Long</p></dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTiming#convertTsToFrsgArray" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="convertTsToFrsgArray(timestamp:BigInt):Array[Int]"></a>
+      <a id="convertTsToFrsgArray(BigInt):Array[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertTsToFrsgArray</span><span class="params">(<span name="timestamp">timestamp: <span class="extype" name="scala.BigInt">BigInt</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertTsToFrsgArray(timestamp:BigInt):Array[Int]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="nounou.elements.traits.NNTiming#convertTsToMs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="convertTsToMs(timestamp:Long):Double"></a>
+      <a id="convertTsToMs(Long):Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertTsToMs</span><span class="params">(<span name="timestamp">timestamp: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@convertTsToMs(timestamp:Long):Double" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="nounou.elements.traits.NNTiming#cumulativeFrame" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cumulativeFrame(frame:Int,segment:Int):Int"></a>
+      <a id="cumulativeFrame(Int,Int):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cumulativeFrame</span><span class="params">(<span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@cumulativeFrame(frame:Int,segment:Int):Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The cumulative frame number of a given frame in a given segment.</p><div class="fullcomment"><div class="comment cmt"><p>The cumulative frame number of a given frame in a given segment.
+Useful for data formats which store data from multiple segments in a flat array structure.
+</p></div></div>
+    </li><li name="nounou.elements.traits.NNTiming#endTs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="endTs:BigInt"></a>
+      <a id="endTs:BigInt"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endTs</span><span class="result">: <span class="extype" name="scala.BigInt">BigInt</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@endTs:BigInt" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Timestamp at which the recording (or the last segment of the recording) ends.</p>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTiming#getRealSegment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getRealSegment(segment:Int):Int"></a>
+      <a id="getRealSegment(Int):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getRealSegment</span><span class="params">(<span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@getRealSegment(segment:Int):Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="nounou.elements.NNElement#gitHead" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="gitHead:String"></a>
+      <a id="gitHead:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">gitHead</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@gitHead:String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><b>[NNElement]</b> Git HEAD of the current revision, buffered for serialization with GSON.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNElement]</b> Git HEAD of the current revision, buffered for serialization with GSON.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="nounou.elements.NNElement#gitHeadShort" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="gitHeadShort:String"></a>
+      <a id="gitHeadShort:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">gitHeadShort</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@gitHeadShort:String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><b>[NNElement]</b> Git HEAD shortened to first 10 characters.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNElement]</b> Git HEAD shortened to first 10 characters.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTiming#isCompatible" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isCompatible(that:nounou.elements.NNElement):Boolean"></a>
+      <a id="isCompatible(NNElement):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isCompatible</span><span class="params">(<span name="that">that: <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@isCompatible(that:nounou.elements.NNElement):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><u><b>SHOULD OVERRIDE</b></u> Whether an <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">nounou.elements.NNElement</a> is compatible with another for merging
+(eg <a href="../data/NNData.html" class="extype" name="nounou.elements.data.NNData">nounou.elements.data.NNData</a>)
+ or comparison (eg <a href="../spikes/NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">nounou.elements.spikes.NNSpike</a>) etc.</p><div class="fullcomment"><div class="comment cmt"><p><u><b>SHOULD OVERRIDE</b></u> Whether an <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">nounou.elements.NNElement</a> is compatible with another for merging
+(eg <a href="../data/NNData.html" class="extype" name="nounou.elements.data.NNData">nounou.elements.data.NNData</a>)
+ or comparison (eg <a href="../spikes/NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">nounou.elements.spikes.NNSpike</a>) etc.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNTiming">NNTiming</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="nounou.elements.NNElement#isCompatible" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isCompatible(that:Seq[nounou.elements.NNElement]):Boolean"></a>
+      <a id="isCompatible(Seq[NNElement]):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isCompatible</span><span class="params">(<span name="that">that: <span class="extype" name="scala.Seq">Seq</span>[<a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@isCompatible(that:Seq[nounou.elements.NNElement]):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Whether multiple <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">nounou.elements.NNElement</a>s are compatible with another for merging, etc.</p><div class="fullcomment"><div class="comment cmt"><p>Whether multiple <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">nounou.elements.NNElement</a>s are compatible with another for merging, etc.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTiming#isRealisticFrsg" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isRealisticFrsg(frame:Int,segment:Int):Boolean"></a>
+      <a id="isRealisticFrsg(Int,Int):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isRealisticFrsg</span><span class="params">(<span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@isRealisticFrsg(frame:Int,segment:Int):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Is this frame realistic within a segment (not more than 100000 away from the beginning or end)?
+This is useful when reading data outside of the specified range, for example, for FIR filters
+with overhang.</p>
+    </li><li name="nounou.elements.traits.NNTiming#isRealisticRange" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isRealisticRange(range:nounou.ranges.NNRangeSpecifier):Boolean"></a>
+      <a id="isRealisticRange(NNRangeSpecifier):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isRealisticRange</span><span class="params">(<span name="range">range: <a href="../../ranges/NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@isRealisticRange(range:nounou.ranges.NNRangeSpecifier):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Is this range realistic within a segment?</p><div class="fullcomment"><div class="comment cmt"><p>Is this range realistic within a segment?</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>isRealisticFrsg</p></span></dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTiming#isValidFrsg" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isValidFrsg(frame:Int,segment:Int):Boolean"></a>
+      <a id="isValidFrsg(Int,Int):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isValidFrsg</span><span class="params">(<span name="frame">frame: <span class="extype" name="scala.Int">Int</span></span>, <span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@isValidFrsg(frame:Int,segment:Int):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Is this frame valid within a segment?
+</p>
+    </li><li name="com.typesafe.scalalogging.slf4j.LazyLogging#logger" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logger:com.typesafe.scalalogging.slf4j.Logger"></a>
+      <a id="logger:Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logger</span><span class="result">: <span class="extype" name="com.typesafe.scalalogging.slf4j.Logger">Logger</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@logger:com.typesafe.scalalogging.slf4j.Logger" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>LazyLogging → Logging</dd></dl></div>
+    </li><li name="nounou.util.LoggingExt#loggerError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="loggerError(message:String,params:AnyRef*):IllegalArgumentException"></a>
+      <a id="loggerError(String,AnyRef*):IllegalArgumentException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">loggerError</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="params">params: <span class="extype" name="scala.AnyRef">AnyRef</span>*</span>)</span><span class="result">: <span class="extype" name="scala.IllegalArgumentException">IllegalArgumentException</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@loggerError(message:String,params:AnyRef*):IllegalArgumentException" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><b>[LoggingExt]</b> Logs a message using slf4j, and returns a new [scala.IllegalArgumentException].</p><div class="fullcomment"><div class="comment cmt"><p><b>[LoggingExt]</b> Logs a message using slf4j, and returns a new [scala.IllegalArgumentException].
+Use as follows:
+<code><code><code><code>
+throw loggerError(&quot;This is an error with params {}&quot;, param1.toString)
+<code><code><code><code></code></code></code></code></code></code></code></code></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a></dd></dl></div>
+    </li><li name="nounou.util.LoggingExt#loggerRequire" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="loggerRequire(boolean:Boolean,message:String,params:AnyRef*):Unit"></a>
+      <a id="loggerRequire(Boolean,String,AnyRef*):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">loggerRequire</span><span class="params">(<span name="boolean">boolean: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="params">params: <span class="extype" name="scala.AnyRef">AnyRef</span>*</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@loggerRequire(boolean:Boolean,message:String,params:AnyRef*):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><b>[LoggingExt]</b> If input 'boolean' is false, logs a message using slf4j and throws an error.</p><div class="fullcomment"><div class="comment cmt"><p><b>[LoggingExt]</b> If input 'boolean' is false, logs a message using slf4j and throws an error.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="scala.this.throws.&lt;init&gt;$default$1[IllegalArgumentException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="nounou.elements.NNElement#nnGitObj" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="nnGitObj:nounou.util.NNGit.type"></a>
+      <a id="nnGitObj:NNGit.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">nnGitObj</span><span class="result">: <a href="../../util/NNGit$.html" class="extype" name="nounou.util.NNGit">NNGit</a>.type</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@nnGitObj:nounou.util.NNGit.type" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTiming#sampleInterval" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sampleInterval:Double"></a>
+      <a id="sampleInterval:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sampleInterval</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@sampleInterval:Double" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This is the inverse of <a href="#sampleRate:Double" class="extmbr" name="nounou.elements.traits.NNTiming#sampleRate">sampleRate</a>, lazily buffered for convenience.</p>
+    </li><li name="nounou.elements.traits.NNTiming#sampleRate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sampleRate:Double"></a>
+      <a id="sampleRate:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sampleRate</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@sampleRate:Double" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Sample rate in Hz.</p>
+    </li><li name="nounou.elements.traits.NNTiming#segmentCount" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="segmentCount:Int"></a>
+      <a id="segmentCount:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">segmentCount</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@segmentCount:Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Number of segments in data.</p><div class="fullcomment"><div class="comment cmt"><p>Number of segments in data. Lazily calculated from <a href="#segmentLengths:Array[Int]" class="extmbr" name="nounou.elements.traits.NNTiming#segmentLengths">segmentLengths</a>.length
+</p></div></div>
+    </li><li name="nounou.elements.traits.NNTiming#segmentEndTss" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="segmentEndTss:Array[BigInt]"></a>
+      <a id="segmentEndTss:Array[BigInt]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">segmentEndTss</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.BigInt">BigInt</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@segmentEndTss:Array[BigInt]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">End timestamp for each segment.</p>
+    </li><li name="nounou.elements.traits.NNTiming#segmentLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="segmentLength():Int"></a>
+      <a id="segmentLength():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">segmentLength</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@segmentLength():Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Length of the one and only segment (this signature can
+only be used if the data only contains one segment).</p>
+    </li><li name="nounou.elements.traits.NNTiming#segmentLength" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="segmentLength(segment:Int):Int"></a>
+      <a id="segmentLength(Int):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">segmentLength</span><span class="params">(<span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@segmentLength(segment:Int):Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Length of a given segment.</p><div class="fullcomment"><div class="comment cmt"><p>Length of a given segment. If you are dealing with 1 segment data,
+a value of -1 (default) is also possible.
+</p></div></div>
+    </li><li name="nounou.elements.traits.NNTiming#segmentLengthImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="segmentLengthImpl(segment:Int):Int"></a>
+      <a id="segmentLengthImpl(Int):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">segmentLengthImpl</span><span class="params">(<span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@segmentLengthImpl(segment:Int):Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Implementation of <a href="#segmentLength(segment:Int):Int" class="extmbr" name="nounou.elements.traits.NNTiming#segmentLength">segmentLength(Int)</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Implementation of <a href="#segmentLength(segment:Int):Int" class="extmbr" name="nounou.elements.traits.NNTiming#segmentLength">segmentLength(Int)</a>.
+Segment number must be a valid number in the range [0, segmentCount).
+</p></div></div>
+    </li><li name="nounou.elements.traits.NNTiming#segmentLengths" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="segmentLengths:Array[Int]"></a>
+      <a id="segmentLengths:Array[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">segmentLengths</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@segmentLengths:Array[Int]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">How many data points each segment contains.</p><div class="fullcomment"><div class="comment cmt"><p>How many data points each segment contains. If the data is single-segment (e.g. many imaging formats),
+The array will have length = 1.
+</p></div></div>
+    </li><li name="nounou.elements.traits.NNTiming#segmentStartFrame" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="segmentStartFrame(segment:Int):Int"></a>
+      <a id="segmentStartFrame(Int):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">segmentStartFrame</span><span class="params">(<span name="segment">segment: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@segmentStartFrame(segment:Int):Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Cumulative frame numbers for the start of a given segment.</p>
+    </li><li name="nounou.elements.traits.NNTiming#segmentStartTss" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="segmentStartTss:Array[BigInt]"></a>
+      <a id="segmentStartTss:Array[BigInt]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">segmentStartTss</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.BigInt">BigInt</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@segmentStartTss:Array[BigInt]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">At what timestamp each segment starts.</p><div class="fullcomment"><div class="comment cmt"><p>At what timestamp each segment starts. This information can be used to correlate
+timestamp-based data (for example, event port codes) with continuous electrophysiology/imaging data.
+</p></div></div>
+    </li><li name="nounou.elements.traits.NNTiming#startTs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="startTs:BigInt"></a>
+      <a id="startTs:BigInt"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">startTs</span><span class="result">: <span class="extype" name="scala.BigInt">BigInt</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@startTs:BigInt" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Timestamp at which the recording (or the first segment of the recording) starts.</p>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="nounou.elements.NNElement#toJsonString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toJsonString:String"></a>
+      <a id="toJsonString:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toJsonString</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@toJsonString:String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><b>[NNElement]</b></p><div class="fullcomment"><div class="comment cmt"><p><b>[NNElement]</b></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="nounou.elements.NNElement#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString(simple:Boolean):String"></a>
+      <a id="toString(Boolean):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">(<span name="simple">simple: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@toString(simple:Boolean):String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="nounou.elements.NNElement#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@toString():String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a> → AnyRef → Any</dd></dl></div>
+    </li><li name="nounou.elements.NNElement#toStringFull" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toStringFull():String"></a>
+      <a id="toStringFull():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toStringFull</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@toStringFull():String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Usually multiline output string, starting with <a href="../NNElement.html#toString():String" class="extmbr" name="nounou.elements.NNElement#toString">nounou.elements.NNElement.toString()*</a> output and then
+more detailed information, where available.</p><div class="fullcomment"><div class="comment cmt"><p>Usually multiline output string, starting with <a href="../NNElement.html#toString():String" class="extmbr" name="nounou.elements.NNElement#toString">nounou.elements.NNElement.toString()*</a> output and then
+more detailed information, where available.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTiming#toStringFullImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toStringFullImpl():String"></a>
+      <a id="toStringFullImpl():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toStringFullImpl</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@toStringFullImpl():String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Lines to be output for <a href="../NNElement.html#toStringFull():String" class="extmbr" name="nounou.elements.NNElement#toStringFull">nounou.elements.NNElement.toStringFull()*</a>, after <a href="../NNElement.html#toString():String" class="extmbr" name="nounou.elements.NNElement#toString">nounou.elements.NNElement.toString()*</a> output and line divider.</p><div class="fullcomment"><div class="comment cmt"><p>Lines to be output for <a href="../NNElement.html#toStringFull():String" class="extmbr" name="nounou.elements.NNElement#toStringFull">nounou.elements.NNElement.toStringFull()*</a>, after <a href="../NNElement.html#toString():String" class="extmbr" name="nounou.elements.NNElement#toString">nounou.elements.NNElement.toString()*</a> output and line divider.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNTiming">NNTiming</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTiming#toStringImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toStringImpl():String"></a>
+      <a id="toStringImpl():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toStringImpl</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@toStringImpl():String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The contents of the <a href="../NNElement.html#toString():String" class="extmbr" name="nounou.elements.NNElement#toString">nounou.elements.NNElement.toString()*</a> output to be given within parenthesis after the class name.</p><div class="fullcomment"><div class="comment cmt"><p>The contents of the <a href="../NNElement.html#toString():String" class="extmbr" name="nounou.elements.NNElement#toString">nounou.elements.NNElement.toString()*</a> output to be given within parenthesis after the class name.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNTiming">NNTiming</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="nounou.elements.traits.NNTiming#totalLength" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="totalLength:Int"></a>
+      <a id="totalLength:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">totalLength</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@totalLength:Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Total length in frames of data.</p><div class="fullcomment"><div class="comment cmt"><p>Total length in frames of data. Use
+<a href="#segmentLength(segment:Int):Int" class="extmbr" name="nounou.elements.traits.NNTiming#segmentLength">segmentLength(Int)</a> to
+get the length of specific segments, for data which have more than one segment.
+</p></div></div>
+    </li><li name="nounou.elements.NNElement#version" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="version:Double"></a>
+      <a id="version:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">version</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@version:Double" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"><b>[NNElement]</b> Reads global <a href="../../package.html" class="extype" name="nounou">nounou</a> version number, buffered for serialization with GSON.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNElement]</b> Reads global <a href="../../package.html" class="extype" name="nounou">nounou</a> version number, buffered for serialization with GSON.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#nounou.elements.traits.NNTiming@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="nounou.elements.NNElement">
+              <h3>Inherited from <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></h3>
+            </div><div class="parent" name="nounou.util.LoggingExt">
+              <h3>Inherited from <a href="../../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a></h3>
+            </div><div class="parent" name="com.typesafe.scalalogging.slf4j.LazyLogging">
+              <h3>Inherited from <span class="extype" name="com.typesafe.scalalogging.slf4j.LazyLogging">LazyLogging</span></h3>
+            </div><div class="parent" name="com.typesafe.scalalogging.Logging">
+              <h3>Inherited from <span class="extype" name="com.typesafe.scalalogging.Logging">Logging</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

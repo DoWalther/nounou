@@ -133,11 +133,11 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">This trait encapsulates the functions needed to read neuralynx files (NCS, NEV, NEX, NSE, NST, NTT).</p><div class="fullcomment"><div class="comment cmt"><p>This trait encapsulates the functions needed to read neuralynx files (NCS, NEV, NEX, NSE, NST, NTT).
-Among other functions, it provides file handle handling and header reading.
+      <p class="shortcomment cmt">This abstract class encapsulates common functions needed to read Neuralynx files (NCS, NEV, NEX, NSE, NST, NTT).</p><div class="fullcomment"><div class="comment cmt"><p>This abstract class encapsulates common functions needed to read Neuralynx files (NCS, NEV, NEX, NSE, NST, NTT).
+It mainly provides file handle management and header reading.
 </p></div></div>
-    </li><li name="nounou.io.neuralynx.fileObjects.FileReadNCS" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="FileReadNCSextendsFileReadNeuralynxwithFileNCSwithNNDataChannelwithNNDataChannelNumbered"></a>
+    </li><li name="nounou.io.neuralynx.fileObjects.FileReadNCS" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="FileReadNCSextendsFileReadNeuralynx[nounou.io.neuralynx.headers.NNHeaderNCS]withFileNCSwithNNDataChannelwithNNDataChannelNumbered"></a>
       <a id="FileReadNCS:FileReadNCS"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -145,16 +145,18 @@ Among other functions, it provides file handle handling and header reading.
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="FileReadNCS.html"><span class="name">FileReadNCS</span></a><span class="result"> extends <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a> with <a href="FileNCS.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNCS">FileNCS</a> with <a href="../../../elements/data/NNDataChannel.html" class="extype" name="nounou.elements.data.NNDataChannel">NNDataChannel</a> with <a href="../../../elements/data/NNDataChannelNumbered.html" class="extype" name="nounou.elements.data.NNDataChannelNumbered">NNDataChannelNumbered</a></span>
+        <a href="FileReadNCS.html"><span class="name">FileReadNCS</span></a><span class="result"> extends <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a>[<a href="../headers/NNHeaderNCS.html" class="extype" name="nounou.io.neuralynx.headers.NNHeaderNCS">NNHeaderNCS</a>] with <a href="FileNCS.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNCS">FileNCS</a> with <a href="../../../elements/data/NNDataChannel.html" class="extype" name="nounou.elements.data.NNDataChannel">NNDataChannel</a> with <a href="../../../elements/data/NNDataChannelNumbered.html" class="extype" name="nounou.elements.data.NNDataChannelNumbered">NNDataChannelNumbered</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.package@FileReadNCSextendsFileReadNeuralynxwithFileNCSwithNNDataChannelwithNNDataChannelNumbered" title="Permalink" target="_top">
+      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.package@FileReadNCSextendsFileReadNeuralynx[nounou.io.neuralynx.headers.NNHeaderNCS]withFileNCSwithNNDataChannelwithNNDataChannelNumbered" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Created by ktakagaki on 15/05/28.</p>
-    </li><li name="nounou.io.neuralynx.fileObjects.FileReadNEV" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="FileReadNEVextendsFileReadNeuralynxwithFileNEV"></a>
+      <p class="shortcomment cmt">File handler for reading Neuralynx NCS files, to be used by file adapter.</p><div class="fullcomment"><div class="comment cmt"><p>File handler for reading Neuralynx NCS files, to be used by file adapter.
+Created by ktakagaki on 15/05/28.
+</p></div></div>
+    </li><li name="nounou.io.neuralynx.fileObjects.FileReadNEV" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FileReadNEVextendsFileReadNeuralynx[nounou.io.neuralynx.headers.NNHeaderNEV]withFileNEV"></a>
       <a id="FileReadNEV:FileReadNEV"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -162,16 +164,18 @@ Among other functions, it provides file handle handling and header reading.
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="FileReadNEV.html"><span class="name">FileReadNEV</span></a><span class="result"> extends <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a> with <a href="FileNEV.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNEV">FileNEV</a></span>
+        <a href="FileReadNEV.html"><span class="name">FileReadNEV</span></a><span class="result"> extends <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a>[<a href="../headers/NNHeaderNEV.html" class="extype" name="nounou.io.neuralynx.headers.NNHeaderNEV">NNHeaderNEV</a>] with <a href="FileNEV.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNEV">FileNEV</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.package@FileReadNEVextendsFileReadNeuralynxwithFileNEV" title="Permalink" target="_top">
+      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.package@FileReadNEVextendsFileReadNeuralynx[nounou.io.neuralynx.headers.NNHeaderNEV]withFileNEV" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Created by ktakagaki on 15/05/28.</p>
-    </li><li name="nounou.io.neuralynx.fileObjects.FileReadNSE" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="FileReadNSEextendsFileReadNeuralynxwithFileNSE"></a>
+      <p class="shortcomment cmt">File handler for reading Neuralynx NEV files, to be used by file adapter.</p><div class="fullcomment"><div class="comment cmt"><p>File handler for reading Neuralynx NEV files, to be used by file adapter.
+Created by ktakagaki on 15/05/28.
+</p></div></div>
+    </li><li name="nounou.io.neuralynx.fileObjects.FileReadNSE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FileReadNSEextendsFileReadNeuralynx[nounou.io.neuralynx.headers.NNHeaderNSE]withFileNSE"></a>
       <a id="FileReadNSE:FileReadNSE"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -179,31 +183,33 @@ Among other functions, it provides file handle handling and header reading.
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="FileReadNSE.html"><span class="name">FileReadNSE</span></a><span class="result"> extends <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a> with <a href="FileNSE.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNSE">FileNSE</a></span>
+        <a href="FileReadNSE.html"><span class="name">FileReadNSE</span></a><span class="result"> extends <a href="FileReadNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx">FileReadNeuralynx</a>[<a href="../headers/NNHeaderNSE.html" class="extype" name="nounou.io.neuralynx.headers.NNHeaderNSE">NNHeaderNSE</a>] with <a href="FileNSE.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNSE">FileNSE</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.package@FileReadNSEextendsFileReadNeuralynxwithFileNSE" title="Permalink" target="_top">
+      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.package@FileReadNSEextendsFileReadNeuralynx[nounou.io.neuralynx.headers.NNHeaderNSE]withFileNSE" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Created by ktakagaki on 15/05/28.</p>
+      <p class="shortcomment cmt">File handler for reading Neuralynx NSE files, to be used by file adapter.</p><div class="fullcomment"><div class="comment cmt"><p>File handler for reading Neuralynx NSE files, to be used by file adapter.
+Created by ktakagaki on 15/05/28.
+</p></div></div>
     </li><li name="nounou.io.neuralynx.fileObjects.FileReadNeuralynx" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="FileReadNeuralynxextendsFileNeuralynx"></a>
-      <a id="FileReadNeuralynx:FileReadNeuralynx"></a>
+      <a id="FileReadNeuralynx[T&lt;:nounou.io.neuralynx.headers.NNHeaderNeuralynx]extendsFileNeuralynx"></a>
+      <a id="FileReadNeuralynx[T&lt;:NNHeaderNeuralynx]:FileReadNeuralynx[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="FileReadNeuralynx.html"><span class="name">FileReadNeuralynx</span></a><span class="result"> extends <a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></span>
+        <a href="FileReadNeuralynx.html"><span class="name">FileReadNeuralynx</span></a><span class="tparams">[<span name="T">T &lt;: <a href="../headers/NNHeaderNeuralynx.html" class="extype" name="nounou.io.neuralynx.headers.NNHeaderNeuralynx">NNHeaderNeuralynx</a></span>]</span><span class="result"> extends <a href="FileNeuralynx.html" class="extype" name="nounou.io.neuralynx.fileObjects.FileNeuralynx">FileNeuralynx</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.package@FileReadNeuralynxextendsFileNeuralynx" title="Permalink" target="_top">
+      <a href="../../../../index.html#nounou.io.neuralynx.fileObjects.package@FileReadNeuralynx[T&lt;:nounou.io.neuralynx.headers.NNHeaderNeuralynx]extendsFileNeuralynx" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Abstract class to read Neuralynx files, including some generic header checks.</p>
     </li><li name="nounou.io.neuralynx.fileObjects.FileWriteNEV" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="FileWriteNEVextendsFileWriteNeuralynxwithFileNEV"></a>
       <a id="FileWriteNEV:FileWriteNEV"></a>
@@ -237,7 +243,7 @@ Among other functions, it provides file handle handling and header reading.
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Abstract class to write Neuralynx files.</p>
     </li></ol>
             </div>
 
@@ -245,7 +251,7 @@ Among other functions, it provides file handle handling and header reading.
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="nounou.io.neuralynx.fileObjects.FileNCS" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="nounou.io.neuralynx.fileObjects.FileNCS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FileNCS"></a>
       <a id="FileNCS:FileNCS"></a>
       <h4 class="signature">
@@ -261,7 +267,9 @@ Among other functions, it provides file handle handling and header reading.
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Information regarding neuralynx continuous files.</p><div class="fullcomment"><div class="comment cmt"><p>Information regarding neuralynx continuous files.
+This object is defined to allow static external access.
+</p></div></div>
     </li><li name="nounou.io.neuralynx.fileObjects.FileNEV" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="FileNEV"></a>
       <a id="FileNEV:FileNEV"></a>
@@ -296,7 +304,7 @@ Among other functions, it provides file handle handling and header reading.
       </a>
     </span>
       
-    </li><li name="nounou.io.neuralynx.fileObjects.FileNeuralynx" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="nounou.io.neuralynx.fileObjects.FileNeuralynx" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FileNeuralynx"></a>
       <a id="FileNeuralynx:FileNeuralynx"></a>
       <h4 class="signature">
@@ -312,7 +320,9 @@ Among other functions, it provides file handle handling and header reading.
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Information and constants regarding Neuralynx files in general.</p><div class="fullcomment"><div class="comment cmt"><p>Information and constants regarding Neuralynx files in general.
+This object is defined (outside the companion class) to allow static external access.
+</p></div></div>
     </li></ol>
             </div>
 

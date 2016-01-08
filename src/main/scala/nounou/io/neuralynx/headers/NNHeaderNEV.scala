@@ -10,17 +10,17 @@ class NNHeaderNEV(override val originalHeaderText: String)
 
   def this() = this("")
 
-  final lazy val headerRecordType = nlxHeaderValueS("FileType", "Event")
-  final lazy val headerRecordSize = nlxHeaderValueI("RecordSize", FileNEV.recordSize.toString)
+  def getHeaderRecordType = nlxHeaderValueS("FileType", "Event")
+  def getHeaderRecordSize = nlxHeaderValueI("RecordSize", FileNEV.recordSize.toString)
 
 
-  override def toNeuralynxHeaderStringImpl() = {
+  override def getNeuralynxHeaderStringImpl() = {
     "######## Neuralynx Data File Header\n" +
     s"## Output by Nounou v ${version}\n" +
     s"## Output time ${System.currentTimeMillis()}\n" +
-    s" -CheetahRev $headerCheetahRev\n" +
-    s" -FileType $headerRecordType\n" +
-    s" -RecordSize $headerRecordSize\n" +
+    s" -CheetahRev $getHeaderCheetahRev\n" +
+    s" -FileType $getHeaderRecordType\n" +
+    s" -RecordSize $getHeaderRecordSize\n" +
     {if(originalHeaderPresent) commentLines(originalHeaderText) else ""}
   }
 

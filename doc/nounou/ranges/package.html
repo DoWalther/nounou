@@ -1,0 +1,237 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>ranges - nounou.ranges</title>
+          <meta name="description" content="ranges - nounou.ranges" />
+          <meta name="keywords" content="ranges nounou.ranges" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'nounou.ranges.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../lib/package_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="nounou">nounou</a></p>
+        <h1>ranges</h1><span class="permalink">
+      <a href="../../index.html#nounou.ranges.package" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ranges</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="nounou.ranges.NNRange" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NNRangeextendsNNRangeSpecifierwithLoggingExt"></a>
+      <a id="NNRange:NNRange"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NNRange.html"><span class="name">NNRange</span></a><span class="result"> extends <a href="NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a> with <a href="../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#nounou.ranges.package@NNRangeextendsNNRangeSpecifierwithLoggingExt" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">NNRange is the central class for specifying frame-based
+data sample timepoints (trait <a href="NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a>).</p><div class="fullcomment"><div class="comment cmt"><p>NNRange is the central class for specifying frame-based
+data sample timepoints (trait <a href="NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a>).
+Various constructor methods for this and other <a href="NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a>s
+are located within the convenience class <a href="../NN$.html" class="extype" name="nounou.NN">nounou.NN</a>.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="NNRangeTs.html" class="extype" name="nounou.ranges.NNRangeTs">NNRangeTs</a> range defined in timestamp units</p></span><span class="cmt"><p><a href="NNRangeAll.html" class="extype" name="nounou.ranges.NNRangeAll">NNRangeAll</a> marker for total sample range</p></span><span class="cmt"><p><a href="NNRangeValid.html" class="extype" name="nounou.ranges.NNRangeValid">NNRangeValid</a> marked to be a valid range (not outside of defined data)</p></span><span class="cmt"><p><a href="NNRangeInstantiated.html" class="extype" name="nounou.ranges.NNRangeInstantiated">NNRangeInstantiated</a> marked to be a real range (not default, etc.)</p></span></dd></dl></div>
+    </li><li name="nounou.ranges.NNRangeAll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NNRangeAllextendsNNRangeSpecifier"></a>
+      <a id="NNRangeAll:NNRangeAll"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NNRangeAll.html"><span class="name">NNRangeAll</span></a><span class="result"> extends <a href="NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#nounou.ranges.package@NNRangeAllextendsNNRangeSpecifier" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="nounou.ranges.NNRangeInstantiated" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NNRangeInstantiatedextendsNNRangeSpecifier"></a>
+      <a id="NNRangeInstantiated:NNRangeInstantiated"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NNRangeInstantiated.html"><span class="name">NNRangeInstantiated</span></a><span class="result"> extends <a href="NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#nounou.ranges.package@NNRangeInstantiatedextendsNNRangeSpecifier" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Extends FrameRange but with the enforced assumption that all step and segment are instantiated.</p><div class="fullcomment"><div class="comment cmt"><p>Extends FrameRange but with the enforced assumption that all step and segment are instantiated.
+start and last need not be within the given data range (need not be &quot;valid&quot;).
+</p></div></div>
+    </li><li name="nounou.ranges.NNRangeSpecifier" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="NNRangeSpecifierextendsLoggingExt"></a>
+      <a id="NNRangeSpecifier:NNRangeSpecifier"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NNRangeSpecifier.html"><span class="name">NNRangeSpecifier</span></a><span class="result"> extends <a href="../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#nounou.ranges.package@NNRangeSpecifierextendsLoggingExt" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait specifies a range of data samples to extract, for instance, when reading data traces.</p><div class="fullcomment"><div class="comment cmt"><p>This trait specifies a range of data samples to extract, for instance, when reading data traces.
+It allows specification of ranges such as &quot;all samples&quot;
+(<a href="NNRangeAll.html" class="extype" name="nounou.ranges.NNRangeAll">SampleRangeAll</a>) and millisecond- or timestamp(Long)-
+dependent sample ranges. These latter specifications can only be resolved to real data frame
+ranges using sampling information given in the actual data
+(<a href="../elements/traits/NNTiming.html" class="extype" name="nounou.elements.traits.NNTiming">NNTiming</a>).
+</p></div></div>
+    </li><li name="nounou.ranges.NNRangeTs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NNRangeTsextendsNNRangeSpecifier"></a>
+      <a id="NNRangeTs:NNRangeTs"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NNRangeTs.html"><span class="name">NNRangeTs</span></a><span class="result"> extends <a href="NNRangeSpecifier.html" class="extype" name="nounou.ranges.NNRangeSpecifier">NNRangeSpecifier</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#nounou.ranges.package@NNRangeTsextendsNNRangeSpecifier" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Encapsulates a TS(timestamp, Long)-based frame range, with appropriate values.</p>
+    </li><li name="nounou.ranges.NNRangeValid" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NNRangeValidextendsNNRangeInstantiated"></a>
+      <a id="NNRangeValid:NNRangeValid"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NNRangeValid.html"><span class="name">NNRangeValid</span></a><span class="result"> extends <a href="NNRangeInstantiated.html" class="extype" name="nounou.ranges.NNRangeInstantiated">NNRangeInstantiated</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#nounou.ranges.package@NNRangeValidextendsNNRangeInstantiated" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Extends FrameRange but with the implicit assumption that start and last are within given data range,
+and that step and segment are instantiated.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="nounou.ranges.NNRange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NNRange"></a>
+      <a id="NNRange:NNRange"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="NNRange$.html"><span class="name">NNRange</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#nounou.ranges.package@NNRange" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

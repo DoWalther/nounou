@@ -20,7 +20,7 @@ object NNEventNEV extends LoggingExt {
   // <editor-fold defaultstate="collapsed" desc=" code for dealing with port/board information ">
 
   def commentInterpreter(comment: String): (Int, Int, Int, Int) = {
-    val pattern = """*TTL Input on AcqSystem(\d+)_(\d+) board (\d+) port (\d+) value*""".r
+    val pattern = """.*TL Input on AcqSystem(\d+)_(\d+) board (\d+) port (\d+) valu.*""".r
     //val pattern(as1, as2, b, p) = comment //"TTL Input on AcqSystem1_2 board 200 port 4 value"
     comment match {
       case pattern(as1, as2, b, p) => (as1.toInt, as2.toInt, b.toInt, p.toInt)

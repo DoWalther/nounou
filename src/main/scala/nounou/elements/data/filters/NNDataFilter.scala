@@ -1,11 +1,11 @@
 package nounou.elements.data.filters
 
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements._scale.NNDataScale
+import nounou.elements.traits.NNScaling
 import nounou.elements.data.NNData
-import nounou.elements._layout.NNDataLayout
-import nounou.elements.ranges.{SampleRangeSpecifier, SampleRangeValid}
+import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.elements.NNElement
+import nounou.elements.traits.layout.NNLayout
 
 /** A passthrough object, which is inherited by various NNDataFilter
   * objects to create a filter block for the filter chain.
@@ -55,18 +55,18 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
   // <editor-fold defaultstate="collapsed" desc=" adjust reading functions for active state ">
 
-  override final def readPoint(channel: Int, frame: Int, segment: Int): Int =
+  override final def readPointInt(channel: Int, frame: Int, segment: Int): Int =
     if(_active){
-      super.readPoint(channel, frame, segment)
+      super.readPointInt(channel, frame, segment)
     }else{
-      parenVar.readPoint(channel, frame, segment)
+      parenVar.readPointInt(channel, frame, segment)
     }
 
-  override final def readTraceDV(channel: Int, range: SampleRangeSpecifier): DV[Int] =
+  override final def readTraceIntDV(channel: Int, range: NNRangeSpecifier): DV[Int] =
     if(_active){
-      super.readTraceDV(channel, range)
+      super.readTraceIntDV(channel, range)
     }else{
-      parenVar.readTraceDV(channel, range)
+      parenVar.readTraceIntDV(channel, range)
     }
     // </editor-fold>
 
@@ -74,8 +74,8 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
   override def getChannelCount = parenVar.channelCount
 
   //passthrough implementations to be overridden in real filters
-  override def readPointImpl(channel: Int, frame: Int, segment: Int): Int = parenVar.readPointImpl(channel, frame, segment: Int)
-  override def readTraceDVImpl(channel: Int, range: SampleRangeValid): DV[Int] = parenVar.readTraceDVImpl(channel, range)
+  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int = parenVar.readPointIntImpl(channel, frame, segment: Int)
+  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DV[Int] = parenVar.readTraceIntDVImpl(channel, range)
 //  override def readFrameImpl(frame: Int): DV[Int] = _parent.readFrameImpl(frame)
 //  override def readFrameImpl(frame: Int, channels: Array[Int]): DV[Int] = _parent.readFrameImpl(frame, channels)
 
@@ -88,9 +88,9 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
 //  final override def setTiming( timing: NNDataTiming ) =
 //    throw loggerError("Cannot set timing for a data filter manually")
-  final override def setScale( scale: NNDataScale ) =
+  final override def setScale( scale: NNScaling ) =
     throw loggerError("Cannot set scale for data filter for a data filter manually")
-  final override def setLayout( layout: NNDataLayout ) =
+  final override def setLayout( layout: NNLayout ) =
     throw loggerError("Cannot set layout for data filter for a data filter manually")
 
   // </editor-fold>

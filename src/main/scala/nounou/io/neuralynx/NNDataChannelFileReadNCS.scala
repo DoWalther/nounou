@@ -3,10 +3,9 @@ package nounou.io.neuralynx
 import java.io.File
 
 import breeze.linalg.{DenseVector => DV, convert}
-import nounou.elements._scale.NNDataScale
-import nounou.elements._timing.NNDataTiming
+import nounou.elements.traits.{NNTiming, NNScaling}
 import nounou.elements.data.{NNDataChannel, NNDataChannelNumbered}
-import nounou.elements.ranges.SampleRangeValid
+import nounou.ranges.NNRangeValid
 import nounou.io.neuralynx.fileObjects.{FileReadNCS, FileReadNeuralynx}
 import nounou.io.neuralynx.headers.NNHeaderNCS
 
@@ -38,7 +37,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
 
   /** Standard timestamp increment for contiguous records, depends on sample rate from header. */
-  lazy val headerRecordTSIncrement = (1000000D * recordSize.toDouble / header.asInstanceOf[NNHeaderNCS].headerSampleRate).toLong
+  lazy val headerRecordTSIncrement = (1000000D * recordSize.toDouble / getHeader.asInstanceOf[NNHeaderNCS].getHeaderSampleRate).toLong
 
   //    override def isValid(): Boolean = {
   //      super.isValid() && (headerRecordType == "CSC")
@@ -66,7 +65,6 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   @transient
   private var dwChannelNum: Long = -1
   private def readNCSRecordHeaderTS(record: Int): BigInt = {
-    //println( s"seek: ${recordStartByte(record)}")
     handle.seek( recordStartByte(record) )
     val qwTimestamp = handle.readUInt64()
 
@@ -82,8 +80,8 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
     //dwSampleFreq
     val dwSampleFreq = handle.readUInt32.toDouble
-    require(dwSampleFreq == header.headerSampleRate,
-      s"Reported sampling frequency $dwSampleFreq for rec $record is different from header $header.headerSampleRate)"
+    require(dwSampleFreq == getHeader.getHeaderSampleRate,
+      s"Reported sampling frequency $dwSampleFreq for rec $record is different from header $getHeader.headerSampleRate)"
     )
 
     //dwNumValidSamples
@@ -140,11 +138,11 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
   // </editor-fold>
 
-  override val timing = new NNDataTiming(header.headerSampleRate,
+  override val timing = new NNTiming(getHeader.getHeaderSampleRate,
                               tempLengths.toArray,
                               tempStartTimestamps.toArray)
-  setScale( new NNDataScale(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
-                            absGain = 1.0E6 * header.headerADBitVolts / xBitsD,
+  setScale( new NNScaling(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
+                            absGain = 1.0E6 * getHeader.getHeaderADBitVolts / xBitsD,
                             absOffset = this.absOffset,
                             absUnit = this.absUnit)
   )
@@ -159,16 +157,13 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
     handle.readInt16 * scale.xBits
   }
 
-  override def readTraceDVImpl(range: SampleRangeValid): DV[Int] = {
-    //println("XDataChannelNCS " + range.toString())
+  override def readTraceDVImpl(range: NNRangeValid): DV[Int] = {
     var (currentRecord: Int, currentIndex: Int) =
       cumulativeFrameToRecordIndex( timing.cumulativeFrame(range.start, range.segment) )
     val (endReadRecord: Int, endReadIndex: Int) =
       cumulativeFrameToRecordIndex( timing.cumulativeFrame(range.last, range.segment) )
       //range is inclusive of lastValid
 
-    //println( "curr " + (currentRecord, currentIndex).toString )
-    //println( "end " + (endReadRecord, endReadIndex).toString )
     //ToDo1 program step
     //val step = range.step
 
@@ -181,7 +176,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
       //if the whole requested trace fits in one record
       val writeLen = (endReadIndex - currentIndex) + 1
       val writeEnd = currentTempRetPos + writeLen
-      //      println( "writeLen " + writeLen.toString + " writeEnd " + writeEnd.toString )
+
       //ToDo 3: improve breeze dv requirement documentation
       tempRet(currentTempRetPos until writeEnd ) := convert( DV(handle.readInt16(writeLen)), Int)  * scale.xBits
       currentTempRetPos = writeEnd

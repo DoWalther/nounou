@@ -1,13 +1,12 @@
 package nounou.elements.data
 
 import breeze.linalg.{DenseMatrix => DM, DenseVector => DV}
-import nounou.elements._scale.NNDataScale
-import nounou.elements._timing.NNDataTiming
-import nounou.elements.ranges.SampleRangeValid
+import nounou.elements.traits.{NNTiming, NNScaling}
+import nounou.ranges.NNRangeValid
 
 /**NNData class with internal representation as data array.
  */
-class NNDataPreloaded( val data: Array[DV[Int]], timingEntry: NNDataTiming, scaleEntry: NNDataScale)
+class NNDataPreloaded(val data: Array[DV[Int]], timingEntry: NNTiming, scaleEntry: NNScaling)
   extends NNData  {
 
     setScale(scaleEntry)
@@ -15,10 +14,10 @@ class NNDataPreloaded( val data: Array[DV[Int]], timingEntry: NNDataTiming, scal
 
     override def getChannelCount: Int = data.length
 
-    override def readPointImpl(channel: Int, frame: Int, segment: Int) =
+    override def readPointIntImpl(channel: Int, frame: Int, segment: Int) =
       data(channel)(timing.cumulativeFrame(frame, segment))
 
-    override def readTraceDVImpl(channel: Int, rangeFrValid: SampleRangeValid) = {
+    override def readTraceIntDVImpl(channel: Int, rangeFrValid: NNRangeValid) = {
       data( channel )(
               rangeFrValid.toRangeInclusive( timing.segmentStartFrame( rangeFrValid.segment ))
       )

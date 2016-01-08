@@ -67,23 +67,23 @@
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="nounou.elements.data.NNData" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="NNDataextendsNNElementwithNNChannelsElementwithNNDataScaleElementwithNNDataTimingElementwithNNDataSpikeReader"></a>
+      <a id="NNDataextendsNNElementwithNNChannelsElementwithNNScalingElementwithNNTimingElementwithNNDataSpikeReader"></a>
       <a id="NNData:NNData"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">class</span>
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="NNData.html"><span class="name">NNData</span></a><span class="result"> extends <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a> with <a href="../NNChannelsElement.html" class="extype" name="nounou.elements.NNChannelsElement">NNChannelsElement</a> with <a href="../_scale/NNDataScaleElement.html" class="extype" name="nounou.elements._scale.NNDataScaleElement">NNDataScaleElement</a> with <a href="../_timing/NNDataTimingElement.html" class="extype" name="nounou.elements._timing.NNDataTimingElement">NNDataTimingElement</a> with <a href="NNDataSpikeReader.html" class="extype" name="nounou.elements.data.NNDataSpikeReader">NNDataSpikeReader</a></span>
+        <a href="NNData.html"><span class="name">NNData</span></a><span class="result"> extends <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a> with <a href="../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a> with <a href="../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a> with <a href="../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a> with <a href="NNDataSpikeReader.html" class="extype" name="nounou.elements.data.NNDataSpikeReader">NNDataSpikeReader</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.package@NNDataextendsNNElementwithNNChannelsElementwithNNDataScaleElementwithNNDataTimingElementwithNNDataSpikeReader" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.package@NNDataextendsNNElementwithNNChannelsElementwithNNScalingElementwithNNTimingElementwithNNDataSpikeReader" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Base class for data encoded as Int arrays, this is the main data element for an experiment,
-whether it be electrophysiolgical or high-sampling-rate imaging.</p><div class="fullcomment"><div class="comment cmt"><p>Base class for data encoded as Int arrays, this is the main data element for an experiment,
+      <p class="shortcomment cmt">Base trait for data encoded as Int arrays, this is the main data element for an experiment,
+whether it be electrophysiolgical or high-sampling-rate imaging.</p><div class="fullcomment"><div class="comment cmt"><p>Base trait for data encoded as Int arrays, this is the main data element for an experiment,
 whether it be electrophysiolgical or high-sampling-rate imaging.</p><p>This object is mutable, to allow inheritance by <a href="filters/NNDataFilter.html" class="extype" name="nounou.elements.data.filters.NNDataFilter">nounou.elements.data.filters.NNDataFilter</a>.
 For that class, output results may change, depending upon _parent changes.
 Each trace of data must share the following variables:
@@ -109,7 +109,7 @@ sampling, start, length, xBits, absGain, absOffset, absUnit
 This means, for instance for imaging data, parallel continuous data such as stimulus signals,
 which are simulatneously digitized.</p></div></div>
     </li><li name="nounou.elements.data.NNDataChannel" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="NNDataChannelextendsNNDataTimingElementwithNNDataScaleElement"></a>
+      <a id="NNDataChannelextendsNNTimingElementwithNNScalingElement"></a>
       <a id="NNDataChannel:NNDataChannel"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -117,10 +117,10 @@ which are simulatneously digitized.</p></div></div>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="NNDataChannel.html"><span class="name">NNDataChannel</span></a><span class="result"> extends <a href="../_timing/NNDataTimingElement.html" class="extype" name="nounou.elements._timing.NNDataTimingElement">NNDataTimingElement</a> with <a href="../_scale/NNDataScaleElement.html" class="extype" name="nounou.elements._scale.NNDataScaleElement">NNDataScaleElement</a></span>
+        <a href="NNDataChannel.html"><span class="name">NNDataChannel</span></a><span class="result"> extends <a href="../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a> with <a href="../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#nounou.elements.data.package@NNDataChannelextendsNNDataTimingElementwithNNDataScaleElement" title="Permalink" target="_top">
+      <a href="../../../index.html#nounou.elements.data.package@NNDataChannelextendsNNTimingElementwithNNScalingElement" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
