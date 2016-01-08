@@ -101,10 +101,10 @@ abstract class NNLayoutSpatial extends NNLayout {
   // </editor-fold>
 
 
-  override def isCompatible(that: NNElement): Boolean = that match {
-    case x: NNLayoutSpatial => this.getClass == x.getClass
-    case _ => false
-  }
+//  override def isCompatible(that: NNElement): Boolean = that match {
+//    case x: NNLayoutSpatial => this.getClass == x.getClass
+//    case _ => false
+//  }
 
 }
 

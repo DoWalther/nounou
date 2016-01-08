@@ -81,8 +81,8 @@ abstract class NNHeaderNeuralynx(val originalHeaderText: String) extends NNHeade
   // </editor-fold>
 
 
-  /** Header cannot be merged.
-    */
-  override def isCompatible(that: nounou.elements.NNElement): Boolean = false
+//  /** Header cannot be merged.
+//    */
+//  override def isCompatible(that: nounou.elements.NNElement): Boolean = false
 
 }

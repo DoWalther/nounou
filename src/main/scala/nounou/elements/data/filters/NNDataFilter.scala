@@ -1,7 +1,7 @@
 package nounou.elements.data.filters
 
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements.traits.NNDataScale
+import nounou.elements.traits.NNScaling
 import nounou.elements.data.NNData
 import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.elements.NNElement
@@ -88,7 +88,7 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
 //  final override def setTiming( timing: NNDataTiming ) =
 //    throw loggerError("Cannot set timing for a data filter manually")
-  final override def setScale( scale: NNDataScale ) =
+  final override def setScale( scale: NNScaling ) =
     throw loggerError("Cannot set scale for data filter for a data filter manually")
   final override def setLayout( layout: NNLayout ) =
     throw loggerError("Cannot set layout for data filter for a data filter manually")

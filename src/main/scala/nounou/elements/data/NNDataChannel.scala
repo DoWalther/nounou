@@ -2,14 +2,14 @@ package nounou.elements.data
 
 import breeze.linalg.{DenseVector => DV}
 import nounou._
-import nounou.elements.traits.{NNTimingElement, NNScalingElement}
+import nounou.elements.traits.{NNConcatenableElement, NNTimingElement, NNScalingElement}
 import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.elements.NNElement
 
 /**
  * Created by Kenta on 12/14/13.
  */
-trait NNDataChannel extends NNTimingElement with NNScalingElement {
+trait NNDataChannel extends NNConcatenableElement with NNTimingElement with NNScalingElement {
 
 
   /**MUST OVERRIDE: name of the given channel.*/
@@ -56,10 +56,11 @@ trait NNDataChannel extends NNTimingElement with NNScalingElement {
     res
   }
 
+  //ToDo 1: this will fail when different traces are scaled differently
   override def isCompatible(that: NNElement): Boolean = {
     that match {
       case x: NNDataChannel => {
-        timing.isCompatible(x.timing) && scale.isCompatible(x.scale)
+        timing == timing && scale == x.scale
       }
       case _ => false
     }

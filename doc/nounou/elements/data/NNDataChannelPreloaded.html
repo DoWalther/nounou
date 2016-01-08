@@ -90,7 +90,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="nounou.elements.data.NNDataChannelPreloaded#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(data:breeze.linalg.DenseVector[Int],timingEntry:nounou.elements.traits.NNTiming,scaleEntry:nounou.elements.traits.NNDataScale,channelName:String):nounou.elements.data.NNDataChannelPreloaded"></a>
+      <a id="&lt;init&gt;(data:breeze.linalg.DenseVector[Int],timingEntry:nounou.elements.traits.NNTiming,scaleEntry:nounou.elements.traits.NNScaling,channelName:String):nounou.elements.data.NNDataChannelPreloaded"></a>
       <a id="&lt;init&gt;:NNDataChannelPreloaded"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -98,7 +98,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">NNDataChannelPreloaded</span><span class="params">(<span name="data">data: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="timingEntry">timingEntry: <a href="../traits/NNTiming.html" class="extype" name="nounou.elements.traits.NNTiming">NNTiming</a></span>, <span name="scaleEntry">scaleEntry: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNDataScale">NNDataScale</a></span>, <span name="channelName">channelName: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
+        <span class="name">NNDataChannelPreloaded</span><span class="params">(<span name="data">data: <span class="extype" name="breeze.linalg.DenseVector">DenseVector</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="timingEntry">timingEntry: <a href="../traits/NNTiming.html" class="extype" name="nounou.elements.traits.NNTiming">NNTiming</a></span>, <span name="scaleEntry">scaleEntry: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNScaling">NNDataScale</a></span>, <span name="channelName">channelName: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#nounou.elements.data.NNDataChannelPreloaded@&lt;init&gt;(data:breeze.linalg.DenseVector[Int],timingEntry:nounou.elements.traits.NNTiming,scaleEntry:nounou.elements.traits.NNDataScale,channelName:String):nounou.elements.data.NNDataChannelPreloaded" title="Permalink" target="_top">
@@ -332,7 +332,7 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="nounou.elements.traits.NNScalingElement#getScale" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getScale():nounou.elements.traits.NNDataScale"></a>
+      <a id="getScale():nounou.elements.traits.NNScaling"></a>
       <a id="getScale():NNDataScale"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -340,7 +340,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getScale</span><span class="params">()</span><span class="result">: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNDataScale">NNDataScale</a></span>
+        <span class="name">getScale</span><span class="params">()</span><span class="result">: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNScaling">NNDataScale</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#nounou.elements.data.NNDataChannelPreloaded@getScale():nounou.elements.traits.NNDataScale" title="Permalink" target="_top">
@@ -716,7 +716,7 @@ Implement via readPointImpl.
 Should return a defensive clone.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NNDataChannel.html" class="extype" name="nounou.elements.data.NNDataChannel">NNDataChannel</a></dd></dl></div>
     </li><li name="nounou.elements.traits.NNScalingElement#scale" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="scale():nounou.elements.traits.NNDataScale"></a>
+      <a id="scale():nounou.elements.traits.NNScaling"></a>
       <a id="scale():NNDataScale"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -724,7 +724,7 @@ Should return a defensive clone.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">scale</span><span class="params">()</span><span class="result">: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNDataScale">NNDataScale</a></span>
+        <span class="name">scale</span><span class="params">()</span><span class="result">: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNScaling">NNDataScale</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#nounou.elements.data.NNDataChannelPreloaded@scale():nounou.elements.traits.NNDataScale" title="Permalink" target="_top">
@@ -741,7 +741,7 @@ Should return a defensive clone.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setScale</span><span class="params">(<span name="scale">scale: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNDataScale">NNDataScale</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setScale</span><span class="params">(<span name="scale">scale: <a href="../traits/NNDataScale.html" class="extype" name="nounou.elements.traits.NNScaling">NNDataScale</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#nounou.elements.data.NNDataChannelPreloaded@setScale(scale:nounou.elements.traits.NNDataScale):Unit" title="Permalink" target="_top">

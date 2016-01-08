@@ -20,10 +20,10 @@ trait NNLayoutElement extends NNElement {
     //ToDo 2: child change hierarchy in NNElement
   }
 
-  override def isCompatible(x: NNElement) = x match {
-    case x: NNLayoutElement => x.getLayout().isCompatible(this.getLayout())
-    case _ => false
-  }
+//  override def isCompatible(x: NNElement) = x match {
+//    case x: NNLayoutElement => x.getLayout().isCompatible(this.getLayout())
+//    case _ => false
+//  }
 
 
 }

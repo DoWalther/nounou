@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>NNDataScale - nounou.elements.traits.NNDataScale</title>
-          <meta name="description" content="NNDataScale - nounou.elements.traits.NNDataScale" />
-          <meta name="keywords" content="NNDataScale nounou.elements.traits.NNDataScale" />
+          <title>NNDataScale - nounou.elements.traits.NNScaling</title>
+          <meta name="description" content="NNDataScale - nounou.elements.traits.NNScaling" />
+          <meta name="keywords" content="NNDataScale nounou.elements.traits.NNScaling" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -73,7 +73,7 @@ electrophysiological and imaging recordings.</p><p>Created by Kenta on 12/15/13.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="nounou.elements.traits.NNDataScale"><span>NNDataScale</span></li><li class="in" name="nounou.elements.NNElement"><span>NNElement</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="nounou.elements.traits.NNScaling"><span>NNDataScale</span></li><li class="in" name="nounou.elements.NNElement"><span>NNElement</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -93,7 +93,7 @@ electrophysiological and imaging recordings.</p><p>Created by Kenta on 12/15/13.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="nounou.elements.traits.NNDataScale#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(minValue:Int,maxValue:Int,absGain:Double,absOffset:Double,absUnit:String,xBits:Int):nounou.elements.traits.NNDataScale"></a>
+      <a id="&lt;init&gt;(minValue:Int,maxValue:Int,absGain:Double,absOffset:Double,absUnit:String,xBits:Int):nounou.elements.traits.NNScaling"></a>
       <a id="&lt;init&gt;:NNDataScale"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -537,7 +537,7 @@ absUnit (e.g. &quot;mV&quot;)
  or comparison (eg <a href="../spikes/NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">nounou.elements.spikes.NNSpike</a>) etc.</p><div class="fullcomment"><div class="comment cmt"><p><u><b>SHOULD OVERRIDE</b></u> Whether an <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">nounou.elements.NNElement</a> is compatible with another for merging
 (eg <a href="../data/NNData.html" class="extype" name="nounou.elements.data.NNData">nounou.elements.data.NNData</a>)
  or comparison (eg <a href="../spikes/NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">nounou.elements.spikes.NNSpike</a>) etc.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNDataScale">NNDataScale</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNScaling">NNDataScale</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
     </li><li name="nounou.elements.NNElement#isCompatible" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isCompatible(that:Seq[nounou.elements.NNElement]):Boolean"></a>
       <a id="isCompatible(Seq[NNElement]):Boolean"></a>
@@ -842,7 +842,7 @@ more detailed information, where available.
       </a>
     </span>
       <p class="shortcomment cmt">Lines to be output for <a href="../NNElement.html#toStringFull():String" class="extmbr" name="nounou.elements.NNElement#toStringFull">nounou.elements.NNElement.toStringFull()*</a>, after <a href="../NNElement.html#toString():String" class="extmbr" name="nounou.elements.NNElement#toString">nounou.elements.NNElement.toString()*</a> output and line divider.</p><div class="fullcomment"><div class="comment cmt"><p>Lines to be output for <a href="../NNElement.html#toStringFull():String" class="extmbr" name="nounou.elements.NNElement#toStringFull">nounou.elements.NNElement.toStringFull()*</a>, after <a href="../NNElement.html#toString():String" class="extmbr" name="nounou.elements.NNElement#toString">nounou.elements.NNElement.toString()*</a> output and line divider.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNDataScale">NNDataScale</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNScaling">NNDataScale</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
     </li><li name="nounou.elements.traits.NNDataScale#toStringImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toStringImpl():String"></a>
       <a id="toStringImpl():String"></a>
@@ -860,7 +860,7 @@ more detailed information, where available.
       </a>
     </span>
       <p class="shortcomment cmt">The contents of the <a href="../NNElement.html#toString():String" class="extmbr" name="nounou.elements.NNElement#toString">nounou.elements.NNElement.toString()*</a> output to be given within parenthesis after the class name.</p><div class="fullcomment"><div class="comment cmt"><p>The contents of the <a href="../NNElement.html#toString():String" class="extmbr" name="nounou.elements.NNElement#toString">nounou.elements.NNElement.toString()*</a> output to be given within parenthesis after the class name.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNDataScale">NNDataScale</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.traits.NNScaling">NNDataScale</a> → <a href="../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
     </li><li name="nounou.elements.NNElement#version" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="version:Double"></a>
       <a id="version:Double"></a>

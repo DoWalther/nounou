@@ -7,31 +7,34 @@ import nounou.elements.NNElement
  */
 trait NNScalingElement extends NNElement {
 
-  private var _scale: NNDataScale = null //  NNDataScale.raw
+  private var _scale: NNScaling = null //  NNDataScale.raw
 
   /**'''[NNDataScaleElement]''' Alias for [[nounou.elements.traits.NNScalingElement.getScale]].*/
-  final def scale(): NNDataScale = getScale()
+  final def scale(): NNScaling = getScale()
   /**'''[NNDataScaleElement]''' Get physical scaling information for data.
     * This is not made final, because it will be overriden by some filters which pass through
     * upstream scale information.
     */
-  def getScale(): NNDataScale = {
+  def getScale(): NNScaling = {
     if( _scale == null ) throw loggerError(
       s"Cannot use timing-related functions in ${this.getClass.getCanonicalName} without first calling setTiming()")
     else _scale
   }
   /**'''[NNDataScaleElement]''' Set physical scaling information for data.*/
-  def setScale(scale: NNDataScale) = {
+  def setScale(scale: NNScaling) = {
     _scale = scale
 
     //ToDo 2: child change hierarchy in NNElement
     logger.trace("child hierarchy update has not been implemented yet!")
   }
 
-  override def isCompatible(x: NNElement) = x match {
-    case x: NNScalingElement => x.getScale().isCompatible(this.getScale())
-    case _ => false
-  }
+  //ToDo must look up super hierarchy to implement?
+//  override def isCompatible(x: NNElement) = x match {
+//  override def equals(x: Any) = x match {
+//    case x: NNScalingElement => x.getScale().isCompatible(this.getScale())
+//    //case x: NNScalingElement => x.getScale().isCompatible(this.getScale())
+//    case _ => false
+//  }
 
 //  /** See redirected implementation in [[nounou.elements.traits.NNDataScale]]
 //    */

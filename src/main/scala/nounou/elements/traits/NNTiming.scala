@@ -1,11 +1,12 @@
 package nounou.elements.traits
 
 import breeze.numerics.round
-import java.text.DecimalFormat
+//import java.text.DecimalFormat
 import nounou.elements.NNElement
 import nounou.ranges.NNRangeSpecifier
+import nounou.util.{leftPadSpace, leftPadZero}
 
-/** This class encapsulates the following timing information about electrophysiological/imaging data:
+/** This immutable class encapsulates the following timing information about electrophysiological/imaging data:
   *
   *   - sample rate (Double, in Hz)
   *   - segment lengths (Array[Int]): many data formats have multiple "segments" (i.e. the recording was
@@ -25,6 +26,9 @@ import nounou.ranges.NNRangeSpecifier
   *   + [[nounou.elements.data.NNData]]
   *   + [[nounou.elements.traits.layout.NNLayout]]
   *   + [[nounou.elements.spikes.NNSpikes]]
+  *
+  *  Programming note: do not make the constructor variables of this class mutable, since
+  *  they are used to calculate hashCode!
   *
   * @param sampleRate Sample rate in Hz.
   * @param _segmentLengths Total number of frames in each segment. Must be specified and non-null.
@@ -322,7 +326,8 @@ class NNTiming(val sampleRate: Double,
 
   // </editor-fold>
 
-  override def isCompatible(that: NNElement): Boolean = {
+//  override def isCompatible(that: NNElement): Boolean = {
+  override def equals (that: Any): Boolean = {
     that match {
       case x: NNTiming => {
         (this.segmentCount == x.segmentCount) &&
@@ -334,12 +339,11 @@ class NNTiming(val sampleRate: Double,
       case _ => false
     }
   }
+  override def hashCode = (sampleRate * 41.41).toInt + _segmentLengths.hashCode()*41 + _segmentStartTss.hashCode()
 
   // <editor-fold defaultstate="collapsed" desc=" toString related ">
 
-  private val formatter = new DecimalFormat("###,###.0")
-  private def leftPadSpace(string: String, len: Int) = string.reverse.padTo(len, " ").reverse.mkString
-  private def leftPadZero(string: String, len: Int) = string.reverse.padTo(len, "0").reverse.mkString
+  //private val formatter = new DecimalFormat("###,###.0")
 
   override def toStringImpl() = s"fs=$sampleRate, segmentCount=$segmentCount"
   override def toStringFullImpl() = {

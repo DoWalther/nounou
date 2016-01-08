@@ -1,12 +1,12 @@
 package nounou.elements.data
 
 import breeze.linalg.{DenseMatrix => DM, DenseVector => DV}
-import nounou.elements.traits.{NNTiming, NNDataScale}
+import nounou.elements.traits.{NNTiming, NNScaling}
 import nounou.ranges.NNRangeValid
 
 /**NNData class with internal representation as data array.
  */
-class NNDataPreloaded(val data: Array[DV[Int]], timingEntry: NNTiming, scaleEntry: NNDataScale)
+class NNDataPreloaded(val data: Array[DV[Int]], timingEntry: NNTiming, scaleEntry: NNScaling)
   extends NNData  {
 
     setScale(scaleEntry)

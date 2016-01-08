@@ -5,6 +5,7 @@ import java.math.BigInteger
 import breeze.linalg.{max, min}
 import breeze.numerics.abs
 import nounou.elements.NNElement
+import nounou.elements.traits.NNConcatenableElement
 
 /**An immutable class to encapsulate a single spike waveform in a neurophysiological recording,
   * to be accumulated into a [[nounou.elements.spikes.NNSpikes]] database.
@@ -15,7 +16,7 @@ import nounou.elements.NNElement
   * @param unitNo the classified unit of this spike. 0 indicates an unclassified unit.
   */
 class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: Int = 1, val unitNo: Long = 0L)
-  extends NNElement {
+  extends NNConcatenableElement {
 
   // <editor-fold defaultstate="collapsed" desc=" argument checks ">
 

@@ -3,7 +3,7 @@ package nounou.io.neuralynx
 import java.io.File
 
 import breeze.linalg.{DenseVector => DV, convert}
-import nounou.elements.traits.{NNTiming, NNDataScale}
+import nounou.elements.traits.{NNTiming, NNScaling}
 import nounou.elements.data.{NNDataChannel, NNDataChannelNumbered}
 import nounou.ranges.NNRangeValid
 import nounou.io.neuralynx.fileObjects.{FileReadNCS, FileReadNeuralynx}
@@ -141,7 +141,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   override val timing = new NNTiming(getHeader.getHeaderSampleRate,
                               tempLengths.toArray,
                               tempStartTimestamps.toArray)
-  setScale( new NNDataScale(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
+  setScale( new NNScaling(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
                             absGain = 1.0E6 * getHeader.getHeaderADBitVolts / xBitsD,
                             absOffset = this.absOffset,
                             absUnit = this.absUnit)

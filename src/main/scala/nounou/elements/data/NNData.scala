@@ -4,7 +4,7 @@ import breeze.linalg.{DenseVector => DV}
 import nounou._
 import nounou.elements.NNElement
 import nounou.elements.traits.layout.NNLayout
-import nounou.elements.traits.{NNTimingElement, NNScalingElement, NNChannelsElement}
+import nounou.elements.traits.{NNConcatenableElement, NNTimingElement, NNScalingElement, NNChannelsElement}
 import nounou.ranges.{NNRange, NNRangeSpecifier, NNRangeValid}
 
 /** Base trait for data encoded as Int arrays, this is the main data element for an experiment,
@@ -15,7 +15,7 @@ import nounou.ranges.{NNRange, NNRangeSpecifier, NNRangeValid}
   * Each trace of data must share the following variables:
   * sampling, start, length, xBits, absGain, absOffset, absUnit
   */
-trait NNData extends NNElement
+trait NNData extends NNConcatenableElement
   with NNChannelsElement with NNScalingElement with NNTimingElement
   with NNDataSpikeReader {
 
@@ -310,8 +310,8 @@ trait NNData extends NNElement
     that match {
       case x: NNData => {
         ( //This is not enforced, may append objects with separate channel counts: channelCount() == x.channelCount()  &&
-          timing().isCompatible(x.timing())) &&
-          scale().isCompatible(x.scale())
+          timing() == timing() &&
+          scale() == x.scale() )
         //&& this.layout.isCompatible(x.layout)
         //not channel info
       }

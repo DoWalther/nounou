@@ -1,12 +1,12 @@
 package nounou.elements.data
 
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements.traits.{NNTiming, NNDataScale}
+import nounou.elements.traits.{NNTiming, NNScaling}
 
 /**
  * Created by ktakagaki on 15/05/21.
  */
-class NNDataChannelPreloaded(val data: DV[Int], timingEntry: NNTiming, scaleEntry: NNDataScale,
+class NNDataChannelPreloaded(val data: DV[Int], timingEntry: NNTiming, scaleEntry: NNScaling,
                              override val channelName: String
                               )  extends NNDataChannel {
 

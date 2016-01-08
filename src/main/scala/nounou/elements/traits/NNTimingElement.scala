@@ -16,11 +16,11 @@ trait NNTimingElement extends NNElement {
   /**'''[NNTimingElement]''' Alias for [[nounou.elements.traits.NNTimingElement.timing]]*/
   final def getTiming(): NNTiming = timing()
 
-  //ToDO 2: check inheritance with called combination instead of override
-  override def isCompatible(x: NNElement) = x match {
-    case x: NNTimingElement => x.getTiming().isCompatible(this.getTiming())
-    case _ => false
-  }
+//  //ToDO 2: check inheritance with called combination instead of override
+//  override def isCompatible(x: NNElement) = x match {
+//    //case x: NNTimingElement => x.getTiming().isCompatible(this.getTiming())
+//    case _ => ??? //false
+//  }
 
 
 }

@@ -4,7 +4,7 @@ import java.math.BigInteger
 import nounou.{NN, Opt}
 import nounou.analysis.spikes.OptWaveformFr
 import nounou.elements.data.NNData
-import nounou.elements.traits.{NNTimingElement, NNTiming}
+import nounou.elements.traits.{NNConcatenableElement, NNTimingElement, NNTiming}
 import nounou.elements.NNElement
 import nounou.util.LoggingExt
 
@@ -75,7 +75,7 @@ object NNSpikes extends LoggingExt {
     *
     */
 class NNSpikes( private val _database: TreeSet[NNSpike] )//val trodeLayout: NNDataLayoutTrode, val waveFormLength: Int)
-  extends NNElement /*with NNDataTimingElement with NNDataScaleElement*/ {
+  extends NNConcatenableElement /*with NNDataTimingElement with NNDataScaleElement*/ {
 
   override def toStringImpl() = s"no.=${_database.size}, "
   override def toStringFullImpl() = ""

@@ -9,7 +9,7 @@ import nounou.elements.NNElement
   *
  * Created by Kenta on 12/15/13.
  */
-class NNDataScale(
+class NNScaling(
                    /**The minimum extent down to which the data runs*/
                    val minValue: Int,
                    /**The maximum extent up to which the data runs */
@@ -59,20 +59,32 @@ class NNDataScale(
   final def convertAbsoluteToInt(dataAbs: DenseVector[Double]): DenseVector[Int] = dataAbs.map( convertAbsoluteToInt _ )
   final def convertAbsoluteToInt(dataAbs: Array[Double]): Array[Int] = dataAbs.map( convertAbsoluteToInt _ )
 
-  override def isCompatible(that: NNElement): Boolean = {
-    that match {
-      case x: NNDataScale => {
-        (this.xBits == x.xBits) && (this.absGain == x.absGain) && (this.absOffset == x.absOffset) && (this.absUnit == x.absUnit) &&
-          (this.maxValue == x.maxValue) && (this.minValue == x.minValue)
-      }
-      case _ => false
-    }
+//  override def isCompatible(that: NNElement): Boolean = {
+//    that match {
+//      case x: NNDataScale => {
+//        (this.xBits == x.xBits) && (this.absGain == x.absGain) && (this.absOffset == x.absOffset) && (this.absUnit == x.absUnit) &&
+//          (this.maxValue == x.maxValue) && (this.minValue == x.minValue)
+//      }
+//      case _ => false
+//    }
+//  }
+
+  override def equals(that: Any) = that match {
+    case x: NNScaling => minValue == x.minValue && maxValue == x.maxValue &&
+      absGain == x.absGain && absOffset == x.absOffset &&
+      absUnit == x.absUnit && xBits == x.xBits
+    case _ => false
   }
+
+  override def hashCode = minValue + maxValue*41 + (absGain * 41.112 + absOffset * 41.112).toInt + absUnit.hashCode + xBits * 411
 
 }
 
-object NNDataScale {
-  val raw: NNDataScale = new NNDataScale( Int.MinValue, Int.MaxValue, 1d, 0d, "Raw scaling")
-  def apply(minValue: Int, maxValue: Int, absGain: Double, absOffset: Double,  absUnit: String): NNDataScale =
-    new NNDataScale( minValue, maxValue, absGain, absOffset, absUnit)
+object NNScaling {
+
+  val raw: NNScaling = new NNScaling( Int.MinValue, Int.MaxValue, 1d, 0d, "Raw scaling")
+
+  def apply(minValue: Int, maxValue: Int, absGain: Double, absOffset: Double,  absUnit: String): NNScaling =
+    new NNScaling( minValue, maxValue, absGain, absOffset, absUnit)
+
 }
