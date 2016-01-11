@@ -25,7 +25,8 @@ abstract class NNSpikeNeuralynx(
                       channels: Int
                       ) extends
                       NNSpike(/*timestamp = */qwTimeStamp,
-                              /*waveform = */snData.map(_.toInt).toVector,
+                              //ToDo 1 !!! must convert this to real scaling!!!
+                              /*waveform = */snData.map( _.toDouble ),
                               /*channels = */channels,
                               /*unitNo = */dwCellNumber) {
 
@@ -70,7 +71,8 @@ object NNSpikeNeuralynx extends LoggingExt {
 
   private def convertNNSpikeToNNSpikeNeuralynxImpl(spike: NNSpike, dwScNumber: Long, dnParams: Vector[Long]): NNSpikeNeuralynx = {
     loggerRequire(
-      spike.waveform.forall( (v: Int) => (Short.MinValue.toInt <= v && v <= Short.MaxValue.toInt) ),
+      //ToDo 1: must convert to scaled!!!
+      spike.waveform.forall( (v: Double) => (Short.MinValue.toInt <= v && v <= Short.MaxValue.toInt) ),
       "All values of waveform must be within bounds of Short to comply with the Neuralynx spike formats.")
     val waveformShort = spike.waveform.map(_.toShort)
 

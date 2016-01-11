@@ -1,29 +1,25 @@
 package nounou.elements.traits.layout
 
-import nounou.elements.NNElement
+import nounou.elements.traits.NNChannelsElement
 
 /**
  * Created by ktakagaki on 15/03/12.
  */
-trait NNLayoutElement extends NNElement {
+trait NNLayoutElement extends NNChannelsElement {
 
   private var _layout: NNLayout = null
 
-  final def layout(): NNLayout = getLayout()
+  def layout(): NNLayout = getLayout()
   def getLayout(): NNLayout = {
     if( _layout == null ) throw loggerError(
       s"Cannot use timing-related functions in ${this.getClass.getCanonicalName} without first calling setTiming()")
     else _layout
   }
   def setLayout(layout: NNLayout) = {
+    loggerRequire( layout.channelCount == this.channelCount(),
+      s"Channel count ${layout.channelCount} of new layout does not match channel count ${this.channelCount()} for ${this.getClass.toString}" )
     _layout= layout
-    //ToDo 2: child change hierarchy in NNElement
   }
-
-//  override def isCompatible(x: NNElement) = x match {
-//    case x: NNLayoutElement => x.getLayout().isCompatible(this.getLayout())
-//    case _ => false
-//  }
 
 
 }

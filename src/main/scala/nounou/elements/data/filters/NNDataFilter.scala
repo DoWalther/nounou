@@ -55,18 +55,18 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
   // <editor-fold defaultstate="collapsed" desc=" adjust reading functions for active state ">
 
-  override final def readPointInt(channel: Int, frame: Int, segment: Int): Int =
+  override final def readPoint(channel: Int, frame: Int, segment: Int): Double =
     if(_active){
-      super.readPointInt(channel, frame, segment)
+      super.readPoint(channel, frame, segment)
     }else{
-      parenVar.readPointInt(channel, frame, segment)
+      parenVar.readPoint(channel, frame, segment)
     }
 
-  override final def readTraceIntDV(channel: Int, range: NNRangeSpecifier): DV[Int] =
+  override final def readTraceDV(channel: Int, range: NNRangeSpecifier): DV[Double] =
     if(_active){
-      super.readTraceIntDV(channel, range)
+      super.readTraceDV(channel, range)
     }else{
-      parenVar.readTraceIntDV(channel, range)
+      parenVar.readTraceDV(channel, range)
     }
     // </editor-fold>
 
@@ -74,17 +74,18 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
   override def getChannelCount = parenVar.channelCount
 
   //passthrough implementations to be overridden in real filters
-  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int = parenVar.readPointIntImpl(channel, frame, segment: Int)
-  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DV[Int] = parenVar.readTraceIntDVImpl(channel, range)
-//  override def readFrameImpl(frame: Int): DV[Int] = _parent.readFrameImpl(frame)
-//  override def readFrameImpl(frame: Int, channels: Array[Int]): DV[Int] = _parent.readFrameImpl(frame, channels)
+  override def readPointImpl(channel: Int, frame: Int, segment: Int): Double =
+    parenVar.readPointImpl(channel, frame, segment: Int)
+
+  override def readTraceDVImpl(channel: Int, range: NNRangeValid): DV[Double] =
+    parenVar.readTraceDVImpl(channel, range)
 
   // <editor-fold defaultstate="collapsed" desc=" timing, scale, layout ">
 
   //passthrough definitions, only override for changes in sampling rate, layout, etc.
   override def timing() = parenVar.getTiming()
-  override def getScale() =  parenVar.getScale()
-  override def getLayout() = parenVar.getLayout()
+  override def scale() =  parenVar.getScale()
+  override def layout() = parenVar.getLayout()
 
 //  final override def setTiming( timing: NNDataTiming ) =
 //    throw loggerError("Cannot set timing for a data filter manually")

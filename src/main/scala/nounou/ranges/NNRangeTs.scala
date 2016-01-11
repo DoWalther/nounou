@@ -1,15 +1,16 @@
 package nounou.ranges
 
 import java.math.BigInteger
-
 import nounou.elements.traits.NNTiming
 
 
-/**Encapsulates a TS(timestamp, Long)-based frame range, with appropriate values.
+/**Encapsulates a Ts (timestamp in BigInt)-based frame range, with appropriate values.
  * @author ktakagaki
  * //@date 3/19/14.
  */
 class NNRangeTs(val startTs: BigInt, val lastTs: BigInt, val stepTs: BigInt) extends NNRangeSpecifier {
+
+  def this(startTs: BigInt, lastTs: BigInt) = this(startTs, lastTs, BigInt(-1))
 
   loggerRequire( startTs <= lastTs, s"SampleRangeTs requires startTs <= lastTs. startTs=$startTs, lastTs=$lastTs")
   loggerRequire( stepTs >= 1 || stepTs == -1, s"step must be -1 (automatic) or positive. Invalid value: $stepTs")
@@ -57,18 +58,18 @@ class NNRangeTs(val startTs: BigInt, val lastTs: BigInt, val stepTs: BigInt) ext
   
   // </editor-fold>
 
-  private var realSegmentXFrameBuffer: NNTiming = null
+  private var timingBuffer: NNTiming = null
   private var realSegmentBuffer = -1
   private var realStartFrameBuffer = -1
   private var realLastFrameBuffer = -1
 
   private def realSegmentBufferRefresh(xDataTiming: NNTiming): Unit = {
-    if( realSegmentXFrameBuffer != xDataTiming) {
+    if( timingBuffer != xDataTiming) {
       val fs1 = xDataTiming.convertTsToFrsg(startTs)
       val fs2 = xDataTiming.convertTsToFrsg(lastTs)
       loggerRequire(fs1._2 == fs2._2, "The two specified timestamps belong to different recording segments " +
         fs1._2.toString + " and " + fs2._2.toString)
-      realSegmentXFrameBuffer = xDataTiming
+      timingBuffer = xDataTiming
       realSegmentBuffer = fs1._2
 
       val tempLen = xDataTiming.segmentLength( realSegmentBuffer )

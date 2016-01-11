@@ -11,6 +11,10 @@ import nounou.elements.NNElement
  */
 trait NNTimingElement extends NNElement {
 
+  /**
+    * Returns [[NNTiming]] which applies to this NNElement.
+    *
+    */
   def timing(): NNTiming
 
   /**'''[NNTimingElement]''' Alias for [[nounou.elements.traits.NNTimingElement.timing]]*/

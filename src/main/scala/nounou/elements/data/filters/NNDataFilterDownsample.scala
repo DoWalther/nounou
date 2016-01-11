@@ -1,110 +1,79 @@
 package nounou.elements.data.filters
 
-import nounou.ranges.NNRangeValid
 import breeze.linalg.{DenseVector => DV, min}
 import nounou.elements.data.NNData
 import nounou.elements.traits.NNTiming
+import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
 
 /**
  * @author ktakagaki
  * //@date 2/16/14.
  */
-class NNDataFilterDownsample( private val parentVal: NNData, protected var factorVar: Int )
+class NNDataFilterDownsample( private val parentVal: NNData, protected var initialFactor: Int )
   extends NNDataFilter( parentVal ) {
 
-  setFactor(factorVar)
+  protected var timingBuffer: NNTiming = null//parentVal.timing()
+  protected var factorVar = -1
+  setFactor(initialFactor)
 
-  def this(parentVal: NNData) = this(parentVal, 10)
+  def this(parentVal: NNData) = this(parentVal, 16)
 
   // <editor-fold defaultstate="collapsed" desc=" factor-related ">
 
-  protected var timingBuffer: NNTiming = parentVal.timing()
+
   override def timing(): NNTiming = timingBuffer
 
-  final def factor(): Int = getFactor()
-  /** Java-style alias for [[factor]].
-    */
+  protected def refreshTimingBuffer(factor: Int) = {
+    timingBuffer = new NNTiming(
+      parentVal.timing.sampleRate / factor.toDouble,
+      (for(seg <- 0 until parentVal.timing.segmentCount)
+        yield ( (parentVal.timing.segmentLength(seg) - 1).toDouble/factor).round.toInt + 1 ).toArray,
+      parentVal.timing.segmentStartTss
+    )
+  }
+
   def getFactor(): Int = factorVar
+
   def setFactor( factor: Int ) = {
     loggerRequire( factor >= 1, "new factor {} cannot be less than 1!", factor.toString )
-    if( factor == this.factor ){
+    if( factor == this.factorVar ){
       logger.trace( "factor is already {}, not changing. ", factor.toString )
     } else {
-      factorVar = factor
-      timingBuffer = new NNTiming(
-        parentVal.timing.sampleRate / factor,
-        (for(seg <- 0 until parentVal.timing.segmentCount)
-        yield ( (parentVal.timing.segmentLength(seg) - 1).toDouble/factor).round.toInt + 1 ).toArray,
-        parentVal.timing.segmentStartTss
-        )
-      //logger.info( "changed factor to {}", factor.toString )
+      this.factorVar = factor
+      refreshTimingBuffer(factor)
+      logger.info( "changed factor to {}", factor.toString )
       changedData()
     }
   }
-
-
-//  //override def sampleRate: Double = _parent.sampleRate / factor
-//  override def segmentLengthImpl(segment: Int): Int =
-//    if( factor == currentSegLenFactor ) currentSegLenBuffer(segment)
-//    else {
-//      currentSegLenBuffer =
-//        (for(seg <- 0 until segmentCount)
-//        yield ( (_parent.segmentLength(seg) - 1).toDouble/factor).round.toInt + 1 ).toArray
-//      currentSegLenFactor = factor
-//      currentSegLenBuffer(segment)
-//    }
-//  private var currentSegLenFactor = 0
-//  private var currentSegLenBuffer = Array[Int]()
 
   // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" readXXX ">
 
-  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int =
-    parentVal.readPointIntImpl(channel, frame*factor, segment)
+  override def readPointImpl(channel: Int, frame: Int, segment: Int): Double =
+    parentVal.readPointImpl(channel, frame*factorVar, segment)
 
-  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DV[Int] =
-    if(factor == 1){
-      parentVal.readTraceIntDVImpl(channel, range)
+  override def readTraceDVImpl(channel: Int, range: NNRangeValid): DV[Double] =
+    if(factorVar == 1){
+      parentVal.readTraceDVImpl(channel, range)
     } else {
-      parentVal.readTraceIntDVImpl(channel,
-                new NNRangeValid(
-                          range.start*factor,
-                          min(range.last*factor, parentVal.timing.segmentLength(range.segment)-1),
-                          range.step*factor,
+      parentVal.readTraceDV(channel,
+                new NNRangeInstantiated(
+                          range.start*factorVar,
+                          min(range.last*factorVar, parentVal.timing.segmentLength(range.segment)-1),
+                          range.step*factorVar,
                           range.segment)
         )
     }
 
   // </editor-fold>
 
-  
+  // <editor-fold defaultstate="collapsed" desc=" toString related ">
+
+  override def toStringImpl(): String = s"factor=$factorVar"
+
+  override def toStringFullImpl(): String = ""
+
+  // </editor-fold>
 
 }
-
-
-
-
-
-//  override def segmentCount: Int = _parent.segmentCount
-
-//  override def readFrameImpl(frame: Int/*, segment: Int*/): DV[Int] = super[XDataFilter].readFrameImpl(frame * factor)//, segment)
-//  override def readFrameImpl(frame: Int, channels: Array[Int]/*, segment: Int*/): DV[Int] = super[XDataFilter].readFrameImpl(frame * factor, channels/*, segment*/)
-
-//  override def channelNames: scala.Vector[String] = _parent.channelNames
-
-//  override def absUnit: String = _parent.absUnit
-//  override def absOffset: Double = _parent.absOffset
-//  override def absGain: Double = _parent.absGain
-
-
-// override def segmentStartTSs: Vector[Long] = _parent.segmentStartTSs
-//  override def segmentEndTs: Array[Long] = if( factor == currentSegEndTSFactor ) currentSegEndTSBuffer
-//  else {
-//    currentSegEndTSBuffer = ( for(seg <- 0 until segmentCount) yield _parent.segmentStartTs(seg) + ((this.segmentLength(seg)-1)*timestampsPerFrame).toLong ).toArray
-//    currentSegEndTSFactor = factor
-//    currentSegEndTSBuffer
-//  }
-//  private var currentSegEndTSFactor = 0
-//  private var currentSegEndTSBuffer = _parent.segmentEndTs
-

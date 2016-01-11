@@ -8,10 +8,10 @@ import org.scalatest.FunSuite
  */
 class thresholdTest  extends FunSuite {
 
-  var test01 = Array.tabulate(10)( (p:Int) => 0)
-  test01(2) = 100
-  test01(4) = 100
-  test01(8) = 100
+  var test01 = Array.tabulate(10)( (p:Int) => 0d)
+  test01(2) = 100d
+  test01(4) = 100d
+  test01(8) = 100d
 
   test("threshold"){
     assert( threshold( test01, 50 ).toList == List(2,4,8) )

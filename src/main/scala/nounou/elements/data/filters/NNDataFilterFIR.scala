@@ -16,12 +16,12 @@ import scala.beans.BeanProperty
  */
 class NNDataFilterFIR(private var _parent: NNData ) extends NNDataFilter( _parent ) {
 
-  var kernel: FIRKernel1D[Long] = null
+  var kernel: FIRKernel1D[Double] = null
   override def getActive(): Boolean = { super.getActive() && kernel != null }
 
   var kernelOmega0: Double = 0d
   var kernelOmega1: Double = 1d
-  var multiplier = 256L
+  var multiplier = 256d
 
   override def toStringImpl() = {
     if(kernel == null) "kernel null/off, "
@@ -54,7 +54,7 @@ class NNDataFilterFIR(private var _parent: NNData ) extends NNDataFilter( _paren
     if(omega0 == 0d && omega1 == 1d)
       setFilterOff()
     else {
-      kernel = designFilterFirwin[Long](taps, DV[Double](omega0, omega1), nyquist = 1d,
+      kernel = designFilterFirwin[Double](taps, DV[Double](omega0, omega1), nyquist = 1d,
         zeroPass = false, scale=true, multiplier = this.multiplier)
       kernelOmega0 = omega0
       kernelOmega1 = omega1
@@ -82,26 +82,26 @@ class NNDataFilterFIR(private var _parent: NNData ) extends NNDataFilter( _paren
 
   // <editor-fold defaultstate="collapsed" desc=" calculate data ">
 
-  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int = {
+  override def readPointImpl(channel: Int, frame: Int, segment: Int): Double = {
     //by calling _parent.readTrace instead of _parent.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
-    val tempData = _parent.readTraceIntDV( channel,
+    val tempData = _parent.readTraceDV( channel,
         NNRange(frame - kernel.overhangPre, frame + kernel.overhangPost, 1, segment))
-    val tempRet = convolve( DV( tempData.map(_.toLong).toArray ), kernel.kernel, overhang = OptOverhang.None )
+    val tempRet = convolve( tempData, kernel.kernel, overhang = OptOverhang.None )
     require( tempRet.length == 1, "something is wrong with the convolution!" )
-    tempRet(0).toInt
+    tempRet(0)
   }
 
-  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DV[Int] = {
+  override def readTraceDVImpl(channel: Int, range: NNRangeValid): DV[Double] = {
     //by calling _parent.readTrace instead of _parent.readTraceImpl, we can deal with cases where the kernel will overhang actual data, since the method will return zeros
-    val tempData = _parent.readTraceIntDV( channel,
+    val tempData = _parent.readTraceDV( channel,
       new NNRangeInstantiated( range.start - kernel.overhangPre, range.last + kernel.overhangPost, 1, range.segment))
 //    println("XDataFilterFIR " + ran.toString())
-    val tempRes: DV[Long] = convolve(
-         convert( new DV( tempData.toArray ), Long),
+    val tempRes: DV[Double] = convolve(
+         tempData,
          kernel.kernel,
          range = OptRange.RangeOpt(new Range.Inclusive(0, range.last - range.start, range.step)),
         overhang = OptOverhang.None ) / multiplier
-    convert(tempRes, Int)
+    tempRes
   }
 
 //  override def readFrameImpl(frame: Int, segment: Int): Vector[Int] = super[XDataFilter].readFrameImpl(frame, segment)

@@ -6,7 +6,7 @@ import nounou.elements.traits.{NNTiming, NNScaling}
 /**
  * Created by ktakagaki on 15/05/21.
  */
-class NNDataChannelPreloaded(val data: DV[Int], timingEntry: NNTiming, scaleEntry: NNScaling,
+class NNDataChannelPreloaded(val data: DV[Double], timingEntry: NNTiming, scaleEntry: NNScaling,
                              override val channelName: String
                               )  extends NNDataChannel {
 
@@ -15,7 +15,7 @@ class NNDataChannelPreloaded(val data: DV[Int], timingEntry: NNTiming, scaleEntr
 
   //ToDo2 test the DV length against segment lengths
   //override lazy val segmentLengths = Array( data.length )
-  override def readPointImpl(frame: Int, segment: Int): Int = data( timing.cumulativeFrame(frame, segment))
+  override def readPointImpl(frame: Int, segment: Int): Double = data( timing.cumulativeFrame(frame, segment) )
 
 }
 

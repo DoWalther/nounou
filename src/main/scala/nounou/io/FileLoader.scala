@@ -2,15 +2,12 @@ package nounou.io
 
 import java.io.File
 import java.util.ServiceLoader
-
 import nounou.elements.NNElement
 import nounou.elements.data.{NNDataChannel, NNDataChannelArray}
 import nounou.elements.traits.NNConcatenableElement
-import nounou.io.neuralynx.fileAdapters.FileAdapterNCS
 import nounou.util.LoggingExt
-
 import scala.collection.JavaConverters._
-import scala.collection.mutable
+import scala.collection.immutable
 
 /** This singleton FileLoader object is the main point of use for file saving
   * (use via [[nounou.NN.load(fileNames:Arr*]]).
@@ -26,8 +23,9 @@ object FileLoader extends LoggingExt {
 
   /** List of valid loaders available in the system (from /resources/META-INF/services/nounou.io.FileLoader)
     */
-  private lazy val loaders = ServiceLoader.load(classOf[FileLoader]).iterator.asScala
-  private val possibleLoaderBuffer = new mutable.HashMap[String, FileLoader]()
+  private lazy val loaders = ServiceLoader.load(classOf[FileLoader])
+
+  private var possibleLoaderBuffer = new immutable.HashMap[String, FileLoader]()
 
   final def load(fileName: String): Array[NNElement] = {
 
@@ -41,17 +39,19 @@ object FileLoader extends LoggingExt {
 
       //If the given extension has not been tested yet, it will be searched for within the available loaders
       case _ => {
-        val possibleLoaders: Iterator[FileLoader] = loaders.filter( _.canLoad(fileExtension))
-        val possibleLoader = if( possibleLoaders.hasNext ){
-          val tempret = possibleLoaders.next
-          if( possibleLoaders.hasNext ) {
-            logger.info(s"Multiple possible loaders for file $fileName found. Will take first instance, ${tempret.getClass.getName}")
+        val possibleLoaders: Iterator[FileLoader] = loaders.iterator.asScala.filter( _.canLoad(fileExtension))
+        val possibleLoader =
+          if( possibleLoaders.hasNext ){
+            val tempret = possibleLoaders.next
+            if( possibleLoaders.hasNext ) {
+              logger.info(s"Multiple possible loaders for file $fileName found. Will take first instance, ${tempret.getClass.getName}")
+            }
+            tempret
+          } else {
+            throw loggerError(s"Cannot find loader for file: $fileName")
           }
-          tempret
-        } else {
-          throw loggerError(s"Cannot find loader for file: $fileName")
-        }
-        possibleLoaderBuffer.+=( (fileExtension, possibleLoader) )
+
+        possibleLoaderBuffer = possibleLoaderBuffer.+( ( fileExtension, possibleLoader ) )
         possibleLoader
       }
     }
@@ -109,6 +109,8 @@ trait FileLoader extends LoggingExt {
   def load(file: File): Array[NNElement]
   /**Actual loading of file.*/
   final def load(fileName: String): Array[NNElement] = load( new File(fileName) )
+
+  override def toString() = getClass.getName + "( canLoadExtensions=" + canLoadExtensions.toList +")"
 
 }
 

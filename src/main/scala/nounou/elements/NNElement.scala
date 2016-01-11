@@ -20,21 +20,39 @@ trait NNElement extends LoggingExt {
 //  def header(): NNHeader = null
   //ToDo3: consider add: pt info, rec info, rec start time/date, etc
 
-  /**'''[NNElement]''' getCanonicalName, buffered for serialization with GSON. */
+  /**
+    * '''[NNElement]''' getCanonicalName, buffered for serialization with GSON.
+    */
   lazy val className = this.getClass.getCanonicalName
+
+  /**
+    * '''[NNElement]''' Reads global [[nounou]] version number, buffered for serialization with GSON.
+    */
+  val version = nounou.version
+
+  // <editor-fold defaultstate="collapsed" desc=" git related ">
+
   //This temporary val is necessary to trigger initialization of `object NNGit`
   def nnGitObj = nounou.util.NNGit
-  /**'''[NNElement]''' Git HEAD of the current revision, buffered for serialization with GSON.*/
+
+  /**
+    * '''[NNElement]''' Git HEAD of the current revision, buffered for serialization with GSON.
+    */
   lazy val gitHead = nnGitObj.getGitHead
-  /**'''[NNElement]''' Git HEAD shortened to first 10 characters.*/
+
+  /**
+    * '''[NNElement]''' Git HEAD shortened to first 10 characters.
+    */
   @transient
   lazy val gitHeadShort = gitHead.take(10)
 
-  /**'''[NNElement]''' Reads global [[nounou]] version number, buffered for serialization with GSON.*/
-  val version = nounou.version
+  // </editor-fold>
 
-  /**'''[NNElement]'''*/
-  def toJsonString: String = nounou.gson.toJson( this )
+
+  /**
+    * '''[NNElement]'''
+    */
+  final def toJsonString: String = nounou.gson.toJson( this )
 
   // <editor-fold defaultstate="collapsed" desc=" toString and related ">
 
@@ -52,7 +70,7 @@ trait NNElement extends LoggingExt {
   /**Usually multiline output string, starting with [[nounou.elements.NNElement.toString()*]] output and then
     * more detailed information, where available.
     */
-  final def toStringFull(): String = {
+  def toStringFull(): String = {
     val tempTail =
       if( toStringFullImpl() == "" ){ "" }
       else {

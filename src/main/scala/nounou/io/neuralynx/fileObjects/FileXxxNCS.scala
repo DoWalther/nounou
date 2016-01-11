@@ -1,7 +1,8 @@
 package nounou.io.neuralynx.fileObjects
 
 import java.io.File
-import nounou.elements.data.{NNDataChannel, NNDataChannelNumbered}
+import nounou.elements.data.NNDataChannel
+import nounou.elements.data.traits.NNDataChannelNumbered
 import nounou.io.neuralynx.headers.{NNHeaderNCS}
 
 trait FileNCS {

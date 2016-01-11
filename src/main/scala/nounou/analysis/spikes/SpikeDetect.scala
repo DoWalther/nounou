@@ -129,13 +129,13 @@ object SpikeDetect extends LoggingExt {
     val tempret =
     rangeList.par.flatMap(
       (r: NNRangeValid) => {
-        val analysisData = data.readTraceInt(channel, r)
+        val analysisData = data.readTrace(channel, r)
         //ToDo 2: convert the following median SD estimate into a breeze function
-        val thresholdValue = convert(optThresholdSDFactor * median( DenseVector( abs(analysisData) ) ) /0.6745, Int)
-        val tempretInner = threshold(analysisData, thresholdValue, opts: _*).map( (x: Int) => x + r.start )
+        val thresholdValue = optThresholdSDFactor * median( DenseVector( abs(analysisData) ) ) /0.6745
+        val tempretInner = threshold( analysisData, thresholdValue, opts: _* ).map( (x: Int) => x + r.start )
 
         //Delete first trigger if it is the first frame (0)... not a spike
-        if( tempretInner.length > 0 && tempretInner(0)==0 ) tempretInner.tail else tempretInner
+        if( tempretInner.length > 0 && tempretInner(0) == 0d ) tempretInner.tail else tempretInner
       }
     ).seq.toArray//.distinct.sorted  ...NNSpikes TreeSet will take care of distinct/sorted part
 

@@ -23,7 +23,7 @@ class FileAdapterNCSTest extends FunSuite {
 
     assert( dataObj.scale.absGain == 1.4901660156250002E-5 ) //1.0E6* 3.05185E-8 / 1024d )
     assert( dataObj.scale.absOffset == 0d )
-    assert( dataObj.scale.absUnit.contentEquals("microV") )
+    assert( dataObj.scale.unit.contentEquals("microV") )
 
     //trait XFrames
     assert( dataObj.timing.segmentLength(0) == 2546176 )
@@ -52,17 +52,27 @@ class FileAdapterNCSTest extends FunSuite {
 
     assert(dataObj.scale.xBits==1024)
     assert(dataObj.timing.segmentLength(0)==2546176)
-    assert(dataObj.readPoint(0,0) == -1528*dataObj.scale.xBits)
-    assert(dataObj.readPoint(512,0) == -1908*dataObj.scale.xBits)
+    assert(dataObj.readPoint(0,0) == dataObj.scale.convertIntToAbsolute( -1528*dataObj.scale.xBits ) )
+    assert(dataObj.readPoint(512,0) == dataObj.scale.convertIntToAbsolute( -1908*dataObj.scale.xBits) )
 
   }
 
   test("readTrace") {
 
-    assert( dataObj.readTraceInt( NN.NNRange(0, 0, 1, 0) )(0) == -1528*dataObj.scale.xBits)
-    assert( dataObj.readTraceDV( NN.NNRange(0, 4, 1, 0) ) == DenseVector(-1528,-1841, -1282, -670, -500)*dataObj.scale.xBits)
-    assert( dataObj.readTraceDV( NN.NNRange(0, 4, 2, 0) ) == DenseVector(-1528, -1282, -500)*dataObj.scale.xBits)
-    assert( dataObj.readTraceDV( NN.NNRange(-2, 4, 2, 0) ) == DenseVector(0, -1528, -1282, -500)*dataObj.scale.xBits)
+    assert( dataObj.readTraceInt( NN.NNRange(0, 0, 1, 0) )(0) ==
+      -1528*dataObj.scale.xBits )
+
+    assert( dataObj.readTraceDV( NN.NNRange(0, 4, 1, 0) ) ==
+      dataObj.scale.convertIntToAbsolute(  DenseVector(-1528, -1841, -1282, -670, -500).map(_ * dataObj.scale.xBits) )
+    )
+
+    assert( dataObj.readTraceDV( NN.NNRange(0, 4, 2, 0) ) ==
+      dataObj.scale.convertIntToAbsolute(  DenseVector(-1528, -1282, -500).map(_ * dataObj.scale.xBits) )
+    )
+
+    assert( dataObj.readTraceDV( NN.NNRange(-2, 4, 2, 0) ) ==
+      dataObj.scale.convertIntToAbsolute(  DenseVector(0, -1528, -1282, -500).map(_ * dataObj.scale.xBits) )
+    )
 
   }
 

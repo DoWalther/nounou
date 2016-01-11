@@ -6,23 +6,34 @@ import nounou.ranges.NNRangeValid
 
 /**NNData class with internal representation as data array.
  */
-class NNDataPreloaded(val data: Array[DV[Int]], timingEntry: NNTiming, scaleEntry: NNScaling)
+class NNDataPreloaded(val data: Array[DV[Double]], timingEntry: NNTiming, scaleEntry: NNScaling)
   extends NNData  {
 
-    setScale(scaleEntry)
-    override val timing = timingEntry
+  loggerRequire(data != null, "input data must be non-null")
 
-    override def getChannelCount: Int = data.length
+  setScale(scaleEntry)
 
-    override def readPointIntImpl(channel: Int, frame: Int, segment: Int) =
-      data(channel)(timing.cumulativeFrame(frame, segment))
+  override val timing = timingEntry
 
-    override def readTraceIntDVImpl(channel: Int, rangeFrValid: NNRangeValid) = {
-      data( channel )(
-              rangeFrValid.toRangeInclusive( timing.segmentStartFrame( rangeFrValid.segment ))
-      )
+  override def getChannelCount: Int = data.length
 
-    }
+  override def readPointImpl(channel: Int, frame: Int, segment: Int) =
+    data(channel)( timing.cumulativeFrame(frame, segment) )
+
+  override def readTraceDVImpl(channel: Int, rangeFrValid: NNRangeValid) = {
+    data( channel )(
+      rangeFrValid.toRangeInclusive( timing.segmentStartFrame( rangeFrValid.segment ))
+    )
+
+  }
+
+  // <editor-fold defaultstate="collapsed" desc=" toString related ">
+
+  override def toStringImpl(): String = s"channels=$getChannelCount length=${data(0).size}"
+
+  override def toStringFullImpl(): String = ""
+
+  // </editor-fold>
 
 }
 

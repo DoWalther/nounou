@@ -6,7 +6,6 @@ import nounou.elements.NNElement
 import nounou.elements.headers.NNHeader
 import nounou.elements.traits.NNConcatenableElement
 import nounou.util.{leftPadSpace, leftPadZero}
-
 import scala.collection.immutable.TreeMap
 import scala.collection.mutable
 import scala.collection.mutable.TreeSet
@@ -24,12 +23,34 @@ import scala.collection.mutable.TreeSet
  */
 class NNEvents extends NNConcatenableElement {
 
+  // <editor-fold defaultstate="collapsed" desc=" Default constructor ">
+
   private var _database: TreeMap[Int, TreeSet[NNEvent]] = new TreeMap[Int, TreeSet[NNEvent]]()
+
 
   var header: NNHeader = null
 //  private var _header: NNHeader = null
 //  override def header(): NNHeader = _header
 //  def setHeader(header: NNHeader): Unit = {_header = header}
+
+  // </editor-fold>
+
+  // <editor-fold defaultstate="collapsed" desc=" accessors ">
+
+  /**
+    * Gets the underlying TreeSet representing the list of events for a given port
+    */
+  def getPort(port: Int): TreeSet[NNEvent] = {
+    if( _database.contains(port) ) _database(port)
+    else new TreeSet[NNEvent]()
+  }
+
+  /**
+    * Gets a TreeSet subset representing the list of events for a given port
+    */
+  def getPortFilteredByCode(port: Int, code: Int): TreeSet[NNEvent] = {
+    getPort(port).filter(p => p.code == code )
+  }
 
   def getPortEventCounts: Array[Int] = _database.values.map( _.size ).toArray
 
@@ -44,6 +65,8 @@ class NNEvents extends NNConcatenableElement {
   def getPortCount: Int = _database.size
 
   def getPortCodes( port: Int ): Array[Int] = getPort(port).map( _.code ).toArray
+
+  // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" add events ">
 
@@ -67,26 +90,7 @@ class NNEvents extends NNConcatenableElement {
 
   // </editor-fold>
 
-  // <editor-fold defaultstate="collapsed" desc=" readPort/readPortCode ">
-
-  /**
-    * Gets the underlying TreeSet representing the list of events for a given port
-    */
-  def getPort(port: Int): TreeSet[NNEvent] = {
-    if( _database.contains(port) ) _database(port)
-    else new TreeSet[NNEvent]()
-  }
-
-  /**
-    * Gets a TreeSet subset representing the list of events for a given port
-    */
-  def getPortFilteredByCode(port: Int, code: Int): TreeSet[NNEvent] = {
-    getPort(port).filter(p => p.code == code )
-  }
-
-  // </editor-fold>
-
-  // <editor-fold defaultstate="collapsed" desc=" read as array ">
+  // <editor-fold defaultstate="collapsed" desc=" read data contents ">
 
   def readPortEventArray(): Array[(Int, NNEvent)] = readPortEventArray( true )
 
@@ -164,14 +168,16 @@ class NNEvents extends NNConcatenableElement {
 
   // </editor-fold>
 
+  // <editor-fold defaultstate="collapsed" desc=" toString related ">
+
   override def toStringImpl() = s"ports=${getPortCount}, events=${_database.map( _._2.size ).toList}"
 
   override def toStringFullImpl() = {
     var output = ""
     for( p <- getPorts ){
-      output = output + s"Port $p"
+      output = output + s"Port $p\n"
       for( c <- getPortCodes(p) ){
-        output = output + "\n    Code " + f"${c}%5d" + " ("+ {
+        output = output + "    Code " + f"${c}%5d" + " ("+ {
           val binstr = c.toBinaryString
           if (binstr.length <= 8) leftPadZero(c.toBinaryString, 8)
           else if (binstr.length <= 16) leftPadZero(c.toBinaryString, 16)
@@ -184,6 +190,8 @@ class NNEvents extends NNConcatenableElement {
     }
     output
   }
+
+  // </editor-fold>
 
 }
 

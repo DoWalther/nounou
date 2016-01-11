@@ -23,7 +23,7 @@ object NNSpikes extends LoggingExt {
 
   def apply(data: NNData, frameSegments: Array[(Int, Int)], channels: Array[Int], opts: Opt*): NNSpikes = {
 
-    // <editor-fold defaultstate="collapsed" desc=" argument checks ">
+  // <editor-fold defaultstate="collapsed" desc=" argument checks ">
 
       loggerRequire( data != null, "data input may not be null!")
       loggerRequire( frameSegments != null, "frames input may not be null!")
@@ -32,7 +32,7 @@ object NNSpikes extends LoggingExt {
 
     // </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc=" handle options ">
+  // <editor-fold defaultstate="collapsed" desc=" handle options ">
 
     var optWaveformFr = 32
 
@@ -43,17 +43,17 @@ object NNSpikes extends LoggingExt {
 
     // </editor-fold>
 
-    val tempret = new NNSpikes()
+  val tempret = new NNSpikes()
 
-    frameSegments.foreach( (frsg: (Int, Int) ) => {
+  frameSegments.foreach( (frsg: (Int, Int) ) => {
       //val startFr = frsg._1  - optPretriggerFr
       val sampleRange = NN.NNRange(frsg._1 , frsg._1 + optWaveformFr -1 /*+ tempPosttriggerFr*/, 1, frsg._2)
-      val wf = channels.flatMap(data.readTraceInt(_, sampleRange ))
+      val wf = channels.flatMap(data.readTrace(_, sampleRange ))
       tempret.add( new NNSpike( data.timing.convertFrToTs(frsg._1), wf, channels = 1, unitNo = 0L) )
       Unit
     })
 
-    tempret
+  tempret
 
   }
 

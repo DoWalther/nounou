@@ -18,8 +18,9 @@ trait NNDataSpikeReader {
 
     new NNSpike(
       /*timestamp =*/ timing().convertFrsgToTs(frame, segment),
-      /*waveform =*/ readTraceInt(channel, new NNRangeInstantiated(frame, frame + spikeLength - 1, step = 1, segment)   ),
-      /*channels =*/ 1
+      /*waveform =*/ readTrace( channel, new NNRangeInstantiated(frame, frame + spikeLength - 1, step = 1, segment)   ),
+      /*channels =*/ 1,
+      0L
     )
   }
   /**Reads a [[nounou.elements.spikes.NNSpike]] object from the data
@@ -29,8 +30,9 @@ trait NNDataSpikeReader {
 
     new NNSpike(
       /*timestamp =*/ timing().convertFrsgToTs(frame, segment),
-      /*waveform =*/ readTraceInt(channels, new NNRangeInstantiated(frame, frame + spikeLength - 1, step = 1, segment)   ).flatten,
-      /*channels =*/ channels.length
+      /*waveform =*/ readTrace( channels, new NNRangeInstantiated(frame, frame + spikeLength - 1, step = 1, segment)   ).flatten,
+      /*channels =*/ channels.length,
+      0L
     )
   }
 

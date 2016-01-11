@@ -1,13 +1,17 @@
 package nounou.elements.data
 
-import nounou.ranges.NNRangeValid
 import nounou.elements.NNElement
+import nounou.ranges.NNRangeValid
 
-/**Immutable data object to encapsulate arrays of [[NNDataChannel]] objects
+/**
+  * Immutable data object to encapsulate arrays of [[NNDataChannel]] objects
   *
- * Created by Kenta on 12/15/13.
- */
+  * @see NNDataChannel
+  */
  class NNDataChannelArray(val array: Seq[NNDataChannel]) extends NNData {
+
+  def this( dataChannel: NNDataChannel ) = this( Array(dataChannel).toVector )
+  def this( array: Array[NNDataChannel] ) = this( array.toVector )
 
   //enforce channel compatibility
   loggerRequire( array != null && array.length > 0, "input Vector must be non-negative, non-empty" )
@@ -20,14 +24,12 @@ import nounou.elements.NNElement
   override def toStringImpl() = s"${timing.segmentCount} segments, fs=${timing.sampleRate},  "
   override def toStringFullImpl() = ""
 
-  def this( array: Array[NNDataChannel] ) = this( array.toVector )
-//  def this( array: Array[NNDataChannel], layout: NNLayout ) = this( array.toVector, layout )
-
   def apply(channel: Int) = array(channel)
 
-  override def readPointIntImpl(channel: Int, frame: Int, segment: Int) =
+  override def readPointImpl(channel: Int, frame: Int, segment: Int) =
     array(channel).readPointImpl(frame, segment)
-  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid) =
+
+  override def readTraceDVImpl(channel: Int, range: NNRangeValid) =
     array(channel).readTraceDVImpl(range)
 
   def loadDataChannel(dataChannel: NNDataChannel): NNDataChannelArray = {
@@ -39,7 +41,29 @@ import nounou.elements.NNElement
     }
   }
 
-  // <editor-fold desc="XConcatenatable">
+  // <editor-fold defaultstate="collapsed" desc=" getNNDataChannel ">
+
+  override def getNNDataChannel(channel: Int): NNDataChannel = array(channel)
+
+  // </editor-fold>
+
+  override def isCompatible(that: NNElement): Boolean = {
+    that match {
+        //ToDo 3: is this advisable?
+      case x: NNDataChannel => this(0).isCompatible(x)
+      case x: NNDataChannelArray => this(0).isCompatible(x(0))
+      case _ => false
+    }
+  }
+
+  // </editor-fold>
+
+  override def getChannelCount: Int = array.length
+
+}
+
+
+// <editor-fold desc="XConcatenatable">
 
 //   override def :::(that: NNElement): NNDataChannelArray = {
 //    that match {
@@ -62,17 +86,3 @@ import nounou.elements.NNElement
 //    }
 //  }
 
-  override def isCompatible(that: NNElement): Boolean = {
-    that match {
-        //ToDo 3: is this advisable?
-      case x: NNDataChannel => this(0).isCompatible(x)
-      case x: NNDataChannelArray => this(0).isCompatible(x(0))
-      case _ => false
-    }
-  }
-
-  // </editor-fold>
-
-  override def getChannelCount: Int = array.length
-
-}

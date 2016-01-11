@@ -5,11 +5,9 @@ import java.util.ServiceLoader
 
 import nounou.NN._
 import nounou.elements.NNElement
-import nounou.io.neuralynx.fileAdapters.FileAdapterNCS
 import nounou.util.LoggingExt
-
 import scala.collection.JavaConverters._
-import scala.collection.mutable
+import scala.collection.immutable
 
 /** This singleton FileSaver object is the main point of use for file saving
   * (use via [[nounou.NN.save(fileName:String,data:Ar*]]).
@@ -25,10 +23,13 @@ object FileSaver {
 
   /** List of valid loaders available in the system (from /resources/META-INF/services/nounou.io.FileSaver)
     */
-  private lazy val savers = ServiceLoader.load(classOf[FileSaver]).iterator.asScala
-  private val possibleSaverBuffer = new mutable.HashMap[String, List[FileSaver]]()
+  private lazy val savers = ServiceLoader.load(classOf[FileSaver])//.iterator.asScala
+
+  private var possibleSaverBuffer = new immutable.HashMap[String, List[FileSaver]]()
 
   final def save(fileName: String, data: NNElement): Unit = save(fileName, Array(data))
+
+  //ToDo3: Make code parallel to FileLoader, esp. vis-a-vis when duplicate savers found
   final def save(fileName: String, data: Array[NNElement]): Unit = {
 
     val fileExtension = nounou.util.getFileExtension(fileName)
@@ -41,12 +42,12 @@ object FileSaver {
 
       //If the given extension has not been tested yet, it will be searched for within the available loaders
       case _ => {
-        val possibleSavers: List[FileSaver] = savers.filter( _.canSave(fileExtension)).toList
+        val possibleSavers: List[FileSaver] = savers.iterator.asScala.filter( _.canSave(fileExtension)).toList
 
         if( possibleSavers.length == 0 ) {
           throw loggerError(s"Cannot find saver for file name: $fileName")
         }
-        possibleSaverBuffer.+=( (fileExtension, possibleSavers) )
+        possibleSaverBuffer = possibleSaverBuffer.+( (fileExtension, possibleSavers) )
         possibleSavers
       }
     }).toIterator
@@ -107,6 +108,9 @@ trait FileSaver extends LoggingExt {
     else throw loggerError("data input {} cannot be saved with this FileSaver object!", data.toString )
   }
   final def save(fileName: String, data: NNElement): Unit = save(fileName, Array(data))
+
+  override def toString() = getClass.getName + "( canSaveExtensions=" + canSaveExtensions.toList +")"
+
 
 }
 

@@ -4,7 +4,7 @@ import java.io.File
 
 import breeze.linalg.{DenseVector => DV, convert}
 import nounou.elements.traits.{NNTiming, NNScaling}
-import nounou.elements.data.{NNDataChannel, NNDataChannelNumbered}
+import nounou.elements.data.NNDataChannel
 import nounou.ranges.NNRangeValid
 import nounou.io.neuralynx.fileObjects.{FileReadNCS, FileReadNeuralynx}
 import nounou.io.neuralynx.headers.NNHeaderNCS
@@ -144,20 +144,20 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   setScale( new NNScaling(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
                             absGain = 1.0E6 * getHeader.getHeaderADBitVolts / xBitsD,
                             absOffset = this.absOffset,
-                            absUnit = this.absUnit)
+                            unit = this.absUnit)
   )
 
   logger.info( "loaded {}", this )
 
   // <editor-fold defaultstate="collapsed" desc=" data implementations ">
 
-  override def readPointImpl(frame: Int, segment: Int): Int = {
+  override def readPointImpl(frame: Int, segment: Int): Double = {
     val (record, index) = cumulativeFrameToRecordIndex( timing.cumulativeFrame(frame, segment) )
     handle.seek( recordIndexStartByte( record, index ) )
-    handle.readInt16 * scale.xBits
+    scale.convertIntToAbsolute( handle.readInt16 * scale.xBits )
   }
 
-  override def readTraceDVImpl(range: NNRangeValid): DV[Int] = {
+  override def readTraceDVImpl(range: NNRangeValid): DV[Double] = {
     var (currentRecord: Int, currentIndex: Int) =
       cumulativeFrameToRecordIndex( timing.cumulativeFrame(range.start, range.segment) )
     val (endReadRecord: Int, endReadIndex: Int) =
@@ -207,7 +207,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
     }
 
-    tempRet( 0 until tempRet.length by range.step )
+    scale.convertIntToAbsolute( tempRet( 0 until tempRet.length by range.step ) )
 
   }
 

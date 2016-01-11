@@ -234,14 +234,14 @@ class NNRange(val start: Int, val last: Int, val step: Int, val segment: Int)
  */
 class NNRangeInstantiated(val start: Int, val last: Int, val step: Int, val segment: Int) extends NNRangeSpecifier {
 
-  override def toString() = s"SampleRangeReal($start, $last, step=$step, segment=$segment)"
-  loggerRequire(start <= last, s"Start $start must be < last $last")
-  loggerRequire(1 <= step, s"Step $step must be >= 1")
-  loggerRequire(0 <= segment, s"Segment $segment must be >= 0")
+  override def toString() = s"NNRangeInstantiated($start, $last, step=$step, segment=$segment)"
+  loggerRequire(start <= last, s"start($start) should be < last($last)")
+  loggerRequire(1 <= step, s"step($step) should be >= 1")
+  loggerRequire(0 <= segment, s"segment($segment) should be >= 0")
 
   def length() = (last-start)/step + 1
 
-  // <editor-fold defaultstate="collapsed" desc=" RangeFrSpecifier ">
+  // <editor-fold defaultstate="collapsed" desc=" NNRangeSpecifier methods ">
 
   override final def getInstantiatedSegment(xDataTiming: NNTiming): Int = segment
   override final def getInstantiatedStep(xDataTiming: NNTiming): Int = step

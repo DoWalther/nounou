@@ -15,7 +15,7 @@ import nounou.elements.traits.NNConcatenableElement
   * @param channels number of channels
   * @param unitNo the classified unit of this spike. 0 indicates an unclassified unit.
   */
-class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: Int = 1, val unitNo: Long = 0L)
+class NNSpike(val timestamp: BigInt, val waveform: Vector[Double], val channels: Int, val unitNo: Long)
   extends NNConcatenableElement {
 
   // <editor-fold defaultstate="collapsed" desc=" argument checks ">
@@ -30,34 +30,42 @@ class NNSpike(val timestamp: BigInt, val waveform: Vector[Int], val channels: In
   @transient
   val singleWaveformLength = waveform.length / channels
   @transient
-  lazy val waveformMax: Int = max( waveform )
+  lazy val waveformMax: Double = max( waveform )
   @transient
-  lazy val waveformMin: Int = min( waveform )
+  lazy val waveformMin: Double = min( waveform )
   @transient
-  lazy val waveformAbsMax: Int = max( waveform.map( abs(_) ) )
+  lazy val waveformAbsMax: Double = max( waveform.map( abs(_) ) )
+
+  // <editor-fold defaultstate="collapsed" desc=" alternate constructors ">
+
+  def this(timestamp: BigInt, waveform: Array[Double], channels: Int, unitNo: Long) =
+    this(timestamp, waveform.toVector, channels, unitNo)
+
+  def this(timestamp: BigInteger, waveform: Array[Double], channels: Int, unitNo: Long) =
+    this(BigInt(timestamp), waveform.toVector, channels, unitNo)
 
 
-  def this(timestamp: BigInt, waveform: Array[Int], channels: Int, unitNo: Long) =
-        this(timestamp, waveform.toVector, channels, unitNo)
-  def this(timestamp: BigInt, waveform: Array[Int], channels: Int) =
-        this(timestamp, waveform.toVector, channels)
-  def this(timestamp: BigInteger, waveform: Array[Int], channels: Int, unitNo: Long) =
-        this(BigInt(timestamp), waveform.toVector, channels, unitNo)
-  def this(timestamp: BigInteger, waveform: Array[Int], channels: Int) =
-        this(BigInt(timestamp), waveform.toVector, channels)
-//  def this(timestamp: BigInteger, waveform: Array[Int]) = this(timestamp, waveform, 1, 0L)
+  def this(timestamp: BigInteger, waveform: Vector[Double], channels: Int, unitNo: Long) =
+    this(BigInt(timestamp), waveform, channels, unitNo)
+
+  // </editor-fold>
+
 
   def toStringImpl() = s"ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}, "
+
   def toStringFullImpl() = ""
 
   // <editor-fold defaultstate="collapsed" desc=" Java accessors ">
 
   /**Java accessor for timestamp, returns a [java.math.BigInteger], which is immutable.*/
   def getTimestamp(): BigInteger = timestamp.bigInteger
-  /**Java accessor for waveform, returns an Array[Int] clone.*/
-  def getWaveform(): Array[Int] = waveform.toArray[Int]
+
+  /**Java accessor for waveform, returns an Array[Double] clone.*/
+  def getWaveform(): Array[Double] = waveform.toArray//[Double]
+
   /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.channels]].*/
   def getChannels(): Int = channels
+
   /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.unitNo]].*/
   def getUnitNo(): Long = unitNo
 

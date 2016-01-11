@@ -34,18 +34,18 @@ class NNDataFilterInvert(private var _parent: NNData ) extends NNDataFilter( _pa
   }
   override def toStringFullImpl() = ""
 
-  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int =
+  override def readPointImpl(channel: Int, frame: Int, segment: Int): Double =
     if(inverted){
-      - _parent.readPointIntImpl(channel, frame, segment)
+      - _parent.readPointImpl(channel, frame, segment)
     } else {
-      _parent.readPointIntImpl(channel, frame, segment)
+      _parent.readPointImpl(channel, frame, segment)
     }
 
-  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DenseVector[Int] =
+  override def readTraceDVImpl(channel: Int, range: NNRangeValid): DenseVector[Double] =
     if(inverted){
-      - _parent.readTraceIntDVImpl(channel, range)
+      - _parent.readTraceDVImpl(channel, range)
     } else {
-      _parent.readTraceIntDVImpl(channel, range)
+      _parent.readTraceDVImpl(channel, range)
     }
 
 }

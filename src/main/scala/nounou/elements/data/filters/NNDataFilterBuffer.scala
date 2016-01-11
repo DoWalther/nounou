@@ -18,7 +18,7 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
 
   override def timing(): NNTiming = _parent.timing()
 
-  var buffer: WeakHashMap[Long, DenseVector[Int]] = new ReadingHashMapBuffer()
+  var buffer: WeakHashMap[Long, DenseVector[Double]] = new ReadingHashMapBuffer()
   var garbageQue: ArrayBuffer[Long] = new ArrayBuffer[Long]()
 
   val bufferPageLength: Int = (32768 / 2) //default page length will be 32 kB
@@ -41,18 +41,11 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
 
   // <editor-fold defaultstate="collapsed" desc=" changes (XDataSource related) and flushing ">
 
-  override def changedData() = {
-    flushBuffer()
-    for(child <- getChildren() ) child.changedData()
-  }
-  override def changedData(channel: Int) = {
-    flushBuffer( channel )
-    for(child <- getChildren()) child.changedData( channel )
-  }
-  override def changedData(channels: Array[Int]) = {
-    flushBuffer( channels )
-    for(child <- getChildren()) child.changedData( channels )
-  }
+  override def changedDataImpl() = flushBuffer()
+
+  override def changedDataImpl(channel: Int) = flushBuffer( channel )
+
+  override def changedDataImpl(channels: Array[Int]) = flushBuffer( channels )
 
   def flushBuffer(): Unit = {
     logger.debug("flushBuffer() pre, buffer.size={}, garbageQue.length={}", buffer.size.toString, garbageQue.length.toString)
@@ -62,13 +55,13 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
 
   def flushBuffer(channel: Int): Unit = {
     logger.debug( "flushBuffer({}) conducted", channel.toString )
-    buffer = buffer.filter( ( p:(Long, DenseVector[Int]) ) => ( bufferHashKeyToChannel(p._1) != channel ) )
+    buffer = buffer.filter( ( p:(Long, DenseVector[Double]) ) => ( bufferHashKeyToChannel(p._1) != channel ) )
     garbageQue = garbageQue.filter( ( p: Long ) => (bufferHashKeyToChannel(p) != channel) )
   }
 
   def flushBuffer(channels: Array[Int]): Unit = {
     logger.debug( "flushBuffer({}) conducted", channels.toString )
-    buffer = buffer.filterNot( ( p:(Long, DenseVector[Int]) ) => ( channels.contains( bufferHashKeyToChannel(p._1) ) ) )
+    buffer = buffer.filterNot( ( p:(Long, DenseVector[Double]) ) => ( channels.contains( bufferHashKeyToChannel(p._1) ) ) )
     garbageQue = garbageQue.filterNot( ( p:Long ) => ( channels.contains( bufferHashKeyToChannel(p) ) ) )
   }
 
@@ -79,20 +72,20 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
   def getBufferPage(frame: Int) = frame/bufferPageLength
   def getBufferIndex(frame: Int) = frame%bufferPageLength
 
-  override def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int = {
+  override def readPointImpl(channel: Int, frame: Int, segment: Int): Double = {
     loggerRequire(channel<maxChannel, "Cannot buffer more than {} channels!", maxChannel.toString)
     loggerRequire(segment<maxSegment, "Cannot buffer more than {} segments!", maxSegment.toString)
     buffer( bufferHashKey(channel, getBufferPage(frame), segment) )( getBufferIndex(frame) )
   }
 
-  override def readTraceIntDVImpl(channel: Int, range: NNRangeValid): DenseVector[Int] = {
+  override def readTraceDVImpl(channel: Int, range: NNRangeValid): DenseVector[Double] = {
     loggerRequire(channel<maxChannel, "Cannot buffer more than {} channels!", maxChannel.toString)
     loggerRequire(range.segment<maxSegment, "Cannot buffer more than {} segments!", maxSegment.toString)
 
       //val totalLength = segmentLengths(segment)
 //        val tempret = ArrayBuffer[Int]()
 //          tempret.sizeHint(range.length )
-      var tempret: DenseVector[Int] = DenseVector[Int]()//Array[Int] = null
+      var tempret: DenseVector[Double] = DenseVector[Double]()//Array[Int] = null
       val startPage =  getBufferPage( range.start)
       val startIndex = getBufferIndex(range.start)
       val endPage =    getBufferPage( range.last )
@@ -104,7 +97,7 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
 
       } else {
         //if more than one buffer page is involved...
-        tempret = DenseVector( new Array[Int](range.length) )  //initialize return array
+        tempret = DenseVector( new Array[Double](range.length) )  //initialize return array
         var currentIndex = 0 //index within tempret
 
         //deal with startPage separately... startPage will run to end
@@ -138,12 +131,12 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
   // <editor-fold defaultstate="collapsed" desc=" ReadingHashMapBuffer ">
 
   //redirection function to deal with scope issues regarding super
-  private def tempTraceReader(ch: Int, rangeFrValid: NNRangeValid) = _parent.readTraceIntDVImpl(ch, rangeFrValid)
+  private def tempTraceReader(ch: Int, rangeFrValid: NNRangeValid) = _parent.readTraceDVImpl(ch, rangeFrValid)
 
-  class ReadingHashMapBuffer extends WeakHashMap[Long, DenseVector[Int]] {
+  class ReadingHashMapBuffer extends WeakHashMap[Long, DenseVector[Double]] {
 
     //do not use applyOrElse!
-    override def apply( key: Long  ): DenseVector[Int] = {
+    override def apply( key: Long  ): DenseVector[Double] = {
       val index = garbageQue.indexOf( key )
       if( index == -1 ){
         if(garbageQue.size >= garbageQueBound ){
@@ -159,7 +152,7 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
       }
     }
 
-    override def default( key: Long  ): DenseVector[Int] = {
+    override def default( key: Long  ): DenseVector[Double] = {
       val startFrame = bufferHashKeyToPage(key) * bufferPageLength
       val endFramePlusOne: Int = scala.math.min( startFrame + bufferPageLength, timing.segmentLength( bufferHashKeyToSegment(key) ) )
       val returnValue = tempTraceReader( bufferHashKeyToChannel(key), new NNRangeValid(startFrame, endFramePlusOne-1, 1, bufferHashKeyToSegment(key))  )

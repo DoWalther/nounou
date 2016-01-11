@@ -152,6 +152,7 @@ object NN extends LoggingExt {
     */
   final def NNRangeTs(startTs: BigInteger, endTs: BigInteger, stepTs: BigInteger): NNRangeTs =
     new NNRangeTs(startTs, endTs, stepTs)
+
   final def NNRangeTs(startTs: BigInteger, endTs: BigInteger): NNRangeTs =
     new NNRangeTs(startTs, endTs, -1L)
 
