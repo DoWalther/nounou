@@ -7,6 +7,7 @@ import nounou.elements.spikes.NNSpikes
 /**
  * Created by ktakagaki on 15/08/18.
  */
-class NNSpikesNeuralynx extends NNSpikes {
+class NNSpikesNeuralynx(override val scale: NNScalingNeuralynx) extends NNSpikes {
+
 
 }

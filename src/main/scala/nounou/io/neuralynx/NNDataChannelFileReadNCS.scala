@@ -51,9 +51,9 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
   def NNDataChannelNCS(fileName: String) = new NNDataChannelFileReadNCS( new File(fileName) )
 
-  final val xBits = 1024
-  final lazy val xBitsD = xBits.toDouble
-  final val absOffset = 0D
+  //final val xBits = 1024
+  //final lazy val xBitsD = xBits.toDouble
+  //final val absOffset = 0D
   final val absUnit: String = "microV"
   //val absGain = ???
   //private val t = FileAdapterNCS.instance
@@ -141,11 +141,15 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   override val timing = new NNTiming(getHeader.getHeaderSampleRate,
                               tempLengths.toArray,
                               tempStartTimestamps.toArray)
-  setScale( new NNScaling(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
-                            absGain = 1.0E6 * getHeader.getHeaderADBitVolts / xBitsD,
-                            absOffset = this.absOffset,
-                            unit = this.absUnit)
-  )
+
+  override val scale: NNScalingNeuralynx =
+    new NNScalingNeuralynx( unit = this.absUnit,
+                            absolutePerShort = 1.0E6 * getHeader.getHeaderADBitVolts )
+//  setScale( new NNScaling(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
+//                            absGain = 1.0E6 * getHeader.getHeaderADBitVolts / xBitsD,
+//                            absOffset = this.absOffset,
+//                            unit = this.absUnit)
+//  )
 
   logger.info( "loaded {}", this )
 
@@ -154,12 +158,14 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   override def readPointImpl(frame: Int, segment: Int): Double = {
     val (record, index) = cumulativeFrameToRecordIndex( timing.cumulativeFrame(frame, segment) )
     handle.seek( recordIndexStartByte( record, index ) )
-    scale.convertIntToAbsolute( handle.readInt16 * scale.xBits )
+    scale.convertShortToAbsolute( handle.readInt16 )
   }
 
   override def readTraceDVImpl(range: NNRangeValid): DV[Double] = {
+
     var (currentRecord: Int, currentIndex: Int) =
       cumulativeFrameToRecordIndex( timing.cumulativeFrame(range.start, range.segment) )
+
     val (endReadRecord: Int, endReadIndex: Int) =
       cumulativeFrameToRecordIndex( timing.cumulativeFrame(range.last, range.segment) )
       //range is inclusive of lastValid
@@ -167,7 +173,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
     //ToDo1 program step
     //val step = range.step
 
-    val tempRet = DV.zeros[Int](range.last-range.start+1)//range.length)//DV[Int]()
+    val tempRet = DV.zeros[Double](range.last-range.start+1)
     var currentTempRetPos = 0
 
     handle.seek( recordIndexStartByte(currentRecord, currentIndex) )
@@ -178,14 +184,14 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
       val writeEnd = currentTempRetPos + writeLen
 
       //ToDo 3: improve breeze dv requirement documentation
-      tempRet(currentTempRetPos until writeEnd ) := convert( DV(handle.readInt16(writeLen)), Int)  * scale.xBits
-      currentTempRetPos = writeEnd
+      tempRet( 0 until writeEnd ) := DV( scale.convertShortToAbsolute( handle.readInt16(writeLen) ) )
     } else {
       //if the requested trace spans multiple records
 
       //read data contained in first record
-      var writeEnd = currentTempRetPos + (512 - currentIndex)
-      tempRet(currentTempRetPos until writeEnd ) := convert( DV(handle.readInt16(512 - currentIndex)), Int)  * scale.xBits
+      var writeEnd = /*0 +*/ (512 - currentIndex)
+      tempRet(0 until writeEnd ) := DV( scale.convertShortToAbsolute( handle.readInt16(512 - currentIndex) ) )
+
       currentRecord += 1
       currentTempRetPos = writeEnd
       handle.jumpBytes(recordNonNCSSampleHead)
@@ -194,7 +200,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
       while (currentRecord < endReadRecord) {
         writeEnd = currentTempRetPos + 512
         tempRet(currentTempRetPos until writeEnd ) :=
-          convert( DV(handle.readInt16(512 /*- currentIndex*/)), Int) * scale.xBits
+          DV( scale.convertShortToAbsolute( handle.readInt16(512 /*- currentIndex*/) ) )
         currentRecord += 1
         currentTempRetPos = writeEnd
         handle.jumpBytes(recordNonNCSSampleHead)
@@ -203,11 +209,12 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
       //read data contained in lastValid record
       writeEnd = currentTempRetPos + endReadIndex + 1
       tempRet(currentTempRetPos until writeEnd ) :=
-        convert( DV(handle.readInt16(endReadIndex + 1)), Int) * scale.xBits
+        DV( scale.convertShortToAbsolute( handle.readInt16(endReadIndex + 1) ) )
 
     }
 
-    scale.convertIntToAbsolute( tempRet( 0 until tempRet.length by range.step ) )
+    //ToDo 3: eliminate this extra reading and downsampling (range.step != 1) after installing appropriate tests
+    tempRet( 0 until tempRet.length by range.step )
 
   }
 

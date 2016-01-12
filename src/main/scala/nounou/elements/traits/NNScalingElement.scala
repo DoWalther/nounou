@@ -3,25 +3,36 @@ package nounou.elements.traits
 import nounou.elements.NNElement
 
 /**
- * Created by ktakagaki on 15/03/12.
- */
+  * Trait to allow an [[nounou.elements.NNElement NNElement]] to handle
+  * data scaling information, which carries value units,
+  * and can include scaling for writing to files.
+  *
+  */
 trait NNScalingElement extends NNElement {
 
   private var _scale: NNScaling = null //  NNDataScale.raw
 
-  /**'''[NNDataScaleElement]''' Get physical scaling information for data.
+  /**
+    * '''[NNScalingElement]''' Get physical scaling information for data.
     * This is not made final, because it will be overriden by some filters which pass through
     * upstream scale information.
+    *
+    * This function can return null if the scaling is not set e.g. [[nounou.elements.events.NNEvents]].
+    * make sure to handle that.
     */
   def scale(): NNScaling = {
     if( _scale == null ) throw loggerError(s"Scale is null!")
     else _scale
   }
 
-  /**'''[NNDataScaleElement]''' Java alias for [[nounou.elements.traits.NNScalingElement.scale]].*/
+  /**
+    * '''[NNScalingElement]''' Java alias for [[nounou.elements.traits.NNScalingElement.scale]].
+    * */
   final def getScale(): NNScaling = scale()
 
-  /**'''[NNDataScaleElement]''' Set physical scaling information for data.*/
+  /**
+    * '''[NNScalingElement]''' Set physical scaling information for data.
+    * */
   def setScale(scale: NNScaling) = {
     _scale = scale
 

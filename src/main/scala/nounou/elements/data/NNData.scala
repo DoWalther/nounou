@@ -47,7 +47,6 @@ trait NNData extends NNDataNode
   //<editor-fold defaultstate="collapsed" desc="reading a point">
 
   /**
-    * [[nounou.elements.data.NNData.readPointInt(channel:Int,frame:Int,segment:Int)* readPoint]] but in physical units.
     * Only intended to be overridden by [[nounou.elements.data.filters.NNDataFilter]]
     */
   def readPoint(channel: Int, frame: Int, segment: Int): Double = {
@@ -61,30 +60,32 @@ trait NNData extends NNDataNode
   }
   //scale.convertIntToAbsolute( readPointInt(channel, frame, segment) )
 
-  /** [[nounou.elements.data.NNData.readPointInt(channel:Int,frame:Int)* readPoint]]
-    * but in physical units.
+  /**
+    * [[nounou.elements.data.NNData.readPoint(channel:Int,frame:Int,segm* readPoint]]
+    * but assuming default segment (only allowed for data types with just one segment).
+    *
     */
-  final def readPoint(channel: Int, frame: Int): Double = readPoint(channel, frame, -1)//OptSegmentAutomatic)
+  final def readPoint(channel: Int, frame: Int): Double = readPoint(channel, frame, -1)
 
-  /** Read a single point from the data, in internal integer scaling, after checking values.
-    * Implement via readPointImpl. Prefer
-    * [[nounou.elements.data.NNData.readTraceDV(channel:Int,range* readTraceDV]]
-    * and readFrame()
-    * when possible, as these will avoid repeated function calling overhead.
-    */
-  @deprecated
-  final def readPointInt(channel: Int, frame: Int, segment: Int): Int =
-    scale.convertAbsoluteToInt( readPoint(channel, frame, segment) )
-
-  @deprecated
-  final def readPointInt(channel: Int, frame: Int): Int = readPointInt(channel, frame, -1)
-
-  /** '''__MUST OVERRIDE__''' Read a single point from the data, in internal integer scaling.
-    * Assumes that channel, frame, and segment are all valid and within range.
-    */
-  @deprecated
-  final def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int =
-    scale.convertAbsoluteToInt( readPointImpl(channel, frame, segment) )
+//  /** Read a single point from the data, in internal integer scaling, after checking values.
+//    * Implement via readPointImpl. Prefer
+//    * [[nounou.elements.data.NNData.readTraceDV(channel:Int,range* readTraceDV]]
+//    * and readFrame()
+//    * when possible, as these will avoid repeated function calling overhead.
+//    */
+//  @deprecated
+//  final def readPointInt(channel: Int, frame: Int, segment: Int): Int =
+//    scale.convertAbsoluteToInt( readPoint(channel, frame, segment) )
+//
+//  @deprecated
+//  final def readPointInt(channel: Int, frame: Int): Int = readPointInt(channel, frame, -1)
+//
+//  /** '''__MUST OVERRIDE__''' Read a single point from the data, in internal integer scaling.
+//    * Assumes that channel, frame, and segment are all valid and within range.
+//    */
+//  @deprecated
+//  final def readPointIntImpl(channel: Int, frame: Int, segment: Int): Int =
+//    scale.convertAbsoluteToInt( readPointImpl(channel, frame, segment) )
 
   // </editor-fold>
 

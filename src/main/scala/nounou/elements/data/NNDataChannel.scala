@@ -27,9 +27,9 @@ trait NNDataChannel extends NNConcatenableElement
   /**MUST OVERRIDE: name of the given channel.*/
   val channelName: String
 
-  @deprecated
-  def readPointIntImpl(frame: Int, segment: Int): Int =
-    scale().convertAbsoluteToInt( readPointImpl(frame, segment) )
+//  @deprecated
+//  def readPointIntImpl(frame: Int, segment: Int): Int =
+//    scale().convertAbsoluteToInt( readPointImpl(frame, segment) )
 
   /**
     * MUST OVERRIDE: Read a single point from the data.
@@ -66,10 +66,10 @@ trait NNDataChannel extends NNConcatenableElement
 //    val range = NN.NNRangeAll().getValidRange( timing() )
 //    readTraceDVImpl(range).toArray
 //  }
-  @deprecated
-  final def readTraceInt(range: NNRangeSpecifier): Array[Int] = scale.convertAbsoluteToInt( readTraceDV(range).toArray )
+//  @deprecated
+//  final def readTraceInt(range: NNRangeSpecifier): Array[Int] = scale.convertAbsoluteToInt( readTraceDV(range).toArray )
 
-  final def readTrace(range: NNRangeSpecifier): Array[Double] = scale.convertIntToAbsolute(readTraceInt(range))
+  def readTrace(range: NNRangeSpecifier): Array[Double] = readTraceDV(range).toArray
 
   /** Read a single trace (within the span) from the data, in internal integer scaling.
     */

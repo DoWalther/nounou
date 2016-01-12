@@ -21,8 +21,9 @@ class FileAdapterNCSTest extends FunSuite {
 
   test("readInfo"){
 
-    assert( dataObj.scale.absGain == 1.4901660156250002E-5 ) //1.0E6* 3.05185E-8 / 1024d )
-    assert( dataObj.scale.absOffset == 0d )
+    assert((dataObj.scale.absolutePerShort-0.015259300) < 1E-9)
+    //assert( dataObj.scale.absGain == 1.4901660156250002E-5 ) //1.0E6* 3.05185E-8 / 1024d )
+    //assert( dataObj.scale.absOffset == 0d )
     assert( dataObj.scale.unit.contentEquals("microV") )
 
     //trait XFrames
@@ -50,28 +51,28 @@ class FileAdapterNCSTest extends FunSuite {
 
   test("readPoint") {
 
-    assert(dataObj.scale.xBits==1024)
+    //assert(dataObj.scale.xBits==1024)
     assert(dataObj.timing.segmentLength(0)==2546176)
-    assert(dataObj.readPoint(0,0) == dataObj.scale.convertIntToAbsolute( -1528*dataObj.scale.xBits ) )
-    assert(dataObj.readPoint(512,0) == dataObj.scale.convertIntToAbsolute( -1908*dataObj.scale.xBits) )
+    assert(dataObj.readPoint(0,0) == dataObj.scale.convertShortToAbsolute( -1528.toShort ) )
+    assert(dataObj.readPoint(512,0) == dataObj.scale.convertShortToAbsolute( -1908.toShort ) )
 
   }
 
   test("readTrace") {
 
-    assert( dataObj.readTraceInt( NN.NNRange(0, 0, 1, 0) )(0) ==
-      -1528*dataObj.scale.xBits )
+    assert( dataObj.readTrace( NN.NNRange(0, 0, 1, 0) )(0) ==
+      dataObj.scale.convertShortToAbsolute( -1528.toShort ) )
 
     assert( dataObj.readTraceDV( NN.NNRange(0, 4, 1, 0) ) ==
-      dataObj.scale.convertIntToAbsolute(  DenseVector(-1528, -1841, -1282, -670, -500).map(_ * dataObj.scale.xBits) )
+      dataObj.scale.convertShortToAbsolute(  DenseVector(-1528, -1841, -1282, -670, -500).map(_ toShort) )
     )
 
     assert( dataObj.readTraceDV( NN.NNRange(0, 4, 2, 0) ) ==
-      dataObj.scale.convertIntToAbsolute(  DenseVector(-1528, -1282, -500).map(_ * dataObj.scale.xBits) )
+      dataObj.scale.convertShortToAbsolute(  DenseVector(-1528, -1282, -500).map(_ toShort) )
     )
 
     assert( dataObj.readTraceDV( NN.NNRange(-2, 4, 2, 0) ) ==
-      dataObj.scale.convertIntToAbsolute(  DenseVector(0, -1528, -1282, -500).map(_ * dataObj.scale.xBits) )
+      dataObj.scale.convertShortToAbsolute(  DenseVector(0, -1528, -1282, -500).map(_ toShort) )
     )
 
   }
