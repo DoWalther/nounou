@@ -8,12 +8,16 @@ import nounou.util.LoggingExt
 
 import scala.reflect.ClassTag
 
-/**Information and constants regarding Neuralynx files in general.
-  * This object is defined (outside the companion class) to allow static external access.
+/**
+  * Static adapter to use general information about Neuralynx files in general.
   */
 object FileNeuralynx {
-  /**The total number of bytes in the initial Neuralynx text header.*/
+
+  /**
+    * The total number of bytes in the initial Neuralynx text header.
+    */
   val headerBytes = 16384
+
 }
 
 /** This abstract class encapsulates common functions needed to read Neuralynx files (NCS, NEV, NEX, NSE, NST, NTT).
@@ -59,11 +63,23 @@ abstract class FileNeuralynx(val file: File) extends LoggingExt {
 abstract class FileReadNeuralynx[T <: NNHeaderNeuralynx](override val file: File) extends FileNeuralynx(file) {
 
   val handle: RandomAccessFile = new RandomAccessFile(file, "r")(ByteConverterLittleEndian)
-  /** Get encapsulating class for file-type specific neuralynx header.
+
+  /**
+    * Get encapsulating class for file-type specific neuralynx header.
     * This is defined as a function (and not a val) to avoid initialization null pointer issues.
+    *
     */
-  def getHeader: T
-  /**Protected header buffer to use in manual lazy initialization.*/
+  def header(): T
+
+  /**
+    * Java-style alias for [[nounou.io.neuralynx.fileObjects.FileReadNeuralynx.header() header()]]
+    *
+    */
+  final def getHeader(): T = header()
+
+  /**
+    * Protected header buffer to use in manual lazy initialization.
+    */
   protected var _header: T
 
   //Beware that the following MUST be initialized BEFORE children rely on it, but AFTER the handle object.
@@ -72,9 +88,11 @@ abstract class FileReadNeuralynx[T <: NNHeaderNeuralynx](override val file: File
     tempString.replaceAll( """(?m)[\s\x00]+$""", "")
   }
 
-  /**The number of records in the file, depends on the file length of the handle.*/
+  /**
+    * [Header value Neuralynx] The number of records in the file, depends on the file length of the handle.
+    */
   lazy val headerRecordCount = ((handle.length - FileNeuralynx.headerBytes).toDouble/recordSize.toDouble).toInt
-  loggerRequire(getHeader.getHeaderRecordSize == recordSize, s"File with non-standard record size: ${getHeader.getHeaderRecordSize}")
+  loggerRequire(header.getHeaderRecordSize == recordSize, s"File with non-standard record size: ${header.getHeaderRecordSize}")
 
 }
 

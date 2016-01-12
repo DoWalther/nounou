@@ -13,14 +13,14 @@ import nounou.util.LoggingExt
 import scala.collection.mutable
 
 /**
- * @author ktakagaki
- * //@date 1/30/14.
- */
-class FileAdapterNEV  extends FileLoader with FileSaver  with LoggingExt {
+  * Encapsulates header information and serialization to text for Neuralynx NEV file headers.
+  */
+class FileAdapterNEV extends FileLoader with FileSaver with LoggingExt {
 
   override val canLoadExtensions = Array("nev")
 
   override val canSaveExtensions = Array("nev")
+
   override def canSaveObjectArray(data: Array[NNElement]): Boolean =
     if(data.length == 1){
       data(0) match {
@@ -43,7 +43,7 @@ class FileAdapterNEV  extends FileLoader with FileSaver  with LoggingExt {
     // <editor-fold defaultstate="collapsed" desc=" read loop ">
 
     val xEventsReturn = new NNEvents()
-    xEventsReturn.header = fileAdapter.getHeader
+    xEventsReturn.header = fileAdapter.header
     /**Temporary buffer of event trigger info (to encorporate into a duration event
       * if the next call on the same port is value zero). portValue -> (qwTimeStamp, ttlInt, eventString, id)
       */
@@ -138,12 +138,14 @@ class FileAdapterNEV  extends FileLoader with FileSaver  with LoggingExt {
   override def saveImpl(fileName: String, data: Array[NNElement]): Unit = {
     //from  canSaveObjectArray(data) == true, one can assume that data has one element, which is an NNEvent object.
     val dataElem = data(0).asInstanceOf[NNEvents]
+
     val header = dataElem.header match {
       case x: NNHeaderNEV => x
       case _ => new NNHeaderNEV()
     }
 
-    val fileAdapter = new FileWriteNEV(new File(fileName), header) //val fHand = new RandomAccessFile(file, "r")(ByteConverterLittleEndian)
+    val fileAdapter = new FileWriteNEV(new File(fileName), header)
+
     val fHand = fileAdapter.handle
 
     fHand.seek(0)

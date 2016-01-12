@@ -37,7 +37,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
 
   /** Standard timestamp increment for contiguous records, depends on sample rate from header. */
-  lazy val headerRecordTSIncrement = (1000000D * recordSize.toDouble / getHeader.asInstanceOf[NNHeaderNCS].getHeaderSampleRate).toLong
+  lazy val headerRecordTSIncrement = (1000000D * recordSize.toDouble / header.asInstanceOf[NNHeaderNCS].getHeaderSampleRate).toLong
 
   //    override def isValid(): Boolean = {
   //      super.isValid() && (headerRecordType == "CSC")
@@ -65,6 +65,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   @transient
   private var dwChannelNum: Long = -1
   private def readNCSRecordHeaderTS(record: Int): BigInt = {
+
     handle.seek( recordStartByte(record) )
     val qwTimestamp = handle.readUInt64()
 
@@ -80,8 +81,8 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
     //dwSampleFreq
     val dwSampleFreq = handle.readUInt32.toDouble
-    require(dwSampleFreq == getHeader.getHeaderSampleRate,
-      s"Reported sampling frequency $dwSampleFreq for rec $record is different from header $getHeader.headerSampleRate)"
+    require(dwSampleFreq == header.getHeaderSampleRate,
+      s"Reported sampling frequency $dwSampleFreq for rec $record is different from header $header.headerSampleRate)"
     )
 
     //dwNumValidSamples
@@ -98,11 +99,16 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
   //First record dealt with separately
   currentRecord = 0
-  @transient private var thisRecTS = readNCSRecordHeaderTS(currentRecord)
-  @transient private var lastRecTS = thisRecTS
-  @transient private var tempStartTimestamps = Vector[BigInt]( lastRecTS )
-  @transient private var tempLengths = Vector[Int]()
-  @transient private var tempSegmentStartCumulativeFrame = 0
+  @transient
+  private var thisRecTS = readNCSRecordHeaderTS(currentRecord)
+  @transient
+  private var lastRecTS = thisRecTS
+  @transient
+  private var tempStartTimestamps = Vector[BigInt]( lastRecTS )
+  @transient
+  private var tempLengths = Vector[Int]()
+  @transient
+  private var tempSegmentStartCumulativeFrame = 0
 
   //Read loop
   currentRecord = 1 //already dealt with rec=0
@@ -138,13 +144,13 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
   // </editor-fold>
 
-  override val timing = new NNTiming(getHeader.getHeaderSampleRate,
+  override val timing = new NNTiming(header.getHeaderSampleRate,
                               tempLengths.toArray,
                               tempStartTimestamps.toArray)
 
   override val scale: NNScalingNeuralynx =
     new NNScalingNeuralynx( unit = this.absUnit,
-                            absolutePerShort = 1.0E6 * getHeader.getHeaderADBitVolts )
+                            absolutePerShort = 1.0E6 * header.getHeaderADBitVolts )
 //  setScale( new NNScaling(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
 //                            absGain = 1.0E6 * getHeader.getHeaderADBitVolts / xBitsD,
 //                            absOffset = this.absOffset,
