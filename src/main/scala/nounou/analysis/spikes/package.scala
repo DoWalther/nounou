@@ -1,7 +1,7 @@
 package nounou.analysis
 
 import nounou.Opt
-import nounou.analysis.spikes.SpikeDetect._
+import nounou.analysis.spikes.spikeDetect._
 
 /**
  * @author ktakagaki

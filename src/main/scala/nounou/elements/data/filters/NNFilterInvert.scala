@@ -8,7 +8,7 @@ import nounou.ranges.NNRangeValid
  * @author ktakagaki
  * //@date 04/16/2014.
  */
-class NNDataFilterInvert(private var _parent: NNData ) extends NNDataFilter( _parent ) {
+class NNFilterInvert(private var _parent: NNData ) extends NNFilter( _parent ) {
 
   def this(upstream: NNData, inverted: Boolean) = {
     this(upstream)

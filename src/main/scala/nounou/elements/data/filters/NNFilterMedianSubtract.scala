@@ -7,17 +7,16 @@ import breeze.stats.median
 import nounou.elements.data.NNData
 import nounou.ranges.{NNRange, NNRangeValid}
 
-/**This filter applies a median subtraction, which is a non-linear form of high-pass which is
+/**
+  * This filter applies a median subtraction filter, which is a non-linear form of high-pass which is
   * less biased by extreme transients like spiking.
- * @author ktakagaki
- * //@date 3/17/14.
- */
-class NNDataFilterMedianSubtract( private var parenVar: NNData ) extends NNDataFilter( parenVar ) {
+  */
+class NNFilterMedianSubtract(private var parenVar: NNData ) extends NNFilter( parenVar ) {
 
   private var _windowLength = 1
   private var windowLengthHalf = 0
   _active = false
-  private val upstreamBuff: NNData = new NNDataFilterBuffer(parenVar)
+  private val upstreamBuff: NNData = new NNFilterBuffer(parenVar)
 
   override def toStringImpl() = {
     if(_windowLength==1) "off/no median subtract, "

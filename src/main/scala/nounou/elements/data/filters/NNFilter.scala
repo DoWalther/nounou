@@ -11,7 +11,7 @@ import nounou.elements.traits.layout.NNLayout
   * objects to create a filter block for the filter chain.
   * @param parenVar the parent data object
   */
-abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
+abstract class NNFilter(private var parenVar: NNData ) extends NNData {
 
   //Note: this constructor statement will be run before all inheriting child constructor statements!
   setParent(parenVar, true)
@@ -37,7 +37,7 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
 
   // <editor-fold defaultstate="collapsed" desc=" setActive/getActive ">
 
-  protected[NNDataFilter] var _active = true
+  protected[NNFilter] var _active = true
 
   /** Sets whether the filter is active or not. When not active, just passes
     * data through unchanged.
@@ -47,7 +47,7 @@ abstract class NNDataFilter( private var parenVar: NNData ) extends NNData {
     changedData()
   }
 
-  /** See [[nounou.elements.data.filters.NNDataFilter.setActive]]
+  /** See [[nounou.elements.data.filters.NNFilter.setActive]]
     */
   def getActive() = _active
 

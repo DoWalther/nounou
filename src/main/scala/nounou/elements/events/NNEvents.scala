@@ -175,7 +175,7 @@ class NNEvents extends NNConcatenableElement {
   override def toStringFullImpl() = {
     var output = ""
     for( p <- getPorts ){
-      output = output + s"Port $p\n"
+      output = output + s"\nPort $p\n"
       for( c <- getPortCodes(p) ){
         output = output + "    Code " + f"${c}%5d" + " ("+ {
           val binstr = c.toBinaryString
@@ -186,29 +186,11 @@ class NNEvents extends NNConcatenableElement {
           leftPadSpace(getPortFilteredByCode(p, c).size.toString, 8) +" events"
         output = output + "\n"
       }
-      output=output.dropRight(1)
+      output = output.dropRight(1)
     }
-    output
+    if(output.length >= 1) output.drop(1) else output
   }
 
   // </editor-fold>
 
 }
-
-
-
-//  def readPortTimestamps( port: Int ): Array[Array[BigInt]] =
-//    readPort(port).toArray.map((e: NNEvent) => Array(e.timestamp, e.duration) )
-
-
-//  lazy val maxDuration: Long = events.map( _._2.duration).max
-//  lazy val uniqueEventCodes = events.map(_._2.code).toList.distinct.toVector
-//  lazy val sortedEvents = new Array[TreeMap[Long,XEvent]]( uniqueEventCodes.length )
-
-//def nextEvent(timeStamp: Long): XEvent
-//def nextEvent(timeStamp: Long, eventCode: Int): XEvent
-//def previousEvent(timeStamp: Long): XEvent
-//def getEvents(timeStamp0: Long, timeStamp1: Long): Vector[XEvent]
-//def getEvents(timeStamp: Long): Vector[XEvent]
-//def getEventList: Vector[XEvent]
-//def containsEvent(timeStamp1: Long, timeStamp2: Long): Boolean

@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>NNDataFilter - nounou.elements.data.filters.NNDataFilter</title>
-          <meta name="description" content="NNDataFilter - nounou.elements.data.filters.NNDataFilter" />
-          <meta name="keywords" content="NNDataFilter nounou.elements.data.filters.NNDataFilter" />
+          <title>NNDataFilter - nounou.elements.data.filters.NNFilter</title>
+          <meta name="description" content="NNDataFilter - nounou.elements.data.filters.NNFilter" />
+          <meta name="keywords" content="NNDataFilter nounou.elements.data.filters.NNFilter" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -55,7 +55,7 @@ objects to create a filter block for the filter chain.</p></div><div class="togg
           <div class="superTypes hiddenContent"><a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a>, <a href="../NNDataSpikeReader.html" class="extype" name="nounou.elements.data.NNDataSpikeReader">NNDataSpikeReader</a>, <a href="../../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a>, <a href="../../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a>, <a href="../../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a>, <a href="../../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a>, <a href="../../../util/LoggingExt.html" class="extype" name="nounou.util.LoggingExt">LoggingExt</a>, <span class="extype" name="com.typesafe.scalalogging.slf4j.LazyLogging">LazyLogging</span>, <span class="extype" name="com.typesafe.scalalogging.Logging">Logging</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="NNDataFilterBuffer.html" class="extype" name="nounou.elements.data.filters.NNDataFilterBuffer">NNDataFilterBuffer</a>, <a href="NNDataFilterDecimate.html" class="extype" name="nounou.elements.data.filters.NNDataFilterDecimate">NNDataFilterDecimate</a>, <a href="NNDataFilterDownsample.html" class="extype" name="nounou.elements.data.filters.NNDataFilterDownsample">NNDataFilterDownsample</a>, <a href="NNDataFilterFIR.html" class="extype" name="nounou.elements.data.filters.NNDataFilterFIR">NNDataFilterFIR</a>, <a href="NNDataFilterInvert.html" class="extype" name="nounou.elements.data.filters.NNDataFilterInvert">NNDataFilterInvert</a>, <a href="NNDataFilterMedianSubtract.html" class="extype" name="nounou.elements.data.filters.NNDataFilterMedianSubtract">NNDataFilterMedianSubtract</a></div>
+            <div class="subClasses hiddenContent"><a href="NNDataFilterBuffer.html" class="extype" name="nounou.elements.data.filters.NNFilterBuffer">NNDataFilterBuffer</a>, <a href="NNDataFilterDecimate.html" class="extype" name="nounou.elements.data.filters.NNFilterDecimate">NNDataFilterDecimate</a>, <a href="NNDataFilterDownsample.html" class="extype" name="nounou.elements.data.filters.NNFilterDownsample">NNDataFilterDownsample</a>, <a href="NNDataFilterFIR.html" class="extype" name="nounou.elements.data.filters.NNFilterFIR">NNDataFilterFIR</a>, <a href="NNDataFilterInvert.html" class="extype" name="nounou.elements.data.filters.NNFilterInvert">NNDataFilterInvert</a>, <a href="NNDataFilterMedianSubtract.html" class="extype" name="nounou.elements.data.filters.NNFilterMedianSubtract">NNDataFilterMedianSubtract</a></div>
           </div></div>
         
 
@@ -73,7 +73,7 @@ objects to create a filter block for the filter chain.</p></div><div class="togg
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="nounou.elements.data.filters.NNDataFilter"><span>NNDataFilter</span></li><li class="in" name="nounou.elements.data.NNData"><span>NNData</span></li><li class="in" name="nounou.elements.data.NNDataSpikeReader"><span>NNDataSpikeReader</span></li><li class="in" name="nounou.elements.traits.NNTimingElement"><span>NNTimingElement</span></li><li class="in" name="nounou.elements.traits.NNScalingElement"><span>NNScalingElement</span></li><li class="in" name="nounou.elements.traits.NNChannelsElement"><span>NNChannelsElement</span></li><li class="in" name="nounou.elements.NNElement"><span>NNElement</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="nounou.elements.data.filters.NNFilter"><span>NNDataFilter</span></li><li class="in" name="nounou.elements.data.NNData"><span>NNData</span></li><li class="in" name="nounou.elements.data.NNDataSpikeReader"><span>NNDataSpikeReader</span></li><li class="in" name="nounou.elements.traits.NNTimingElement"><span>NNTimingElement</span></li><li class="in" name="nounou.elements.traits.NNScalingElement"><span>NNScalingElement</span></li><li class="in" name="nounou.elements.traits.NNChannelsElement"><span>NNChannelsElement</span></li><li class="in" name="nounou.elements.NNElement"><span>NNElement</span></li><li class="in" name="nounou.util.LoggingExt"><span>LoggingExt</span></li><li class="in" name="com.typesafe.scalalogging.slf4j.LazyLogging"><span>LazyLogging</span></li><li class="in" name="com.typesafe.scalalogging.Logging"><span>Logging</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -93,7 +93,7 @@ objects to create a filter block for the filter chain.</p></div><div class="togg
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="nounou.elements.data.filters.NNDataFilter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(parenVar:nounou.elements.data.NNData):nounou.elements.data.filters.NNDataFilter"></a>
+      <a id="&lt;init&gt;(parenVar:nounou.elements.data.NNData):nounou.elements.data.filters.NNFilter"></a>
       <a id="&lt;init&gt;:NNDataFilter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -532,7 +532,7 @@ Throws error if channel out of range and not valid</p></div><dl class="attribute
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">See <a href="#setActive(active:Boolean):Unit" class="extmbr" name="nounou.elements.data.filters.NNDataFilter#setActive">nounou.elements.data.filters.NNDataFilter.setActive</a>
+      <p class="shortcomment cmt">See <a href="#setActive(active:Boolean):Unit" class="extmbr" name="nounou.elements.data.filters.NNDataFilter#setActive">nounou.elements.data.filters.NNFilter.setActive</a>
 </p>
     </li><li name="nounou.elements.data.filters.NNDataFilter#getChannelCount" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getChannelCount:Int"></a>
@@ -551,7 +551,7 @@ Throws error if channel out of range and not valid</p></div><dl class="attribute
       </a>
     </span>
       <p class="shortcomment cmt"><b>[NNChannelsElement]</b> Number of data channels in this layout.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNChannelsElement]</b> Number of data channels in this layout.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../../traits/NNChannelsElement.html" class="extype" name="nounou.elements.traits.NNChannelsElement">NNChannelsElement</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNData#getChildren" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getChildren():scala.collection.mutable.Set[nounou.elements.data.NNData]"></a>
       <a id="getChildren():Set[NNData]"></a>
@@ -602,7 +602,7 @@ Throws error if channel out of range and not valid</p></div><dl class="attribute
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.filters.NNDataFilter#getParent" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getParent():nounou.elements.data.NNData"></a>
       <a id="getParent():NNData"></a>
@@ -639,7 +639,7 @@ Throws error if channel out of range and not valid</p></div><dl class="attribute
       <p class="shortcomment cmt"><b>[NNDataScaleElement]</b> Get physical scaling information for data.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNDataScaleElement]</b> Get physical scaling information for data.
 This is not made final, because it will be overriden by some filters which pass through
 upstream scale information.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a></dd></dl></div>
     </li><li name="nounou.elements.traits.NNTimingElement#getTiming" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getTiming():nounou.elements.traits.NNTiming"></a>
       <a id="getTiming():NNTiming"></a>
@@ -729,7 +729,7 @@ upstream scale information.
  or comparison (eg <a href="../../spikes/NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">nounou.elements.spikes.NNSpike</a>) etc.</p><div class="fullcomment"><div class="comment cmt"><p><u><b>SHOULD OVERRIDE</b></u> Whether an <a href="../../NNElement.html" class="extype" name="nounou.elements.NNElement">nounou.elements.NNElement</a> is compatible with another for merging
 (eg <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">nounou.elements.data.NNData</a>)
  or comparison (eg <a href="../../spikes/NNSpike.html" class="extype" name="nounou.elements.spikes.NNSpike">nounou.elements.spikes.NNSpike</a>) etc.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a> → <a href="../../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a> → <a href="../../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a> → <a href="../../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a> → <a href="../../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a> → <a href="../../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a> → <a href="../../NNElement.html" class="extype" name="nounou.elements.NNElement">NNElement</a></dd></dl></div>
     </li><li name="nounou.elements.NNElement#isCompatible" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isCompatible(that:Seq[nounou.elements.NNElement]):Boolean"></a>
       <a id="isCompatible(Seq[NNElement]):Boolean"></a>
@@ -1007,7 +1007,7 @@ Implement via readPointImpl. Prefer
 <a href="../NNData.html#readTraceIntDV(channel:Int,range:nounou.ranges.NNRangeSpecifier):breeze.linalg.DenseVector[Int]" class="extmbr" name="nounou.elements.data.NNData#readTraceIntDV">readTraceDV</a>
 and readFrame()
 when possible, as these will avoid repeated function calling overhead.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNData#readPointInt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="readPointInt(channel:Int,frame:Int):Int"></a>
       <a id="readPointInt(Int,Int):Int"></a>
@@ -1043,7 +1043,7 @@ when possible, as these will avoid repeated function calling overhead.
     </span>
       <p class="shortcomment cmt"><b><u>MUST OVERRIDE</u></b> Read a single point from the data, in internal integer scaling.</p><div class="fullcomment"><div class="comment cmt"><p><b><u>MUST OVERRIDE</u></b> Read a single point from the data, in internal integer scaling.
 Assumes that channel, frame, and segment are all valid and within range.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.NNDataSpikeReader#readSpike" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="readSpike(channels:Array[Int],frame:Int,segment:Int,spikeLength:Int):nounou.elements.spikes.NNSpike"></a>
       <a id="readSpike(Array[Int],Int,Int,Int):NNSpike"></a>
@@ -1220,7 +1220,7 @@ This should only be used for data with only 1 segment.
       </a>
     </span>
       <p class="shortcomment cmt"><b><u>CAN OVERRIDE</u></b> Read a single trace from the data, in internal integer scaling.</p><div class="fullcomment"><div class="comment cmt"><p><b><u>CAN OVERRIDE</u></b> Read a single trace from the data, in internal integer scaling.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.filters.NNDataFilter#readTraceIntDVImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="readTraceIntDVImpl(channel:Int,range:nounou.ranges.NNRangeValid):breeze.linalg.DenseVector[Int]"></a>
       <a id="readTraceIntDVImpl(Int,NNRangeValid):DenseVector[Int]"></a>
@@ -1239,7 +1239,7 @@ This should only be used for data with only 1 segment.
     </span>
       <p class="shortcomment cmt">CAN OVERRIDE: Read a single data trace from the data, in internal integer scaling.</p><div class="fullcomment"><div class="comment cmt"><p>CAN OVERRIDE: Read a single data trace from the data, in internal integer scaling.
 Should return a defensive clone. Assumes that channel and range are within the data range!
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.traits.NNChannelsElement#requireValidChannel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="requireValidChannel(channel:Int):Unit"></a>
       <a id="requireValidChannel(Int):Unit"></a>
@@ -1347,7 +1347,7 @@ Be sure to clear children if the children are to be garbage collected.</p></div>
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.data.filters.NNDataFilter#setParent" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="setParent(parent:nounou.elements.data.NNData,constructorCall:Boolean):Unit"></a>
       <a id="setParent(NNData,Boolean):Unit"></a>
@@ -1381,7 +1381,7 @@ Be sure to clear children if the children are to be garbage collected.</p></div>
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"><b>[NNDataScaleElement]</b> Set physical scaling information for data.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNDataScaleElement]</b> Set physical scaling information for data.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a></dd></dl></div>
+      <p class="shortcomment cmt"><b>[NNDataScaleElement]</b> Set physical scaling information for data.</p><div class="fullcomment"><div class="comment cmt"><p><b>[NNDataScaleElement]</b> Set physical scaling information for data.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../../traits/NNScalingElement.html" class="extype" name="nounou.elements.traits.NNScalingElement">NNScalingElement</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -1415,7 +1415,7 @@ Be sure to clear children if the children are to be garbage collected.</p></div>
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNDataFilter">NNDataFilter</a> → <a href="../../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="nounou.elements.data.filters.NNFilter">NNDataFilter</a> → <a href="../../traits/NNTimingElement.html" class="extype" name="nounou.elements.traits.NNTimingElement">NNTimingElement</a></dd></dl></div>
     </li><li name="nounou.elements.NNElement#toJsonString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toJsonString:String"></a>
       <a id="toJsonString:String"></a>
@@ -1484,7 +1484,7 @@ Be sure to clear children if the children are to be garbage collected.</p></div>
       </a>
     </span>
       <p class="shortcomment cmt">Provides a textual representation of the child hierarchy starting from this data object.</p><div class="fullcomment"><div class="comment cmt"><p>Provides a textual representation of the child hierarchy starting from this data object.
-If multiple NNDataFilter objects (e.g. an <a href="NNDataFilterFIR.html" class="extype" name="nounou.elements.data.filters.NNDataFilterFIR">nounou.elements.data.filters.NNDataFilterFIR</a> object)
+If multiple NNDataFilter objects (e.g. an <a href="NNDataFilterFIR.html" class="extype" name="nounou.elements.data.filters.NNFilterFIR">nounou.elements.data.filters.NNFilterFIR</a> object)
 are chained after this data, this method will show the chained objects and their tree hierarchy.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../NNData.html" class="extype" name="nounou.elements.data.NNData">NNData</a></dd></dl></div>
     </li><li name="nounou.elements.NNElement#toStringFull" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toStringFull():String"></a>

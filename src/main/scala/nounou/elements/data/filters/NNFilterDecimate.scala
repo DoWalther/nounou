@@ -11,8 +11,8 @@ import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
  * @author ktakagaki
  * //@date 2/1314.
  */
-class NNDataFilterDecimate(val parentVal: NNData, factorVarInput: Int )
-    extends NNDataFilterDownsample( parentVal, factorVarInput ) {
+class NNFilterDecimate(val parentVal: NNData, factorVarInput: Int )
+    extends NNFilterDownsample( parentVal, factorVarInput ) {
 
   def this(parentVal: NNData) = this(parentVal, 10)
 

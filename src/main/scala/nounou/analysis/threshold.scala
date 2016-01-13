@@ -20,15 +20,20 @@ object threshold {
 
   def apply(data: Array[Double], threshold: Double, opts: Opt*): Array[Int] = {
 
-    // <editor-fold defaultstate="collapsed" desc=" Handle options ">
-
     var optThresholdBlackout = 1
-    for( opt <- opts ) opt match {
+    for (opt <- opts) opt match {
       case OptThresholdBlackout(frames: Int) => optThresholdBlackout = frames
       case _ => {}
     }
 
-    // </editor-fold>
+    apply(data, threshold, optThresholdBlackout)
+
+  }
+
+  def apply(data: Array[Double], threshold: Double): Array[Int] =
+    apply(data, threshold, 1)
+
+  def apply(data: Array[Double], threshold: Double, optThresholdBlackout: Int): Array[Int] = {
 
     /** Values to return */
     val tempReturn: ArrayBuffer[Int] =  new ArrayBuffer[Int]()

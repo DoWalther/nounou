@@ -6,7 +6,7 @@ import nounou.elements.NNElement
   * electrophysiological and imaging data. Envisioned uses are for:
   * - [[nounou.elements.data.NNData]],
   * - [[nounou.elements.traits.layout.NNLayout]].
-  * Channel names/count are intentionally mutable for [[nounou.elements.data.filters.NNDataFilter]]
+  * Channel names/count are intentionally mutable for [[nounou.elements.data.filters.NNFilter]]
   * objects which conduct binning and therefore may change dynamically.
  */
 trait NNChannelsElement extends NNElement {

@@ -1,21 +1,60 @@
 package nounou.analysis.spikes
 
-import breeze.linalg.{DenseVector, convert}
+import java.math.BigInteger
+
+import breeze.linalg.DenseVector
 import breeze.numerics.abs
 import breeze.stats.median
 import nounou.Opt
 import nounou.analysis.threshold
 import nounou.elements.data.NNData
-import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.elements.spikes.NNSpikes
+import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.util.LoggingExt
 
-/**
-* @author ktakagaki
-*/
-object SpikeDetect extends LoggingExt {
+import scala.collection.mutable.ArrayBuffer
 
-//  def it() = this
+/**
+  * @author ktakagaki
+  */
+object spikeDetect extends LoggingExt {
+
+  def apply(data: Array[Double], medianFactor: Double, peakWindow: Int = 32): Array[Int] = {
+    val absMedianThreshold = medianFactor * median( abs( DenseVector( data ) ) ) / 0.6745
+    val tempTriggers = threshold(data, absMedianThreshold)
+    val tempret = ArrayBuffer[Int]()
+    var c = 0
+    while( c < tempTriggers.length ){
+      val tempTrig = tempTriggers(c)
+      val tempTrigLast = tempTrig + peakWindow
+      val maxPos =
+        if( tempTrigLast < data.length ) {
+          maxPosition(data, tempTrig, tempTrigLast)
+        } else Int.MaxValue
+      if( maxPos < tempTrigLast) tempret.+=( maxPos )
+      c += 1
+    }
+
+    tempret.toArray
+  }
+
+  private def maxPosition(array: Array[Double], start: Int, last: Int): Int = {
+    loggerRequire(array != null, "input cannot be null!")
+    loggerRequire(start < array.length, "start must be within array range!")
+
+    
+    var maxPos = start
+    var maxVal = array(start)
+    var c = start + 1
+    while (c <= last){
+      if( array(c) > maxVal ){
+        maxPos = c
+        maxVal = array(c)
+      }
+      c += 1
+    }
+    maxPos
+  }
 
   def thresholdSpikes(data: NNData,
                       channels: Array[Int],

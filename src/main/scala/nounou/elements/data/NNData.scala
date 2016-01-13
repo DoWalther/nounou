@@ -11,7 +11,7 @@ import nounou.ranges.{NNRange, NNRangeSpecifier, NNRangeValid}
 /** Base trait for data encoded as Int arrays, this is the main data element for an experiment,
   * whether it be electrophysiolgical or high-sampling-rate imaging.
   *
-  * This object is mutable, to allow inheritance by [[nounou.elements.data.filters.NNDataFilter]].
+  * This object is mutable, to allow inheritance by [[nounou.elements.data.filters.NNFilter]].
   * For that class, output results may change, depending upon _parent changes.
   * Each trace of data must share the following variables:
   * sampling, start, length, xBits, absGain, absOffset, absUnit
@@ -47,7 +47,7 @@ trait NNData extends NNDataNode
   //<editor-fold defaultstate="collapsed" desc="reading a point">
 
   /**
-    * Only intended to be overridden by [[nounou.elements.data.filters.NNDataFilter]]
+    * Only intended to be overridden by [[nounou.elements.data.filters.NNFilter]]
     */
   def readPoint(channel: Int, frame: Int, segment: Int): Double = {
 
@@ -94,7 +94,7 @@ trait NNData extends NNDataNode
     * Read a single trace from the data.
     * Should return a defensive clone.
     * Returns overhangs if data is not covered.
-    * Only intended to be overridden by [[nounou.elements.data.filters.NNDataFilter]]
+    * Only intended to be overridden by [[nounou.elements.data.filters.NNFilter]]
     */
   def readTraceDV(channel: Int, range: NNRangeSpecifier): DV[Double] = {
 

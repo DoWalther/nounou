@@ -148,7 +148,7 @@ trait NNDataNode {
   // </editor-fold>
 
   /** Provides a textual representation of the child hierarchy starting from this data object.
-    * If multiple NNDataFilter objects (e.g. an [[nounou.elements.data.filters.NNDataFilterFIR]] object)
+    * If multiple NNDataFilter objects (e.g. an [[nounou.elements.data.filters.NNFilterFIR]] object)
     * are chained after this data, this method will show the chained objects and their tree hierarchy.
     * @return
     */

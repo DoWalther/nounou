@@ -14,7 +14,7 @@ import scala.collection.mutable.{ArrayBuffer, WeakHashMap}
 
 /** Buffer filter, which will save intermediate calculation results for an XData object.
   */
-class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_parent) {
+class NNFilterBuffer(private var _parent: NNData ) extends NNFilter(_parent) {
 
   override def timing(): NNTiming = _parent.timing()
 
@@ -39,7 +39,7 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
   override def toStringImpl() = s"pageLen=${bufferPageLength}, queBound=${garbageQueBound}, "
   override def toStringFullImpl() = ""
 
-  // <editor-fold defaultstate="collapsed" desc=" changes (XDataSource related) and flushing ">
+  // <editor-fold defaultstate="collapsed" desc=" changes (NNData related) and flushing ">
 
   override def changedDataImpl() = flushBuffer()
 
@@ -48,9 +48,13 @@ class NNDataFilterBuffer( private var _parent: NNData ) extends NNDataFilter(_pa
   override def changedDataImpl(channels: Array[Int]) = flushBuffer( channels )
 
   def flushBuffer(): Unit = {
-    logger.debug("flushBuffer() pre, buffer.size={}, garbageQue.length={}", buffer.size.toString, garbageQue.length.toString)
-    buffer.clear()
-    garbageQue.clear()
+    //The following null clauses are for initialization
+    //they should not be necessary if the class variables were fully initialized before these calls, but...
+    if( buffer == null ) buffer = new ReadingHashMapBuffer() else buffer.clear()
+    if( garbageQue == null ) garbageQue = new ArrayBuffer[Long]() else garbageQue.clear()
+    //logger.debug("flushBuffer() pre, buffer.size={}, garbageQue.length={}", buffer.size.toString, garbageQue.length.toString)
+//    buffer.clear()
+//    garbageQue.clear()
   }
 
   def flushBuffer(channel: Int): Unit = {

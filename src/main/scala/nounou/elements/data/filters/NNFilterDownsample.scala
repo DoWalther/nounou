@@ -9,8 +9,8 @@ import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
  * @author ktakagaki
  * //@date 2/16/14.
  */
-class NNDataFilterDownsample( private val parentVal: NNData, protected var initialFactor: Int )
-  extends NNDataFilter( parentVal ) {
+class NNFilterDownsample(private val parentVal: NNData, protected var initialFactor: Int )
+  extends NNFilter( parentVal ) {
 
   protected var timingBuffer: NNTiming = null//parentVal.timing()
   protected var factorVar = -1

@@ -3,14 +3,14 @@ package nounou.ranges
 import nounou.elements.traits.NNTiming
 
 
-/**Encapsulates a range based on one trigger Ts (timestamp in BigInt), with an event range specified with frames,
+/**Encapsulates a range based on one trigger frame and segment, with an event range specified with frames,
   * before and after the trigger Ts.
   *
-  * Programming note: this class closely mirrors NNRangeEvent, so repeat yourself for any changes
+  * Programming note: this class closely mirrors NNRangeTsEvent, so repeat yourself for any changes
   *
  * @author ktakagaki
  */
-class NNRangeTsEvent(val triggerTs: BigInt, val startOffset: Int, val lastOffset: Int, val step: Int) extends NNRangeSpecifier {
+class NNRangeEvent(val trigger: Int, val startOffset: Int, val lastOffset: Int, val step: Int, val segment: Int) extends NNRangeSpecifier {
 
   ///////////////////////////////////////////////////////////////////////////
   // Default constructor checks
@@ -26,45 +26,43 @@ class NNRangeTsEvent(val triggerTs: BigInt, val startOffset: Int, val lastOffset
   // toString related
   ///////////////////////////////////////////////////////////////////////////
 
-  override def toString() = s"NNRangeTsEvent($triggerTs, startOffset=$startOffset, lastOffset=$lastOffset, step=$step)"
+  override def toString() = s"NNRangeEvent($trigger, startOffset=$startOffset, lastOffset=$lastOffset, step=$step, segment=$segment)"
 
   ///////////////////////////////////////////////////////////////////////////
   // NNRangeSpecifier methods
   ///////////////////////////////////////////////////////////////////////////
 
-  //No need for check, since step is already instantiated
-  override def getInstantiatedStep(nnTiming: NNTiming): Int = step
+  override def getInstantiatedStep(nnTiming: NNTiming): Int = {
+    frameSegmentBufferRefresh(nnTiming)
+    instantiatedBuffer.getInstantiatedStep(nnTiming)
+  }
 
   override def getInstantiatedSegment(nnTiming: NNTiming): Int = {
     frameSegmentBufferRefresh(nnTiming)
-    segmentBuffer
+    instantiatedBuffer.getInstantiatedSegment(nnTiming)
   }
 
   override final def getInstantiatedRange(nnTiming: NNTiming): NNRangeInstantiated = {
     frameSegmentBufferRefresh(nnTiming)
-    new NNRangeInstantiated(triggerFrameBuffer + startOffset,
-                            triggerFrameBuffer + lastOffset,
-                            step,
-                            segmentBuffer)
+    instantiatedBuffer
   }
 
-  override final def getValidRange(nnTiming: NNTiming): NNRangeValid =
-    getInstantiatedRange(nnTiming).getValidRange(nnTiming)
+  override final def getValidRange(nnTiming: NNTiming): NNRangeValid = {
+    frameSegmentBufferRefresh(nnTiming)
+    instantiatedBuffer.getValidRange(nnTiming)
+  }
 
   ///////////////////////////////////////////////////////////////////////////
   // frameSegmentBuffer related
   ///////////////////////////////////////////////////////////////////////////
 
   protected var timingBuffer: NNTiming = null
-  protected var segmentBuffer = -1
-  protected var triggerFrameBuffer = -1
+  protected var instantiatedBuffer: NNRangeInstantiated = null
 
   protected def frameSegmentBufferRefresh(nnTiming: NNTiming): Unit = {
-    if( timingBuffer != nnTiming || segmentBuffer == -1) {
+    if( timingBuffer != nnTiming || instantiatedBuffer == null) {
       timingBuffer = nnTiming
-      val temp = nnTiming.convertTsToFrsg(triggerTs)
-      triggerFrameBuffer = temp._1
-      segmentBuffer = temp._2
+      instantiatedBuffer = (new NNRange(trigger+startOffset, trigger+lastOffset, step, segment)).getInstantiatedRange(nnTiming)
     }
   }
 
