@@ -11,70 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b84f17cd-31ec-4516-ac7c-645f5d0ee2e9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetectBak.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeEvent.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/analysis/spikeDetectTest.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterBufferTest.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterMedianSubtractTest.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilter.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilter.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterBuffer.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterBuffer.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterDecimate.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDecimate.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterDownsample.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsample.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterFIR.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterFIR.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterHolder.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/_backup/NNDataFilterHolder.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterInvert.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterInvert.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterMask.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/_backup/NNDataFilterMask.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterMedianSubtract.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterMedianSubtract.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterParallel.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/_backup/NNDataFilterParallel.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterStatistics.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/_backup/NNDataFilterStatistics.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/scala/nounou/analysis/spikes/SpikeDetectTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/_bak/SpikeDetectTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__net_sourceforge_f2j_arpack_combined_all_0_1_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__net_sourceforge_f2j_arpack_combined_all_0_1_jar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/nounou-build.iml" afterPath="$PROJECT_DIR$/.idea/modules/nounou-build.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/nounou.iml" afterPath="$PROJECT_DIR$/.idea/modules/nounou.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sbt.xml" afterPath="$PROJECT_DIR$/.idea/sbt.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.html" afterPath="$PROJECT_DIR$/doc/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-_.html" afterPath="$PROJECT_DIR$/doc/index/index-_.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-a.html" afterPath="$PROJECT_DIR$/doc/index/index-a.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-b.html" afterPath="$PROJECT_DIR$/doc/index/index-b.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-c.html" afterPath="$PROJECT_DIR$/doc/index/index-c.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-d.html" afterPath="$PROJECT_DIR$/doc/index/index-d.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-f.html" afterPath="$PROJECT_DIR$/doc/index/index-f.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-g.html" afterPath="$PROJECT_DIR$/doc/index/index-g.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-i.html" afterPath="$PROJECT_DIR$/doc/index/index-i.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-k.html" afterPath="$PROJECT_DIR$/doc/index/index-k.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-m.html" afterPath="$PROJECT_DIR$/doc/index/index-m.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-r.html" afterPath="$PROJECT_DIR$/doc/index/index-r.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-s.html" afterPath="$PROJECT_DIR$/doc/index/index-s.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-t.html" afterPath="$PROJECT_DIR$/doc/index/index-t.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index/index-w.html" afterPath="$PROJECT_DIR$/doc/index/index-w.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/NN$.html" afterPath="$PROJECT_DIR$/doc/nounou/NN$.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/NNElement.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/NNElement.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNData.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/NNData.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataAux.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataAux.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataChannelArray.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataChannelArray.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataPreloaded.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataPreloaded.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataSpikeReader.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataSpikeReader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilter.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterBuffer$ReadingHashMapBuffer.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterBuffer$ReadingHashMapBuffer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterBuffer.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterBuffer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterDecimate.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterDecimate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterDownsample.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterDownsample.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterFIR.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterFIR.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterInvert.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterInvert.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterMedianSubtract.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterMedianSubtract.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/package.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/filters/package.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/package.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/data/package.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/NNChannelsElement.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/traits/NNChannelsElement.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/NNScalingElement.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/traits/NNScalingElement.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/NNTimingElement.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/traits/NNTimingElement.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/package.html" afterPath="$PROJECT_DIR$/doc/nounou/elements/traits/package.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/nounou/util/LoggingExt.html" afterPath="$PROJECT_DIR$/doc/nounou/util/LoggingExt.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/NN.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/NN.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/package.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/package.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/analysis/threshold.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/analysis/threshold.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNData.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNData.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/traits/NNDataNode.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/traits/NNDataNode.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/events/NNEvents.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/events/NNEvents.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNChannelsElement.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNChannelsElement.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeTsEvent.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeTsEvent.scala" />
     </list>
     <ignored path="nounou.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -155,31 +96,33 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding>
-                <element signature="e#1685#1758#0" expanded="true" />
+                <element signature="e#32#59#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spikeDetect.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/spikeDetect.scala">
+      <file leaf-file-name="SpikeDetect.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
               <folding>
-                <element signature="e#32#59#0" expanded="true" />
                 <element signature="e#1133#1567#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.sbt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build.sbt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.sbt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3655244">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+              <folding>
+                <marker date="1452871631747" expanded="true" signature="71:225" placeholder="/.../" />
+                <marker date="1452871631747" expanded="true" signature="254:426" placeholder="(...)" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -190,7 +133,7 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="277" column="6" selection-start-line="277" selection-start-column="6" selection-end-line="277" selection-end-column="6" />
               <folding>
-                <element signature="e#1816#1879#0" expanded="true" />
+                <element signature="e#30#70#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -211,7 +154,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="75" />
-              <folding />
+              <folding>
+                <element signature="e#25#62#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -220,7 +165,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/NN.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+              <caret line="26" column="28" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoggingExt.scala" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/util/LoggingExt.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.19672132">
+              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -231,9 +186,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-              <folding>
-                <element signature="e#38#53#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -262,7 +215,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/layout/NNLayoutElement.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/analysis/continuous/MedianSD.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannelExtracted.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNDataFilterBuffer.scala" />
@@ -313,8 +265,14 @@
         <option value="$PROJECT_DIR$/src/test/scala/nounou/analysis/spikeDetectTest.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterMedianSubtractedTest.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterMedianSubtractTest.scala" />
+        <option value="$PROJECT_DIR$/build.sbt" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -324,10 +282,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-5" />
-    <option name="y" value="-5" />
-    <option name="width" value="1930" />
-    <option name="height" value="1148" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -354,9 +312,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -598,12 +555,60 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="scala" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -709,26 +714,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -744,6 +732,8 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -1147,7 +1137,7 @@
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1448041255115" />
+    <option name="lastUpdateTimestamp" value="1452872230105" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -1174,7 +1164,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1448041143662" />
+        <entry key="$PROJECT_DIR$" value="1452871631747" />
       </map>
     </option>
     <option name="externalProjectsViewState">
@@ -1194,6 +1184,7 @@
       <created>1439214276494</created>
       <option name="number" value="Default" />
       <updated>1439214276494</updated>
+      <workItem from="1452871676821" duration="661000" />
     </task>
     <servers />
   </component>
@@ -1229,6 +1220,9 @@
       <configuration name="UtilTest" configurationId="JUnit" />
     </history-entry>
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="661000" />
+  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -1239,37 +1233,38 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-5" y="-5" width="1930" height="1148" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31190926" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4006024" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33131313" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39558232" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3263052" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23929337" sideWeight="0.5793173" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23929337" sideWeight="0.42068273" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23794213" sideWeight="0.57384443" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23794213" sideWeight="0.42615557" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992035" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4006024" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39558232" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730925" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1306,13 +1301,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataSpikeReader.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/analysis/thresholdTest.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45128205">
@@ -1478,10 +1466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-          <folding>
-            <element signature="e#390#457#0" expanded="false" />
-            <element signature="e#667#770#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1496,9 +1480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.63834196">
           <caret line="28" column="131" selection-start-line="28" selection-start-column="131" selection-end-line="28" selection-end-column="131" />
-          <folding>
-            <element signature="e#2684#2688#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1506,7 +1487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2507772">
           <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1514,7 +1494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1522,9 +1501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1532,31 +1508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding>
-            <marker date="1452637724393" expanded="false" signature="45:360" placeholder="..." />
-            <marker date="1452637724393" expanded="true" signature="366:396" placeholder="/**...*/" />
-            <marker date="1452637724393" expanded="true" signature="437:5834" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="653:2574" placeholder="{...}" />
-            <marker date="1452637724393" expanded="false" signature="664:1331" placeholder="Option handling" />
-            <marker date="1452637724393" expanded="true" signature="861:1093" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="1412:1510" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="1692:2435" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="1766:2427" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="1961:2266" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="2117:2168" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="2272:2417" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="2857:5827" placeholder="{...}" />
-            <marker date="1452637724393" expanded="false" signature="2868:4009" placeholder="Handle options" />
-            <marker date="1452637724393" expanded="true" signature="3121:3444" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="3773:3982" placeholder="/.../" />
-            <marker date="1452637724393" expanded="false" signature="4019:4950" placeholder="divide data into sub segments for processing" />
-            <marker date="1452637724393" expanded="true" signature="4432:4869" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="4548:4724" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="4762:4861" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="4875:4923" placeholder="{...}" />
-            <marker date="1452637724393" expanded="true" signature="5031:5619" placeholder="(...)" />
-            <marker date="1452637724393" expanded="true" signature="5062:5611" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1564,7 +1515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1572,7 +1522,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1580,7 +1529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1588,7 +1536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1604,7 +1551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3321492">
           <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1629,7 +1575,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="277" column="6" selection-start-line="277" selection-start-column="6" selection-end-line="277" selection-end-column="6" />
           <folding>
-            <element signature="e#1816#1879#0" expanded="true" />
+            <element signature="e#30#70#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1650,7 +1596,7 @@
         <state vertical-scroll-proportion="0.63309354">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
-            <element signature="e#1486#1551#0" expanded="true" />
+            <element signature="e#1486#1551#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1659,7 +1605,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="75" />
-          <folding />
+          <folding>
+            <element signature="e#25#62#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1668,7 +1616,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
-            <element signature="e#1685#1758#0" expanded="true" />
+            <element signature="e#32#59#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1678,7 +1626,7 @@
         <state vertical-scroll-proportion="0.6964029">
           <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
           <folding>
-            <element signature="e#25#40#0" expanded="true" />
+            <element signature="e#25#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1687,17 +1635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/NN.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1705,9 +1642,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-          <folding>
-            <element signature="e#38#53#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1715,16 +1650,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34553283">
           <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/spikeDetect.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
           <folding>
-            <element signature="e#32#59#0" expanded="true" />
             <element signature="e#1133#1567#0" expanded="false" />
           </folding>
         </state>
@@ -1732,8 +1665,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.sbt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3655244">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding>
+            <marker date="1452871631747" expanded="true" signature="71:225" placeholder="/.../" />
+            <marker date="1452871631747" expanded="true" signature="254:426" placeholder="(...)" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/NN.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/util/LoggingExt.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19672132">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
           <folding />
         </state>
       </provider>
