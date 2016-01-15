@@ -34,6 +34,12 @@ object NN extends LoggingExt {
   /**Test method for DW*/
   final def testArray(): Array[Double] = sin( breeze.linalg.DenseVector.tabulate(100)( _.toDouble/50d * 2d * math.Pi )).toArray
 
+  //ToDo SL
+  def popUpSFXWindow(): Unit ={
+    //Popup up hello world here with a JavaFX Canvas
+    ???
+  }
+
   // <editor-fold defaultstate="collapsed" desc=" file loading/saving ">
 
   /**Load a file into appropriate subtypes of [[nounou.elements.NNElement]]
