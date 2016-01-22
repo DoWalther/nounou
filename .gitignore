@@ -2,3 +2,5 @@ target
 project
 resources
 out
+\.idea/
+.idea/
