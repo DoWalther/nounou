@@ -5,19 +5,21 @@ import nounou.io.neuralynx.fileObjects.{FileNCS}
 /**
   * Encapsulates header information and serialization to text for Neuralynx NCS file headers.
   */
-final class NNHeaderNCS(originalHeaderText: String) extends NNHeaderNeuralynx(originalHeaderText) {
+final class NNHeaderNCS(originalHeaderText: String) extends NNHeaderNeuralynxRead(originalHeaderText) {
 
   /**
     * [Header value Neuralynx: "FileType"] Record type.
     * This is instantiated in the individual file-type specific header
     * classes to provide defaults.
     */
-  lazy val getHeaderRecordType = nlxHeaderValueS("FileType", "CSC")
+  override lazy val getHeaderRecordType = nlxHeaderValueS("FileType", "CSC")
 
   /**
     * [Header value NCS: "RecordSize"] Record size for single pages in data file
     */
-  lazy val getHeaderRecordSize = nlxHeaderValueI("RecordSize", FileNCS.recordSize.toString)
+  override lazy val getHeaderRecordSize = nlxHeaderValueI("RecordSize", FileNCS.recordSize.toString)
+
+  require(getHeaderRecordType == "CSC", s"NCS file with non-standard record type: $getHeaderRecordType")
 
   /**
     * [Header value NCS: "AcqEntName"] Acquisition entity name
@@ -45,7 +47,7 @@ final class NNHeaderNCS(originalHeaderText: String) extends NNHeaderNeuralynx(or
   lazy val getHeaderInputRange = nlxHeaderValueD("InputRange", "2500")
 
   /**
-    * [Header value NCS: "InputRange"] input range in +/- mV
+    * [Header value NCS: "DspFilterDelay_µs"] filter delay in timestamps (microsec)
     */
   lazy val getHeaderDspFilterDelay = nlxHeaderValueI("DspFilterDelay_µs", "0")
 
@@ -61,6 +63,7 @@ final class NNHeaderNCS(originalHeaderText: String) extends NNHeaderNeuralynx(or
       s" -SamplingFrequency $getHeaderSampleRate\n" +
       s" -ADBitVolts $getHeaderADBitVolts\n" +
       s" -ADMaxValue 32767\n" +
+      s" -DspFilterDelay_µs $getHeaderDspFilterDelay\n" +
       //  -NumADChannels 1
       {if(originalHeaderPresent) commentLines(originalHeaderText) else ""}
   }

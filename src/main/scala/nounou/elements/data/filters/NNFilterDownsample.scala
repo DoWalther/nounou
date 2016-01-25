@@ -19,7 +19,7 @@ class NNFilterDownsample(private val parentVal: NNData, protected var initialFac
   def this(parentVal: NNData) = this(parentVal, 16)
 
 
-  private val parentBuffer = parentVal //: NNFilterBuffer = new NNFilterBuffer(parentVal)
+  private val parentBuffer: NNFilterBuffer = new NNFilterBuffer(parentVal)
   override def changedDataImpl() = if(parentBuffer!= null) parentBuffer.changedData()
   override def changedDataImpl(ch: Int) = if(parentBuffer!= null) parentBuffer.changedData(ch)
   override def changedDataImpl(ch: Array[Int]) = if(parentBuffer!= null) parentBuffer.changedData(ch)
@@ -29,10 +29,11 @@ class NNFilterDownsample(private val parentVal: NNData, protected var initialFac
 
   protected def refreshTimingBuffer(factor: Int) = {
     timingBuffer = new NNTiming(
-      parentVal.timing.sampleRate / factor.toDouble,
-      (for(seg <- 0 until parentVal.timing.segmentCount)
-        yield ( (parentVal.timing.segmentLength(seg) - 1).toDouble/factor).round.toInt + 1 ).toArray,
-      parentVal.timing.segmentStartTss
+      sampleRate = parentVal.timing.sampleRate / factor.toDouble,
+      _segmentLengths = (for(seg <- 0 until parentVal.timing.segmentCount)
+        yield ( (parentVal.timing.segmentLength(seg)-1)/factor) + 1 ).toArray,
+      _segmentStartTss = parentVal.timing.segmentStartTss,
+      filterDelay = parentVal.timing.filterDelay
     )
   }
 
@@ -70,9 +71,9 @@ class NNFilterDownsample(private val parentVal: NNData, protected var initialFac
               range.step*factorVar,
               range.segment
       )
-      println( newRange )
-      println( parentBuffer )
-      println( parentBuffer.timing().toStringFull() )
+//      println( newRange )
+//      println( parentBuffer )
+//      println( parentBuffer.timing().toStringFull() )
       parentBuffer.readTraceDV(channel, newRange)
     }
 

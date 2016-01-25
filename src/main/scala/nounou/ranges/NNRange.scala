@@ -180,7 +180,7 @@ class NNRange(val start: Int, val last: Int, val step: Int, val segment: Int)
 
   /**range length, can include zero padding if start<0 or totalLength<=end
     */
-  def length(xDataTiming: NNTiming): Int = xDataTiming.segmentLength(getInstantiatedSegment(xDataTiming))
+  def length(nnTiming: NNTiming): Int = length( nnTiming.segmentLength(getInstantiatedSegment(nnTiming)) )
 
   // </editor-fold>
 

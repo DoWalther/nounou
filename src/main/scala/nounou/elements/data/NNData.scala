@@ -123,10 +123,7 @@ trait NNData extends NNDataNode
     res
   }
 
-  /**
-    */
-
-  //<editor-fold defaultstate="collapsed" desc=" readTraceIntDV deprecated ">
+  //<editor-fold defaultstate="collapsed" desc=" //readTraceIntDV deprecated ">
 
   //  /** '''__CAN OVERRIDE__''' Read a single trace from the data, in internal integer scaling.
   //    */
@@ -183,8 +180,7 @@ trait NNData extends NNDataNode
   }
 
 
-  // <editor-fold defaultstate="collapsed" desc=" convenience readTrace variations ">
-
+  // <editor-fold defaultstate="collapsed" desc=" //convenience readTrace variations ">
 
   // <editor-fold defaultstate="collapsed" desc=" readTraceInt (deprecated) ">
 
@@ -309,69 +305,3 @@ trait NNData extends NNDataNode
 //  override def :::(x: NNElement): NNData
 
 }
-
-
-
-//  // <editor-fold defaultstate="collapsed" desc=" NNLayout, channel count ">
-//
-//  private var varLayout: NNLayout = null
-//  def layout(): NNLayout = varLayout
-//  final def getLayout(): NNLayout = layout()
-//  def setLayout(layout: NNLayout): Unit = {
-//    loggerRequire( layout.channelCount == this.channelCount(),
-//      s"Channel count ${layout.channelCount} of new layout does not match channel count ${this.channelCount()} for ${this.getClass.toString}" )
-//  }
-//
-//  // </editor-fold>
-
-
-
-////<editor-fold defaultstate="collapsed" desc="reading a point">
-//
-///** Read a single point from the data, in internal integer scaling, after checking values.
-//  * Implement via readPointImpl. Prefer
-//  * [[nounou.elements.data.NNData.readTraceIntDV(channel:Int,range* readTraceDV]]
-//  * and readFrame()
-//  * when possible, as these will avoid repeated function calling overhead.
-//  */
-//def readPointInt(channel: Int, frame: Int, segment: Int /*optSegment: OptSegment*/): Int = {
-//val realSegment = timing.getRealSegment(segment)
-//loggerRequire( timing.isRealisticFrsg(frame, realSegment), s"Unrealistic frame/segment: ${frame}/${segment})" )
-//loggerRequire(isValidChannel(channel), s"Invalid channel: " + channel.toString)
-//
-//if( timing.isValidFrsg(frame, realSegment) ) readPointIntImpl(channel, frame, realSegment)
-//else 0
-//}
-//
-//final def readPointInt(channel: Int, frame: Int): Int = readPointInt(channel, frame, -1)
-//
-//// <editor-fold defaultstate="collapsed" desc=" convenience readPoint variations ">
-//
-///** [[nounou.elements.data.NNData.readPointInt(channel:Int,frame:Int,segment:Int)* readPoint]] but in physical units.
-//  */
-//final def readPoint(channel: Int, frame: Int, segment: Int): Double = scale.convertIntToAbsolute( readPointInt(channel, frame, segment) )
-//
-///** [[nounou.elements.data.NNData.readPointInt(channel:Int,frame:Int)* readPoint]]
-//  * but in physical units.
-//  */
-//final def readPoint(channel: Int, frame: Int): Double = readPoint(channel, frame, -1)//OptSegmentAutomatic)
-//
-//// </editor-fold>
-//
-////</editor-fold>
-
-
-////  final def readTraceDV(channel: Int): DV[Double]
-////    = scale.convertIntToAbsolute(readTraceIntDV(channel))
-//  /** Read a single trace in absolute unit scaling (as recorded).*/
-//  protected[nounou] final def readTraceDV(channel: Int, range: NNRangeSpecifier = NN.NNRangeAll()): DV[Double]
-//    = scale.convertIntToAbsolute(readTraceIntDV(channel, range))
-//  /** Read multiple traces in absolute unit scaling (as recorded).*/
-//  protected[nounou] final def readTraceDV(channels: Array[Int], range: NNRangeSpecifier): Array[DV[Double]]
-//    = readTraceIntDV(channels, range).map( scale.convertIntToAbsolute(_) )
-
-//  def readTraceIntDVImpl(channel: Int, rangeFrValid: NNRangeValid): DV[Int] = {
-//    val res = DV.zeros[Int]( rangeFrValid.length )
-//    nounou.util.forJava(rangeFrValid.start, rangeFrValid.last + 1, rangeFrValid.step, (c: Int) => (res(c) = readPointInt(channel, c, rangeFrValid.segment)))
-//    res
-//  }

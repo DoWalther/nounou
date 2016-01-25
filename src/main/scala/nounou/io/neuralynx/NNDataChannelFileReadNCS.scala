@@ -144,9 +144,11 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
   // </editor-fold>
 
-  override val timing = new NNTiming(header.getHeaderSampleRate,
-                              tempLengths.toArray,
-                              tempStartTimestamps.toArray)
+  override val timing =
+    new NNTiming( sampleRate = header.getHeaderSampleRate,
+                  _segmentLengths = tempLengths.toArray,
+                  _segmentStartTss = tempStartTimestamps.toArray,
+                  filterDelay = header.getHeaderDspFilterDelay )
 
   override val scale: NNScalingNeuralynx =
     new NNScalingNeuralynx( unit = this.absUnit,
