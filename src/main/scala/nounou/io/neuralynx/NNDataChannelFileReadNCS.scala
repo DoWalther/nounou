@@ -18,7 +18,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
   // <editor-fold defaultstate="collapsed" desc=" toString related ">
 
-  override def toStringImpl() = super.toStringImpl() + s"file=${file.getCanonicalPath}, "
+  override def toStringImpl() = super.toStringImpl() + s", file=${file.getCanonicalPath}"
 
   // </editor-fold>
 
@@ -100,7 +100,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   //First record dealt with separately
   currentRecord = 0
   @transient
-  private var thisRecTS = readNCSRecordHeaderTS(currentRecord)
+  private var thisRecTS = readNCSRecordHeaderTS(currentRecord) - header.getHeaderDspFilterDelay
   @transient
   private var lastRecTS = thisRecTS
   @transient
@@ -113,7 +113,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   //Read loop
   currentRecord = 1 //already dealt with rec=0
   while(currentRecord < headerRecordCount){
-    thisRecTS = readNCSRecordHeaderTS(currentRecord)
+    thisRecTS = readNCSRecordHeaderTS(currentRecord) - header.getHeaderDspFilterDelay
     //ToDo 3: Implement cases where timestamps skip just a slight amount d/t DAQ problems
 
     loggerRequire( thisRecTS > lastRecTS,

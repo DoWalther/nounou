@@ -44,6 +44,12 @@ final class NNHeaderNCS(originalHeaderText: String) extends NNHeaderNeuralynx(or
     */
   lazy val getHeaderInputRange = nlxHeaderValueD("InputRange", "2500")
 
+  /**
+    * [Header value NCS: "InputRange"] input range in +/- mV
+    */
+  lazy val getHeaderDspFilterDelay = nlxHeaderValueI("DspFilterDelay_µs", "0")
+
+
 
   override def getNeuralynxHeaderStringImpl() = {
     "######## Neuralynx Data File Header\n" +

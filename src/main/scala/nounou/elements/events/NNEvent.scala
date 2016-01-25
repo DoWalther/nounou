@@ -5,9 +5,11 @@ import java.math.BigInteger
 import nounou.elements.NNElement
 
 object NNEvent {
-  implicit object NNEventOrdering extends Ordering[NNEvent] {
-    override def compare(a: NNEvent, b: NNEvent) = a.timestamp compare b.timestamp
-  }
+//  implicit object NNEventOrdering extends Ordering[NNEvent] {
+//    override def compare(a: NNEvent, b: NNEvent) = a.timestamp compare b.timestamp
+//  }
+  implicit val nnEventOrdering: Ordering[NNEvent] = Ordering.by[NNEvent, BigInt]( _.timestamp )
+
   def overrideDuration(xEvent: NNEvent, duration: Long) = new NNEvent(xEvent.timestamp, duration, xEvent.code, xEvent.comment)
   def overrideCode(xEvent: NNEvent, code: Int) = new NNEvent(xEvent.timestamp, xEvent.duration, code, xEvent.comment)
 }

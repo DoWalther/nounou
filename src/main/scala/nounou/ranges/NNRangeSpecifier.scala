@@ -67,12 +67,12 @@ trait NNRangeSpecifier extends LoggingExt {
     * for when the original sample range exceeds/overhangs the available data.
     */
   def getRangeValidPrePost(nnDataTiming: NNTiming): (Int, NNRangeValid, Int) =
-    getValidRange(nnDataTiming).getRangeValidPrePost(nnDataTiming)
+    getInstantiatedRange(nnDataTiming).getRangeValidPrePost(nnDataTiming)
   /**
     * Alias for [[nounou.ranges.NNRangeSpecifier.getRangeValidPrePost(nnDataTiming:* getSampleRangeValidPrePost]]
     */
-  final def getRangeValidPrePost(xDataTimingElement: NNTimingElement): (Int, NNRangeValid, Int) =
-    getRangeValidPrePost(xDataTimingElement.timing())
+  final def getRangeValidPrePost(nnTimingElement: NNTimingElement): (Int, NNRangeValid, Int) =
+    getRangeValidPrePost(nnTimingElement.timing())
 
   // </editor-fold>
 

@@ -11,16 +11,14 @@ publishMavenStyle := true
 //publishArtifact in (Compile, packageSrc) := true
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "2.1.7" % "test",
   "ch.qos.logback" % "logback-classic" % "1.1.3",
   "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
-//  "org.scalanlp" %% "breeze_2.11" % "0.12-SNAPSHOT",
-  "org.scalanlp" %% "breeze" % "0.11.2",
-  "org.scalanlp" %% "breeze-natives" % "0.11.2",
+  //breeze from custom *.jar
+  //"org.scalanlp" %% "breeze" % "0.11.2",
+  //"org.scalanlp" %% "breeze-natives" % "0.11.2",
+  "org.scalatest" %% "scalatest" % "2.1.7" % "test",
   "com.google.code.gson" % "gson" % "2.3.1",
-//  "org.eclipse.jgit" % "org.eclipse.jgit" % "3.7.1.201504261725-r",
-//  load jgit from downloaded/modified .jar, to circumvent .jar signature for repackaging
-//ToDo: maybe rebuild from code?
+  "org.eclipse.jgit" % "org.eclipse.jgit" % "4.1.1.201511131810-r",
   "commons-io" % "commons-io" % "2.4"
 )
 //  "org.scalanlp" %% "breeze-macros" % "0.3.1",

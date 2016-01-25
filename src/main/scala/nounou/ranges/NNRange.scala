@@ -128,7 +128,7 @@ class NNRange(val start: Int, val last: Int, val step: Int, val segment: Int)
   }
   /** Inclusive last valid frame, taking into account step and overhang
     */
-  def lastValid(xDataTiming: NNTiming): Int = lastValid(xDataTiming.segmentLength(getInstantiatedSegment(xDataTiming)))
+  def lastValid(nnDataTiming: NNTiming): Int = lastValid(nnDataTiming.segmentLength(getInstantiatedSegment(nnDataTiming)))
   /** Valid lastValid frame, taking into account step and overhang
     */
   private var lvBuffTL = -1
@@ -247,10 +247,10 @@ class NNRangeInstantiated(val start: Int, val last: Int, val step: Int, val segm
   override final def getInstantiatedStep(xDataTiming: NNTiming): Int = step
   override final def getInstantiatedRange(xDataTiming: NNTiming): NNRangeInstantiated = this
 
-  override def getValidRange(xDataTiming: NNTiming): NNRangeValid =
-    (new NNRange(start, last, step, segment)).getValidRange(xDataTiming)
-  override def getRangeValidPrePost(xDataTiming: NNTiming): (Int, NNRangeValid, Int) =
-    (new NNRange(start, last, step, segment)).getRangeValidPrePost(xDataTiming)
+  override def getValidRange(nnTiming: NNTiming): NNRangeValid =
+    (new NNRange(start, last, step, segment)).getValidRange(nnTiming)
+  override def getRangeValidPrePost(nnTiming: NNTiming): (Int, NNRangeValid, Int) =
+    (new NNRange(start, last, step, segment)).getRangeValidPrePost(nnTiming)
 
   // </editor-fold>
 

@@ -1,17 +1,13 @@
 package nounou
 
-//import breeze.linalg.DenseVector
-
-import java.math.BigInteger
-
 import breeze.linalg.DenseVector
 import breeze.numerics.sin
+import java.math.BigInteger
 import nounou.elements.NNElement
 import nounou.elements.data.NNData
 import nounou.elements.data.filters.NNFilterMedianSubtract
 import nounou.ranges._
 import nounou.io.{FileLoader, FileSaver}
-//import nounou.io.FileLoader._
 import nounou.util.{LoggingExt, NNGit}
 
 
@@ -60,17 +56,6 @@ object NN extends LoggingExt {
 
   // </editor-fold>
 
-  // <editor-fold defaultstate="collapsed" desc=" options ">
-
-  def OptNull() = nounou.OptNull
-
-  /**Option to be used in [[nounou.analysis.threshold]]
-    */
-  case class OptThresholdBlackout(frames: Int) extends Opt {
-    loggerRequire(frames > 0, "blackout must be >0")
-  }
-
-  // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" Range specifications ">
 
@@ -177,8 +162,8 @@ object NN extends LoggingExt {
 
   // <editor-fold defaultstate="collapsed" desc=" Analysis ">
 
-  def spikeDetect(data: Array[Double], medianFactor: Double, peakWindow: Int): Array[Int]
-    = nounou.analysis.spikes.spikeDetect(data, medianFactor, peakWindow)
+//  def spikeDetect(data: Array[Double], medianFactor: Double, peakWindow: Int): Array[Int]
+//    = nounou.analysis.spikes.SpikeDetect(data, medianFactor, peakWindow)
 
 
   // <editor-fold defaultstate="collapsed" desc=" filters ">

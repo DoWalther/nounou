@@ -8,11 +8,13 @@ import nounou.elements.traits.NNTiming
 import scala.collection.mutable.{ArrayBuffer, WeakHashMap}
 
 
-//ToDo: HashMap to Int or Long Hash key
-//ToDo: parallelize?
-//ToDo: anticipate?
+//ToDo 1: Debug!!!
+//ToDo 3: HashMap to Int or Long Hash key
+//ToDo 4: parallelize?
+//ToDo 4: anticipate?
 
-/** Buffer filter, which will save intermediate calculation results for an XData object.
+/**
+  * Buffer filter, which will save intermediate calculation results for an XData object.
   */
 class NNFilterBuffer(private var _parent: NNData ) extends NNFilter(_parent) {
 

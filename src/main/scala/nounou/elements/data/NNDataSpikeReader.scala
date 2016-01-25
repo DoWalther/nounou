@@ -30,7 +30,7 @@ trait NNDataSpikeReader {
 
     new NNSpike(
       /*timestamp =*/ timing().convertFrsgToTs(frame, segment),
-      /*waveform =*/ readTrace( channels, new NNRangeInstantiated(frame, frame + spikeLength - 1, step = 1, segment)   ).flatten,
+      /*waveform =*/ readPage( channels, new NNRangeInstantiated(frame, frame + spikeLength - 1, step = 1, segment)   ).flatten,
       /*channels =*/ channels.length,
       0L
     )

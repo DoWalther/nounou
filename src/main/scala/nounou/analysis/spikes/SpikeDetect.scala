@@ -1,27 +1,45 @@
 package nounou.analysis.spikes
 
-import java.math.BigInteger
-
 import breeze.linalg.DenseVector
 import breeze.numerics.abs
 import breeze.stats.median
-import nounou.Opt
-import nounou.analysis.threshold
+import nounou.options._
+import nounou.analysis.{ThresholdOpt, Threshold}
 import nounou.elements.data.NNData
 import nounou.elements.spikes.NNSpikes
 import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.util.LoggingExt
-
 import scala.collection.mutable.ArrayBuffer
+
+// <editor-fold defaultstate="collapsed" desc=" options ">
+
+trait SpikeDetectOpt extends Opt
+
+trait OptSpikeDetectMethod extends SpikeDetectOpt
+case object OptSpikeDetectMethodMEDIANSDTHRESHOLDPEAK extends OptSpikeDetectMethod
+
+// </editor-fold>
 
 /**
   * @author ktakagaki
   */
-object spikeDetect extends LoggingExt {
+object SpikeDetect extends LoggingExt
+  with OptHandler {
 
-  def apply(data: Array[Double], medianFactor: Double, peakWindow: Int = 32): Array[Int] = {
+//  def apply(data: Array[Double], opts: SpikeDetectOpt*): Array[Int] = {
+//    val optMethod: OptSpikeDetectMethod =
+//      readOptObject[OptSpikeDetectMethod](opts, OptSpikeDetectMethodMEDIANSDTHRESHOLDPEAK)
+//    optMethod match {
+//      case m: OptSpikeDetectMethodMEDIANSDTHRESHOLDPEAK =>{
+//        val optMedianFactor = readOptDouble
+//        medianSDThresholdPeakDetect()
+//      }
+//    }
+//  }
+
+  def medianSDThresholdPeakDetect(data: Array[Double], medianFactor: Double, peakWindow: Int = 32): Array[Int] = {
     val absMedianThreshold = medianFactor * median( abs( DenseVector( data ) ) ) / 0.6745
-    val tempTriggers = threshold(data, absMedianThreshold)
+    val tempTriggers = Threshold(data, absMedianThreshold)
     val tempret = ArrayBuffer[Int]()
     var c = 0
     while( c < tempTriggers.length ){
@@ -38,11 +56,12 @@ object spikeDetect extends LoggingExt {
     tempret.toArray
   }
 
+  // <editor-fold defaultstate="collapsed" desc=" impl ">
+
   private def maxPosition(array: Array[Double], start: Int, last: Int): Int = {
     loggerRequire(array != null, "input cannot be null!")
     loggerRequire(start < array.length, "start must be within array range!")
 
-    
     var maxPos = start
     var maxVal = array(start)
     var c = start + 1
@@ -55,6 +74,8 @@ object spikeDetect extends LoggingExt {
     }
     maxPos
   }
+
+  // </editor-fold>
 
   def thresholdSpikes(data: NNData,
                       channels: Array[Int],
@@ -164,22 +185,22 @@ object spikeDetect extends LoggingExt {
 
     // </editor-fold>
 
-    /** Return variable **/
-    val tempret =
-    rangeList.par.flatMap(
-      (r: NNRangeValid) => {
-        val analysisData = data.readTrace(channel, r)
-        //ToDo 2: convert the following median SD estimate into a breeze function
-        val thresholdValue = optThresholdSDFactor * median( DenseVector( abs(analysisData) ) ) /0.6745
-        val tempretInner = threshold( analysisData, thresholdValue, opts: _* ).map( (x: Int) => x + r.start )
+//    /** Return variable **/
+//    val tempret =
+//    rangeList.par.flatMap(
+//      (r: NNRangeValid) => {
+//        val analysisData = data.readTrace(channel, r)
+//        //ToDo 2: convert the following median SD estimate into a breeze function
+//        val thresholdValue = optThresholdSDFactor * median( DenseVector( abs(analysisData) ) ) /0.6745
+//        val tempretInner = Threshold( analysisData, thresholdValue, opts: _* ).map((x: Int) => x + r.start )
+//
+//        //Delete first trigger if it is the first frame (0)... not a spike
+//        if( tempretInner.length > 0 && tempretInner(0) == 0d ) tempretInner.tail else tempretInner
+//      }
+//    ).seq.toArray//.distinct.sorted  ...NNSpikes TreeSet will take care of distinct/sorted part
 
-        //Delete first trigger if it is the first frame (0)... not a spike
-        if( tempretInner.length > 0 && tempretInner(0) == 0d ) tempretInner.tail else tempretInner
-      }
-    ).seq.toArray//.distinct.sorted  ...NNSpikes TreeSet will take care of distinct/sorted part
-
-    NNSpikes( data, frames = tempret.map( _ - optPretriggerFr), channel, validRange.segment, opts: _* )
-
+//    NNSpikes( data, frames = tempret.map( _ - optPretriggerFr), channel, validRange.segment, opts: _* )
+???
   }
 
 }

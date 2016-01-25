@@ -34,8 +34,6 @@ package object nounou extends LoggingExt {
 
   //General options for nounou
 
-  abstract class Opt extends breeze.util.Opt
-  case object OptNull extends Opt
 
 //  case class OptStep(step: Int) extends Opt {
 //    require(step>0, "optStep must be one or larger!")

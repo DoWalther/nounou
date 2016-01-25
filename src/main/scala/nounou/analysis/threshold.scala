@@ -1,15 +1,15 @@
 package nounou.analysis
 
-import nounou.NN.OptThresholdBlackout
-import nounou.Opt
-
+import nounou.options._
 import scala.collection.mutable.ArrayBuffer
+
+trait ThresholdOpt extends Opt
 
 /** Thresholds a data array.
   * To be transferred to breeze in the near future, once options are cleared up.
   * Created by ktakagaki on 15/09/15.
   */
-object threshold {
+object Threshold {
 
 //  case class OptThresholdDirection(direction: Int) extends Opt {
 //    loggerRequire(-1 <= direction && direction <= 1, s"Direction must be -1, 0 or 1, not $direction")
@@ -18,22 +18,22 @@ object threshold {
 //  val OptThresholdDirectionBoth = OptThresholdDirection(0)
 //  val OptThresholdDirectionNegative = OptThresholdDirection(-1)
 
-  def apply(data: Array[Double], threshold: Double, opts: Opt*): Array[Int] = {
+  def apply(data: Array[Double], threshold: Double, opts: ThresholdOpt*): Array[Int] = {
 
     var optThresholdBlackout = 1
     for (opt <- opts) opt match {
-      case OptThresholdBlackout(frames: Int) => optThresholdBlackout = frames
+      case OptBlackout(frames: Int) => optThresholdBlackout = frames
       case _ => {}
     }
 
-    apply(data, threshold, optThresholdBlackout)
+    thresholdWithBlackout(data, threshold, optThresholdBlackout)
 
   }
 
   def apply(data: Array[Double], threshold: Double): Array[Int] =
-    apply(data, threshold, 1)
+    thresholdWithBlackout(data, threshold, 1)
 
-  def apply(data: Array[Double], threshold: Double, optThresholdBlackout: Int): Array[Int] = {
+  def thresholdWithBlackout(data: Array[Double], threshold: Double, optThresholdBlackout: Int): Array[Int] = {
 
     /** Values to return */
     val tempReturn: ArrayBuffer[Int] =  new ArrayBuffer[Int]()
