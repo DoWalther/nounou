@@ -12,16 +12,24 @@ class FileLoaderTest extends FunSuite {
 
   test("reading META-INF/services") {
 
-    val loader = ServiceLoader.load(classOf[FileLoader]).iterator //.asScala
+    val loader = ServiceLoader.load(classOf[FileLoader]).iterator
 
-    //val loader2 = ServiceLoader.load( classOf[NNElement].getClass )
-    //loader.toList.toString
-    //loader.reload()
-    //(for(l <- loader) yield l).toList
     assert(loader.hasNext, "FileLoaders must be accessible!")
-    while( loader.hasNext ){
-      println(loader.next().getClass.getName)
-    }
+    val loaderNCS=loader.next()
+    assert(loaderNCS.getClass.getName == "nounou.io.neuralynx.fileAdapters.FileAdapterNCS")
+    assert(loader.hasNext, "FileLoaders must be accessible!")
+    val loaderNSE=loader.next()
+    assert(loaderNSE.getClass.getName == "nounou.io.neuralynx.fileAdapters.FileAdapterNSE")
+    assert(loader.hasNext, "FileLoaders must be accessible!")
+    val loaderNEV=loader.next()
+    assert(loaderNEV.getClass.getName == "nounou.io.neuralynx.fileAdapters.FileAdapterNEV")
+
+    assert( loaderNCS.canLoad("xxxx.ncs"))
+    assert( loaderNCS.canLoad("/nounou/Neuralynx/t130911/Tet4a.ncs"))
+
+    assert( !loaderNCS.canLoad("xxxx.nse"))
+    assert( loaderNSE.canLoad("Y.nse"))
+    assert( loaderNEV.canLoad("z.nev"))
 
   }
 

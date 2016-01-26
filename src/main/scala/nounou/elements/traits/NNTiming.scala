@@ -1,12 +1,12 @@
 package nounou.elements.traits
 
 import breeze.numerics.round
-//import java.text.DecimalFormat
 import nounou.elements.NNElement
 import nounou.ranges.NNRangeSpecifier
-import nounou.util.{leftPadSpace, leftPadZero}
+import nounou.util.{leftPadSpace}
 
-/** This immutable class encapsulates the following timing information about electrophysiological/imaging data:
+/**
+  * This immutable class encapsulates the following timing information about electrophysiological/imaging data:
   *
   *   - sample rate (Double, in Hz)
   *   - segment lengths (Array[Int]): many data formats have multiple "segments" (i.e. the recording was
@@ -24,7 +24,6 @@ import nounou.util.{leftPadSpace, leftPadZero}
   *
   * Envisioned uses are for the following children of [[nounou.elements.NNElement]]:
   *   + [[nounou.elements.data.NNData]]
-  *   + [[nounou.elements.traits.layout.NNLayout]]
   *   + [[nounou.elements.spikes.NNSpikes]]
   *
   *  Programming note: do not make the constructor variables of this class mutable, since
@@ -35,29 +34,34 @@ import nounou.util.{leftPadSpace, leftPadZero}
   * @param _segmentStartTss  List of starting timestamps for each segment.
   *                                 Null will result in warning and this value set to defaults,
   *                                 which start at zero timestamp and assume no timestamp gaps between segments
+  * @param filterDelay filter delay (in timestamp units)
   */
 class NNTiming(val sampleRate: Double,
                private val _segmentLengths: Array[Int],
-               private val _segmentStartTss: Array[BigInt]
+               private val _segmentStartTss: Array[BigInt],
+               val filterDelay: BigInt
                     ) extends NNElement {
 
   // <editor-fold defaultstate="collapsed" desc=" variable checks and initialization ">
 
   if(sampleRate <= 0d ) throw loggerError("Sample rate must be non-negative!")
 
-  /**How many data points each segment contains. If the data is single-segment (e.g. many imaging formats),
-   * The array will have length = 1.
-   */
+  /**
+    * How many data points each segment contains. If the data is single-segment (e.g. many imaging formats),
+    * The array will have length = 1.
+    */
   val segmentLengths: Array[Int] = {
     if(_segmentLengths == null) throw loggerError("Must specify a non-null segmentLengths as Array[Int]!")
     else _segmentLengths
   }
 
-  /** Number of segments in data. Lazily calculated from [[segmentLengths]].length
+  /**
+    *  Number of segments in data. Lazily calculated from [[segmentLengths]].length
     */
   lazy val segmentCount: Int = segmentLengths.length
 
-  /** At what timestamp each segment starts. This information can be used to correlate
+  /**
+    * At what timestamp each segment starts. This information can be used to correlate
     * timestamp-based data (for example, event port codes) with continuous electrophysiology/imaging data.
     */
   val segmentStartTss: Array[BigInt] = {
@@ -79,16 +83,19 @@ class NNTiming(val sampleRate: Double,
     var sum = 0
     ( for(seg <- 0 until segmentCount) yield {sum += segmentLength(seg); sum} ).toArray.+:(0).dropRight(1)
   }
-  /**Cumulative frame numbers for the start of a given segment.
+  /**
+    * Cumulative frame numbers for the start of a given segment.
     */
   final def segmentStartFrame(segment: Int) = segmentStartFrames.apply(segment)
 
-  /** The cumulative frame number of a given frame in a given segment.
+  /**
+    * The cumulative frame number of a given frame in a given segment.
     * Useful for data formats which store data from multiple segments in a flat array structure.
     */
   final def cumulativeFrame(frame: Int, segment: Int) = segmentStartFrame(segment) + frame
 
-  /** Timestamp at which the recording (or the first segment of the recording) starts.
+  /**
+    * Timestamp at which the recording (or the first segment of the recording) starts.
     */
   lazy val startTs: BigInt = {
     //errorIfMultipleSegments("startTs", "segmentStartTS(segment: Int)")
@@ -111,11 +118,13 @@ class NNTiming(val sampleRate: Double,
 
   // </editor-fold>
 
-  // <editor-fold defaultstate="collapsed" desc=" utility error function (private) ">
+  // <editor-fold defaultstate="collapsed" desc=" errorIfMultipleSegments (private) ">
 
-  /** Throws IllegalArgumentException if segmentCount != 1... use as check for functions which assume segment = 0.
+  /**
+    * Throws IllegalArgumentException if segmentCount != 1... use as check for functions which assume segment = 0.
     * @param func name of current function/signature called (which assumes segment = 0 )
     * @param altFunc  name of function/signature which should be called instead, with explicit specification of segment = 0
+    *
     */
   @throws[IllegalArgumentException]
   private def errorIfMultipleSegments(func: String, altFunc: String): Unit = {
@@ -127,11 +136,10 @@ class NNTiming(val sampleRate: Double,
 
   // </editor-fold>
 
-  /** This is the inverse of [[sampleRate]], lazily buffered for convenience.
+  /**
+    * This is the inverse of [[sampleRate]], lazily buffered for convenience.
     */
-  final lazy val sampleInterval = 1.0/sampleRate
-
-
+  final lazy protected[nounou] val sampleInterval = 1.0/sampleRate
 
 
   // <editor-fold defaultstate="collapsed" desc=" functions for reading segment lengths ">
@@ -166,7 +174,6 @@ class NNTiming(val sampleRate: Double,
   lazy val totalLength: Int = segmentLengths.foldLeft(0)( _ + _ )
 
   // </editor-fold>
-
 
   // <editor-fold defaultstate="collapsed" desc="isValidFrsg/isRealisticFrsg">
 
