@@ -20,15 +20,15 @@ trait NNScalingElement extends NNElement {
     * This function can return null if the scaling is not set e.g. [[nounou.elements.events.NNEvents]].
     * make sure to handle that.
     */
-  def scale(): NNScaling = {
+  def scaling(): NNScaling = {
     if( _scale == null ) throw loggerError(s"Scale is null!")
     else _scale
   }
 
   /**
-    * '''[NNScalingElement]''' Java alias for [[nounou.elements.traits.NNScalingElement.scale]].
+    * '''[NNScalingElement]''' Java alias for [[nounou.elements.traits.NNScalingElement.scaling]].
     * */
-  final def getScale(): NNScaling = scale()
+  final def getScale(): NNScaling = scaling()
 
   /**
     * '''[NNScalingElement]''' Set physical scaling information for data.

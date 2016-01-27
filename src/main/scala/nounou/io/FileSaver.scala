@@ -25,7 +25,7 @@ object FileSaver {
     */
   private lazy val savers = ServiceLoader.load(classOf[FileSaver])//.iterator.asScala
 
-  private var possibleSaverBuffer = new immutable.HashMap[String, List[FileSaver]]()
+  protected[nounou] var possibleSaverBuffer = new immutable.HashMap[String, List[FileSaver]]()
 
   final def save(fileName: String, data: NNElement): Unit = save(fileName, Array(data))
 

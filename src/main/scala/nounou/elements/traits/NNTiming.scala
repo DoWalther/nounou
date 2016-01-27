@@ -39,7 +39,7 @@ import nounou.util.{leftPadSpace}
 class NNTiming(val sampleRate: Double,
                private val _segmentLengths: Array[Int],
                private val _segmentStartTss: Array[BigInt],
-               val filterDelay: BigInt
+               val filterDelay: Int
                     ) extends NNElement {
 
   // <editor-fold defaultstate="collapsed" desc=" variable checks and initialization ">

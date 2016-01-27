@@ -1,27 +1,35 @@
 package nounou.io.neuralynx.headers
 
-import nounou.io.neuralynx.fileObjects.FileNEV
+import nounou.io.neuralynx.fileObjects.{FileNEV}
+
+/**
+  * Encapsulates text header for spike NSE file (Neuralynx).
+  *
+  */
+trait NNHeaderNEV extends NNHeaderNeuralynx {
+
+  override def getHeaderFileType: String
+  override def getHeaderRecordSize: Int
+
+//  NEV file header is simple with no extra information
+//
+//  override def getNeuralynxHeaderStringImpl() = {
+//    super[NNHeaderNeuralynx].getNeuralynxHeaderStringImpl()
+//  }
+
+}
 
 /**
   * Created by ktakagaki on 15/11/24.
   */
-class NNHeaderNEV(override val originalHeaderText: String)
-  extends NNHeaderNeuralynxRead(originalHeaderText) {
+class NNHeaderNEVRead(override val originalHeaderText: String)
+  extends NNHeaderNeuralynxRead(originalHeaderText)
+  with NNHeaderNEV {
 
-  def this() = this("")
+  override lazy val getHeaderFileType = nlxHeaderValueS("FileType", "Event")
+  override lazy val getHeaderRecordSize = nlxHeaderValueI("RecordSize", FileNEV.recordSize.toString)
 
-  def getHeaderRecordType = nlxHeaderValueS("FileType", "Event")
-  def getHeaderRecordSize = nlxHeaderValueI("RecordSize", FileNEV.recordSize.toString)
-
-
-  override def getNeuralynxHeaderStringImpl() = {
-    "######## Neuralynx Data File Header\n" +
-    s"## Output by Nounou v ${version}\n" +
-    s"## Output time ${System.currentTimeMillis()}\n" +
-    s" -CheetahRev $getHeaderCheetahRev\n" +
-    s" -FileType $getHeaderRecordType\n" +
-    s" -RecordSize $getHeaderRecordSize\n" +
-    {if(originalHeaderPresent) commentLines(originalHeaderText) else ""}
-  }
+  loggerRequire(getHeaderFileType == "Event", s"NEV file with non-standard record type: $getHeaderFileType")
+  loggerRequire(getHeaderRecordSize == FileNEV.recordSize, s"NEV file with non-standard record size: $getHeaderRecordSize")
 
   }

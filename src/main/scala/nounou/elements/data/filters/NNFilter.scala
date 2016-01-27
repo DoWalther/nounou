@@ -84,7 +84,7 @@ abstract class NNFilter(private var parenVar: NNData ) extends NNData {
 
   //passthrough definitions, only override for changes in sampling rate, layout, etc.
   override def timing() = parenVar.getTiming()
-  override def scale() =  parenVar.getScale()
+  override def scaling() =  parenVar.getScale()
   override def layout() = parenVar.getLayout()
 
 //  final override def setTiming( timing: NNDataTiming ) =

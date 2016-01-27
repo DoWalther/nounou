@@ -3,7 +3,7 @@ package nounou.io.neuralynx.fileObjects
 import java.io.File
 import nounou.elements.data.NNDataChannel
 import nounou.elements.data.traits.NNDataChannelNumbered
-import nounou.io.neuralynx.headers.{NNHeaderNCS}
+import nounou.io.neuralynx.headers.{NNHeaderNCSRead, NNHeaderNCS}
 
 /**
   * Information and constants regarding Neuralynx NCS files in general.
@@ -28,12 +28,10 @@ abstract class FileReadNCS(file: File)
   override final var _header: NNHeaderNCS = null
 
   override def header(): NNHeaderNCS = {
-    if (_header == null) _header = new NNHeaderNCS(originalHeaderText)
+    if (_header == null) _header = new NNHeaderNCSRead(originalHeaderText)
     _header
   }
 
-  require(header.getHeaderSampleRate >= 1000d, s"NCS file with non-standard sampling frequency: ${header.getHeaderSampleRate}")
-  require(header.getHeaderADMaxValue == 32767, s"NCS file with non-standard ADMaxValue: ${header.getHeaderADMaxValue}")
-  require(header.getHeaderRecordType == "CSC", s"NCS file with non-standard record type: ${header.getHeaderRecordType}")
+//  require(header.getHeaderFileType == "CSC", s"NCS file with non-standard record type: ${header.getHeaderFileType}")
 
 }

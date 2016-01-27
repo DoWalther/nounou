@@ -1,14 +1,14 @@
 package nounou.elements.data.filters
 
-import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
-import breeze.linalg.{DenseVector => DV, convert}
+import breeze.linalg.{DenseVector => DV}
 import breeze.signal._
 import breeze.signal.support.FIRKernel1D
-import nounou.NN._
+
 import nounou.elements.data.NNData
+import nounou.NN._
+import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
 
 import scala.beans.BeanProperty
-//import nounou.data.ranges.FrRange$
 
 /**
  * @author ktakagaki

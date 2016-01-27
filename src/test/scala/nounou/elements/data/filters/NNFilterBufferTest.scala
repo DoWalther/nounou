@@ -1,11 +1,11 @@
 package nounou.elements.data.filters
 
-import nounou.io.neuralynx.NNDataTest
+import nounou.io.neuralynx.NNDataTestNCSTet4
 
 /**
 * @author ktakagaki
 */
-class NNFilterBufferTest extends NNDataTest {
+class NNFilterBufferTest extends NNDataTestNCSTet4 {
 
   override val dataObj = new NNFilterBuffer( super.dataObj )
 

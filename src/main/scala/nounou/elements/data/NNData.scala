@@ -294,7 +294,7 @@ trait NNData extends NNDataNode
       case x: NNData => {
         ( //This is not enforced, may append objects with separate channel counts: channelCount() == x.channelCount()  &&
           timing() == timing() &&
-          scale() == x.scale() )
+          scaling() == x.scaling() )
         //&& this.layout.isCompatible(x.layout)
         //not channel info
       }

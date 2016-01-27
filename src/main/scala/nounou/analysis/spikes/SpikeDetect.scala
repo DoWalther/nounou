@@ -1,22 +1,29 @@
 package nounou.analysis.spikes
 
+import java.math.BigInteger
+
 import breeze.linalg.DenseVector
 import breeze.numerics.abs
 import breeze.stats.median
+
 import nounou.options._
 import nounou.analysis.{ThresholdOpt, Threshold}
-import nounou.elements.data.NNData
+import nounou.elements.data.{NNDataChannel, NNData}
 import nounou.elements.spikes.NNSpikes
 import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.util.LoggingExt
+
 import scala.collection.mutable.ArrayBuffer
 
 // <editor-fold defaultstate="collapsed" desc=" options ">
 
 trait SpikeDetectOpt extends Opt
 
-trait OptSpikeDetectMethod extends SpikeDetectOpt
-case object OptSpikeDetectMethodMEDIANSDTHRESHOLDPEAK extends OptSpikeDetectMethod
+object OptSpikeDetectMethod extends SpikeDetectOpt {
+
+  case object MedianSDThresoldPeak
+
+}
 
 // </editor-fold>
 
@@ -37,7 +44,9 @@ object SpikeDetect extends LoggingExt
 //    }
 //  }
 
-  def medianSDThresholdPeakDetect(data: Array[Double], medianFactor: Double, peakWindow: Int = 32): Array[Int] = {
+  // <editor-fold defaultstate="collapsed" desc=" medianSDThresholdPeakDetect ">
+
+  def medianSDThresholdPeakDetect(data: Array[Double], medianFactor: Double, peakWindow: Int): Array[Int] = {
     val absMedianThreshold = medianFactor * median( abs( DenseVector( data ) ) ) / 0.6745
     val tempTriggers = Threshold(data, absMedianThreshold)
     val tempret = ArrayBuffer[Int]()
@@ -54,6 +63,14 @@ object SpikeDetect extends LoggingExt
     }
 
     tempret.toArray
+  }
+
+  def medianSDThresholdPeakDetect(dataChannel: NNDataChannel,
+                                  range: NNRangeSpecifier,
+                                  medianFactor: Double,
+                                  peakWindow: Int): Array[BigInteger] = {
+    val tempFrameArray = medianSDThresholdPeakDetect( dataChannel.readTrace(range), medianFactor, peakWindow )
+    tempFrameArray.map( dataChannel.timing().convertFrsgToTs(_, range.getInstantiatedSegment(dataChannel)).bigInteger)
   }
 
   // <editor-fold defaultstate="collapsed" desc=" impl ">
@@ -85,27 +102,27 @@ object SpikeDetect extends LoggingExt
     // <editor-fold defaultstate="collapsed" desc=" Option handling ">
 
     var optWaveformFr = 32
-    var optPretriggerFr  = 8
+    var optAlignmentPoint  = 8
     var optBlackoutFr = 16
 
     for( opt <- opts ) opt match {
       case OptWaveformFr(frames: Int) => optWaveformFr = frames
-      case OptPretriggerFr(frames: Int) => optPretriggerFr = frames
+      case OptAlignmentPoint(frames: Int) => optAlignmentPoint = frames
       case OptBlackoutFr(frames: Int) => optBlackoutFr = frames
       case _ => {}
     }
 
-    val tempPosttriggerFr = optWaveformFr -optPretriggerFr -1
-    loggerRequire( tempPosttriggerFr >=0, s"OptWaveformFr ($optWaveformFr) must be strictly larger than OptPretriggerFr ($optPretriggerFr)!")
+    val tempPosttriggerFr = optWaveformFr -optAlignmentPoint -1
+    loggerRequire( tempPosttriggerFr >=0, s"OptWaveformFr ($optWaveformFr) must be strictly larger than OptPretriggerFr ($optAlignmentPoint)!")
 
     // </editor-fold>
 
-    val pooledSpikes: NNSpikes = new NNSpikes()
+    val pooledSpikes: NNSpikes = new NNSpikes(optAlignmentPoint)
     for( ch <- channels ){
       pooledSpikes.add( spikeThresholdAbsMedianImpl(data, ch, frameRange,  opts: _*) )
     }
 
-    val filteredSpikes: NNSpikes = new NNSpikes()
+    val filteredSpikes: NNSpikes = new NNSpikes(optAlignmentPoint)
     var iterator = pooledSpikes.iterator()
     //If there is at least 1 spike in pooledSpikes
     if( iterator.hasNext ){
@@ -128,8 +145,7 @@ object SpikeDetect extends LoggingExt
         }
       }
     }
-    val filteredTimestamps = filteredSpikes.spikeTimestamps()
-
+    val filteredTimestamps: Array[BigInt] = filteredSpikes.readSpikeTimestamps().map( BigInt(_) )
     NNSpikes( data, filteredTimestamps, channels, opts: _* )
 
   }
@@ -145,13 +161,13 @@ object SpikeDetect extends LoggingExt
     var optDetectionWindow = 320000
     var optDetectionWindowOverlap = 320
     var optThresholdSDFactor = 3d
-    var optPretriggerFr  = 8
+    var optAlignmentPoint  = 8
 
     for (opt <- opts) opt match {
       case OptDetectionWindow(fr) => optDetectionWindow = fr
       case OptDetectionWindowOverlap(fr) => optDetectionWindowOverlap = fr
       case OptThresholdSDFactor(factor: Double) => optThresholdSDFactor = factor
-      case OptPretriggerFr(frames: Int) => optPretriggerFr = frames
+      case OptAlignmentPoint(frames: Int) => optAlignmentPoint = frames
       case _ => {}
     }
 

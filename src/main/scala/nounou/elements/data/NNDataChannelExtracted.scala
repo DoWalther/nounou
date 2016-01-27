@@ -27,6 +27,6 @@ class NNDataChannelExtracted(val parent: NNData, val channel: Int) extends NNDat
 
   override def timing(): NNTiming = parent.timing()
 
-  override def scale(): NNScaling = parent.scale()
+  override def scaling(): NNScaling = parent.scaling()
 
 }

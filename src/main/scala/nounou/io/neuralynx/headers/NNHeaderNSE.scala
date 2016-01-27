@@ -1,61 +1,60 @@
 package nounou.io.neuralynx.headers
 
-import java.time.Instant
-import nounou.io.neuralynx.fileObjects.{FileNSE, FileNEV}
+import nounou.io.neuralynx.fileObjects.FileNSE
 
 /**
   * Encapsulates text header for spike NSE file (Neuralynx).
   *
   */
-trait NNHeaderNSE extends NNHeaderNeuralynx {
+trait NNHeaderNSE extends NNHeaderNeuralynxSpike {
 
-  override def getHeaderRecordType: String
-
+  override def getHeaderFileType: String
   override def getHeaderRecordSize: Int
 
-  require(getHeaderRecordType == "Spike", s"NSE file with non-standard record type: $getHeaderRecordType")
-
-  /**
-    * [Header value NCS: "DspFilterDelay_µs"] filter delay in timestamps (microsec)
-    */
-  def getHeaderDspFilterDelay: Int
-
-
   override def getNeuralynxHeaderStringImpl() = {
-    "######## Neuralynx Data File Header\n" +
-      s"## Output by Nounou v ${version}\n" +
-      s"## Output time ${Instant.now().toString()}\n" +
-      s" -CheetahRev $getHeaderCheetahRev\n" +
-      s" -FileType $getHeaderRecordType\n" +
-      s" -RecordSize $getHeaderRecordSize\n" +
-      s" -DspFilterDelay_µs $getHeaderDspFilterDelay\n"
+    super[NNHeaderNeuralynxSpike].getNeuralynxHeaderStringImpl()
   }
+
 }
 
-class NNHeaderNSERead(originalHeaderText: String) extends NNHeaderNeuralynxRead(originalHeaderText) with NNHeaderNSE {
-
-  override lazy val getHeaderRecordType = nlxHeaderValueS("FileType", "Spike")
+class NNHeaderNSERead(override val originalHeaderText: String)
+  extends NNHeaderNeuralynxSpikeRead(originalHeaderText)
+  with NNHeaderNSE {
 
   override lazy val getHeaderRecordSize = nlxHeaderValueI("RecordSize", FileNSE.recordSize.toString)
+  loggerRequire(getHeaderRecordSize == FileNSE.recordSize, s"NSE file with non-standard record size: $getHeaderRecordSize")
 
-  require(getHeaderRecordType == "Spike", s"NSE file with non-standard record type: $getHeaderRecordType")
+}
 
-  /**
-    * [Header value NCS: "DspFilterDelay_µs"] filter delay in timestamps (microsec)
-    */
-  lazy val getHeaderDspFilterDelay = nlxHeaderValueI("DspFilterDelay_µs", "0")
+class NNHeaderNSEConcrete( headerSamplingFrequency: Double,
+                           headerWaveformLength: Int,
+                           headerAlignmentPt: Int,
 
+                           headerCheetahRev: String = "-1",
+                           headerAcqEntName: String = "NA",
+                           headerHardwareSubSystemName: String = "NA",
+                           headerHardwareSubSystemType: String = "NA",
 
-  override def getNeuralynxHeaderStringImpl() = {
-    "######## Neuralynx Data File Header\n" +
-      s"## Output by Nounou v ${version}\n" +
-      s"## Output time ${Instant.now().toString()}\n" +
-      s" -CheetahRev $getHeaderCheetahRev\n" +
-      s" -FileType $getHeaderRecordType\n" +
-      s" -RecordSize $getHeaderRecordSize\n" +
-      s" -DspFilterDelay_µs $getHeaderDspFilterDelay\n" + {
-      if (originalHeaderPresent) commentLines(originalHeaderText) else ""
-    }
-  }
+                           headerADChannel: Int = -1,
+                           headerInputRange: Int = 1000,
+                           headerInputInverted: Boolean = false,
+                           headerDspDelayCompensation: Boolean = true,
+                           headerDspFilterDelay: Int = 0
+                         )
+  extends NNHeaderNeuralynxDAQConcrete(
+    getHeaderCheetahRev = headerCheetahRev, getHeaderFileType = "NSE", getHeaderRecordSize = FileNSE.recordSize,
+    getHeaderAcqEntName = headerAcqEntName, getHeaderHardwareSubSystemName = headerHardwareSubSystemName, getHeaderHardwareSubSystemType = headerHardwareSubSystemType,
+    getHeaderSamplingFrequency = headerSamplingFrequency,
+    getHeaderADMaxValue = 32767, getHeaderADBitVolts = headerInputRange/32767.toDouble*1E-6,
+    getHeaderADChannel = headerADChannel, getHeaderInputRange = headerInputRange,
+    getHeaderInputInverted = headerInputInverted, getHeaderDspDelayCompensation = headerDspDelayCompensation, getHeaderDspFilterDelay = headerDspFilterDelay
+  )
+  with NNHeaderNSE {
+
+  override val getHeaderWaveformLength: Int = headerWaveformLength
+  override val getHeaderAlignmentPt: Int = headerAlignmentPt
+
+  //ToDo 3: handle prior headers?
+  override val originalHeaderText = ""
 
 }

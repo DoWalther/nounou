@@ -1,11 +1,12 @@
 package nounou.elements.spikes
 
 import java.math.BigInteger
-import nounou.{NN}
-import nounou.analysis.spikes.OptWaveformFr
+
+import nounou.analysis.spikes.{OptAlignmentPoint, OptWaveformFr}
 import nounou.elements.data.NNData
 import nounou.elements.traits.{NNScalingElement, NNConcatenableElement, NNTimingElement, NNTiming}
 import nounou.elements.NNElement
+import nounou.NN
 import nounou.options.Opt
 import nounou.util.LoggingExt
 
@@ -22,9 +23,12 @@ object NNSpikes extends LoggingExt {
   def apply(data: NNData, timestamps: Array[BigInt], channels: Array[Int], opts: Opt*): NNSpikes =
     apply(data, timestamps.map( (ts: BigInt) => data.timing.convertTsToFrsg(ts) ), channels, opts: _*)
 
+  def apply(data: NNData, frameSegments: Array[(Int, Int)], channel: Int, opts: Opt*): NNSpikes =
+    apply(data, frameSegments, Array(channel), opts: _*)
+
   def apply(data: NNData, frameSegments: Array[(Int, Int)], channels: Array[Int], opts: Opt*): NNSpikes = {
 
-  // <editor-fold defaultstate="collapsed" desc=" argument checks ">
+    // <editor-fold defaultstate="collapsed" desc=" argument checks ">
 
       loggerRequire( data != null, "data input may not be null!")
       loggerRequire( frameSegments != null, "frames input may not be null!")
@@ -33,28 +37,31 @@ object NNSpikes extends LoggingExt {
 
     // </editor-fold>
 
-  // <editor-fold defaultstate="collapsed" desc=" handle options ">
+    // <editor-fold defaultstate="collapsed" desc=" handle options ">
 
     var optWaveformFr = 32
+    var optAlignmentPoint = 8
 
     for( opt <- opts ) opt match {
       case OptWaveformFr(frames: Int) => optWaveformFr = frames
+      case OptAlignmentPoint(frames: Int) => optAlignmentPoint = frames
       case _ => {}
     }
 
+
     // </editor-fold>
 
-  val tempret = new NNSpikes()
+    val tempReturn = new NNSpikes(optAlignmentPoint)
 
-  frameSegments.foreach( (frsg: (Int, Int) ) => {
-      //val startFr = frsg._1  - optPretriggerFr
-      val sampleRange = NN.NNRange(frsg._1 , frsg._1 + optWaveformFr -1 /*+ tempPosttriggerFr*/, 1, frsg._2)
-      val wf = channels.flatMap(data.readTrace(_, sampleRange ))
-      tempret.add( new NNSpike( data.timing.convertFrToTs(frsg._1), wf, channels = 1, unitNo = 0L) )
-      Unit
-    })
+    frameSegments.foreach( (frsg: (Int, Int) ) => {
+        //val startFr = frsg._1  - optPretriggerFr
+        val sampleRange = NN.NNRange(frsg._1, frsg._1 + optWaveformFr -1, 1, frsg._2)
+        val wf = channels.flatMap(data.readTrace(_, sampleRange ))
+        tempReturn.add( new NNSpike( data.timing.convertFrToTs(frsg._1), wf, channels = channels.length, unitNo = 0L) )
+        Unit
+      })
 
-  tempret
+    tempReturn
 
   }
 
@@ -62,11 +69,11 @@ object NNSpikes extends LoggingExt {
     loggerRequire( spikes != null, "Input may not be null!")
     loggerRequire( spikes.length >= 1, "Must give 1 or more NNSpikes objects!")
 
-    val tempRet: NNSpikes = spikes(0).copy()
+    val tempReturn: NNSpikes = spikes(0).copy()
     if(spikes.length > 1){
-      for( newSpikes <- spikes.tail ) tempRet.add(newSpikes)
+      for( newSpikes <- spikes.tail ) tempReturn.add(newSpikes)
     }
-    tempRet
+    tempReturn
   }
 
 }
@@ -75,19 +82,37 @@ object NNSpikes extends LoggingExt {
   * Based on a [scala.collection.mutable.TreeSet[A] mutable.TreeSet], with enforcing of NNSpike compatiblity.
     *
     */
-class NNSpikes( private val _database: TreeSet[NNSpike] )//val trodeLayout: NNDataLayoutTrode, val waveFormLength: Int)
+class NNSpikes( private val _database: TreeSet[NNSpike], val alignmentPoint: Int  )
   extends NNConcatenableElement with NNScalingElement/*with NNDataTimingElement*/ {
 
-  override def toStringImpl() = s"no.=${_database.size}, "
+
+  def this(alignmentPoint: Int) {
+    this( new TreeSet[NNSpike]()(Ordering.by[NNSpike, BigInt]((x: NNSpike) => x.timestamp)), alignmentPoint )
+  }
+
+  override def toStringImpl() = s"no.=${size()}, "
   override def toStringFullImpl() = ""
 
-  def this() {
-    this( new TreeSet[NNSpike]()(Ordering.by[NNSpike, BigInt]((x: NNSpike) => x.timestamp))  )
-  }
+  // <editor-fold defaultstate="collapsed" desc=" database accessors ">
+
+  /**
+    * Number of spikes contained in object
+    */
+  def size(): Int = _database.size
+
+  // </editor-fold>
+  // <editor-fold defaultstate="collapsed" desc=" prototype spike accessors ">
 
   private var prototypeSpike: NNSpike = {
     if( size > 0 ) _database.head else null
   }
+
+  def channels(): Int = prototypeSpike.channels
+  def singleWaveformLength(): Int = prototypeSpike.singleWaveformLength
+
+  // </editor-fold>
+
+  // <editor-fold defaultstate="collapsed" desc=" add spikes ">
 
   def add(elem: NNSpike): Boolean = {
     if( prototypeSpike == null ){
@@ -99,6 +124,7 @@ class NNSpikes( private val _database: TreeSet[NNSpike] )//val trodeLayout: NNDa
     }
     _database.add(elem)
   }
+
   def add(spikes: NNSpikes): Boolean = {
     if(this.isCompatible(spikes)){
       _database.++=( spikes._database )
@@ -110,22 +136,24 @@ class NNSpikes( private val _database: TreeSet[NNSpike] )//val trodeLayout: NNDa
     }
   }
 
+  // </editor-fold>
+
+
+  // <editor-fold defaultstate="collapsed" desc=" read methods ">
 
   //ToDo: defensive copy BigInt/BigInteger
-  def spikeTimestamps(): Array[BigInt] = _database.map( _.timestamp ).toArray
-  def getSpikeTimestamps(): Array[BigInteger] = _database.map( _.getTimestamp() ).toArray
-  def getSpikeFrameSegment(data: NNTimingElement): Array[Array[Int]] = getSpikeFrameSegment(data.timing)
-  def getSpikeFrameSegment(data: NNTiming): Array[Array[Int]] = {
+  def readSpikeTimestamps(): Array[BigInteger] = _database.map( _.getTimestamp() ).toArray
+  def readSpikeFrameSegments(data: NNTimingElement): Array[Array[Int]] = readSpikeFrameSegments(data.timing)
+  def readSpikeFrameSegments(data: NNTiming): Array[Array[Int]] = {
     _database.map( (sp: NNSpike) => {
       val temp = data.convertTsToFrsg( sp.timestamp ); Array( temp._1, temp._2 )
     } ).toArray
   }
 
-  /** Number of spikes contained in object
-    */
-  def size(): Int = _database.size
+  // </editor-fold>
 
-  def copy(): NNSpikes = new NNSpikes( _database.clone() )
+
+  def copy(): NNSpikes = new NNSpikes( _database.clone(), alignmentPoint )
 
   def iterator(): Iterator[NNSpike] = _database.iterator
 
@@ -139,25 +167,3 @@ class NNSpikes( private val _database: TreeSet[NNSpike] )//val trodeLayout: NNDa
 
 
 }
-
-////  // <editor-fold desc="XConcatenatable">
-////
-////  override def :::(that: NNElement): NNSpikes = {
-////    that match {
-////      case x: NNSpikes => {
-////        if( this.isCompatible(x) ) {
-////          val temp = new NNSpikes( waveformLength, x.xTrodes, x.xData )
-////          temp.spikes ++: this.spikes
-////          temp.spikes ++: x.spikes
-////          temp
-////        }
-////        else throw new IllegalArgumentException("cannot concatenate spikes with different waveform lengths")
-////      }
-////      case _ => {
-////        require(false, "cannot concatenate different types!")
-////        this
-////      }
-////    }
-////  }
-////
-////

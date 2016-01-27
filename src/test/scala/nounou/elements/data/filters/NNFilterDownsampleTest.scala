@@ -3,7 +3,7 @@ package nounou.elements.filters
 import breeze.linalg.DenseVector
 import nounou.NN
 import nounou.elements.data.filters.NNFilterDownsample
-import nounou.io.neuralynx.{NNDataNCSTet4}
+import nounou.io.neuralynx.{NNTestLoaderNCS_Tet4}
 import org.scalatest.FunSuite
 
 
@@ -11,7 +11,7 @@ import org.scalatest.FunSuite
  * @author ktakagaki
  * //@date 2/19/14.
  */
-class NNFilterDownsampleTest extends FunSuite with NNDataNCSTet4 {
+class NNFilterDownsampleTest extends FunSuite with NNTestLoaderNCS_Tet4 {
 
   val filtObj = new NNFilterDownsample( dataObj, 5 )
 

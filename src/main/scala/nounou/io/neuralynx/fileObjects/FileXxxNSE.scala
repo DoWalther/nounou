@@ -1,7 +1,7 @@
 package nounou.io.neuralynx.fileObjects
 
 import java.io.File
-import nounou.io.neuralynx.headers.{NNHeaderNSERead, NNHeaderNSE}
+import nounou.io.neuralynx.headers.{NNHeaderNEV, NNHeaderNSERead, NNHeaderNSE}
 
 /**
   * Information and constants regarding Neuralynx NCS files in general.
@@ -28,7 +28,13 @@ class FileReadNSE(file: File) extends FileReadNeuralynx[NNHeaderNSE](file) with 
     _header
   }
 
-  require(header.getHeaderRecordType == "Spike", s"NSE file with non-standard record type: ${header.getHeaderRecordType}")
+  require(header.getHeaderFileType == "Spike", s"NSE file with non-standard record type: ${header.getHeaderFileType}")
+
+}
+
+class FileWriteNSE(file: File, headerNSE: NNHeaderNSE) extends FileWriteNeuralynx(file, headerNSE) with FileNSE {
+
+  //  override lazy val header: NNHeaderNEV = headerNEV
 
 }
 

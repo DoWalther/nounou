@@ -2,55 +2,38 @@ package nounou.io.neuralynx
 
 import breeze.linalg.DenseVector
 import nounou._
-import nounou.elements.data.NNDataChannel
 import org.scalatest.FunSuite
 
-/**
-  * Trait to import test file "/nounou/Neuralynx/E04LC/CSC1.ncs" as NNDataChannel
-  */
-trait NNDataChannelNCSE04LC extends FunSuite {
 
-  //ToDo ?: make test data load from online?
-  private val testFileE04LC_CSC1 = getClass.getResource("/nounou/Neuralynx/E04LC/CSC1.ncs").getPath()
-  private val data = NN.load(testFileE04LC_CSC1).apply(0)
-  assert(data.isInstanceOf[NNDataChannel])
-  assert(data.isInstanceOf[NNDataChannelFileReadNCS])
-  val dataChannelNCSObj = data.asInstanceOf[NNDataChannelFileReadNCS]
-  val dataChannelObj: NNDataChannel = dataChannelNCSObj
 
-  assert(dataChannelNCSObj.header.getHeaderDspFilterDelay == 484)
-  val filterDel = dataChannelNCSObj.header.getHeaderDspFilterDelay
-
-}
-
-class NNDataChannelNCSTest extends FunSuite with NNDataChannelNCSE04LC {
+class NNDataChannelNCSTest extends FunSuite with NNTestLoaderNCS_E04LC_NNDataChannel {
 
   test("NNDataChannelNCS Specific"){
-    assert( dataChannelNCSObj.scale.absolutePerShort - 0.015259300 < 1E-9 )
+    assert( dataChannelNCSObj.scaling.absolutePerShort - 0.015259300 < 1E-9 )
     assert( dataChannelNCSObj.header.getHeaderDspFilterDelay == 484 )
 
     assert( dataChannelNCSObj.readTraceDV( NN.NNRange(0, 4, 1, 0) ) ==
-      dataChannelNCSObj.scale.convertShortToAbsolute(  DenseVector(-1528, -1841, -1282, -670, -500).map(_ toShort) )
+      dataChannelNCSObj.scaling.convertShortToAbsolute(  DenseVector(-1528, -1841, -1282, -670, -500).map(_ toShort) )
     )
 
     assert( dataChannelNCSObj.readTraceDV( NN.NNRange(0, 4, 2, 0) ) ==
-      dataChannelNCSObj.scale.convertShortToAbsolute(  DenseVector(-1528, -1282, -500).map(_ toShort) )
+      dataChannelNCSObj.scaling.convertShortToAbsolute(  DenseVector(-1528, -1282, -500).map(_ toShort) )
     )
 
     assert( dataChannelNCSObj.readTraceDV( NN.NNRange(-2, 4, 2, 0) ) ==
-      dataChannelNCSObj.scale.convertShortToAbsolute(  DenseVector(0, -1528, -1282, -500).map(_ toShort) )
+      dataChannelNCSObj.scaling.convertShortToAbsolute(  DenseVector(0, -1528, -1282, -500).map(_ toShort) )
     )
 
   }
 
 }
 
-class NNDataChannelTest extends FunSuite with NNDataChannelNCSE04LC {
+class NNDataChannelTest extends FunSuite with NNTestLoaderNCS_E04LC_NNDataChannel {
 
   test("readInfo"){
 
     //assert( dataChannelObj.scale.absolutePerShort - 0.015259300 < 1E-9 )
-    assert( dataChannelObj.scale.unit.contentEquals("microV") )
+    assert( dataChannelObj.scaling.unit.contentEquals("microV") )
 
     //trait NNTiming
     assert( dataChannelObj.timing.segmentLength(0) == 2546176 )

@@ -13,8 +13,8 @@ package object spikes {
 
   /**How many frames of data to record in a spike waveform before the peak.
     * If this option value is 8, the peak will be at sample number 9.*/
-  case class OptPretriggerFr(frames: Int) extends OptAnalysisUnits {
-    loggerRequire(frames>=1, "Must have a pre-trigger frame count >=1!")
+  case class OptAlignmentPoint(frames: Int) extends OptAnalysisUnits {
+    loggerRequire(frames>=0, "Must have a pre-trigger alignment point >=0!")
   }
   /**How many frames of data to record in a spike waveform*/
   case class OptWaveformFr(frames: Int) extends OptAnalysisUnits {

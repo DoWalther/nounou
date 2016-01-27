@@ -36,8 +36,8 @@ class FileAdapterNEV extends FileLoader with FileSaver with LoggingExt {
 
     val fileAdapter = new FileReadNEV(file)  //val fHand = new RandomAccessFile(file, "r")(ByteConverterLittleEndian)
     val fHand = fileAdapter.handle
-
     fHand.seek( fileAdapter.headerBytes )
+
     val eventMap = mutable.HashMap[BigInt, NNEvent]()
 
     // <editor-fold defaultstate="collapsed" desc=" read loop ">
@@ -64,7 +64,8 @@ class FileAdapterNEV extends FileLoader with FileSaver with LoggingExt {
       //skip nstx(reserved), npkt_id(ID for originating system), npkt_data_size(==2)
       //all of these values seem to be fixed at zero, at least for cheetah 5.5.1
       fHand.skipBytes(6-1)
-      //cheetah timestamp in microseconds, shifted from unsigned long range to regular Long range
+
+      //Cheetah timestamp for this record. This value is in microseconds.
       val qwTimeStamp: BigInt = fHand.readUInt64().toBigInt
       val nevent_id = fHand.readInt16()   //fHand.skipBytes(2)
       //Decimal TTL value read from the TTL input port
@@ -141,7 +142,7 @@ class FileAdapterNEV extends FileLoader with FileSaver with LoggingExt {
 
     val header = dataElem.header match {
       case x: NNHeaderNEV => x
-      case _ => new NNHeaderNEV()
+      case _ => ??? //new NNHeaderNEV()
     }
 
     val fileAdapter = new FileWriteNEV(new File(fileName), header)

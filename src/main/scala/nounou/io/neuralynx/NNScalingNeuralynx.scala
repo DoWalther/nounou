@@ -7,14 +7,15 @@ import nounou.elements.traits.NNScaling
   * This trait extends [[nounou.elements.traits.NNScaling]] to include
   * values <=> short conversion for writing to Neuralynx files.
   *
+  * @param unit The units of absolute measurements, i.e. µV)
+  * @param absolutePerShort multiply to internal Int16 quantity to obtain absolute µV
+  *
   */
 class NNScalingNeuralynx(override val unit: String, val absolutePerShort: Double) extends NNScaling(unit) {
 
   // <editor-fold defaultstate="collapsed" desc=" toString related ">
 
-  override def toStringImpl() = s"unit=${unit}"
-
-  override def toStringFullImpl() = ""
+  override def toStringImpl() = s"unit=${unit}, absolutePerShort=${absolutePerShort}"
 
   // </editor-fold>
 

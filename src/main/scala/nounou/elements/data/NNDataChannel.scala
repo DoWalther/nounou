@@ -85,7 +85,7 @@ trait NNDataChannel extends NNConcatenableElement
   override def isCompatible(that: NNElement): Boolean = {
     that match {
       case x: NNDataChannel => {
-        timing == timing && scale == x.scale
+        timing == timing && scaling == x.scaling
       }
       case _ => false
     }

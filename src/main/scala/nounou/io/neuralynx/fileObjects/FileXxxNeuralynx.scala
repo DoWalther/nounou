@@ -97,9 +97,12 @@ abstract class FileReadNeuralynx[T <: NNHeaderNeuralynx](override val file: File
 }
 
 /**Abstract class to write Neuralynx files.*/
-abstract class FileWriteNeuralynx(override val file: File) extends FileNeuralynx(file) {
+abstract class FileWriteNeuralynx(override val file: File, header: NNHeaderNeuralynx) extends FileNeuralynx(file) {
 
-  val handle: RandomAccessFile = new RandomAccessFile(file, "w")(ByteConverterLittleEndian)
+  val handle: RandomAccessFile = new RandomAccessFile(file, "rw")(ByteConverterLittleEndian)
+  handle.seek(0)
+  //handle.writeChars( header.getNeuralynxHeaderString() )
+  handle.writeUInt8( header.getNeuralynxHeaderString().toCharArray.map(_.toShort) )
 
 
 }

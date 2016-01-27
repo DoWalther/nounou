@@ -15,7 +15,10 @@ import nounou.elements.traits.NNConcatenableElement
   * @param channels number of channels
   * @param unitNo the classified unit of this spike. 0 indicates an unclassified unit.
   */
-class NNSpike(val timestamp: BigInt, val waveform: Vector[Double], val channels: Int, val unitNo: Long)
+class NNSpike(val timestamp: BigInt,
+              val waveform: Vector[Double],
+              val channels: Int,
+              val unitNo: Long)
   extends NNConcatenableElement {
 
   // <editor-fold defaultstate="collapsed" desc=" argument checks ">
