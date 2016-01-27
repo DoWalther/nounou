@@ -36,17 +36,23 @@ class NNRangeTsEvent(val triggerTs: BigInt, val startOffset: Int, val lastOffset
   override def getInstantiatedStep(nnTiming: NNTiming): Int = step
 
   override def getInstantiatedSegment(nnTiming: NNTiming): Int = {
-    frameSegmentBufferRefresh(nnTiming)
-    segmentBuffer
+//    frameSegmentBufferRefresh(nnTiming)
+//    segmentBuffer
+    nnTiming.convertTsToFrsg(triggerTs)._2
   }
 
   override final def getInstantiatedRange(nnTiming: NNTiming): NNRangeInstantiated = {
-    frameSegmentBufferRefresh(nnTiming)
-    new NNRangeInstantiated(triggerFrameBuffer + startOffset,
-                            triggerFrameBuffer + lastOffset,
-                            step,
-                            segmentBuffer)
-  }
+    //frameSegmentBufferRefresh(nnTiming)
+    val triggerFrsg = nnTiming.convertTsToFrsg(triggerTs)
+    new NNRangeInstantiated( triggerFrsg._1 + startOffset,
+                             triggerFrsg._1 + lastOffset,
+                             step,
+                             triggerFrsg._2 )
+//      triggerFrameBuffer + startOffset,
+  //                            triggerFrameBuffer + lastOffset,
+  //                            step,
+  //                            segmentBuffer)
+}
 
   override final def getValidRange(nnTiming: NNTiming): NNRangeValid =
     getInstantiatedRange(nnTiming).getValidRange(nnTiming)
@@ -55,18 +61,18 @@ class NNRangeTsEvent(val triggerTs: BigInt, val startOffset: Int, val lastOffset
   // frameSegmentBuffer related
   ///////////////////////////////////////////////////////////////////////////
 
-  protected var timingBuffer: NNTiming = null
-  protected var segmentBuffer = -1
-  protected var triggerFrameBuffer = -1
-
-  protected def frameSegmentBufferRefresh(nnTiming: NNTiming): Unit = {
-    if( timingBuffer != nnTiming || segmentBuffer == -1) {
-      timingBuffer = nnTiming
-      val temp = nnTiming.convertTsToFrsg(triggerTs)
-      triggerFrameBuffer = temp._1
-      segmentBuffer = temp._2
-    }
-  }
+//  protected var timingBuffer: NNTiming = null
+//  protected var segmentBuffer = -1
+//  protected var triggerFrameBuffer = -1
+//
+//  protected def frameSegmentBufferRefresh(nnTiming: NNTiming): Unit = {
+//    if( timingBuffer != nnTiming || segmentBuffer == -1) {
+//      timingBuffer = nnTiming
+//      val temp = nnTiming.convertTsToFrsg(triggerTs)
+//      triggerFrameBuffer = temp._1
+//      segmentBuffer = temp._2
+//    }
+//  }
 
 
 }

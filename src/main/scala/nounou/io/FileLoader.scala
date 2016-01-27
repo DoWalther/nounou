@@ -60,6 +60,7 @@ object FileLoader extends LoggingExt {
 
   final def load(fileNames: Array[String]): Array[NNElement] = {
 
+    //???Cannot parallelize the following during tests?
     var tempElements = fileNames.flatMap( load(_) ).toVector
 
     //filters out NNDataChannel objects and joins them into one NNData if they are compatible

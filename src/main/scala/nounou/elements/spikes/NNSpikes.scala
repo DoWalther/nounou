@@ -1,19 +1,20 @@
 package nounou.elements.spikes
 
 import java.math.BigInteger
-import nounou.{NN, Opt}
+import nounou.{NN}
 import nounou.analysis.spikes.OptWaveformFr
 import nounou.elements.data.NNData
 import nounou.elements.traits.{NNScalingElement, NNConcatenableElement, NNTimingElement, NNTiming}
 import nounou.elements.NNElement
+import nounou.options.Opt
 import nounou.util.LoggingExt
 
 import scala.collection.mutable.TreeSet
 
 object NNSpikes extends LoggingExt {
 
-  def apply(data: NNData, frames: Array[Int], channel: Int, segment: Int, opts: Opt*): NNSpikes =
-    apply(data, frames.map( (fr: Int) => (fr, segment) ), Array(channel), opts: _*)
+//  def apply(data: NNData, frames: Array[Int], channel: Int, segment: Int, opts: Opt*): NNSpikes =
+//    apply(data, frames.map( (fr: Int) => (fr, segment) ), Array(channel), opts: _*)
 
   def apply(data: NNData, timestamps: Array[BigInt], channel: Int, opts: Opt*): NNSpikes =
     apply(data, timestamps.map( (ts: BigInt) => data.timing.convertTsToFrsg(ts) ), Array(channel), opts: _*)

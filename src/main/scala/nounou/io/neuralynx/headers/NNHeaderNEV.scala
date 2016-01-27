@@ -6,7 +6,7 @@ import nounou.io.neuralynx.fileObjects.FileNEV
   * Created by ktakagaki on 15/11/24.
   */
 class NNHeaderNEV(override val originalHeaderText: String)
-  extends NNHeaderNeuralynx(originalHeaderText) {
+  extends NNHeaderNeuralynxRead(originalHeaderText) {
 
   def this() = this("")
 

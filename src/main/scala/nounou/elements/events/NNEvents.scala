@@ -90,7 +90,7 @@ class NNEvents extends NNConcatenableElement {
 
   // </editor-fold>
 
-  // <editor-fold defaultstate="collapsed" desc=" read data contents ">
+  // <editor-fold defaultstate="collapsed" desc=" readPortEventArrayXXX ">
 
   def readPortEventArray(): Array[(Int, NNEvent)] = readPortEventArray( true )
 
@@ -106,17 +106,26 @@ class NNEvents extends NNConcatenableElement {
   }
 
   //ToDo 2: Expand the following for expandDuration?
-  def readPortCodeArray( port: Int ): Array[Int] = getPort(port).toArray.map( _.code )
+  def readPortEventArrayCodes(port: Int ): Array[Int] = getPort(port).toArray.map( _.code )
 
-  def readPortTimestampArray( port: Int ): Array[BigInteger] =
+  def readPortEventArrayTimestamp(port: Int ): Array[BigInteger] =
     getPort(port).toArray.map((e: NNEvent) => e.timestamp.bigInteger )
 
-  def readPortDurationArray( port: Int ): Array[BigInteger] =
+  def readPortEventArrayDuration(port: Int ): Array[BigInteger] =
     getPort(port).toArray.map((e: NNEvent) => e.duration.bigInteger )
 
-  def readPortCommentArray(port: Int): Array[String] = getPort(port).toArray.map( _.comment )
+  def readPortEventArrayComments(port: Int): Array[String] = getPort(port).toArray.map( _.comment )
 
   // </editor-fold>
+
+  // <editor-fold defaultstate="collapsed" desc=" readPortCodeEventArray ">
+
+  def readPortCodeEventArray( port: Int, code: Int): Array[Array[BigInteger]] = {
+    getPortFilteredByCode(port, code).toArray.map( (e: NNEvent) => Array( e.timestamp.bigInteger, e.duration.bigInteger ) )
+  }
+
+  // </editor-fold>
+
 
   // <editor-fold defaultstate="collapsed" desc=" expandZeroEvents ">
 

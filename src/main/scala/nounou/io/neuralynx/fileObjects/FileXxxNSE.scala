@@ -1,7 +1,7 @@
 package nounou.io.neuralynx.fileObjects
 
 import java.io.File
-import nounou.io.neuralynx.headers.{NNHeaderNSE}
+import nounou.io.neuralynx.headers.{NNHeaderNSERead, NNHeaderNSE}
 
 /**
   * Information and constants regarding Neuralynx NCS files in general.
@@ -24,7 +24,7 @@ class FileReadNSE(file: File) extends FileReadNeuralynx[NNHeaderNSE](file) with 
   //The following lazy initialization done by hand to avoid var/val initialization order issues
   override final var _header: NNHeaderNSE = null
   override def header(): NNHeaderNSE = {
-    if (_header == null) _header = new NNHeaderNSE(originalHeaderText)
+    if (_header == null) _header = new NNHeaderNSERead(originalHeaderText)
     _header
   }
 

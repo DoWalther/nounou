@@ -2,17 +2,19 @@ package nounou.elements.data.filters
 
 import breeze.linalg.DenseVector
 import nounou.elements.data.NNData
-import nounou.ranges.NNRangeValid
+import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
 import nounou.elements.traits.NNTiming
 
 import scala.collection.mutable.{ArrayBuffer, WeakHashMap}
 
 
-//ToDo: HashMap to Int or Long Hash key
-//ToDo: parallelize?
-//ToDo: anticipate?
+//ToDo 1: Debug!!!
+//ToDo 3: HashMap to Int or Long Hash key
+//ToDo 4: parallelize?
+//ToDo 4: anticipate?
 
-/** Buffer filter, which will save intermediate calculation results for an XData object.
+/**
+  * Buffer filter, which will save intermediate calculation results for an XData object.
   */
 class NNFilterBuffer(private var _parent: NNData ) extends NNFilter(_parent) {
 
@@ -86,27 +88,29 @@ class NNFilterBuffer(private var _parent: NNData ) extends NNFilter(_parent) {
     loggerRequire(channel<maxChannel, "Cannot buffer more than {} channels!", maxChannel.toString)
     loggerRequire(range.segment<maxSegment, "Cannot buffer more than {} segments!", maxSegment.toString)
 
-      //val totalLength = segmentLengths(segment)
-//        val tempret = ArrayBuffer[Int]()
-//          tempret.sizeHint(range.length )
-      var tempret: DenseVector[Double] = DenseVector[Double]()//Array[Int] = null
-      val startPage =  getBufferPage( range.start)
-      val startIndex = getBufferIndex(range.start)
+      val startPage =  getBufferPage( range.start )
+      val startIndex = getBufferIndex( range.start )
       val endPage =    getBufferPage( range.last )
-      val endIndex =   getBufferIndex(range.last )
+      val endIndex =   getBufferIndex( range.last )
 
       if(startPage == endPage) {
         //if only one buffer page is involved...
-        tempret = buffer( bufferHashKey(channel, startPage, range.segment) ).slice(startIndex, endIndex + 1)
+        buffer( bufferHashKey(channel, startPage, range.segment) ).slice(startIndex, endIndex + range.step, range.step)
 
       } else {
+
+        //ToDo 3: buffer for step !=1 differently?
+
         //if more than one buffer page is involved...
-        tempret = DenseVector( new Array[Double](range.length) )  //initialize return array
+        val tempret = DenseVector( new Array[Double](
+          new NNRangeInstantiated(range.start, range.last, step = 1, range.segment).length
+        ) )  //initialize return array, with step = 1!!!
         var currentIndex = 0 //index within tempret
 
-        //deal with startPage separately... startPage will run to end
+        //first, deal with startPage separately... startPage will always run to end given startPage != endPage
         var increment = (bufferPageLength-startIndex)
-        tempret(currentIndex until currentIndex + increment ) := buffer( bufferHashKey(channel, startPage, range.segment) ).slice(startIndex, bufferPageLength)
+        tempret(currentIndex until currentIndex + increment ) :=
+                      buffer( bufferHashKey(channel, startPage, range.segment) ).slice(startIndex, bufferPageLength)
         currentIndex += increment
 
         var page = startPage + 1
@@ -114,7 +118,8 @@ class NNFilterBuffer(private var _parent: NNData ) extends NNFilter(_parent) {
         //read full pages until right before endPage
         increment = bufferPageLength
         while( page < endPage ) {
-          tempret(currentIndex until currentIndex + increment) := buffer(bufferHashKey(channel, page, range.segment)).slice(0, bufferPageLength)
+          tempret(currentIndex until currentIndex + increment) :=
+                      buffer(bufferHashKey(channel, page, range.segment)).slice(0, bufferPageLength)
           currentIndex += increment
           page += 1
         }
@@ -122,11 +127,11 @@ class NNFilterBuffer(private var _parent: NNData ) extends NNFilter(_parent) {
         //deal with endPage separately
         increment = endIndex + 1
         tempret(currentIndex until currentIndex + increment ) :=
-          buffer( bufferHashKey(channel, endPage, range.segment) ).slice(0, increment)
+                      buffer( bufferHashKey(channel, endPage, range.segment) ).slice(0, increment)
 
+        tempret(0 until tempret.length by range.step)
       }
 
-    tempret
   }
 
   // </editor-fold>
@@ -137,10 +142,13 @@ class NNFilterBuffer(private var _parent: NNData ) extends NNFilter(_parent) {
   //redirection function to deal with scope issues regarding super
   private def tempTraceReader(ch: Int, rangeFrValid: NNRangeValid) = _parent.readTraceDVImpl(ch, rangeFrValid)
 
-  class ReadingHashMapBuffer extends WeakHashMap[Long, DenseVector[Double]] {
+  /**
+    * This class implements a WeakHashMap that allows loading if the relevant key is not present
+    */
+  private class ReadingHashMapBuffer extends WeakHashMap[Long, DenseVector[Double]] {
 
     //do not use applyOrElse!
-    override def apply( key: Long  ): DenseVector[Double] = {
+    override def apply( key: Long ): DenseVector[Double] = {
       val index = garbageQue.indexOf( key )
       if( index == -1 ){
         if(garbageQue.size >= garbageQueBound ){
@@ -158,8 +166,13 @@ class NNFilterBuffer(private var _parent: NNData ) extends NNFilter(_parent) {
 
     override def default( key: Long  ): DenseVector[Double] = {
       val startFrame = bufferHashKeyToPage(key) * bufferPageLength
-      val endFramePlusOne: Int = scala.math.min( startFrame + bufferPageLength, timing.segmentLength( bufferHashKeyToSegment(key) ) )
-      val returnValue = tempTraceReader( bufferHashKeyToChannel(key), new NNRangeValid(startFrame, endFramePlusOne-1, 1, bufferHashKeyToSegment(key))  )
+      val endFramePlusOne: Int =
+        scala.math.min( startFrame + bufferPageLength, timing.segmentLength( bufferHashKeyToSegment(key) ) )
+      val returnValue =
+        tempTraceReader(
+            bufferHashKeyToChannel(key),
+            new NNRangeValid(startFrame, endFramePlusOne-1, 1, bufferHashKeyToSegment(key))
+        )
       this.+=( key -> returnValue )
       returnValue
     }

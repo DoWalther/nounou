@@ -5,7 +5,7 @@ import nounou.elements.traits.NNTiming
 
 class NNRangeAll(val step: Int, val segment: Int) extends NNRangeSpecifier {
 
-  override def toString() = s"RangeFrAll(step=$step, segment=$segment)"
+  override def toString() = s"NNRangeAll(step=$step, segment=$segment)"
   override final def getInstantiatedSegment(xDataTiming: NNTiming) = xDataTiming.getRealSegment(segment)
 
   override final def getInstantiatedStep(xFrames: NNTiming): Int = {

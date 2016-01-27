@@ -1,6 +1,6 @@
 package nounou.analysis
 
-import nounou.NN.OptThresholdBlackout
+import nounou.options._
 import org.scalatest.FunSuite
 
 /**
@@ -14,11 +14,11 @@ class thresholdTest  extends FunSuite {
   test01(8) = 100d
 
   test("threshold"){
-    assert( threshold( test01, 50 ).toList == List(2,4,8) )
-    assert( threshold( test01, 100 ).toList == List(2,4,8) )
-    assert( threshold( test01, 50, OptThresholdBlackout(3) ).toList == List(2,8) )
-    assert( threshold( test01, 50, OptThresholdBlackout(2) ).toList == List(2,8) )
-    assert( threshold( test01, 50, OptThresholdBlackout(1) ).toList == List(2,4,8) )
+    assert( Threshold( test01, 50 ).toList == List(2,4,8) )
+    assert( Threshold( test01, 100 ).toList == List(2,4,8) )
+    assert( Threshold( test01, 50, OptBlackout(3) ).toList == List(2,8) )
+    assert( Threshold( test01, 50, OptBlackout(2) ).toList == List(2,8) )
+    assert( Threshold( test01, 50, OptBlackout(1) ).toList == List(2,4,8) )
   }
 
 }
