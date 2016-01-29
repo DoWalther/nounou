@@ -36,3 +36,5 @@ resolvers ++= Seq(
 //test in assembly := {}
 
 //settings = standardSettings ++ SbtOneJar.oneJarSettings
+
+unmanagedBase <<= baseDirectory {base => base/"lib"}
