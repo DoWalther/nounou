@@ -65,4 +65,5 @@ package object util {
   def leftPadSpace(string: String, len: Int) = string.reverse.padTo(len, " ").reverse.mkString
   def leftPadZero(string: String, len: Int) = string.reverse.padTo(len, "0").reverse.mkString
 
+  def toSeq[T](array: Array[T]): Seq[T] = array.toSeq
 }

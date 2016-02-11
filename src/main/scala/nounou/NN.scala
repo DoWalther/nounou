@@ -3,12 +3,19 @@ package nounou
 import breeze.linalg.DenseVector
 import breeze.numerics.sin
 import java.math.BigInteger
+import nounou.Options.{AlignmentPoint, WaveformFrames}
+import nounou.analysis.spikes.OptSpikeDetect
 import nounou.elements.NNElement
-import nounou.elements.data.NNData
+import nounou.elements.data.{NNDataChannel, NNData}
 import nounou.elements.data.filters.NNFilterMedianSubtract
+import nounou.elements.spikes.{OptReadSpikes, NNSpikes}
+import nounou.options.Opt
 import nounou.ranges._
 import nounou.io.{FileLoader, FileSaver}
 import nounou.util.{LoggingExt, NNGit}
+
+import scala.collection.mutable.ArrayBuffer
+import scala.reflect.ClassTag
 
 
 /** The static convenience frontend to use all main functionality of nounou from Mathematica/MatLab/Java
@@ -30,15 +37,31 @@ object NN extends LoggingExt {
   /**Test method for DW*/
   final def testArray(): Array[Double] = sin( breeze.linalg.DenseVector.tabulate(100)( _.toDouble/50d * 2d * math.Pi )).toArray
 
+  // <editor-fold defaultstate="collapsed" desc=" convert array of options ">
+
+  def convertOpt[T <: Opt]( arr: Array[Opt] )(implicit tag: ClassTag[T]): Array[T] = {
+    val tempReturn = ArrayBuffer[T]()
+    arr.foreach( (o: Opt) => o match {
+      case x: T => tempReturn.+=( x )
+      case _ => throw loggerError(s"incompatible option $o was given!")
+      }
+    )
+    tempReturn.toArray
+  }
+
+  // </editor-fold>
+
   // <editor-fold defaultstate="collapsed" desc=" file loading/saving ">
 
   /**Load a file into appropriate subtypes of [[nounou.elements.NNElement]]
+    *
     * @return an array of [[nounou.elements.NNElement]] objects
     */
   final def load(fileName: String): Array[NNElement] = FileLoader.load(fileName)
   /**Load a list of files into appropriate subtypes of [[nounou.elements.NNElement]].
     * If multiple files are compatible (e.g. multiple Neuralynx channel data files with compatible timings),
     * they will be joined.
+    *
     * @return an array of [[nounou.elements.NNElement]] objects
     */
   final def load(fileNames: Array[String]): Array[NNElement] = FileLoader.load(fileNames)
@@ -56,8 +79,7 @@ object NN extends LoggingExt {
 
   // </editor-fold>
 
-
-  // <editor-fold defaultstate="collapsed" desc=" Range specifications ">
+  // <editor-fold defaultstate="collapsed" desc=" NNRangeSpecifier related ">
 
     // <editor-fold defaultstate="collapsed" desc=" NNRange ">
 
@@ -67,45 +89,16 @@ object NN extends LoggingExt {
     final def NNRange(start: Int, last: Int, step: Int, segment: Int) = new NNRange(start, last, step, segment)
 
   //The following two to be used internally only:
-  //  final def NNRangeInstantiated(start: Int, last: Int, step: Int, segment: Int) = new SampleRangeInstantiated(start, last, step, segment)
-  //  final def NNRangeValid(start: Int, last: Int, step: Int, segment: Int) = new SampleRangeValid(start, last, step, segment)
+  //  final def NNRangeInstantiated(start: Int, last: Int, step: Int, segment: Int) = new NNRangeInstantiated(start, last, step, segment)
+  //  final def NNRangeValid(start: Int, last: Int, step: Int, segment: Int) = new NNRangeValid(start, last, step, segment)
 
   //The following are deprecated due to the ambiguity between step and segment variables
-  //  final def NNRangeRange(start: Int, last: Int, step: Int)               = new SampleRange(start, last, step, -1)
-  //  final def NNRangeRange(start: Int, last: Int, segment: Int)            = new SampleRange(start, last, -1,   segment)
-  //  final def NNRangeRange(start: Int, last: Int)                          = new SampleRange(start,    last,     -1,       -1)
+  //  final def NNRange(start: Int, last: Int, step: Int)               = new NNRange(start, last, step, -1)
+  //  final def NNRange(start: Int, last: Int, segment: Int)            = new NNRange(start, last, -1,   segment)
+  //  final def NNRange(start: Int, last: Int)                          = new NNRange(start,    last,     -1,       -1)
 
 
     // <editor-fold defaultstate="collapsed" desc=" array based aliases for SampleRange ">
-
-    //  /** Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
-    //    *
-    //    * @param range Tuple containing start and end. segment=-1 is assumed.
-    //    */
-    //  final def SampleRange( range: (Int, Int) )                            = new SampleRange(start = range._1, last = range._2, step = -1, segment = -1)
-    //
-    //  /**
-    //    * Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
-    //    *
-    //    * @param range Tuple containing start and end.
-    //    * @param segment Which segment to read from
-    //    */
-    //  final def SampleRange( range: (Int, Int), segment: Int)               = new SampleRange(start = range._1, last = range._2, step = -1, segment)
-    //
-    //  /**
-    //    * Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
-    //    *
-    //    * @param range Tuple containing start, end, and step. segment=-1 is assumed.
-    //    */
-    //  final def SampleRange( range: (Int, Int, Int) )                       = new SampleRange(start = range._1, last = range._2, step = range._3, segment = -1)
-    //
-    //  /**
-    //    * Scala Tuple-based signature alias for [[SampleRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
-    //    *
-    //    * @param range Tuple containing start, end, and step
-    //    * @param segment Which segment to read from
-    //    */
-    //  final def SampleRange( range: (Int, Int, Int), segment: Int )         = new SampleRange(start = range._1, last = range._2, step = range._3, segment)
 
     /**
       * Java Array-based signature alias for [[NNRange(start:Int,last:Int,step:Int,segment:Int* SampleRange(start: Int, last: Int, step: Int, segment: Int)]]
@@ -137,7 +130,7 @@ object NN extends LoggingExt {
 
     // </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc=" RangeTs ">
+    // <editor-fold defaultstate="collapsed" desc=" NNRangeTs ">
 
     /**
       * This is the full signature for creating a [[nounou.ranges.NNRangeTs SampleRangeTs]].
@@ -152,6 +145,8 @@ object NN extends LoggingExt {
 
     // <editor-fold defaultstate="collapsed" desc=" NNRangeTsEvent ">
 
+  final def NNRangeTsEvent(triggerTs: BigInteger, startOffset: Int, lastOffset: Int): NNRangeTsEvent =
+    new NNRangeTsEvent(BigInt( triggerTs ), startOffset, lastOffset, 1)
   final def NNRangeTsEvent(triggerTs: BigInteger, startOffset: Int, lastOffset: Int, step: Int): NNRangeTsEvent =
     new NNRangeTsEvent(BigInt( triggerTs ), startOffset, lastOffset, step)
 
@@ -159,12 +154,58 @@ object NN extends LoggingExt {
 
   // </editor-fold>
 
+//  def readSpikes(data: NNData, timestamps: Array[BigInteger], channel: Int): NNSpikes = {
+//    NNSpikes.readSpikes(data, timestamps, channel )
+//  }
+//  def readSpikes(data: NNData, timestamps: Array[BigInteger], channels: Array[Int]): NNSpikes = {
+//    NNSpikes.readSpikes(data, timestamps, channels)
+//  }
+//  def readSpikes(dataChannel: NNDataChannel , timestamps: Array[BigInteger]): NNSpikes = {
+//    NNSpikes.readSpikes(dataChannel, timestamps)
+//  }
+  def readSpikes(data: NNData, timestamps: Array[BigInteger], channel: Int,
+                 waveformFrames: Int, alignmentPoint: Int): NNSpikes = {
+    NNSpikes.readSpikes(data, timestamps, channel, WaveformFrames(waveformFrames), AlignmentPoint(alignmentPoint))
+  }
+  def readSpikes(data: NNData, timestamps: Array[BigInteger], channels: Array[Int],
+                 waveformFrames: Int, alignmentPoint: Int): NNSpikes = {
+    NNSpikes.readSpikes(data, timestamps, channels, WaveformFrames(waveformFrames), AlignmentPoint(alignmentPoint) )
+  }
+  def readSpikes(dataChannel: NNDataChannel , timestamps: Array[BigInteger],
+                 waveformFrames: Int, alignmentPoint: Int): NNSpikes = {
+    NNSpikes.readSpikes(dataChannel, timestamps, WaveformFrames(waveformFrames), AlignmentPoint(alignmentPoint) )
+  }
+
+  def readSpikes(data: NNData, timestamps: Array[BigInteger], channel: Int, opts: OptReadSpikes*): NNSpikes = {
+    NNSpikes.readSpikes(data, timestamps, channel, opts: _* )
+  }
+  def readSpikes(data: NNData, timestamps: Array[BigInteger], channels: Array[Int], opts: OptReadSpikes*): NNSpikes = {
+    NNSpikes.readSpikes(data, timestamps, channels, opts: _* )
+  }
+  def readSpikes(dataChannel: NNDataChannel , timestamps: Array[BigInteger], opts: OptReadSpikes*): NNSpikes = {
+    NNSpikes.readSpikes(dataChannel, timestamps, opts: _* )
+  }
+
 
   // <editor-fold defaultstate="collapsed" desc=" Analysis ">
 
-//  def spikeDetect(data: Array[Double], medianFactor: Double, peakWindow: Int): Array[Int]
-//    = nounou.analysis.spikes.SpikeDetect(data, medianFactor, peakWindow)
+  // <editor-fold defaultstate="collapsed" desc="  spikeDetect ">
 
+  def spikeDetect(data: Array[Double], opts: OptSpikeDetect*): Array[Int] =
+    nounou.analysis.spikes.SpikeDetect(data, opts: _*)
+
+  def spikeDetect(data: NNData,
+                  range: NNRangeSpecifier,
+                  channel: Int,
+                  opts: OptSpikeDetect*): Array[BigInteger] =
+    nounou.analysis.spikes.SpikeDetect(data, range, channel, opts: _*)
+
+  def spikeDetect(dataChannel: NNDataChannel,
+                  range: NNRangeSpecifier,
+                  opts: OptSpikeDetect*) =
+    nounou.analysis.spikes.SpikeDetect.apply(dataChannel, range, opts: _*)
+
+  // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" filters ">
 
@@ -172,6 +213,7 @@ object NN extends LoggingExt {
 
   // </editor-fold>
 
+  // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" toArray methods ">
 
@@ -181,10 +223,6 @@ object NN extends LoggingExt {
 
   // </editor-fold>
 
-//  def readSpikes(xData: XData, channels: Array[Int], xFrames: Array[Frame], length: Int, trigger: Int) =
-//    data.XSpike.readSpikes(xData, channels, xFrames, length, trigger)
-//  def readSpike(xData: XData, channels: Array[Int], xFrame: Frame, length: Int, trigger: Int) =
-//    data.XSpike.readSpike(xData, channels, xFrame, length, trigger)
 
 //
 //  //final def XTrodes( trodeGroup: Array[Array[Int]] ): XTrodes = data.XTrodes( trodeGroup )
@@ -192,8 +230,3 @@ object NN extends LoggingExt {
 
 
 }
-
-
-
-//final def XSpikes(waveformLength: Int, xTrodes: XTrodes ) = new XSpikes(waveformLength, xTrodes)
-//  final def newNNData: NNData = new NNData

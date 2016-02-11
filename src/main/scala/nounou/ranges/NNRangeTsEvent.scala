@@ -3,7 +3,7 @@ package nounou.ranges
 import nounou.elements.traits.NNTiming
 
 
-/**Encapsulates a range based on one trigger Ts (timestamp in BigInt), with an event range specified with frames,
+/** Encapsulates a range based on one trigger Ts (timestamp in BigInt), with an event range specified with frames,
   * before and after the trigger Ts.
   *
   * Programming note: this class closely mirrors NNRangeEvent, so repeat yourself for any changes
@@ -36,8 +36,6 @@ class NNRangeTsEvent(val triggerTs: BigInt, val startOffset: Int, val lastOffset
   override def getInstantiatedStep(nnTiming: NNTiming): Int = step
 
   override def getInstantiatedSegment(nnTiming: NNTiming): Int = {
-//    frameSegmentBufferRefresh(nnTiming)
-//    segmentBuffer
     nnTiming.convertTsToFrsg(triggerTs)._2
   }
 
@@ -46,12 +44,8 @@ class NNRangeTsEvent(val triggerTs: BigInt, val startOffset: Int, val lastOffset
     val triggerFrsg = nnTiming.convertTsToFrsg(triggerTs)
     new NNRangeInstantiated( triggerFrsg._1 + startOffset,
                              triggerFrsg._1 + lastOffset,
-                             step,
+                             getInstantiatedStep( nnTiming ),
                              triggerFrsg._2 )
-//      triggerFrameBuffer + startOffset,
-  //                            triggerFrameBuffer + lastOffset,
-  //                            step,
-  //                            segmentBuffer)
 }
 
   override final def getValidRange(nnTiming: NNTiming): NNRangeValid =

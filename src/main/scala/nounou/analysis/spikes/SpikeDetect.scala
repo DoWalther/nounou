@@ -1,31 +1,24 @@
 package nounou.analysis.spikes
 
-import java.math.BigInteger
-
 import breeze.linalg.DenseVector
 import breeze.numerics.abs
 import breeze.stats.median
 
+import java.math.BigInteger
+
+import nounou.NNOpt.AlignmentPoint
+import nounou.NNOpt.{BlackoutFrames, AlignmentPoint, WaveformFrames}
+import nounou.Options.{BlackoutFrames, AlignmentPoint, WaveformFrames, MedianSDThresholdPeak}
 import nounou.options._
-import nounou.analysis.{ThresholdOpt, Threshold}
+import nounou.analysis.{Threshold}
 import nounou.elements.data.{NNDataChannel, NNData}
-import nounou.elements.spikes.NNSpikes
-import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
+import nounou.elements.spikes.{OptReadSpikes, NNSpikes}
+import nounou.ranges.{NNRangeInstantiated, NNRangeSpecifier, NNRangeValid}
 import nounou.util.LoggingExt
 
 import scala.collection.mutable.ArrayBuffer
 
-// <editor-fold defaultstate="collapsed" desc=" options ">
-
-trait SpikeDetectOpt extends Opt
-
-object OptSpikeDetectMethod extends SpikeDetectOpt {
-
-  case object MedianSDThresoldPeak
-
-}
-
-// </editor-fold>
+trait OptSpikeDetect extends Opt
 
 /**
   * @author ktakagaki
@@ -33,16 +26,44 @@ object OptSpikeDetectMethod extends SpikeDetectOpt {
 object SpikeDetect extends LoggingExt
   with OptHandler {
 
-//  def apply(data: Array[Double], opts: SpikeDetectOpt*): Array[Int] = {
-//    val optMethod: OptSpikeDetectMethod =
-//      readOptObject[OptSpikeDetectMethod](opts, OptSpikeDetectMethodMEDIANSDTHRESHOLDPEAK)
-//    optMethod match {
-//      case m: OptSpikeDetectMethodMEDIANSDTHRESHOLDPEAK =>{
-//        val optMedianFactor = readOptDouble
-//        medianSDThresholdPeakDetect()
-//      }
-//    }
-//  }
+  def apply(data: Array[Double], opts: OptSpikeDetect*): Array[Int] = {
+    val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
+    optMethod match {
+      case MedianSDThresholdPeak =>{
+        val optMedianFactor = readOptDouble(opts, 3)
+        val optPeakWindow = readOptInt(opts, 32)
+        medianSDThresholdPeakDetect(data, optMedianFactor, optPeakWindow)
+      }
+      case _ => throw loggerError(s"option method $optMethod is not valid")
+    }
+  }
+
+  def apply(data: NNData,
+            range: NNRangeSpecifier,
+            channel: Int,
+            opts: OptSpikeDetect*): Array[BigInteger] = {
+    val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
+    optMethod match {
+      case MedianSDThresholdPeak =>{
+        val optMedianFactor = readOptDouble(opts, 3)
+        val optPeakWindow = readOptInt(opts, 32)
+        medianSDThresholdPeakDetect(data, range, channel, optMedianFactor, optPeakWindow)
+      }
+    }
+  }
+
+  def apply(dataChannel: NNDataChannel,
+            range: NNRangeSpecifier,
+            opts: OptSpikeDetect*): Array[BigInteger] = {
+    val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
+    optMethod match {
+      case MedianSDThresholdPeak =>{
+        val optMedianFactor = readOptDouble(opts, 3)
+        val optPeakWindow = readOptInt(opts, 32)
+        medianSDThresholdPeakDetect(dataChannel, range, optMedianFactor, optPeakWindow)
+      }
+    }
+  }
 
   // <editor-fold defaultstate="collapsed" desc=" medianSDThresholdPeakDetect ">
 
@@ -65,12 +86,57 @@ object SpikeDetect extends LoggingExt
     tempret.toArray
   }
 
+  def medianSDThresholdPeakDetect(data: NNData,
+                                  range: NNRangeSpecifier,
+                                  channel: Int,
+                                  medianFactor: Double,
+                                  peakWindow: Int): Array[BigInteger] = {
+
+    //split range up for calculation
+    val rangesInstantiated = range.getInstantiatedRange(data).split(320000, 64).toSet
+
+    rangesInstantiated.flatMap(
+      (r: NNRangeInstantiated) => {
+        val tempFrames = medianSDThresholdPeakDetect(data.readTrace(channel, r), medianFactor, peakWindow)
+        tempFrames.map( (frame: Int) =>
+                            data.timing().convertFrsgToTs(
+                                                  r.start + frame,
+                                                  r.segment
+                                                         ).bigInteger
+        )
+      }
+    ).toArray.sorted
+
+  }
+
   def medianSDThresholdPeakDetect(dataChannel: NNDataChannel,
                                   range: NNRangeSpecifier,
                                   medianFactor: Double,
                                   peakWindow: Int): Array[BigInteger] = {
-    val tempFrameArray = medianSDThresholdPeakDetect( dataChannel.readTrace(range), medianFactor, peakWindow )
-    tempFrameArray.map( dataChannel.timing().convertFrsgToTs(_, range.getInstantiatedSegment(dataChannel)).bigInteger)
+    //split range up for calculation
+    val rangesInstantiated = range.getInstantiatedRange(dataChannel).split(3200000, 64).toSet
+
+    rangesInstantiated.flatMap(
+      (r: NNRangeInstantiated) => {
+        val tempFrames = medianSDThresholdPeakDetect(dataChannel.readTrace(r), medianFactor, peakWindow)
+        tempFrames.map( (frame: Int) =>
+          dataChannel.timing().convertFrsgToTs(
+            r.start + frame,
+            r.segment
+          ).bigInteger
+        )
+      }
+    ).toArray.sorted
+
+    //    val tempFrameArray = medianSDThresholdPeakDetect( dataChannel.readTrace(range), medianFactor, peakWindow )
+//    val rangeInstantiated = range.getInstantiatedRange(dataChannel)
+//    tempFrameArray.map(
+//      (frame: Int) =>
+//        dataChannel.timing().convertFrsgToTs(
+//          rangeInstantiated.start + frame,
+//          rangeInstantiated.segment
+//        ).bigInteger
+//    )
   }
 
   // <editor-fold defaultstate="collapsed" desc=" impl ">
@@ -97,32 +163,32 @@ object SpikeDetect extends LoggingExt
   def thresholdSpikes(data: NNData,
                       channels: Array[Int],
                       frameRange: NNRangeSpecifier,
-                      opts: Opt*): NNSpikes = {
+                      opts: OptReadSpikes*): NNSpikes = {
 
     // <editor-fold defaultstate="collapsed" desc=" Option handling ">
 
-    var optWaveformFr = 32
+    var optWaveformFrames = 32
     var optAlignmentPoint  = 8
-    var optBlackoutFr = 16
+    var optBlackoutFrames = 16
 
     for( opt <- opts ) opt match {
-      case OptWaveformFr(frames: Int) => optWaveformFr = frames
-      case OptAlignmentPoint(frames: Int) => optAlignmentPoint = frames
-      case OptBlackoutFr(frames: Int) => optBlackoutFr = frames
+      case WaveformFrames(frames: Int) => optWaveformFrames = frames
+      case AlignmentPoint(frames: Int) => optAlignmentPoint = frames
+      case BlackoutFrames(frames: Int) => optBlackoutFrames = frames
       case _ => {}
     }
 
-    val tempPosttriggerFr = optWaveformFr -optAlignmentPoint -1
-    loggerRequire( tempPosttriggerFr >=0, s"OptWaveformFr ($optWaveformFr) must be strictly larger than OptPretriggerFr ($optAlignmentPoint)!")
+    val tempPosttriggerFr = optWaveformFrames -optAlignmentPoint -1
+    loggerRequire( tempPosttriggerFr >=0, s"OptWaveformFr ($optWaveformFrames) must be strictly larger than OptPretriggerFr ($optAlignmentPoint)!")
 
     // </editor-fold>
 
-    val pooledSpikes: NNSpikes = new NNSpikes(optAlignmentPoint)
+    val pooledSpikes: NNSpikes = new NNSpikes(optAlignmentPoint, scaling = data, timing = data)
     for( ch <- channels ){
       pooledSpikes.add( spikeThresholdAbsMedianImpl(data, ch, frameRange,  opts: _*) )
     }
 
-    val filteredSpikes: NNSpikes = new NNSpikes(optAlignmentPoint)
+    val filteredSpikes: NNSpikes = new NNSpikes(optAlignmentPoint, scaling = data, timing = data)
     var iterator = pooledSpikes.iterator()
     //If there is at least 1 spike in pooledSpikes
     if( iterator.hasNext ){
@@ -132,7 +198,7 @@ object SpikeDetect extends LoggingExt
         val nextSpike = iterator.next
 
         //If the spike is within the blackout range from the previous spike
-        if( nextSpike.timestamp - lastSpike.timestamp < optBlackoutFr){
+        if( nextSpike.timestamp - lastSpike.timestamp < optBlackoutFrames){
           //compare absolute maxima, and advance marker without recording if higher
           if( nextSpike.waveformAbsMax > lastSpike.waveformAbsMax){
             lastSpike = nextSpike
@@ -146,7 +212,7 @@ object SpikeDetect extends LoggingExt
       }
     }
     val filteredTimestamps: Array[BigInt] = filteredSpikes.readSpikeTimestamps().map( BigInt(_) )
-    NNSpikes( data, filteredTimestamps, channels, opts: _* )
+    NNSpikes.readSpikes( data, filteredTimestamps, channels, opts: _* )
 
   }
 
@@ -167,7 +233,7 @@ object SpikeDetect extends LoggingExt
       case OptDetectionWindow(fr) => optDetectionWindow = fr
       case OptDetectionWindowOverlap(fr) => optDetectionWindowOverlap = fr
       case OptThresholdSDFactor(factor: Double) => optThresholdSDFactor = factor
-      case OptAlignmentPoint(frames: Int) => optAlignmentPoint = frames
+      case AlignmentPoint(value: Int) => optAlignmentPoint = value
       case _ => {}
     }
 

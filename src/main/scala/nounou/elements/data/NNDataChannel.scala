@@ -6,6 +6,7 @@ import nounou.elements.traits.{NNConcatenableElement, NNTimingElement, NNScaling
 import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.elements.NNElement
 
+//ToDo 1: make NNDataChannel a subclass of NNData
 /**
   * This object represents a single channel of data.
   * Most data formats represent an array of data (with multiple channels)

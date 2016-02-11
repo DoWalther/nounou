@@ -1,9 +1,17 @@
 package nounou.elements.traits
 
+import java.math.BigInteger
+
 import breeze.numerics.round
 import nounou.elements.NNElement
 import nounou.ranges.NNRangeSpecifier
 import nounou.util.{leftPadSpace}
+
+
+object NNTiming {
+  implicit def timingElementToTiming(timingElement: NNTimingElement) = timingElement.timing()
+}
+
 
 /**
   * This immutable class encapsulates the following timing information about electrophysiological/imaging data:
@@ -122,6 +130,7 @@ class NNTiming(val sampleRate: Double,
 
   /**
     * Throws IllegalArgumentException if segmentCount != 1... use as check for functions which assume segment = 0.
+ *
     * @param func name of current function/signature called (which assumes segment = 0 )
     * @param altFunc  name of function/signature which should be called instead, with explicit specification of segment = 0
     *
@@ -190,6 +199,7 @@ class NNTiming(val sampleRate: Double,
     (-100000 <= frame && frame < segmentLength(segment) + 100000)
 
   /** Is this range realistic within a segment?
+ *
     * @see isRealisticFrsg
     */
   final def isRealisticRange(range: NNRangeSpecifier): Boolean = {
@@ -219,11 +229,11 @@ class NNTiming(val sampleRate: Double,
   }
 
   /** Closest frame/segment index to the given absolute timestamp. Will give frames which are out of range (i.e. negative, etc)
-    * if necessary.
-    *
-    * @param timestamp in Long
-    * @return
-    */
+  * if necessary.
+  *
+  * @param timestamp in Long
+  * @return
+  */
   final def convertTsToFrsg(timestamp: BigInt): (Int, Int) = {
 
     var tempret: (Int, Int) = (0 , 0)
@@ -273,10 +283,14 @@ class NNTiming(val sampleRate: Double,
 
     tempret
   }
+  final def convertTsToFrsgArray(timestamp: BigInteger): Array[Int] =
+      convertTsToFrsgArray( BigInt(timestamp) )
   final def convertTsToFrsgArray(timestamp: BigInt): Array[Int] = {
     val tempret = convertTsToFrsg(timestamp)//, false)
     Array[Int]( tempret._1, tempret._2 )
   }
+  final def convertTsToFr(timestamp: BigInteger): Int =
+      convertTsToFr( BigInt(timestamp) )
   final def convertTsToFr(timestamp: BigInt): Int = {
     errorIfMultipleSegments("convertTsToFr", "convertTsToFrsg")
     convertTsToFrsg(timestamp)._1
@@ -301,11 +315,15 @@ class NNTiming(val sampleRate: Double,
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="Time specification: conversion between ts and ms">
 
-  final def convertTsToMs(timestamp: Long): Double = convertFrToMs( convertTsToFr(timestamp) )
+  final def convertTsToMs(timestamp: BigInteger): Double = convertTsToMs( BigInt(timestamp) )
+  final def convertTsToMs(timestamp: BigInt): Double = convertFrToMs( convertTsToFr(timestamp) )
   final def convertMsToTs(ms: Double): BigInt = convertFrToTs( convertMsToFr(ms) )
 
   // </editor-fold>
   // <editor-fold defaultstate="collapsed" desc="Time specification: convertTsToClosestSegment">
+
+  final def convertTsToClosestSegment(timestamp: BigInteger): Int =
+      convertTsToClosestSegment( BigInt(timestamp) )
 
   /** Closest segment index to the given timestamp.
     */

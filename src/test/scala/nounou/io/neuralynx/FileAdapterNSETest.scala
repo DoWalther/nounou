@@ -13,11 +13,11 @@ class FileAdapterNSETest extends FunSuite with NNTestLoaderNSE_STet4a {
     assert( dataObj.getTiming.sampleRate==32000d)
     val database: Array[NNSpikeNeuralynx] = dataObj.iterator().toArray.map( _.asInstanceOf[NNSpikeNeuralynx])
     assert( database(0).timestamp == 2790151667L )
-    assert( database(0).getSnData(dataObj.scaling).toList ==
+    assert( database(0).getSnData(dataObj.scaling.asInstanceOf[NNScalingNeuralynx]).toList ==
       List(799, 5633, 6946, 5439, 4846, 8034, 14052, 18830, 18801, 14145, 8402, 5038, 4563, 4803, 3628, 1346, 138, 1050, 2531, 2070, -1236, -5523, -7625, -5998, -2106, 921, 850, -1880, -4603, -4812, -2045, 2172)
     )
-    assert( dataObj.scaling.absolutePerShort == 0.015259300000000002 )
-    assert( dataObj.scaling.convertShortToAbsolute( Array[Short](-1929, -689, 1586)).toList ==
+    assert( dataObj.scaling.asInstanceOf[NNScalingNeuralynx].absolutePerShort == 0.015259300000000002 )
+    assert( dataObj.scaling.asInstanceOf[NNScalingNeuralynx].convertShortToAbsolute( Array[Short](-1929, -689, 1586)).toList ==
       List(-29.435189700000002, -10.513657700000001, 24.201249800000003)
     )
 

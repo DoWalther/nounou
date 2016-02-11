@@ -2,6 +2,10 @@ package nounou.elements.traits
 
 import nounou.elements.NNElement
 
+object NNScaling {
+  implicit def scalingElementToScaling(scalingElement: NNScalingElement) = scalingElement.scaling()
+}
+
 /**
   * This trait encapsulates data unit information for NNData and NNDataChannel objects
   * electrophysiological and imaging recordings.

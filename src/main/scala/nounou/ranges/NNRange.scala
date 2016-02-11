@@ -4,6 +4,8 @@ import nounou._
 import nounou.elements.traits.NNTiming
 import nounou.util.LoggingExt
 
+import scala.collection.mutable.ArrayBuffer
+
 object NNRange {
 
   def convertArrayToSampleRange(array: Array[Int], segment: Int): NNRangeSpecifier = {
@@ -30,7 +32,6 @@ object NNRange {
   * @see [[nounou.ranges.NNRangeValid NNRangeValid]] marked to be a valid range (not outside of defined data)
   * @see [[nounou.ranges.NNRangeAll NNRangeAll]] marker for total sample range
   * @see [[nounou.ranges.NNRangeTs NNRangeTs]] range defined in timestamp units
-  *
   * @author ktakagaki
   * //@date 2/9/14.
   */
@@ -212,11 +213,13 @@ class NNRange(val start: Int, val last: Int, val step: Int, val segment: Int)
   // <editor-fold defaultstate="collapsed" desc=" isFullyValid ">
 
   /** Whether the frame range is completely contained within available data.
+    *
     * @param xFrames data object to which to apply the frames
     */
   def isFullyValid(xFrames: NNTiming): Boolean = isFullyValid( xFrames.segmentLength(getInstantiatedSegment(xFrames)) )
 
   /** Whether the frame range is completely contained within available data.
+    *
     * @param totalLength full length of this segment in frames, used to realize with RangeFr.all()
     */
   def isFullyValid(totalLength: Int): Boolean = {
@@ -240,6 +243,23 @@ class NNRangeInstantiated(val start: Int, val last: Int, val step: Int, val segm
   loggerRequire(0 <= segment, s"segment($segment) should be >= 0")
 
   def length() = (last-start)/step + 1
+
+  def split(length: Int, overlap: Int = -1): Array[NNRangeInstantiated] = {
+    loggerRequire( 0 <= overlap, s"overlap ($overlap) must be >= 0" )
+    loggerRequire( overlap < length, s"overlap ($overlap) cannot be longer than length ($length)" )
+    if( this.length() <= length){
+      Array(this)
+    } else {
+      var tempReturn = ArrayBuffer[NNRangeInstantiated]()
+      var c = this.start
+      while( c + length < this.last ){
+        tempReturn += new NNRangeInstantiated(c, c + length - 1, this.step, this.segment)
+        c += (length - overlap)
+      }
+      tempReturn += new NNRangeInstantiated(c, this.last, this.step, this.segment)
+      tempReturn.toArray
+    }
+  }
 
   // <editor-fold defaultstate="collapsed" desc=" NNRangeSpecifier methods ">
 

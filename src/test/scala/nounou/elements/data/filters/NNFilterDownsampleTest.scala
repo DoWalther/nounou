@@ -19,7 +19,7 @@ class NNFilterDownsampleTest extends FunSuite with NNTestLoaderNCS_Tet4 {
   test("timing info"){
 
     //println(filtObj.timing.toStringFull())
-    assert( filtObj.timing.filterDelay == 484)
+    assert( filtObj.timing.filterDelay == 0)
     assert( filtObj.timing.segmentCount == 3 )
     assert( filtObj.timing.segmentLength(0) == 667853 )
     assert( filtObj.timing.segmentLength(1) == 24679 )
@@ -35,6 +35,8 @@ class NNFilterDownsampleTest extends FunSuite with NNTestLoaderNCS_Tet4 {
 
   test("readTrace"){
 
+    println( dataObj.readTraceDV(0, NN.NNRange(0,10,1,0)) )
+    println( filtObj.readTraceDV(0, NN.NNRange(0,10,1,0)) )
     assert(filtObj.readTraceDV( 0, NN.NNRange(0, 10, 1, segment = 0)) ==
       DenseVector(-27.100428000000004, -3.1128870000000006, -7.751699000000001, -21.210357500000004, -7.019255000000001, -30.457463000000004, -14.770954000000001,
         -19.470803000000004, -21.668135000000003, -3.5706645000000004, -12.390511000000002)

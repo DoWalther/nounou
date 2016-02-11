@@ -25,7 +25,7 @@ class FileAdapterNSE extends FileLoader with FileSaver with LoggingExt {
   override def canSaveObjectArray(data: Array[NNElement]): Boolean =
     if(data.length == 1){
       data(0) match {
-        case x: NNSpikesNeuralynx => true
+        //case x: NNSpikesNeuralynx => true
         case x: NNSpikes => true
         case _ => false
       }
@@ -51,7 +51,7 @@ class FileAdapterNSE extends FileLoader with FileSaver with LoggingExt {
                                    _segmentStartTss = Array[BigInt](),
                                    filterDelay = 0)
 
-    val tempReturn = new NNSpikesNeuralynx( alignmentPoint = fileAdapter.header.getHeaderAlignmentPt,
+    val tempReturn = new NNSpikes/*Neuralynx*/( alignmentPoint = fileAdapter.header.getHeaderAlignmentPt,
                                             scaling = tempScaling,
                                             timing = tempTiming )
 
@@ -103,20 +103,29 @@ class FileAdapterNSE extends FileLoader with FileSaver with LoggingExt {
 
   override def saveImpl(fileName: String, data: Array[NNElement]): Unit = {
     //from  canSaveObjectArray(data) == true, one can assume that data has one element, which is an NNEvent object.
-    val dataElem: NNSpikesNeuralynx = data(0).asInstanceOf[NNSpikesNeuralynx]
+    val dataElem: NNSpikes/*Neuralynx*/ = data(0).asInstanceOf[NNSpikes/*Neuralynx*/]
     loggerRequire( dataElem.channels == 1, s"Cannot write spikes with ${dataElem.channels} (!= 1) channels to NSE file.")
 
     val header =
-      dataElem.oldHeader match {
+/*      dataElem.oldHeader match {
       case x: NNHeaderNSE => x
-      case null => new NNHeaderNSEConcrete(
-        headerSamplingFrequency = dataElem.timing.sampleRate,
-        headerInputRange = 1000, //ToDO 1: make real!
-        headerWaveformLength = dataElem.singleWaveformLength(),
-        headerAlignmentPt = dataElem.alignmentPoint
-      )
+      case null => */{
+        val absMax = dataElem.readSpikeAbsoluteMaximumValue()
+        var inputRange = ( absMax / 500d).ceil.toInt * 500
+        if(inputRange > 5000) {
+          inputRange = 5000
+          logger.info(s"largest spike abs max $absMax is bigger than 5000---input range will be set to 5000")
+        } else logger.debug(s"spike input range set to $inputRange based on abs max of $absMax")
+
+        new NNHeaderNSEConcrete(
+          headerSamplingFrequency = dataElem.timing.sampleRate,
+          headerInputRange = inputRange,
+          headerWaveformLength = dataElem.singleWaveformLength(),
+          headerAlignmentPt = dataElem.alignmentPoint
+        )
+      }/*
       case _ => throw loggerError("NNSpikeNeuralynx object does not have a valid NNHeaderNSE object!")
-    }
+    }*/
 
     val saveScale = new NNScalingNeuralynx(dataElem.scaling.unit, header.getHeaderADBitVolts*1e6)
     val fileAdapter = new FileWriteNSE(new File(fileName), header)
@@ -130,11 +139,11 @@ class FileAdapterNSE extends FileLoader with FileSaver with LoggingExt {
       //dwScNumber
       fHand.writeUInt32(0)
       //dwCellNumber
-      fHand.writeUInt32( spike.getUnitNo() )
+      fHand.writeUInt32( spike.unitNo )
       //dnParams
       fHand.writeUInt32(empty8)
       //snData
-      fHand.writeInt16( saveScale.convertAbsoluteToShort( spike.getWaveform() ) )
+      fHand.writeInt16( saveScale.convertAbsoluteToShort( spike.readWaveformFlat() ) )
     }
 
     fHand.close()

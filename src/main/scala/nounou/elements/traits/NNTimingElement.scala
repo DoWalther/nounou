@@ -15,7 +15,7 @@ trait NNTimingElement extends NNElement {
     * Returns [[NNTiming]] which applies to this NNElement.
     *
     */
-  def timing(): NNTiming
+  def timing(): NNTiming = throw loggerError(s"timing is null (not overriden)!")
 
   /**'''[NNTimingElement]''' Alias for [[nounou.elements.traits.NNTimingElement.timing]]*/
   final def getTiming(): NNTiming = timing()

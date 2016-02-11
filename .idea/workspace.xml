@@ -10,69 +10,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b84f17cd-31ec-4516-ac7c-645f5d0ee2e9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynxDAQ.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynxSpike.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/PlayingAroundCharByte.sc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNSETest.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNCS_E04LC_NNDataChannel.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNCS_Tet4.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNSE_STet4a.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNDataFilterBufferTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/_bak/NNDataFilterBufferTest.scala" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNDataNCSTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNDataTestNCSTet4.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__ch_qos_logback_logback_classic_1_1_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__ch_qos_logback_logback_classic_1_1_3_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__ch_qos_logback_logback_core_1_1_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__ch_qos_logback_logback_core_1_1_3_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__com_google_code_gson_gson_2_3_1_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__com_google_code_gson_gson_2_3_1_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__com_googlecode_javaewah_JavaEWAH_0_7_9_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__com_googlecode_javaewah_JavaEWAH_0_7_9_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__com_jcraft_jsch_0_1_53_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__com_jcraft_jsch_0_1_53_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__com_typesafe_scala_logging_scala_logging_api_2_11_2_1_2_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__com_typesafe_scala_logging_scala_logging_api_2_11_2_1_2_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__com_typesafe_scala_logging_scala_logging_slf4j_2_11_2_1_2_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__com_typesafe_scala_logging_scala_logging_slf4j_2_11_2_1_2_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__commons_codec_commons_codec_1_6_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__commons_codec_commons_codec_1_6_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__commons_io_commons_io_2_4_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__commons_io_commons_io_2_4_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__commons_logging_commons_logging_1_1_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__commons_logging_commons_logging_1_1_3_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_apache_httpcomponents_httpclient_4_3_6_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__org_apache_httpcomponents_httpclient_4_3_6_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_apache_httpcomponents_httpcore_4_3_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__org_apache_httpcomponents_httpcore_4_3_3_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_eclipse_jdt_org_eclipse_jdt_annotation_1_1_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__org_eclipse_jdt_org_eclipse_jdt_annotation_1_1_0_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_eclipse_jgit_org_eclipse_jgit_4_1_1_201511131810_r_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__org_eclipse_jgit_org_eclipse_jgit_4_1_1_201511131810_r_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_scala_lang_modules_scala_parser_combinators_2_11_1_0_1_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__org_scala_lang_modules_scala_parser_combinators_2_11_1_0_1_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_scala_lang_modules_scala_xml_2_11_1_0_1_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__org_scala_lang_modules_scala_xml_2_11_1_0_1_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_scala_lang_scala_library_2_11_7_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__org_scala_lang_scala_library_2_11_7_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_scala_lang_scala_reflect_2_11_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__org_scala_lang_scala_reflect_2_11_0_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_scalatest_scalatest_2_11_2_1_7_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__org_scalatest_scalatest_2_11_2_1_7_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_slf4j_slf4j_api_1_7_7_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SBT__org_slf4j_slf4j_api_1_7_7_jar.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nounou/NNJ.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/nounou/NNOpt.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/nounou/Options.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsampleParent.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/_profiling/profileNlxNcsToFIRToDecimate.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDecimateTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/nounou.iml" afterPath="$PROJECT_DIR$/.idea/modules/nounou.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/services/nounou.io.FileSaver" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/services/nounou.io.FileSaver" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/NNGit.gson.txt" afterPath="$PROJECT_DIR$/src/main/resources/NNGit.gson.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/NN.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/NN.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/package.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/package.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNData.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNData.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannel.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannel.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannelArray.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannelArray.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannelExtracted.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannelExtracted.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilter.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilter.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterFIR.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterFIR.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterBuffer.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterBuffer.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDecimate.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDecimate.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsample.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsample.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpike.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpike.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpikes.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpikes.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScalingElement.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScalingElement.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScaling.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScaling.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTiming.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTiming.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/FileSaver.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/FileSaver.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNDataChannelFileReadNCS.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNDataChannelFileReadNCS.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNScalingNeuralynx.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNScalingNeuralynx.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikeNeuralynx.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikeNeuralynx.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTimingElement.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTimingElement.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikesNeuralynx.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikesNeuralynx.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNEV.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNEV.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNSE.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNSE.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNCS.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNCS.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNEV.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNEV.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNSE.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNSE.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNeuralynx.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNeuralynx.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNCS.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNCS.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNEV.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNEV.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNSE.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNSE.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynx.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynx.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/options/Opt.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/options/Opt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterBufferTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterBufferTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/options/OptHandler.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/options/OptHandler.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRange.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRange.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeTsEvent.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeTsEvent.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/util/package.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/util/package.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDownsampleTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDownsampleTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNDataChannelNCSTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNDataChannelNCSTest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNSETest.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNSETest.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNSE_STet4a.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNSE_STet4a.scala" />
     </list>
     <ignored path="nounou.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -147,47 +118,78 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SpikeDetect.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala">
+      <file leaf-file-name="NN.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/NN.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="172" column="0" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
-              <folding>
-                <element signature="e#32#59#0" expanded="true" />
-                <element signature="e#443#501#0" expanded="true" />
-                <element signature="e#3086#3152#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileAdapterNSETest.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNSETest.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8892794">
-              <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-              <folding>
-                <element signature="e#29#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NNDataChannelNCSTest.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNDataChannelNCSTest.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+              <caret line="148" column="32" selection-start-line="148" selection-start-column="32" selection-end-line="148" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NNTestLoaderNSE_STet4a.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNSE_STet4a.scala">
+      <file leaf-file-name="NNTiming.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTiming.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+              <caret line="322" column="2" selection-start-line="322" selection-start-column="2" selection-end-line="322" selection-end-column="2" />
+              <folding>
+                <element signature="e#32#59#0" expanded="true" />
+                <element signature="e#8747#8855#0" expanded="true" />
+                <element signature="e#13206#13303#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NNFilterFIR.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterFIR.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NNFilterDownsampleParent.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsampleParent.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+              <folding>
+                <element signature="e#1461#1526#0" expanded="true" />
+                <element signature="e#2048#2115#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NNLayoutHexagonal.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/layout/NNLayoutHexagonal.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NNLayoutSpatial.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/layout/NNLayoutSpatial.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NNLayout.scala" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/layout/NNLayout.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.27357513">
+              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -198,12 +200,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="Package Object" />
         <option value="Scala Class" />
         <option value="Scala Object" />
         <option value="Scala Trait" />
         <option value="Scala Worksheet" />
+        <option value="Package Object" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -218,31 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeTsEvent.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDecimate.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeSpecifier.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNData.scala" />
-        <option value="C:/Program Files/Java/jdk8/src.zip!/java/lang/System.java" />
-        <option value="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNCSTest.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNCSTestNNDataChannel.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/nounou/io/FileLoaderTest.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/nounou/ranges/FrRangeTest.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRange.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterBufferTest.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterBuffer.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/XDataFilterDownsampleTest.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsample.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDownsampleTest.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/io/FileLoader.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterFIR.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/options/Opt.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynxSampling.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTiming.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNCS.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNEV.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNSE.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNDataChannelFileReadNCS.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNEV.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNCS.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNEV.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNDataNCSTest.scala" />
@@ -254,11 +231,6 @@
         <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikeNeuralynx.scala" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/services/nounou.io.FileSaver" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/io/FileSaver.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpike.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/package.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpikes.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikesNeuralynx.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/nounou/io/PlayingAroundCharByte.sc" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNeuralynx.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNSE.scala" />
@@ -266,9 +238,39 @@
         <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynxDAQ.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynxSpike.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNScalingNeuralynx.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRange.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/options/Opt.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/package.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/options/OptHandler.scala" />
+        <option value="$PROJECT_DIR$/src/main/java/nounou/NN.java" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/util/package.scala" />
+        <option value="$PROJECT_DIR$/src/main/java/nounou/NNJ.java" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/options/package.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/Options.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/NNOpt.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpike.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTimingElement.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikesNeuralynx.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNSE.scala" />
-        <option value="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNSETest.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNSE_STet4a.scala" />
+        <option value="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNSETest.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScaling.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpikes.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannel.scala" />
+        <option value="C:/Program Files/Java/jdk8/src.zip!/java/math/BigInteger.java" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNData.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTiming.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/NN.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeTsEvent.scala" />
+        <option value="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDownsampleTest.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterBuffer.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsample.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilter.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsampleParent.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDecimate.scala" />
+        <option value="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDecimateTest.scala" />
+        <option value="$PROJECT_DIR$/src/test/scala/nounou/_profiling/profileNlxNcsToFIRToDecimate.scala" />
       </list>
     </option>
   </component>
@@ -310,8 +312,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -404,36 +404,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ranges" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="io" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -486,6 +456,130 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filters" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="analysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_profiling" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -514,386 +608,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="nounou" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ranges" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neuralynx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neuralynx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="headers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NNHeaderNSE.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neuralynx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="headers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neuralynx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="headers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NNHeaderNeuralynxSpike.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neuralynx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="headers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NNHeaderNeuralynxDAQ.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neuralynx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="headers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NNHeaderNeuralynx.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neuralynx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fileObjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neuralynx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fileObjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FileXxxNeuralynx.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -956,7 +670,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="headers" />
+              <option name="myItemId" value="traits" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -986,7 +700,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="analysis" />
+              <option name="myItemId" value="elements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="traits" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1016,11 +738,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="analysis" />
+              <option name="myItemId" value="elements" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="spikes" />
+              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1042,60 +764,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="analysis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spikes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SpikeDetect.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../_lab/hayabaya/build.sbt" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Dropbox (AG NRO)/Kenta/stud/algs1" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.42003676" />
     <property name="dynamic.classpath" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
+    <property name="settings.editor.selected.configurable" value="krasa.visualvm.ApplicationSettingsComponent" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -1104,6 +790,25 @@
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="nounou" />
+      <recent name="nounou.NNOpt" />
+      <recent name="nounou.io.neuralynx" />
+      <recent name="nounou.options" />
+      <recent name="nounou.analysis" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\prog\nounou\src\main\scala\nounou\io\neuralynx\headers" />
+      <recent name="C:\prog\nounou\src\test\scala\nounou\io\neuralynx" />
+      <recent name="C:\prog\nounou\src\main\scala\nounou\io\neuralynx" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="nounou.elements.data.filters" />
+      <recent name="nounou.io.neuralynx" />
+      <recent name="nounou.analysis.spikes" />
+      <recent name="nounou.ranges" />
+      <recent name="nounou.elements.traits" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\prog\nounou\src\test\scala\nounou\_bak" />
       <recent name="C:\prog\nounou\src\test\scala\nounou\elements\data\filters" />
@@ -1111,61 +816,12 @@
       <recent name="C:\prog\nounou\src\main\scala\nounou\io\neuroexplorer" />
       <recent name="C:\prog\nounou\src\main\scala\nounou\elements\traits" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="nounou.io.neuralynx" />
-      <recent name="nounou.options" />
-      <recent name="nounou.analysis" />
-      <recent name="nounou.analysis.spikes" />
-      <recent name="nounou" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="nounou.io.neuralynx" />
-      <recent name="nounou.elements.data.filters" />
-      <recent name="nounou.analysis.spikes" />
-      <recent name="nounou.ranges" />
-      <recent name="nounou.elements.traits" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\prog\nounou\src\main\scala\nounou\io\neuralynx\headers" />
-      <recent name="C:\prog\nounou\src\test\scala\nounou\io\neuralynx" />
-      <recent name="C:\prog\nounou\src\main\scala\nounou\io\neuralynx" />
-    </key>
   </component>
-  <component name="RunManager" selected="ScalaTest.FileAdapterNSETest">
-    <configuration default="false" name="NNDataChannelNCSTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="nounou" />
-      <setting name="path" value="nounou.io.neuralynx.NNDataChannelNCSTest" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
-      <setting name="showProgressMessages" value="true" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="ScalaTest.profileNlxNcsToFIRToDecimate">
     <configuration default="false" name="NNDataTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="nounou" />
       <setting name="path" value="nounou.io.neuralynx.NNDataTest" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
-      <setting name="showProgressMessages" value="true" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="NNFilterBufferTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="nounou" />
-      <setting name="path" value="nounou.elements.data.filters.NNFilterBufferTest" />
       <setting name="package" value="" />
       <setting name="vmparams" value="" />
       <setting name="params" value="" />
@@ -1196,6 +852,39 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="nounou" />
       <setting name="path" value="nounou.io.neuralynx.FileAdapterNSETest" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="profileNlxNcsToFIRToDecimate" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="nounou" />
+      <setting name="path" value="nounou._profiling.profileNlxNcsToFIRToDecimate" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <envs />
+      <RunnerSettings RunnerId="Debug with VisualVM">
+        <option name="visualVMId" value="269944291812061" />
+      </RunnerSettings>
+      <method />
+    </configuration>
+    <configuration default="false" name="NNFilterDecimateTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="nounou" />
+      <setting name="path" value="nounou.elements.data.filters.NNFilterDecimateTest" />
       <setting name="package" value="" />
       <setting name="vmparams" value="" />
       <setting name="params" value="" />
@@ -1490,19 +1179,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="ScalaTest.NNDataChannelNCSTest" />
-      <item index="1" class="java.lang.String" itemvalue="ScalaTest.NNDataTest" />
-      <item index="2" class="java.lang.String" itemvalue="ScalaTest.NNFilterBufferTest" />
-      <item index="3" class="java.lang.String" itemvalue="ScalaTest.NNFilterDownsampleTest" />
-      <item index="4" class="java.lang.String" itemvalue="ScalaTest.FileAdapterNSETest" />
+      <item index="0" class="java.lang.String" itemvalue="ScalaTest.NNDataTest" />
+      <item index="1" class="java.lang.String" itemvalue="ScalaTest.NNFilterDownsampleTest" />
+      <item index="2" class="java.lang.String" itemvalue="ScalaTest.FileAdapterNSETest" />
+      <item index="3" class="java.lang.String" itemvalue="ScalaTest.profileNlxNcsToFIRToDecimate" />
+      <item index="4" class="java.lang.String" itemvalue="ScalaTest.NNFilterDecimateTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="ScalaTest.FileAdapterNSETest" />
-        <item index="1" class="java.lang.String" itemvalue="ScalaTest.NNFilterDownsampleTest" />
-        <item index="2" class="java.lang.String" itemvalue="ScalaTest.NNDataTest" />
-        <item index="3" class="java.lang.String" itemvalue="ScalaTest.NNDataChannelNCSTest" />
-        <item index="4" class="java.lang.String" itemvalue="ScalaTest.NNFilterBufferTest" />
+        <item index="0" class="java.lang.String" itemvalue="ScalaTest.profileNlxNcsToFIRToDecimate" />
+        <item index="1" class="java.lang.String" itemvalue="ScalaTest.NNFilterDecimateTest" />
+        <item index="2" class="java.lang.String" itemvalue="ScalaTest.NNFilterDownsampleTest" />
+        <item index="3" class="java.lang.String" itemvalue="ScalaTest.FileAdapterNSETest" />
+        <item index="4" class="java.lang.String" itemvalue="ScalaTest.NNDataTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1558,35 +1247,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FileAdapterNSETest - 2016.01.27 at 22h 50m 25s.xml">
-      <configuration name="FileAdapterNSETest" configurationId="ScalaTestRunConfiguration" />
+    <history-entry file="NNFilterDecimateTest - 2016.02.03 at 19h 04m 09s.xml">
+      <configuration name="NNFilterDecimateTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="FileAdapterNSETest - 2016.01.27 at 22h 58m 57s.xml">
-      <configuration name="FileAdapterNSETest" configurationId="ScalaTestRunConfiguration" />
+    <history-entry file="NNFilterDecimateTest - 2016.02.03 at 19h 05m 03s.xml">
+      <configuration name="NNFilterDecimateTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="FileAdapterNSETest - 2016.01.27 at 23h 01m 35s.xml">
-      <configuration name="FileAdapterNSETest" configurationId="ScalaTestRunConfiguration" />
+    <history-entry file="NNFilterDecimateTest - 2016.02.03 at 19h 09m 06s.xml">
+      <configuration name="NNFilterDecimateTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="FileAdapterNSETest - 2016.01.27 at 23h 02m 30s.xml">
-      <configuration name="FileAdapterNSETest" configurationId="ScalaTestRunConfiguration" />
+    <history-entry file="NNFilterDecimateTest - 2016.02.03 at 19h 09m 59s.xml">
+      <configuration name="NNFilterDecimateTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="FileAdapterNSETest - 2016.01.27 at 23h 08m 27s.xml">
-      <configuration name="FileAdapterNSETest" configurationId="ScalaTestRunConfiguration" />
+    <history-entry file="NNFilterDecimateTest - 2016.02.03 at 19h 10m 48s.xml">
+      <configuration name="NNFilterDecimateTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="FileAdapterNSETest - 2016.01.27 at 23h 10m 18s.xml">
-      <configuration name="FileAdapterNSETest" configurationId="ScalaTestRunConfiguration" />
+    <history-entry file="NNFilterDecimateTest - 2016.02.03 at 19h 17m 06s.xml">
+      <configuration name="NNFilterDecimateTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="FileAdapterNSETest - 2016.01.27 at 23h 10m 34s.xml">
-      <configuration name="FileAdapterNSETest" configurationId="ScalaTestRunConfiguration" />
+    <history-entry file="NNFilterDecimateTest - 2016.02.03 at 19h 17m 49s.xml">
+      <configuration name="NNFilterDecimateTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="FileAdapterNSETest - 2016.01.27 at 23h 11m 14s.xml">
-      <configuration name="FileAdapterNSETest" configurationId="ScalaTestRunConfiguration" />
+    <history-entry file="NNFilterDecimateTest - 2016.02.03 at 20h 52m 03s.xml">
+      <configuration name="NNFilterDecimateTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="FileAdapterNSETest - 2016.01.27 at 23h 14m 43s.xml">
-      <configuration name="FileAdapterNSETest" configurationId="ScalaTestRunConfiguration" />
+    <history-entry file="NNFilterDecimateTest - 2016.02.03 at 20h 55m 14s.xml">
+      <configuration name="NNFilterDecimateTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="FileAdapterNSETest - 2016.01.27 at 23h 17m 45s.xml">
-      <configuration name="FileAdapterNSETest" configurationId="ScalaTestRunConfiguration" />
+    <history-entry file="profileNlxNcsToFIRToDecimate - 2016.02.03 at 21h 19m 32s.xml">
+      <configuration name="profileNlxNcsToFIRToDecimate" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -1600,36 +1289,36 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="-5" width="1930" height="1148" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31190926" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995984" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33131313" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39558232" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3263052" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23447537" sideWeight="0.52491695" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730925" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23447537" sideWeight="0.47508305" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35492507" sideWeight="0.49499" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35492507" sideWeight="0.50501" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992035" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3979206" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37240076" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289225" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730925" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931727" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1645,7 +1334,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1666,356 +1355,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk8/src.zip!/java/lang/System.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33274338">
-          <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScalingElement.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5699482">
-          <caret line="25" column="3" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/FileLoaderTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/NN.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="76" selection-start-line="43" selection-start-column="76" selection-end-line="43" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/ranges/FrRangeTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15465729">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRange.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3321617">
-          <caret line="241" column="6" selection-start-line="241" selection-start-column="6" selection-end-line="241" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/math.jar!/breeze/linalg/DenseVector.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35327104">
-          <caret line="23" column="80" selection-start-line="23" selection-start-column="80" selection-end-line="23" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterBufferTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5026362">
-          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterBuffer.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7891037">
-          <caret line="97" column="106" selection-start-line="97" selection-start-column="106" selection-end-line="97" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDownsampleTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29349735">
-          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsample.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/FileLoader.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5337487">
-          <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/options/Opt.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNeuralynxHeaderTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5659398">
-          <caret line="77" column="10" selection-start-line="77" selection-start-column="10" selection-end-line="77" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/_bak/NNDataFilterBufferTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterFIR.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="e#38#78#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNCS.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5301205">
-          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNEV.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTiming.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="29" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="29" />
-          <folding>
-            <element signature="e#2375#2460#0" expanded="true" />
-            <element signature="e#6275#6363#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNEV.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNEV.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49582946">
-          <caret line="152" column="70" selection-start-line="152" selection-start-column="70" selection-end-line="152" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNDataChannelFileReadNCS.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35310474">
-          <caret line="120" column="93" selection-start-line="120" selection-start-column="93" selection-end-line="120" selection-end-column="93" />
-          <folding>
-            <element signature="e#2187#2285#0" expanded="false" />
-            <element signature="e#2340#3451#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNCS.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50973123">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNCS_E04LC_NNDataChannel.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22845276">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNCS_Tet4.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNDataTestNCSTet4.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7310488">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNEVTest.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/services/nounou.io.FileSaver">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.038664322">
-          <caret line="1" column="47" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/services/nounou.io.FileLoader">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.038664322">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNSE.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8119508">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/util/LoggingExt.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17750439">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/FileSaver.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3321617">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpike.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6801406">
-          <caret line="33" column="26" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/package.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpikes.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="52" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
-          <folding>
-            <element signature="e#32#59#0" expanded="true" />
-            <element signature="e#1704#1769#0" expanded="true" />
-            <element signature="e#3519#3588#0" expanded="true" />
-            <element signature="e#3704#3780#0" expanded="true" />
-            <element signature="e#4858#4921#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikesNeuralynx.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42530757">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/PlayingAroundCharByte.sc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08349146">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/math.jar!/breeze/io/RandomAccessFile.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35327104">
-          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileObjects/FileXxxNeuralynx.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.716301">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScaling.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5254833">
-          <caret line="17" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#667#770#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynx.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6572935">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikeNeuralynx.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNScalingNeuralynx.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.100175746">
           <caret line="10" column="64" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
-          <folding>
-            <element signature="e#513#580#0" expanded="true" />
-            <element signature="e#758#866#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2023,7 +1366,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3813708">
           <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2031,7 +1373,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.80667835">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2039,37 +1380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.80316347">
           <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
-          <folding>
-            <element signature="e#555#785#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNSE.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57973737">
-          <caret line="118" column="5" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="172" column="0" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
-          <folding>
-            <element signature="e#32#59#0" expanded="true" />
-            <element signature="e#443#501#0" expanded="true" />
-            <element signature="e#3086#3152#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNSE_STet4a.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2081,13 +1391,358 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/options/OPT_AUTOMATIC.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23198594">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/package.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27310488">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRange.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/options/Opt.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.93286216">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterMedianSubtract.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73144877">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/options/OptHandler.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42756185">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/package.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29698858">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nounou/NNJ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66251296">
+          <caret line="29" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/Options.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <folding>
+            <element signature="e#16#60#0" expanded="false" />
+            <element signature="e#210#275#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/NNOpt.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+          <folding>
+            <element signature="e#16#86#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpike.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTimingElement.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6607774">
+          <caret line="17" column="77" selection-start-line="17" selection-start-column="77" selection-end-line="17" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikesNeuralynx.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNSE_STet4a.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNSETest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8892794">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.22845276">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScalingElement.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33281004">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScaling.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24175824">
+          <caret line="7" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannel.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0913811">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/services/nounou.io.FileLoader">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.015224913">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/FileLoader.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27404845">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpikes.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4839045">
+          <caret line="240" column="21" selection-start-line="240" selection-start-column="21" selection-end-line="240" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk8/src.zip!/java/math/BigInteger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.3637962">
+          <caret line="122" column="13" selection-start-line="122" selection-start-column="13" selection-end-line="122" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNCS_Tet4.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24251969">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/util/package.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5889764">
+          <caret line="67" column="53" selection-start-line="67" selection-start-column="53" selection-end-line="67" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="190" column="96" selection-start-line="190" selection-start-column="96" selection-end-line="190" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNData.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="238" column="5" selection-start-line="238" selection-start-column="5" selection-end-line="238" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikeNeuralynx.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNSE.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="22" selection-start-line="105" selection-start-column="22" selection-end-line="105" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeTsEvent.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="3" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/NN.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="148" column="32" selection-start-line="148" selection-start-column="32" selection-end-line="148" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/analysis/spikeDetectTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22671354">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterBuffer.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57973737">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/traits/NNDataNode.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33271548">
+          <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilter.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30931458">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDecimate.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40729">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterFIR.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDecimateTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9017433">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDownsampleTest.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22979398">
+          <caret line="16" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTiming.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="322" column="2" selection-start-line="322" selection-start-column="2" selection-end-line="322" selection-end-column="2" />
           <folding>
-            <element signature="e#29#45#0" expanded="true" />
+            <element signature="e#32#59#0" expanded="true" />
+            <element signature="e#8747#8855#0" expanded="true" />
+            <element signature="e#13206#13303#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsample.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65134704">
+          <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/scala/nounou/_profiling/profileNlxNcsToFIRToDecimate.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.422452">
+          <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsampleParent.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding>
+            <element signature="e#1461#1526#0" expanded="true" />
+            <element signature="e#2048#2115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/layout/NNLayoutHexagonal.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/layout/NNLayoutSpatial.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/layout/NNLayout.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27357513">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -9,39 +9,16 @@ import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
  * @author ktakagaki
  * //@date 2/16/14.
  */
-class NNFilterDownsample(private val parentVal: NNData, protected var initialFactor: Int )
-  extends NNFilter( parentVal ) {
+class NNFilterDownsample( parentVal: NNData, protected var initialFactor: Int )
+  extends NNFilterDownsampleParent( parentVal ) {
 
-  protected var timingBuffer: NNTiming = null
-  protected var factorVar = -1
   setFactor(initialFactor)
-
-  def this(parentVal: NNData) = this(parentVal, 16)
-
-
-  private val parentBuffer: NNFilterBuffer = new NNFilterBuffer(parentVal)
-  override def changedDataImpl() = if(parentBuffer!= null) parentBuffer.changedData()
-  override def changedDataImpl(ch: Int) = if(parentBuffer!= null) parentBuffer.changedData(ch)
-  override def changedDataImpl(ch: Array[Int]) = if(parentBuffer!= null) parentBuffer.changedData(ch)
-  //ToDo: make above full, and refactor out to prebufferfilter
-
-  override def timing(): NNTiming = timingBuffer
-
-  protected def refreshTimingBuffer(factor: Int) = {
-    timingBuffer = new NNTiming(
-      sampleRate = parentVal.timing.sampleRate / factor.toDouble,
-      _segmentLengths = (for(seg <- 0 until parentVal.timing.segmentCount)
-        yield ( (parentVal.timing.segmentLength(seg)-1)/factor) + 1 ).toArray,
-      _segmentStartTss = parentVal.timing.segmentStartTss,
-      filterDelay = parentVal.timing.filterDelay
-    )
-  }
 
   // <editor-fold defaultstate="collapsed" desc=" factor-related ">
 
-  def getFactor(): Int = factorVar
+  //def getFactor(): Int = factorVar
 
-  def setFactor( factor: Int ) = {
+  override def setFactor( factor: Int ) = {
     loggerRequire( factor >= 1, "new factor {} cannot be less than 1!", factor.toString )
     if( factor == this.factorVar ){
       logger.trace( "factor is already {}, not changing. ", factor.toString )

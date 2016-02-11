@@ -179,7 +179,6 @@ trait NNData extends NNDataNode
     }
   }
 
-
   // <editor-fold defaultstate="collapsed" desc=" //convenience readTrace variations ">
 
   // <editor-fold defaultstate="collapsed" desc=" readTraceInt (deprecated) ">
@@ -222,11 +221,15 @@ trait NNData extends NNDataNode
 
   //</editor-fold>
 
-  final def readPage(channels: Array[Int], range: NNRangeSpecifier): Array[Array[Double]] =
-    channels.map(readTraceDV(_, range).toArray)
+  final def readPage(channels: Array[Int], range: NNRangeSpecifier): Array[Array[Double]] = {
+    val ranVal = range.getValidRange( this )
+    channels.map(readTraceDV(_, ranVal).toArray)
+  }
 
-  final def readPage(range: NNRangeSpecifier): Array[Array[Double]] =
-    (0 until getChannelCount).toArray.map(readTraceDV(_, range).toArray)
+  final def readPage(range: NNRangeSpecifier): Array[Array[Double]] = {
+    val ranVal = range.getValidRange( this )
+    (0 until getChannelCount).toArray.map(readTraceDV(_, ranVal).toArray)
+  }
 
   final def readPage(ranges: Array[NNRangeSpecifier]): Array[Array[Array[Double]]] = {
     val rangesValid = ranges.map(_.getValidRange(this))
@@ -293,8 +296,9 @@ trait NNData extends NNDataNode
     that match {
       case x: NNData => {
         ( //This is not enforced, may append objects with separate channel counts: channelCount() == x.channelCount()  &&
-          timing() == timing() &&
-          scaling() == x.scaling() )
+          timing() == timing()
+            //ToDo 1: make scaling channel-specific
+            && scaling() == x.scaling() )
         //&& this.layout.isCompatible(x.layout)
         //not channel info
       }

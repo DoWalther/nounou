@@ -54,25 +54,36 @@ class NNSpike(val timestamp: BigInt,
   // </editor-fold>
 
 
-  def toStringImpl() = s"ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}, "
+  def toStringImpl() = s"ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}"
 
   def toStringFullImpl() = ""
 
-  // <editor-fold defaultstate="collapsed" desc=" Java accessors ">
+//  // <editor-fold defaultstate="collapsed" desc=" //Java accessors ">
+//
+//  /**Java accessor for timestamp, returns a [java.math.BigInteger], which is immutable.*/
+//  def getTimestamp(): BigInteger = timestamp.bigInteger
+//
+//  /**Java accessor for waveform, returns an Array[Double] clone.*/
+//  def getWaveform(): Array[Double] = waveform.toArray//[Double]
+//
+//  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.channels]].*/
+//  def getChannels(): Int = channels
+//
+//  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.unitNo]].*/
+//  def getUnitNo(): Long = unitNo
+//
+//  // </editor-fold>
 
-  /**Java accessor for timestamp, returns a [java.math.BigInteger], which is immutable.*/
-  def getTimestamp(): BigInteger = timestamp.bigInteger
+  def readWaveformFlat(): Array[Double] = waveform.toArray
 
-  /**Java accessor for waveform, returns an Array[Double] clone.*/
-  def getWaveform(): Array[Double] = waveform.toArray//[Double]
+  def readWaveform(): Array[Array[Double]] = {
+    val tempReturn = new Array[Array[Double]](channels)
+    for( ch <- 0 until channels ){
+      tempReturn(ch) = waveform.slice( ch*singleWaveformLength, (ch+1)*singleWaveformLength ).toArray
+    }
+    tempReturn
+  }
 
-  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.channels]].*/
-  def getChannels(): Int = channels
-
-  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.unitNo]].*/
-  def getUnitNo(): Long = unitNo
-
-  // </editor-fold>
 
   /**'''__MUST OVERRIDE__''' Gives immutable clone of this object but with a new unitNo.
    */

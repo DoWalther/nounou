@@ -36,7 +36,7 @@ class NNFilterBuffer(private var _parent: NNData ) extends NNFilter(_parent) {
   def bufferHashKeyToChannel( hashKey: Long ): Int = ((hashKey / maxPage) % maxChannel).toInt
   def bufferHashKeyToSegment( hashKey: Long ): Int = (hashKey / maxPageChannel).toInt
 
-  logger.debug("initialized XDataFilterTrBuffer w/ bufferPageLength={} and garbageQueBound={}", bufferPageLength.toString, garbageQueBound.toString)
+  logger.debug("initialized NNFilterBuffer w/ bufferPageLength={} and garbageQueBound={}", bufferPageLength.toString, garbageQueBound.toString)
 
   override def toStringImpl() = s"pageLen=${bufferPageLength}, queBound=${garbageQueBound}, "
   override def toStringFullImpl() = ""

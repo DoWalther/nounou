@@ -18,6 +18,9 @@ trait Opt extends breeze.util.Opt with LoggingExt {
 }
 
 trait OptDouble extends Opt {
-  def readDouble(): Double
+  val value: Double
 }
 
+trait OptInt extends Opt {
+  val value: Int
+}
