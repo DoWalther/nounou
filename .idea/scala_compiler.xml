@@ -3,5 +3,48 @@
   <component name="ScalaCompilerConfiguration">
     <option name="incrementalityType" value="SBT" />
     <profile name="SBT 1" modules="nounou" />
+    <profile name="SBT 2" modules="core,examples,nounoufxgui">
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+      <parameters>
+        <parameter value="-encoding" />
+        <parameter value="utf8" />
+        <parameter value="-target:jvm-1.8" />
+        <parameter value="-language:_" />
+        <parameter value="-Xlog-reflective-calls" />
+      </parameters>
+    </profile>
+    <profile name="SBT 3" modules="root">
+      <plugins>
+        <plugin path="C:\Users\ktakagaki\.ivy2\cache\org.scalamacros\paradise_2.11.7\jars\paradise_2.11.7-2.0.1.jar" />
+      </plugins>
+    </profile>
+    <profile name="SBT 4" modules="benchmark,math,natives">
+      <option name="deprecationWarnings" value="true" />
+      <parameters>
+        <parameter value="-language:_" />
+      </parameters>
+      <plugins>
+        <plugin path="C:\Users\ktakagaki\.ivy2\cache\org.scalamacros\paradise_2.11.7\jars\paradise_2.11.7-2.1.0-M5.jar" />
+      </plugins>
+    </profile>
+    <profile name="SBT 5" modules="macros">
+      <option name="deprecationWarnings" value="true" />
+      <parameters>
+        <parameter value="-language:_" />
+        <parameter value="-optimize" />
+      </parameters>
+      <plugins>
+        <plugin path="C:\Users\ktakagaki\.ivy2\cache\org.scalamacros\paradise_2.11.7\jars\paradise_2.11.7-2.1.0-M5.jar" />
+      </plugins>
+    </profile>
+    <profile name="SBT 6" modules="viz">
+      <option name="deprecationWarnings" value="true" />
+      <parameters>
+        <parameter value="-language:_" />
+        <parameter value="-optimize" />
+      </parameters>
+    </profile>
   </component>
 </project>

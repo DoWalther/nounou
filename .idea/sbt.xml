@@ -10,7 +10,25 @@
         <option name="jdk" value="1.8" />
         <option name="modules">
           <set>
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/benchmark" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/benchmark/project" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/macros" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/macros/project" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/math" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/math/project" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/natives" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/natives/project" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/project" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/viz" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/viz/project" />
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/project" />
+            <option value="$PROJECT_DIR$/examples" />
+            <option value="$PROJECT_DIR$/examples/project" />
+            <option value="$PROJECT_DIR$/nounoufxgui" />
+            <option value="$PROJECT_DIR$/nounoufxgui/project" />
             <option value="$PROJECT_DIR$/project" />
           </set>
         </option>
@@ -20,7 +38,25 @@
         <option name="useOurOwnAutoImport" value="true" />
         <option name="myModules">
           <set>
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/benchmark" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/benchmark/project" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/macros" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/macros/project" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/math" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/math/project" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/natives" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/natives/project" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/project" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/viz" />
+            <option value="$USER_HOME$/.sbt/0.13/staging/af21542e75968421b3c4/breeze/viz/project" />
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/project" />
+            <option value="$PROJECT_DIR$/examples" />
+            <option value="$PROJECT_DIR$/examples/project" />
+            <option value="$PROJECT_DIR$/nounoufxgui" />
+            <option value="$PROJECT_DIR$/nounoufxgui/project" />
             <option value="$PROJECT_DIR$/project" />
           </set>
         </option>

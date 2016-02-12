@@ -2,8 +2,9 @@
   <artifact type="jar" build-on-make="true" name="nounou">
     <output-path>$PROJECT_DIR$/out/artifacts/nounou</output-path>
     <root id="archive" name="nounou.jar">
-      <element id="module-output" name="nounou" />
-      <element id="module-output" name="nounou-build" />
+      <element id="module-output" name="core" />
+      <element id="module-output" name="core-build" />
+      <element id="dir-copy" path="$PROJECT_DIR$/core/src/main/resources" />
     </root>
   </artifact>
 </component>

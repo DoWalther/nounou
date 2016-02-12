@@ -2,8 +2,26 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/benchmark.iml" filepath="$PROJECT_DIR$/.idea/modules/benchmark.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/benchmark-build.iml" filepath="$PROJECT_DIR$/.idea/modules/benchmark-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core.iml" filepath="$PROJECT_DIR$/.idea/modules/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core-build.iml" filepath="$PROJECT_DIR$/.idea/modules/core-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/examples.iml" filepath="$PROJECT_DIR$/.idea/modules/examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/examples-build.iml" filepath="$PROJECT_DIR$/.idea/modules/examples-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/macros.iml" filepath="$PROJECT_DIR$/.idea/modules/macros.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/macros-build.iml" filepath="$PROJECT_DIR$/.idea/modules/macros-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/math.iml" filepath="$PROJECT_DIR$/.idea/modules/math.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/math-build.iml" filepath="$PROJECT_DIR$/.idea/modules/math-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/natives.iml" filepath="$PROJECT_DIR$/.idea/modules/natives.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/natives-build.iml" filepath="$PROJECT_DIR$/.idea/modules/natives-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/nounou.iml" filepath="$PROJECT_DIR$/.idea/modules/nounou.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/nounou-build.iml" filepath="$PROJECT_DIR$/.idea/modules/nounou-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nounoufxgui.iml" filepath="$PROJECT_DIR$/.idea/modules/nounoufxgui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nounoufxgui-build.iml" filepath="$PROJECT_DIR$/.idea/modules/nounoufxgui-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/root.iml" filepath="$PROJECT_DIR$/.idea/modules/root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/root-build.iml" filepath="$PROJECT_DIR$/.idea/modules/root-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/viz.iml" filepath="$PROJECT_DIR$/.idea/modules/viz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/viz-build.iml" filepath="$PROJECT_DIR$/.idea/modules/viz-build.iml" />
     </modules>
   </component>
 </project>

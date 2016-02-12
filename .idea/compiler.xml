@@ -18,5 +18,10 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="1.7">
+      <module name="benchmark" target="1.6" />
+      <module name="math" target="1.6" />
+      <module name="natives" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
