@@ -6,44 +6,249 @@
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="nounou" />
+      <artifact name="nounou-lib" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b84f17cd-31ec-4516-ac7c-645f5d0ee2e9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/nounou/NNJ.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/nounou/NNOpt.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/nounou/Options.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsampleParent.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/_profiling/profileNlxNcsToFIRToDecimate.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDecimateTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/breeze/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/breeze/stats/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/deprecated-list.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-_.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-a.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-b.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-c.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-d.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-e.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-f.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-g.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-h.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-i.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-j.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-k.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-l.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-m.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-n.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-o.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-p.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-q.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-r.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-s.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-t.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-u.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-v.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-w.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index/index-x.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/arrow-down.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/arrow-right.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/class.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/class_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/class_diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/class_to_object_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/constructorsbg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/conversionbg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/defbg-blue.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/defbg-green.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/diagrams.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/diagrams.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/filter_box_left.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/filter_box_left2.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/filter_box_right.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/filterbg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/filterboxbarbg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/filterboxbarbg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/filterboxbg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/fullcommenttopbg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/jquery-ui.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/jquery.layout.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/modernizr.custom.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/navigation-li-a.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/navigation-li.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/object.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/object_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/object_diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/object_to_class_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/object_to_trait_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/object_to_type_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/ownderbg2.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/ownerbg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/ownerbg2.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/package.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/package_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/packagesbg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/permalink.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/ref-index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/remove.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/scheduler.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/selected-implicits.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/selected-right-implicits.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/selected-right.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/selected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/selected2-right.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/selected2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/signaturebg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/signaturebg2.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/template.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/template.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/tools.tooltip.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/trait.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/trait_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/trait_diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/trait_to_object_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/type.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/type_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/type_diagram.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/type_to_object_big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/typebg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/unselected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/lib/valuemembersbg.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/NN$$OptThresholdBlackout.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/NN$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/OptSpikeDetectorFlush$$All$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/OptSpikeDetectorFlush$$None$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/OptSpikeDetectorFlush$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/OptSpikeDetectorFlush.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/SpikeStats$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/Surprise$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/Surprise.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/continuous/MedianSD$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/continuous/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/SpikeDetect$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/package$$OptAnalysisUnits.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/package$$OptBlackoutFr.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/package$$OptDetectionWindow.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/package$$OptDetectionWindowOverlap.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/package$$OptPeakHalfWidthMaxFr.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/package$$OptPeakHalfWidthMinFr.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/package$$OptPretriggerFr.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/package$$OptThresholdSDFactor.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/package$$OptWaveformFr.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/spikes/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/analysis/threshold$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/InvalidFileFormatException.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/NNElement$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/NNElement.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/NNElementDeserializeIntermediate.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNData.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataAux.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataChannel.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataChannelArray.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataChannelNumbered.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataChannelPreloaded.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataPreloaded.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/NNDataSpikeReader.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilter.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterBuffer$ReadingHashMapBuffer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterBuffer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterDecimate.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterDownsample.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterFIR.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterInvert.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/NNDataFilterMedianSubtract.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/filters/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/data/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/events/NNEvent$$NNEventOrdering$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/events/NNEvent$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/events/NNEvent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/events/NNEvents.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/events/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/headers/HeaderValue$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/headers/HeaderValue.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/headers/HeaderValueDouble.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/headers/HeaderValueFloat.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/headers/HeaderValueInt.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/headers/HeaderValueShort.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/headers/HeaderValueString.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/headers/NNHeader.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/headers/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/spikes/NNSpike.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/spikes/NNSpikes$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/spikes/NNSpikes.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/spikes/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/NNChannelsElement.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/NNDataScale$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/NNDataScale.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/NNScalingElement.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/NNTiming.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/NNTimingElement.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/layout/NNLayout.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/layout/NNLayoutElement.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/layout/NNLayoutHexagonal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/layout/NNLayoutNeighbor.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/layout/NNLayoutSingle.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/layout/NNLayoutSpatial.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/layout/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/elements/traits/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/FileLoader$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/FileLoader.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/FileLoaderNull.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/FileSaver$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/FileSaver.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/FileSaverNull.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/NNDataChannelFileReadNCS.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/NNEventNEV$$NNEventNEVOrdering$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/NNEventNEV$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/NNEventNEV.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/NNSpikeNSE.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/NNSpikeNST.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/NNSpikeNTT.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/NNSpikeNeuralynx$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/NNSpikeNeuralynx.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/NNSpikesNeuralynx.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileAdapters/FileAdapterNCS$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileAdapters/FileAdapterNCS.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileAdapters/FileAdapterNEV.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileAdapters/FileAdapterNSE.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileAdapters/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileNCS$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileNCS.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileNEV$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileNEV.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileNSE$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileNSE.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileNeuralynx$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileNeuralynx.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileReadNCS.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileReadNEV.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileReadNSE.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileReadNeuralynx.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileWriteNEV.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/FileWriteNeuralynx.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/fileObjects/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/headers/NNHeaderNCS.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/headers/NNHeaderNEV.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/headers/NNHeaderNSE.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/headers/NNHeaderNeuralynx.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/headers/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/neuralynx/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/io/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/package$$Opt.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/package$$OptNull$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/ranges/NNRange$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/ranges/NNRange.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/ranges/NNRangeAll.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/ranges/NNRangeInstantiated.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/ranges/NNRangeSpecifier.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/ranges/NNRangeTs.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/ranges/NNRangeValid.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/ranges/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/util/LoggingExt.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/util/NNGit$.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/util/NNGit.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/nounou/util/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/package.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/math.jar" afterPath="$PROJECT_DIR$/lib/math.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/nounou.iml" afterPath="$PROJECT_DIR$/.idea/modules/nounou.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/NNGit.gson.txt" afterPath="$PROJECT_DIR$/src/main/resources/NNGit.gson.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/NN.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/NN.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/SpikeDetect.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/package.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/analysis/spikes/package.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNData.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNData.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannel.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/NNDataChannel.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilter.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilter.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterBuffer.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterBuffer.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDecimate.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDecimate.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsample.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/data/filters/NNFilterDownsample.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpike.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpike.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpikes.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/spikes/NNSpikes.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScaling.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNScaling.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTiming.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTiming.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTimingElement.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/elements/traits/NNTimingElement.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikesNeuralynx.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/NNSpikesNeuralynx.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNSE.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNSE.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/options/Opt.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/options/Opt.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/options/OptHandler.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/options/OptHandler.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRange.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRange.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeTsEvent.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/ranges/NNRangeTsEvent.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/nounou/util/package.scala" afterPath="$PROJECT_DIR$/src/main/scala/nounou/util/package.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDownsampleTest.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/elements/data/filters/NNFilterDownsampleTest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNSETest.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/FileAdapterNSETest.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNSE_STet4a.scala" afterPath="$PROJECT_DIR$/src/test/scala/nounou/io/neuralynx/NNTestLoaderNSE_STet4a.scala" />
     </list>
     <ignored path="nounou.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -188,7 +393,7 @@
       <file leaf-file-name="NNLayout.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/layout/NNLayout.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27357513">
+            <state vertical-scroll-proportion="0.46560848">
               <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
               <folding />
             </state>
@@ -312,6 +517,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -347,224 +553,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="neuralynx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filters" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="analysis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_profiling" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -581,168 +569,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="traits" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="traits" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -767,12 +593,15 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nounou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1196,7 +1025,7 @@
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1452698069864" />
+    <option name="lastUpdateTimestamp" value="1455268045851" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -1223,7 +1052,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1452698044837" />
+        <entry key="$PROJECT_DIR$" value="1455216956600" />
       </map>
     </option>
     <option name="externalProjectsViewState">
@@ -1293,32 +1122,32 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31190926" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39759037" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33131313" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37240076" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3263052" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35492507" sideWeight="0.49499" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35492507" sideWeight="0.50501" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35492507" sideWeight="0.485" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289225" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35492507" sideWeight="0.515" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931727" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992035" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3979206" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37240076" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289225" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730925" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931727" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1445,9 +1274,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.66251296">
           <caret line="29" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1527,13 +1353,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0913811">
           <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1672,7 +1491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9017433">
           <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1680,7 +1498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22979398">
           <caret line="16" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1738,9 +1555,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/nounou/elements/traits/layout/NNLayout.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27357513">
+        <state vertical-scroll-proportion="0.46560848">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
           <folding />
         </state>
@@ -1806,7 +1631,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>nounou</last-edited>
+          <last-edited>nounou-build</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
