@@ -5,195 +5,12 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="nounou-lib" />
+      <artifact name="nounou" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b84f17cd-31ec-4516-ac7c-645f5d0ee2e9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project/Build.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project/BuildSettings.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project/Dependencies.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project/NightlyBuildSupport.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project/Utils.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project/build.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project/plugins.sbt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/java/nounou/NNJ.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/NN.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/NNOpt.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/Options.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/_backup/FileNCSConstants.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/_backup/Frame.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/_backup/NNDataFilterHolder.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/_backup/NNDataFilterMask.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/_backup/NNDataFilterParallel.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/_backup/NNDataFilterStatistics.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/_backup/NNDataReader.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/_backup/NNScalingBackup.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/analysis/SpikeStats.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/analysis/continuous/MedianSD.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/analysis/spikes/SpikeDetect.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/analysis/spikes/SpikeDetectBak.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/analysis/spikes/SpikeDetector.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/analysis/spikes/Surprise.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/analysis/spikes/package.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/analysis/threshold.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/InvalidFileFormatException.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/NNElement.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/NNData.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/NNDataAux.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/NNDataChannel.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/NNDataChannelArray.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/NNDataChannelExtracted.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/NNDataChannelPreloaded.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/NNDataPreloaded.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/NNDataSpikeReader.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/filters/NNFilter.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/filters/NNFilterBuffer.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/filters/NNFilterDecimate.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/filters/NNFilterDownsample.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/filters/NNFilterDownsampleParent.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/filters/NNFilterFIR.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/filters/NNFilterInvert.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/filters/NNFilterMedianSubtract.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/traits/NNDataChannelNumbered.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/data/traits/NNDataNode.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/events/NNEvent.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/events/NNEvents.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/headers/HeaderValue.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/headers/NNHeader.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/spikes/NNSpike.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/spikes/NNSpikes.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/NNChannelsElement.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/NNConcatenableElement.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/NNConcatenatable.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/NNScaling.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/NNScalingElement.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/NNTiming.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/NNTimingElement.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/layout/NNLayout.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/layout/NNLayoutElement.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/layout/NNLayoutHexagonal.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/layout/NNLayoutNeighbor.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/layout/NNLayoutSingle.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/layout/NNLayoutSpatial.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/elements/traits/package.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/FileLoader.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/FileSaver.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/brainvision/FileAdapterGSDGSH.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/general/FileAdapterXML.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/klustakwik/FileAdapterKlustaDAT.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/NNDataChannelFileReadNCS.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/NNEventNEV.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/NNScalingNeuralynx.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/NNSpikeNeuralynx.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/NNSpikesNeuralynx.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNCS.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNEV.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/fileAdapters/FileAdapterNSE.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/fileObjects/FileXxxNCS.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/fileObjects/FileXxxNEV.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/fileObjects/FileXxxNSE.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/fileObjects/FileXxxNeuralynx.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/headers/NNHeaderNCS.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/headers/NNHeaderNEV.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/headers/NNHeaderNSE.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynx.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynxDAQ.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuralynx/headers/NNHeaderNeuralynxSpike.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/neuroexplorer/FileAdapterNEX.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/io/package.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/options/OPT_AUTOMATIC.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/options/OPT_NULL.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/options/Opt.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/options/OptBlackout.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/options/OptHandler.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/options/OptSpikeDetectorFlush.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/package.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/ranges/NNRange.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/ranges/NNRangeAll.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/ranges/NNRangeEvent.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/ranges/NNRangeSpecifier.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/ranges/NNRangeTs.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/ranges/NNRangeTsEvent.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/ranges/RangeMs.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/ranges/RangeMsEvent.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/ranges/XSampleMask.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/util/LoggingExt.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/util/NNGit.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/scala/nounou/util/package.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/java/nounou/LittleSpeedTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/mathematica/nounou/analysis/spikes/spike detection tests.nb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/mathematica/nounou/data/filters/NNDataFilter_Tests.nb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/mathematica/nounou/data/filters/XDataFilterFIR_Test.nb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/mathematica/nounou/data/io/FileAdapterGSDGSHTest.nb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/mathematica/test static use.130710.nb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/_bak/FileAdapterGSDGSHTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/_bak/FileAdapterKlustaDATTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/_bak/FileLoaderNEVTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/_bak/FileLoaderNEXTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/_bak/NNDataFilterBufferTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/_bak/NNDataReaderTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/_bak/SpikeDetectTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/_bak/ioTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/_profiling/profileNlxNcsToFIRToDecimate.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/analysis/spikeDetectTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/analysis/thresholdTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/displays/JavaFXHelloTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/NNElementTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/data/filters/NNFilterBufferTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/data/filters/NNFilterDecimateTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/data/filters/NNFilterDownsampleTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/data/filters/NNFilterMedianSubtractTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/data/filters/XDataFilterFIRTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/traits/FramesTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/traits/PlayWithReduceFold.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/traits/XPreloadedTestDataTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/traits/layout/NNLayoutHexagonalTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/elements/trodes/NNDataTrodesTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/io/FileLoaderTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/io/PlayingAroundCharByte.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/io/neuralynx/FileAdapterNEVTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/io/neuralynx/FileAdapterNSETest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/io/neuralynx/FileAdapterNeuralynxHeaderTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/io/neuralynx/NNDataChannelNCSTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/io/neuralynx/NNDataTestNCSTet4.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/io/neuralynx/NNTestLoaderNCS_E04LC_NNDataChannel.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/io/neuralynx/NNTestLoaderNCS_Tet4.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/io/neuralynx/NNTestLoaderNSE_STet4a.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/ranges/FrRangeTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/util/NNGitTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scala/nounou/util/UtilTest.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/ArrayAssignment.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/arrayManipulation.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/collections/Array flatten.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/collections/ArrayBuffer.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/collections/ArrayTypeTests.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/collections/Set unique values test.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/collections/TestingTreeMap.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/collections/yield examples.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/matchSubclasses.131203.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/regex/TestingRegex.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/stringCasting.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/general/stringPaddingTrimming.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/nounou/io/TestingFileLoader.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/nounou/io/neuralynx/FileAdapterNCSPlayAround.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/nounou/io/neuralynx/FileAdapterNCSTest.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/nounou/io/neuralynx/FileLoaderNEV.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/test/scalaWorksheets/nounou/io/neuralynx/NNHeaderNeuralynx_DateParsing.sc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/services/nounou.io.FileLoader" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/services/nounou.io.FileSaver" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/NNGit.gson.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/nounou.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/nounou.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/nounou_lib.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/nounou_lib.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/nounou-build.iml" afterPath="$PROJECT_DIR$/.idea/modules/nounou-build.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/nounou.iml" afterPath="$PROJECT_DIR$/.idea/modules/nounou.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sbt.xml" afterPath="$PROJECT_DIR$/.idea/sbt.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nounou.iws" />
@@ -588,8 +405,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -608,46 +423,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SBT: com.typesafe.scala-logging:scala-logging_2.11:3.1.0:jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala-logging_2.11-3.1.0.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SBT: com.typesafe.scala-logging:scala-logging_2.11:3.1.0:jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala-logging_2.11-3.1.0.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scalalogging" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="nounou" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -663,24 +438,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nounou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -693,10 +450,12 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/src/main/resources/MANIFEST.MF" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.20128676" />
@@ -1116,7 +875,7 @@
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1455265888664" />
+    <option name="lastUpdateTimestamp" value="1455269293732" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -1294,32 +1053,32 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31190926" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37349397" sideWeight="0.4914347" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37349397" sideWeight="0.48715204" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37349397" sideWeight="0.5085653" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37349397" sideWeight="0.51284796" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37240076" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3263052" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29657388" sideWeight="0.48397437" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289225" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29657388" sideWeight="0.51602566" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29657388" sideWeight="0.4775641" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29657388" sideWeight="0.5224359" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931727" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992035" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37240076" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289225" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730925" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931727" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1367,7 +1126,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.37225044">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1375,7 +1133,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07445008">
           <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1383,7 +1140,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.67005074">
           <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1394,8 +1150,8 @@
         <settings>
           <artifact-editor>
             <show-content>
-              <type id="library" />
               <type id="artifact" />
+              <type id="library" />
             </show-content>
           </artifact-editor>
           <last-edited>nounou</last-edited>
@@ -1427,7 +1183,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.42003676" />
+                <option value="0.20128676" />
               </list>
             </option>
           </splitter-proportions>
@@ -1439,7 +1195,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.42003676" />
+                <option value="0.20128676" />
               </list>
             </option>
           </splitter-proportions>
@@ -1464,7 +1220,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.42003676" />
+                <option value="0.20128676" />
               </list>
             </option>
           </splitter-proportions>
