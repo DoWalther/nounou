@@ -1,6 +1,5 @@
 package nounou.io.neuralynx.headers
 
-import java.time.Instant
 import nounou.io.neuralynx.fileObjects.{FileNSE, FileNEV}
 
 /**

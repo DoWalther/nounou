@@ -105,7 +105,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   //First record dealt with separately
   currentRecord = 0
   @transient
-  private var thisRecTS = readNCSRecordHeaderTS(currentRecord) - BigInt(header.getHeaderDspFilterDelay)
+  private var thisRecTS = readNCSRecordHeaderTS(currentRecord)// - BigInt(header.getHeaderDspFilterDelay)
   @transient
   private var lastRecTS = thisRecTS
   @transient
@@ -118,7 +118,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   //Read loop
   currentRecord = 1 //already dealt with rec=0
   while(currentRecord < headerRecordCount){
-    thisRecTS = readNCSRecordHeaderTS(currentRecord) - BigInt(header.getHeaderDspFilterDelay)
+    thisRecTS = readNCSRecordHeaderTS(currentRecord)// - BigInt(header.getHeaderDspFilterDelay)
     //ToDo 3: Implement cases where timestamps skip just a slight amount d/t DAQ problems
 
     loggerRequire( thisRecTS > lastRecTS,
@@ -158,7 +158,9 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
 
   override val scaling: NNScalingNeuralynx =
     new NNScalingNeuralynx( unit = this.absUnit,
-                            absolutePerShort = 1.0E6 * header.getHeaderADBitVolts )
+                            absolutePerShort = 1.0E6 *
+                              header.getHeaderADBitVolts *
+                              {if(header.getHeaderInputInverted) -1d else 1d} )
 //  setScale( new NNScaling(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
 //                            absGain = 1.0E6 * getHeader.getHeaderADBitVolts / xBitsD,
 //                            absOffset = this.absOffset,

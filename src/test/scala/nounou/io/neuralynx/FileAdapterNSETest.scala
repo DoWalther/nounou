@@ -29,7 +29,7 @@ class FileAdapterNSETest extends FunSuite with NNTestLoaderNSE_STet4a {
   }
 
   test("save"){
-    NN.save("C:/temp/nounou/NSE.nse", dataObj)
+    NN.save("C:/temp/NSE.nse", dataObj)
     println( s" FileAdapterNSETest: check the file C:/temp/nounou/NSE.nse against $testFileSTet4a ")
   }
 

@@ -2,12 +2,17 @@ package nounou.elements.traits
 
 import nounou.elements.NNElement
 
-/**This trait of NNElement objects encapsulates the channel count information for
-  * electrophysiological and imaging data. Envisioned uses are for:
+/**
+  * This trait of NNElement objects encapsulates channel count information for
+  * electrophysiological and imaging data.
+  *
+  * Envisioned uses are for:
   * - [[nounou.elements.data.NNData]],
   * - [[nounou.elements.traits.layout.NNLayout]].
+  *
   * Channel names/count are intentionally mutable for [[nounou.elements.data.filters.NNFilter]]
   * objects which conduct binning and therefore may change dynamically.
+  *
  */
 trait NNChannelsElement extends NNElement {
 

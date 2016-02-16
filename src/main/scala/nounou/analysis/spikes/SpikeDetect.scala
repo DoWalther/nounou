@@ -68,16 +68,18 @@ object SpikeDetect extends LoggingExt
   // <editor-fold defaultstate="collapsed" desc=" medianSDThresholdPeakDetect ">
 
   def medianSDThresholdPeakDetect(data: Array[Double], medianFactor: Double, peakWindow: Int): Array[Int] = {
-    val absMedianThreshold = medianFactor * median( abs( DenseVector( data ) ) ) / 0.6745
-    val tempTriggers = Threshold(data, absMedianThreshold)
+    val absData = abs( DenseVector( data ) )
+    val absMedianThreshold = medianFactor * median( absData ) / 0.6745
+    val tempTriggers = Threshold(absData.toArray, absMedianThreshold)
     val tempret = ArrayBuffer[Int]()
     var c = 0
     while( c < tempTriggers.length ){
       val tempTrig = tempTriggers(c)
-      val tempTrigLast = tempTrig + peakWindow
+      val tempTrigLast = tempTrig + peakWindow -1
       val maxPos =
-        if( tempTrigLast < data.length ) {
-          maxPosition(data, tempTrig, tempTrigLast)
+        if( tempTrigLast < absData.length ) {
+          if( data(tempTrig) > 0) maxPosition(data, tempTrig, tempTrigLast)
+          else minPosition(data, tempTrig, tempTrigLast)
         } else Int.MaxValue
       if( maxPos < tempTrigLast) tempret.+=( maxPos )
       c += 1
@@ -141,6 +143,10 @@ object SpikeDetect extends LoggingExt
 
   // <editor-fold defaultstate="collapsed" desc=" impl ">
 
+  /**
+    * Finds the index of the maximum within the range
+    *
+    */
   private def maxPosition(array: Array[Double], start: Int, last: Int): Int = {
     loggerRequire(array != null, "input cannot be null!")
     loggerRequire(start < array.length, "start must be within array range!")
@@ -156,6 +162,22 @@ object SpikeDetect extends LoggingExt
       c += 1
     }
     maxPos
+  }
+  private def minPosition(array: Array[Double], start: Int, last: Int): Int = {
+    loggerRequire(array != null, "input cannot be null!")
+    loggerRequire(start < array.length, "start must be within array range!")
+
+    var minPos = start
+    var minVal = array(start)
+    var c = start + 1
+    while (c <= last){
+      if( array(c) < minVal ){
+        minPos = c
+        minVal = array(c)
+      }
+      c += 1
+    }
+    minPos
   }
 
   // </editor-fold>

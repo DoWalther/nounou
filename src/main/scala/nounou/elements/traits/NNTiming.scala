@@ -212,8 +212,8 @@ class NNTiming(val sampleRate: Double,
 
   // <editor-fold defaultstate="collapsed" desc="Time specification: conversion between frame/segment and Ts">
 
-  private final lazy val factorTsPerFr = sampleInterval * 1000000D
-  private final lazy val factorFrPerTs = 1D/factorTsPerFr
+  protected[nounou] final lazy val factorTsPerFr = sampleInterval * 1000000D
+  protected[nounou] final lazy val factorFrPerTs = 1D/factorTsPerFr
 
   final def convertFrToTs(frame:Int): BigInt = {
     errorIfMultipleSegments("convertFrToTs(frame: Int)", "convertFrsgToTs(frame: Int, segment: Int)")

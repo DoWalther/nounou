@@ -57,6 +57,7 @@ class FileAdapterNSE extends FileLoader with FileSaver with LoggingExt {
 
     var tempQwTimestamp: BigInt = 0 //Temporary number
 
+
     var break = try {
       tempQwTimestamp = fHand.readUInt64().toBigInt
       false
@@ -102,8 +103,16 @@ class FileAdapterNSE extends FileLoader with FileSaver with LoggingExt {
 
 
   override def saveImpl(fileName: String, data: Array[NNElement]): Unit = {
-    //from  canSaveObjectArray(data) == true, one can assume that data has one element, which is an NNEvent object.
-    val dataElem: NNSpikes/*Neuralynx*/ = data(0).asInstanceOf[NNSpikes/*Neuralynx*/]
+
+    //from  canSaveObjectArray(data) == true, one can assume that data has one element, which is an NNSpikes object.
+    val dataElem: NNSpikesNeuralynx = data(0) match  {
+      case x: NNSpikesNeuralynx => x
+      case x: NNSpikes => NNSpikesNeuralynx.convertNNSpikesToNNSpikesNeuralynx(x)
+    }
+    //println(dataElem.size())
+
+    //l tempTimestampOffset: BigInt = - (dataElem.timing.factorTsPerFr * dataElem.alignmentPoint).toInt
+    //logger.info(s"writing spikes with timestamp offset $tempTimestampOffset to coorect for alignmentPoint=${dataElem.alignmentPoint}")
     loggerRequire( dataElem.channels == 1, s"Cannot write spikes with ${dataElem.channels} (!= 1) channels to NSE file.")
 
     val header =
@@ -121,21 +130,29 @@ class FileAdapterNSE extends FileLoader with FileSaver with LoggingExt {
           headerSamplingFrequency = dataElem.timing.sampleRate,
           headerInputRange = inputRange,
           headerWaveformLength = dataElem.singleWaveformLength(),
-          headerAlignmentPt = dataElem.alignmentPoint
+          headerAlignmentPt = dataElem.alignmentPoint,
+
+          headerDspDelayCompensation = true, //if(dataElem.timing.filterDelay == 0) false else true,
+          headerDspFilterDelay = dataElem.timing.filterDelay
         )
       }/*
       case _ => throw loggerError("NNSpikeNeuralynx object does not have a valid NNHeaderNSE object!")
     }*/
 
-    val saveScale = new NNScalingNeuralynx(dataElem.scaling.unit, header.getHeaderADBitVolts*1e6)
+    val saveScale = new NNScalingNeuralynx(
+      dataElem.scaling.unit,
+      header.getHeaderADBitVolts*1e6 *{
+        if(header.getHeaderInputInverted) -1d else 1d
+      })
     val fileAdapter = new FileWriteNSE(new File(fileName), header)
     val fHand = fileAdapter.handle
+    //println(fHand.getFilePointer)
     fHand.seek(fileAdapter.headerBytes)
 
     val empty8: Array[Long] = Array.tabulate[Long](8)( (i: Int) => 0 )
     for( spike <- dataElem.iterator()) {
       //qwTimeStamp
-      fHand.writeUInt64( ULong.fromBigInt( spike.timestamp ) )
+      fHand.writeUInt64( ULong.fromBigInt( spike.timestamp /*+ tempTimestampOffset*/ ) )
       //dwScNumber
       fHand.writeUInt32(0)
       //dwCellNumber
@@ -143,9 +160,13 @@ class FileAdapterNSE extends FileLoader with FileSaver with LoggingExt {
       //dnParams
       fHand.writeUInt32(empty8)
       //snData
+      loggerRequire(spike.waveform.length == 32, s"NSE waveform must be 32 elements long, not ${spike.waveform.length}")
       fHand.writeInt16( saveScale.convertAbsoluteToShort( spike.readWaveformFlat() ) )
     }
 
+    fHand.setLength( fHand.getFilePointer ) //ToDo 4: This is workaround for file being too long, seeks past EOF at some point in header code????
+//    println(fHand.getFilePointer)
+//    println("Length: "+ fHand.length +" " + fileAdapter.headerBytes)
     fHand.close()
   }
 

@@ -42,13 +42,13 @@ trait NNHeaderNeuralynxDAQ extends NNHeaderNeuralynx{
       "\n" +
       s"-HardwareSubSystemName $getHeaderHardwareSubSystemName\n" +
       s"-HardwareSubSystemType $getHeaderHardwareSubSystemType\n" +
-      s"-SamplingFrequency $getHeaderSamplingFrequency\n" +
+      s"-SamplingFrequency ${getHeaderSamplingFrequency.toInt}\n" +
       s"-ADMaxValue 32767\n" +
       s"-ADBitVolts ${"%6.3e".format(getHeaderADBitVolts)}\n" +
       s"-ADChannel $getHeaderADChannel\n" +
       s"-InputRange $getHeaderInputRange\n" +
-      s"-InputInverted $getHeaderInputInverted\n" +
-      s"-DspDelayCompensation $getHeaderDspFilterDelay\n" +
+      s"-InputInverted ${if(getHeaderInputInverted) "True" else "False"}\n" +
+      s"-DspDelayCompensation " + {if(getHeaderDspDelayCompensation) "Enabled" else "Disabled"} + " \n" +
       s"-DspFilterDelay_µs $getHeaderDspFilterDelay\n"
     //  -NumADChannels 1
   }

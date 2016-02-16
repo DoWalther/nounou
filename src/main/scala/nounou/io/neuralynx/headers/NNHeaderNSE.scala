@@ -42,7 +42,7 @@ class NNHeaderNSEConcrete( headerSamplingFrequency: Double,
                            headerDspFilterDelay: Int = 0
                          )
   extends NNHeaderNeuralynxDAQConcrete(
-    getHeaderCheetahRev = headerCheetahRev, getHeaderFileType = "NSE", getHeaderRecordSize = FileNSE.recordSize,
+    getHeaderCheetahRev = headerCheetahRev, getHeaderFileType = "Spike", getHeaderRecordSize = FileNSE.recordSize,
     getHeaderAcqEntName = headerAcqEntName, getHeaderHardwareSubSystemName = headerHardwareSubSystemName, getHeaderHardwareSubSystemType = headerHardwareSubSystemType,
     getHeaderSamplingFrequency = headerSamplingFrequency,
     getHeaderADMaxValue = 32767, getHeaderADBitVolts = headerInputRange/32767.toDouble*1E-6,

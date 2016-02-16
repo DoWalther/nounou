@@ -110,7 +110,7 @@ object NNSpikes extends LoggingExt {
     val tempReturn = new NNSpikes(optAlignmentPoint, scaling = dataChannel, timing = dataChannel)
 
     frameSegments.foreach( (frsg: (Int, Int) ) => {
-      val startFr = frsg._1 - optAlignmentPoint + 1
+      val startFr = frsg._1 - optAlignmentPoint  + 1
       val sampleRange = NN.NNRange(startFr, startFr + optWaveformFrames -1, 1, frsg._2)
       val wf = dataChannel.readTrace( sampleRange )
       tempReturn.add( new NNSpike( dataChannel.timing.convertFrToTs(frsg._1), wf, channels = 1, unitNo = 0L) )
@@ -120,8 +120,6 @@ object NNSpikes extends LoggingExt {
     tempReturn
 
   }
-
-
 
   def join( spikes: NNSpikes* ): NNSpikes = {
     loggerRequire( spikes != null, "Input may not be null!")
@@ -134,18 +132,26 @@ object NNSpikes extends LoggingExt {
     tempReturn
   }
 
+  val NULL_SPIKE = null //new NNSpike(BigInt(0), Vector[Double](), 0, 0L)
+
 }
 
-/** A mutable database of [[nounou.elements.spikes.NNSpike NNSpike]] objects for display and processing.
-  * Based on a [scala.collection.mutable.TreeSet[A] mutable.TreeSet], with enforcing of NNSpike compatiblity.
-    *
-    */
-class NNSpikes( private val _database: TreeSet[NNSpike],
-                val alignmentPoint: Int,
-                override val scaling: NNScaling,
-                override val timing: NNTiming)
-  extends NNConcatenableElement with NNScalingElement with NNTimingElement {
+/**
+  * The most generic implementation of [[nounou.elements.spikes.NNSpikesParent NNSpikesParent]]
+  * containing [[nounou.elements.spikes.NNSpike NNSpike]] objects.
+  *
+  */
+class NNSpikes( _database: TreeSet[NNSpike],
+                alignmentPoint: Int,
+                scaling: NNScaling,
+                timing: NNTiming)
+  extends NNSpikesParent[NNSpike](_database, alignmentPoint, scaling, timing) {
 
+  // <editor-fold defaultstate="collapsed" desc=" alternate constructor ">
+
+  /**
+    * Alternate constructor with empty database.
+    */
   def this(alignmentPoint: Int, scaling: NNScaling, timing: NNTiming) {
     this(
       new TreeSet[NNSpike]()(Ordering.by[NNSpike, BigInt]((x: NNSpike) => x.timestamp)),
@@ -154,92 +160,11 @@ class NNSpikes( private val _database: TreeSet[NNSpike],
       timing
     )
   }
-//  def this(alignmentPoint: Int) = this(alignmentPoint, null, null)
-
-  override def toStringImpl() = s"no.=${size()}"
-  override def toStringFullImpl() = ""
-
-  // <editor-fold defaultstate="collapsed" desc=" database accessors ">
-
-  /**
-    * Number of spikes contained in object
-    */
-  def size(): Int = _database.size
 
   // </editor-fold>
-  // <editor-fold defaultstate="collapsed" desc=" prototype spike accessors ">
-
-  private var prototypeSpike: NNSpike = {
-    if( size > 0 ) _database.head else null
-  }
-
-  def channels(): Int = prototypeSpike.channels
-  def singleWaveformLength(): Int = prototypeSpike.singleWaveformLength
-
-  // </editor-fold>
-
-  // <editor-fold defaultstate="collapsed" desc=" add spikes ">
-
-  def add(elem: NNSpike): Boolean = {
-    if( prototypeSpike == null ){
-      //if this is the first spike added to the database
-      prototypeSpike = elem
-    } else if(!prototypeSpike.isCompatible(elem)) {
-      //if more than one spike has already been loaded, and they are incompatible with new spike
-      throw loggerError(s"Tried to add an incompatible spike: ${elem}")
-    }
-    _database.add(elem)
-  }
-
-  def add(spikes: NNSpikes): Boolean = {
-    if(this.isCompatible(spikes)){
-      _database.++=( spikes._database )
-      true
-    } else {
-      //if more than one spike has already been loaded, and they are incompatible with new spike
-      throw loggerError(s"Tried to add incompatible NNSpikes object: ${spikes}")
-      false
-    }
-  }
-
-  // </editor-fold>
-
-  // <editor-fold defaultstate="collapsed" desc=" read methods ">
-
-  //ToDo: defensive copy BigInt/BigInteger
-  def readSpikeTimestamps(): Array[BigInteger] = _database.map( _.timestamp.bigInteger ).toArray
-  def readSpikeFrameSegments(data: NNTimingElement): Array[Array[Int]] = readSpikeFrameSegments(data.timing)
-  def readSpikeFrameSegments(data: NNTiming): Array[Array[Int]] = {
-    _database.map( (sp: NNSpike) => {
-      val temp = data.convertTsToFrsg( sp.timestamp ); Array( temp._1, temp._2 )
-    } ).toArray
-  }
-  def readSpikeAbsoluteMaximumValue(): Double = {
-    val it = this.iterator()
-    var absMax: Double = Double.NegativeInfinity
-    while( it.hasNext ){
-      val spikeAbsMax = it.next.waveformAbsMax
-      if( absMax < spikeAbsMax ) absMax = spikeAbsMax
-    }
-    absMax
-  }
-  def readSpikeWaveformsFlat(): Array[Array[Double]] = iterator.map( _.readWaveformFlat() ).toArray
-  def readSpikeWaveforms(): Array[Array[Array[Double]]] = iterator.map( _.readWaveform() ).toArray
-
-  // </editor-fold>
-
 
   def copy(): NNSpikes = new NNSpikes( _database.clone(), alignmentPoint, this.scaling, this.timing )
 
-  def iterator(): Iterator[NNSpike] = _database.iterator
-
-  override def isCompatible(that: NNElement): Boolean =
-    that match {
-      case x: NNSpikes => {
-        prototypeSpike == null || x.prototypeSpike == null || prototypeSpike.isCompatible(x.prototypeSpike)
-      }
-      case _ => false
-    }
-
+  override var prototypeSpike: NNSpike = null //if( size <= 0 ) NNSpikes.NULL_SPIKE else _database.head
 
 }
