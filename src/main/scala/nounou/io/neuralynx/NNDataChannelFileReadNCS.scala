@@ -4,12 +4,9 @@ import java.io.File
 
 import breeze.linalg.{DenseVector => DV, convert}
 import nounou.elements.traits.{NNTiming, NNScaling}
-import nounou.elements.data.NNDataChannel
-import nounou.ranges.NNRangeValid
 import nounou.io.neuralynx.fileObjects.{FileReadNCS, FileReadNeuralynx}
 import nounou.io.neuralynx.headers.NNHeaderNCS
-
-import scala.math
+import nounou.ranges.NNRangeValid
 
 
 /** A specialized immutable [[nounou.elements.data.NNDataChannel]] for NCS files.
