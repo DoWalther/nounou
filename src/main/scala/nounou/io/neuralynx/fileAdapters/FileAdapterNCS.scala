@@ -11,7 +11,7 @@ import nounou.util.LoggingExt
 class FileAdapterNCS  extends FileLoader with FileSaver with LoggingExt {
 
   override val canLoadExtensions = Array("ncs")
-  override def load(file: File): Array[NNElement] = Array(new NNDataChannelFileReadNCS(file))
+  override def loadImpl(file: File): Array[NNElement] = Array(new NNDataChannelFileReadNCS(file))
 
   override val canSaveExtensions = Array("ncs")
   override def canSaveObjectArray(data: Array[NNElement]): Boolean =
@@ -23,6 +23,7 @@ class FileAdapterNCS  extends FileLoader with FileSaver with LoggingExt {
     )
 
   /** Actual saving of file.
+    *
     * @param fileName if the filename does not end with the correct extension, it will be appended. If it exists, it will be given a postscript.
     */
   override def saveImpl(fileName: String, data: Array[NNElement]): Unit = {

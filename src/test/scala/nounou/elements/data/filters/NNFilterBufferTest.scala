@@ -7,10 +7,10 @@ import nounou.io.neuralynx.NNDataTestNCSTet4
 */
 class NNFilterBufferTest extends NNDataTestNCSTet4 {
 
-  override val dataObj = new NNFilterBuffer( super.dataObj )
+  override val dataObjTet4 = new NNFilterBuffer( super.dataObjTet4 )
 
   //Tests are exactly the same as in NNDataTest, only buffered
 
-  println( dataObj.bufferPageLength )
+  println( dataObjTet4.bufferPageLength )
 
 }

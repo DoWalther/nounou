@@ -14,9 +14,9 @@ trait NNTestLoaderNSE_STet4a extends FunSuite {
   protected[nounou] val testFileSTet4a = getClass.getResource("/nounou/Neuralynx/t130911/STet4a.nse").getPath()
 
   val data = NN.load( testFileSTet4a ).apply(0)
-  assert(data.isInstanceOf[NNSpikes/*Neuralynx*/])
-  private val _dataObj = data.asInstanceOf[NNSpikes/*Neuralynx*/]
-  def dataObj: NNSpikes/*Neuralynx*/ = _dataObj
+  assert(data.isInstanceOf[NNSpikesNeuralynx])
+  private val _dataObj = data.asInstanceOf[NNSpikesNeuralynx]
+  def dataObj: NNSpikesNeuralynx = _dataObj
 
 
 }

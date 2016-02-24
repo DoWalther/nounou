@@ -28,12 +28,13 @@ object NNSpikeNeuralynx extends LoggingExt {
 
     val waveformShort = spike.waveform//.map(_.toShort)
 
-    spike.channels match {
-      case 1 => new NNSpikeNSE(spike.timestamp, dwScNumber, spike.unitNo, dnParams, waveformShort)
-      case 2 => new NNSpikeNST(spike.timestamp, dwScNumber, spike.unitNo, dnParams, waveformShort)
-      case 4 => new NNSpikeNTT(spike.timestamp, dwScNumber, spike.unitNo, dnParams, waveformShort)
-      case _ => throw loggerError("Neuralynx can only support spikes with 1,2,or 4 channels")
-    }
+    new NNSpikeNeuralynx(spike.timestamp, dwScNumber, spike.unitNo, dnParams, waveformShort, spike.channels)
+//    spike.channels match {
+//      case 1 => new NNSpikeNSE(spike.timestamp, dwScNumber, spike.unitNo, dnParams, waveformShort)
+//      case 2 => new NNSpikeNST(spike.timestamp, dwScNumber, spike.unitNo, dnParams, waveformShort)
+//      case 4 => new NNSpikeNTT(spike.timestamp, dwScNumber, spike.unitNo, dnParams, waveformShort)
+//      case _ => throw loggerError("Neuralynx can only support spikes with 1,2,or 4 channels")
+//    }
   }
 
 }
@@ -50,7 +51,7 @@ object NNSpikeNeuralynx extends LoggingExt {
   *     + dwScNumber
   *     + dnParams
   */
-abstract class NNSpikeNeuralynx(
+class NNSpikeNeuralynx(
                       val qwTimeStamp: BigInt,
                       val dwScNumber: Long,
                       val dwCellNumber: Long,
@@ -93,31 +94,34 @@ abstract class NNSpikeNeuralynx(
 
   // </editor-fold>
 
-}
-
-final class NNSpikeNSE(
-        qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Double] ) extends
-      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 1) {
-
-  override def reassignUnitNo(newUnitNo: Long): NNSpikeNSE =
-    new NNSpikeNSE(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
-
-
-}
-final class NNSpikeNST(
-        qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Double] ) extends
-      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 2) {
-
-  override def reassignUnitNo(newUnitNo: Long): NNSpikeNST =
-    new NNSpikeNST(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
-
-}
-final class NNSpikeNTT(
-        qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Double] ) extends
-      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 4){
-
-  override def reassignUnitNo(newUnitNo: Long): NNSpikeNTT =
-    new NNSpikeNTT(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
+    override def reassignUnitNo(newUnitNo: Long): NNSpikeNeuralynx =
+      new NNSpikeNeuralynx(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData, channels)
 
 }
 
+//final class NNSpikeNSE(
+//        qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Double] ) extends
+//      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 1) {
+//
+//  override def reassignUnitNo(newUnitNo: Long): NNSpikeNSE =
+//    new NNSpikeNSE(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
+//
+//
+//}
+//final class NNSpikeNST(
+//        qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Double] ) extends
+//      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 2) {
+//
+//  override def reassignUnitNo(newUnitNo: Long): NNSpikeNST =
+//    new NNSpikeNST(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
+//
+//}
+//final class NNSpikeNTT(
+//        qwTimeStamp: BigInt, dwScNumber: Long, dwCellNumber: Long, dnParams: Vector[Long], snData: Vector[Double] ) extends
+//      NNSpikeNeuralynx(qwTimeStamp, dwScNumber, dwCellNumber, dnParams, snData, 4){
+//
+//  override def reassignUnitNo(newUnitNo: Long): NNSpikeNTT =
+//    new NNSpikeNTT(qwTimeStamp, dwScNumber, newUnitNo, dnParams, snData)
+//
+//}
+//

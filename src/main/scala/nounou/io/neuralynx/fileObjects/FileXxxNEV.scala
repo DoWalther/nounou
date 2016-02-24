@@ -2,26 +2,19 @@ package nounou.io.neuralynx.fileObjects
 
 import java.io.File
 
-import nounou.io.neuralynx.headers.{NNHeaderNEVRead, NNHeaderNeuralynx, NNHeaderNEV, NNHeaderNSE}
+import nounou.io.neuralynx.headers.{NNHeaderNEVRead, NNHeaderNeuralynx, NNHeaderNEV}
 
 /**
-  * Information and constants regarding Neuralynx NEV files in general.
-  * This trait is defined (outside the companion class) to allow static external access (via Object) as well as class use.
+  * Static object with NEV file information.
   */
-trait FileNEV {
+object FileNEVInfo extends FileNeuralynxInfo {
   final val recordSize = 184
 }
-
-
-/**
-  * Static adapter to use information in trait FileNEV.
-  */
-object FileNEV extends FileNEV
 
 /**
   * File handler for reading Neuralynx NEV files, to be used by file adapter.
   */
-class FileReadNEV(file: File) extends FileReadNeuralynx[NNHeaderNEV](file) with FileNEV {
+class FileReadNEV(file: File) extends FileReadNeuralynx[NNHeaderNEV](file, FileNEVInfo.recordSize){
 
   //The following lazy initialization done by hand to avoid var/val initialization order issues
   override final var _header: NNHeaderNEV = null
@@ -31,9 +24,4 @@ class FileReadNEV(file: File) extends FileReadNeuralynx[NNHeaderNEV](file) with 
   }
 }
 
-class FileWriteNEV(file: File, headerNEV: NNHeaderNEV) extends FileWriteNeuralynx(file, headerNEV) with FileNEV {
-
-
-//  override lazy val header: NNHeaderNEV = headerNEV
-
-}
+//class FileWriteNEV(file: File, headerNEV: NNHeaderNEV) extends FileWriteNeuralynx(file, headerNEV, FileNEVInfo.recordSize)

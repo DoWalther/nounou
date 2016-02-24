@@ -14,7 +14,9 @@ class UtilTest extends FunSuite {
 
     assert( nounou.util.getFileExtension("hello.exe") == "exe" )
     assert( nounou.util.getFileExtension("exe") == "exe" )
-    assert( nounou.util.getFileExtension("hello.123.eexe") == "eexe" )
+    assert( nounou.util.getFileExtension(".baT") == "bat" )
+    assert( nounou.util.getFileExtension("COM") == "com" )
+    assert( nounou.util.getFileExtension("hello.123.Eexe") == "eexe" )
 
   }
 

@@ -13,7 +13,7 @@ import org.scalatest.FunSuite
  */
 class NNFilterDownsampleTest extends FunSuite with NNTestLoaderNCS_Tet4 {
 
-  val filtObj = new NNFilterDownsample( dataObj, 5 )
+  val filtObj = new NNFilterDownsample( dataObjTet4, 5 )
 
 
   test("timing info"){
@@ -35,7 +35,7 @@ class NNFilterDownsampleTest extends FunSuite with NNTestLoaderNCS_Tet4 {
 
   test("readTrace"){
 
-    println( dataObj.readTraceDV(0, NN.NNRange(0,10,1,0)) )
+    println( dataObjTet4.readTraceDV(0, NN.NNRange(0,10,1,0)) )
     println( filtObj.readTraceDV(0, NN.NNRange(0,10,1,0)) )
     assert(filtObj.readTraceDV( 0, NN.NNRange(0, 10, 1, segment = 0)) ==
       DenseVector(-27.100428000000004, -3.1128870000000006, -7.751699000000001, -21.210357500000004, -7.019255000000001, -30.457463000000004, -14.770954000000001,

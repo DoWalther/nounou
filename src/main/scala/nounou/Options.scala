@@ -2,7 +2,7 @@ package nounou
 
 import nounou.analysis.spikes.OptSpikeDetect
 import nounou.elements.spikes.OptReadSpikes
-import nounou.options.{OptInt, Opt}
+import nounou.options._
 
 /**
   * Created by ktakagaki on 16/01/28.
@@ -12,9 +12,13 @@ object Options {
 
   // <editor-fold defaultstate="collapsed" desc=" OptSpikeDetect ">
 
-  case object MedianSDThresholdPeak extends OptSpikeDetect
-  case class MedianFactor(value: Double) extends OptSpikeDetect
-  case class PeakWindow(value: Double) extends OptSpikeDetect
+  case class SpikeDetectMethod(override val value: String) extends OptString
+//  case class SpikeDetectMethod(value: Marker) extends OptMarker
+//  case object MedianSDThresholdPeak extends Marker("MedianSDThresholdPeak")
+  //case object MedianSDThresholdPeak extends OptMarker("MedianSDThresholdPeak") with OptSpikeDetect
+  //case object MedianSDThresholdPeak extends OptString("MedianSDThresholdPeak") with OptSpikeDetect
+  case class MedianFactor(value: Double) extends OptSpikeDetect with OptDouble
+  case class PeakWindow(value: Int) extends OptSpikeDetect with OptInt
 
   // </editor-fold>
 
@@ -32,6 +36,9 @@ object Options {
     loggerRequire(value >=16, "Must have a waveform frame count of at least 16!")
 
   }
+  case class OverlapWindow(value: Int)
+    extends Opt with OptReadSpikes with OptInt
+
   /**Blackout time in frames*/
   case class BlackoutFrames(value: Int) extends OptReadSpikes with OptInt {
 

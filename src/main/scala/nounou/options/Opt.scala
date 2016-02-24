@@ -17,10 +17,24 @@ trait Opt extends breeze.util.Opt with LoggingExt {
 
 }
 
+
+trait  OptString extends Opt{
+  val value: String
+}
+
+//abstract class Marker(val value: String) extends Opt
+//trait OptMarker extends Opt {
+//  val value: Marker
+//}
+
 trait OptDouble extends Opt {
   val value: Double
 }
 
 trait OptInt extends Opt {
   val value: Int
+}
+
+trait OptBoolean extends Opt {
+  val value: Boolean
 }

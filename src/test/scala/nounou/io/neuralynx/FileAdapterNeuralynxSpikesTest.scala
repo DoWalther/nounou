@@ -6,7 +6,7 @@ import org.scalatest.FunSuite
 /**
   * Created by ktakagaki on 16/01/27.
   */
-class FileAdapterNSETest extends FunSuite with NNTestLoaderNSE_STet4a {
+class FileAdapterNeuralynxSpikesTest extends FunSuite with NNTestLoaderNSE_STet4a {
 
   test("load"){
 
@@ -30,7 +30,7 @@ class FileAdapterNSETest extends FunSuite with NNTestLoaderNSE_STet4a {
 
   test("save"){
     NN.save("C:/temp/NSE.nse", dataObj)
-    println( s" FileAdapterNSETest: check the file C:/temp/nounou/NSE.nse against $testFileSTet4a ")
+    println( s" FileAdapterNSETest: check the file C:/temp/NSE.nse against $testFileSTet4a ")
   }
 
 }

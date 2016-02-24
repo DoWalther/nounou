@@ -14,7 +14,7 @@ class profileNlxNcsToFIRToDecimate extends FunSuite with NNTestLoaderNCS_Tet4 {
 
   test("profile"){
 
-    val tempFilterObj = new NNFilterFIR ( new NNFilterBuffer( dataObj ) )
+    val tempFilterObj = new NNFilterFIR ( new NNFilterBuffer( dataObjTet4 ) )
     tempFilterObj.setFilterHz(1d, 200d)
     val tempDecimateObj = new NNFilterDecimate(new NNFilterBuffer(tempFilterObj), 16)
 

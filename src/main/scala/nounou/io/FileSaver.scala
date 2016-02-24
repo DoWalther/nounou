@@ -2,14 +2,14 @@ package nounou.io
 
 import java.io.File
 import java.util.ServiceLoader
-
 import nounou.NN._
 import nounou.elements.NNElement
 import nounou.util.LoggingExt
 import scala.collection.JavaConverters._
 import scala.collection.immutable
 
-/** This singleton FileSaver object is the main point of use for file saving
+/**
+  * This singleton FileSaver object is the main point of use for file saving
   * (use via [[nounou.NN.save(fileName:String,data:Ar*]]).
   * It maintains a list of available savers in the system (from /resources/META-INF/services/nounou.io.FileSaver),
   * and uses the first saver which satisfies the specified file extension and data objects.
@@ -68,7 +68,8 @@ object FileSaver {
 
 }
 
-/**This trait marks individual file adapter classes as being able to handle
+/**
+  * This trait marks individual file adapter classes as being able to handle
   * the saving of certain object types. FileSaver classes should be
   * registered to the JVM with entries in
   * "/resources/META-INF/services/nounou.io.FileSaver"
@@ -76,6 +77,7 @@ object FileSaver {
   * It is implemented as a trait (and not an abstract class),
   * since some FileLoader classes will also be FileSaver classes, and
   * double inheritance of classes is not possible in Scala.
+  *
   */
 trait FileSaver extends LoggingExt {
 
@@ -95,16 +97,23 @@ trait FileSaver extends LoggingExt {
   def canSaveObjectArray(obj: Array[NNElement]): Boolean
 
 
-  /**'''__MUST OVERRIDE__''' Actual saving of file. Assume that canSaveObjectArray(data)==true.
-    * @param fileName if the filename does not end with the correct extension, the standard extension will be appended.
-    *                 If the filename exists, it will be given a postscript after the filename.
+  /**
+    * '''__MUST OVERRIDE__''' Actual saving of file.
+    * Assume that canSaveObjectArray(data)==true.
+    *
     */
   def saveImpl(fileName: String, data: Array[NNElement]): Unit
 
-  /**Checks if canSaveObjectArray(data)==true, and if so, calls saveImpl().
+  /**
+    * Checks if canSaveObjectArray(data)==true, and if so, calls saveImpl().
+    *
+    * @param fileName if the filename does not end with the correct extension, the standard extension will be appended.
+    *                 If the filename already exists, it will be given a postscript after the filename.
+    *
     */
   final def save(fileName: String, data: Array[NNElement]): Unit = {
     if(canSaveObjectArray(data)) saveImpl(fileName, data)
+    //ToDo 2: add extension if invalid extension name specified
     else throw loggerError("data input {} cannot be saved with this FileSaver object!", data.toString )
   }
   final def save(fileName: String, data: NNElement): Unit = save(fileName, Array(data))
@@ -114,9 +123,12 @@ trait FileSaver extends LoggingExt {
 
 }
 
-/** This [[FileLoader]] instance serves as a placeholder in the loader list
+/**
+  * This [[nounou.io.FileSaver FileSaver]] instance serves as a placeholder in the loader list
+  * kept in [[nounou.io.FileSaver.possibleSaverBuffer]]
   * for extensions which have already been
-  * searched for in the META-INF and do not exist.
+  * searched for in the META-INF but do not exist.
+  *
   */
 final class FileSaverNull(override val canSaveExtensions: Array[String]) extends FileSaver{
 
@@ -129,4 +141,5 @@ final class FileSaverNull(override val canSaveExtensions: Array[String]) extends
   }
 
   override def canSaveObjectArray(obj: Array[NNElement]): Boolean = false
+
 }

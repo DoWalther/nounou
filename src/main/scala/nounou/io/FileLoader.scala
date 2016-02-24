@@ -82,7 +82,8 @@ object FileLoader extends LoggingExt {
 
 }
 
-/** This trait marks individual file adapter classes as being able to handle
+/**
+  * This trait marks individual file adapter classes as being able to handle
   * the loading of certain file extensions. FileLoader classes should be
   * registered to the JVM with entries in
   * "/resources/META-INF/services/nounou.io.FileLoader".
@@ -95,6 +96,7 @@ object FileLoader extends LoggingExt {
   * handling of files which output multiple [[nounou.elements.NNElement]] objects.
   * Some of these objects need to be integrated into a bigger object,
   * this will be written in to the trait.
+  *
  */
 trait FileLoader extends LoggingExt {
 
@@ -106,18 +108,27 @@ trait FileLoader extends LoggingExt {
     * can be loaded. For now, based simply on a match with [[canLoadExtensions]].*/
   final def canLoad(fileName: String): Boolean = canLoadExtensions.contains( nounou.util.getFileExtension(fileName).toLowerCase )
 
-  /**'''__MUST OVERRIDE__''' Actual loading of file.*/
-  def load(file: File): Array[NNElement]
+  /**
+    * '''__MUST OVERRIDE__''' Actual loading of file.
+    *
+    */
+  def loadImpl(file: File): Array[NNElement]
+
   /**Actual loading of file.*/
   final def load(fileName: String): Array[NNElement] = load( new File(fileName) )
+  /**Stub for future expansion (checking if return objects can be merged, etc.*/
+  final def load(file: File): Array[NNElement] = loadImpl(file)
 
   override def toString() = getClass.getName + "( canLoadExtensions=" + canLoadExtensions.toList +")"
 
 }
 
-/** This [[FileLoader]] instance serves as a placeholder in the loader list
+/**
+  * This [[nounou.io.FileLoader FileLoader]] instance serves as a placeholder in the loader list
+  * kept in [[nounou.io.FileLoader.possibleLoaderBuffer]]
   * for extensions which have already been
-  * searched for in the META-INF and do not exist.
+  * searched for in the META-INF but do not exist.
+  *
   */
 final class FileLoaderNull(override val canLoadExtensions: Array[String]) extends FileLoader{
 
@@ -126,7 +137,7 @@ final class FileLoaderNull(override val canLoadExtensions: Array[String]) extend
   }
 
   /** Actual loading of file. */
-  override def load(file: File): Array[NNElement] = {
+  override def loadImpl(file: File): Array[NNElement] = {
     throw loggerError(s"The file ${file} has no valid loader yet.")
   }
 

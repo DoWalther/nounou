@@ -1,7 +1,7 @@
 package nounou.io.neuralynx.headers
 
 import nounou.elements.headers.NNHeader
-import nounou.io.neuralynx.fileObjects.FileNeuralynx
+import nounou.io.neuralynx.fileObjects.{FileNeuralynx, FileNeuralynxInfo}
 import org.apache.commons.io.filefilter.FalseFileFilter
 import sun.font.TrueTypeFont
 

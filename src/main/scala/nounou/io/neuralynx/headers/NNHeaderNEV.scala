@@ -1,6 +1,6 @@
 package nounou.io.neuralynx.headers
 
-import nounou.io.neuralynx.fileObjects.{FileNEV}
+import nounou.io.neuralynx.fileObjects.{FileNEVInfo}
 
 /**
   * Encapsulates text header for spike NSE file (Neuralynx).
@@ -27,9 +27,9 @@ class NNHeaderNEVRead(override val originalHeaderText: String)
   with NNHeaderNEV {
 
   override lazy val getHeaderFileType = nlxHeaderValueS("FileType", "Event")
-  override lazy val getHeaderRecordSize = nlxHeaderValueI("RecordSize", FileNEV.recordSize.toString)
+  override lazy val getHeaderRecordSize = nlxHeaderValueI("RecordSize", FileNEVInfo.recordSize.toString)
 
   loggerRequire(getHeaderFileType == "Event", s"NEV file with non-standard record type: $getHeaderFileType")
-  loggerRequire(getHeaderRecordSize == FileNEV.recordSize, s"NEV file with non-standard record size: $getHeaderRecordSize")
+  loggerRequire(getHeaderRecordSize == FileNEVInfo.recordSize, s"NEV file with non-standard record size: $getHeaderRecordSize")
 
   }

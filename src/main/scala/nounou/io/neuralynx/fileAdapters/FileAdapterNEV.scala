@@ -1,19 +1,18 @@
 package nounou.io.neuralynx.fileAdapters
 
 import java.io.{File, IOException}
-
-import nounou.elements.NNElement
 import nounou.elements.events.{NNEvent, NNEvents}
-import nounou.io.neuralynx.NNEventNEV
-import nounou.io.neuralynx.fileObjects.{FileReadNEV, FileWriteNEV}
-import nounou.io.neuralynx.headers.NNHeaderNEV
+import nounou.elements.NNElement
 import nounou.io.{FileLoader, FileSaver}
+import nounou.io.neuralynx.NNEventNEV
+import nounou.io.neuralynx.fileObjects.{FileNEVInfo, FileWriteNeuralynx, FileReadNEV}
+import nounou.io.neuralynx.headers.NNHeaderNEV
 import nounou.util.LoggingExt
 
 import scala.collection.mutable
 
 /**
-  * Encapsulates header information and serialization to text for Neuralynx NEV file headers.
+  * Adapter for saving and loading of Neuralynx NEV files.
   */
 class FileAdapterNEV extends FileLoader with FileSaver with LoggingExt {
 
@@ -32,7 +31,7 @@ class FileAdapterNEV extends FileLoader with FileSaver with LoggingExt {
       false
     }
 
-  override def load(file: File): Array[NNElement] = {
+  override def loadImpl(file: File): Array[NNElement] = {
 
     val fileAdapter = new FileReadNEV(file)  //val fHand = new RandomAccessFile(file, "r")(ByteConverterLittleEndian)
     val fHand = fileAdapter.handle
@@ -145,7 +144,7 @@ class FileAdapterNEV extends FileLoader with FileSaver with LoggingExt {
       case _ => ??? //new NNHeaderNEV()
     }
 
-    val fileAdapter = new FileWriteNEV(new File(fileName), header)
+    val fileAdapter = new FileWriteNeuralynx(new File(fileName), header, FileNEVInfo.recordSize)
 
     val fHand = fileAdapter.handle
 
@@ -155,7 +154,6 @@ class FileAdapterNEV extends FileLoader with FileSaver with LoggingExt {
     fHand.seek(fileAdapter.headerBytes)
 
     for (event <- dataElem.readPortEventArray()) {
-      ???
       //skip nstx(reserved), npkt_id(ID for originating system), npkt_data_size(==2)
       //all of these values seem to be fixed at zero, at least for cheetah 5.5.1
       fHand.skipBytes(6 - 1)
@@ -172,6 +170,7 @@ class FileAdapterNEV extends FileLoader with FileSaver with LoggingExt {
       val portValue = NNEventNEV.toNEVPortValue(eventString)
 
     }
+    ???
   }
 
 }

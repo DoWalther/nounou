@@ -1,5 +1,7 @@
 package nounou
 
+import java.io.File
+
 /**
  * @author ktakagaki
  * //@date 07/15/2014.
@@ -58,7 +60,8 @@ package object util {
 
   // <editor-fold defaultstate="collapsed" desc=" getFileExtensionCapital ">
 
-  def getFileExtension(fileName: String): String = fileName.split('.').last.toLowerCase()
+  final def getFileExtension(fileName: String): String = fileName.split('.').last.toLowerCase()
+  final def getFileExtension(file: File): String = getFileExtension( file.getName )
 
   // </editor-fold>
 

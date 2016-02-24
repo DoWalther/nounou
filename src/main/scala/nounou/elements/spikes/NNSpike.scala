@@ -58,23 +58,21 @@ class NNSpike(val timestamp: BigInt,
 
   def toStringFullImpl() = ""
 
-//  // <editor-fold defaultstate="collapsed" desc=" //Java accessors ">
-//
-//  /**Java accessor for timestamp, returns a [java.math.BigInteger], which is immutable.*/
-//  def getTimestamp(): BigInteger = timestamp.bigInteger
-//
+  // <editor-fold defaultstate="collapsed" desc=" //Java accessors ">
+
+  /**Java accessor for timestamp, returns a [java.math.BigInteger], which is immutable.*/
+  final def getTimestamp(): BigInteger = timestamp.bigInteger
+
 //  /**Java accessor for waveform, returns an Array[Double] clone.*/
 //  def getWaveform(): Array[Double] = waveform.toArray//[Double]
-//
-//  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.channels]].*/
-//  def getChannels(): Int = channels
-//
-//  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.unitNo]].*/
-//  def getUnitNo(): Long = unitNo
-//
-//  // </editor-fold>
 
-  def readWaveformFlat(): Array[Double] = waveform.toArray
+  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.channels]].*/
+  final def getChannels(): Int = channels
+
+  /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.unitNo]].*/
+  final def getUnitNo(): Long = unitNo
+
+  final def readWaveformFlat(): Array[Double] = waveform.toArray
 
   def readWaveform(): Array[Array[Double]] = {
     val tempReturn = new Array[Array[Double]](channels)
@@ -84,6 +82,7 @@ class NNSpike(val timestamp: BigInt,
     tempReturn
   }
 
+  // </editor-fold>
 
   /**'''__MUST OVERRIDE__''' Gives immutable clone of this object but with a new unitNo.
    */

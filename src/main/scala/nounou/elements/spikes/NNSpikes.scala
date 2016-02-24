@@ -1,16 +1,13 @@
 package nounou.elements.spikes
 
 import java.math.BigInteger
-
 import nounou.elements.data.{NNDataChannel, NNData}
 import nounou.elements.traits._
-import nounou.elements.NNElement
 import nounou.NN
-import nounou.Options.{AlignmentPoint, WaveformFrames}
+import nounou.Options.{OverlapWindow, AlignmentPoint, WaveformFrames}
 import nounou.options.Opt
 import nounou.util.LoggingExt
-
-import scala.collection.mutable.TreeSet
+import scala.collection.mutable.{ArrayBuffer, TreeSet}
 
 
 trait OptReadSpikes extends Opt
@@ -52,13 +49,14 @@ object NNSpikes extends LoggingExt {
 
     var optWaveformFrames = 32
     var optAlignmentPoint = 8
+    var optOverlapWindow = optWaveformFrames
 
     for( opt <- opts ) opt match {
       case WaveformFrames(value: Int) => optWaveformFrames = value
       case AlignmentPoint(value: Int) => optAlignmentPoint = value
+      case OverlapWindow(value: Int) => optOverlapWindow = value
       case _ => {}
     }
-
 
     // </editor-fold>
 
@@ -72,7 +70,29 @@ object NNSpikes extends LoggingExt {
         Unit
       })
 
-    tempReturn
+    //Filter spikes which are closer than optOverlapWindow frames apart
+    //take spike which has bigger maximum, remove rest
+    if(optOverlapWindow > 0){
+      val filteredReturn = ArrayBuffer[NNSpike]()
+      val iterator = tempReturn._database.iterator
+      var lastSpike: NNSpike = if( iterator.hasNext ) iterator.next() else null
+
+      while( iterator.hasNext ){
+        val nextSpike = iterator.next
+
+        if( nextSpike.timestamp - lastSpike.timestamp > optOverlapWindow ){
+          filteredReturn.append( lastSpike )
+        }else{
+          if( nextSpike.waveformMax > lastSpike.waveformMax ) lastSpike = nextSpike
+        }
+      }
+      if( filteredReturn.last != lastSpike ) filteredReturn.append( lastSpike )
+
+      new NNSpikes( filteredReturn.toArray, optAlignmentPoint, data.scaling, data.timing)
+
+    }else{
+      tempReturn
+    }
 
   }
 
@@ -155,6 +175,15 @@ class NNSpikes( _database: TreeSet[NNSpike],
   def this(alignmentPoint: Int, scaling: NNScaling, timing: NNTiming) {
     this(
       new TreeSet[NNSpike]()(Ordering.by[NNSpike, BigInt]((x: NNSpike) => x.timestamp)),
+      alignmentPoint,
+      scaling,
+      timing
+    )
+  }
+
+  def this(database: Array[NNSpike], alignmentPoint: Int, scaling: NNScaling, timing: NNTiming) {
+    this(
+      (new TreeSet[NNSpike]()(Ordering.by[NNSpike, BigInt]((x: NNSpike) => x.timestamp))).++=(database),
       alignmentPoint,
       scaling,
       timing

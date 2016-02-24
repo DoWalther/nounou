@@ -9,38 +9,39 @@ import nounou.util.LoggingExt
 import scala.reflect.ClassTag
 
 /**
-  * Static adapter to use general information about Neuralynx files in general.
+  * Information about Neuralynx files in general.
+  * This trait is defined (outside the companion object) to allow
+  * inheritance to individual Neuralynx file type information objects.
   */
-object FileNeuralynx {
-
-  /**
-    * The total number of bytes in the initial Neuralynx text header.
-    */
-  val headerBytes = 16384
-
+trait FileNeuralynxInfo {
+  /** The total number of bytes in the initial Neuralynx text header, always fixed. */
+  val headerBytes = FileNeuralynx.headerBytes
+  /** The total number of bytes per Neuralynx record page, differs by individual file type. */
+  val recordSize: Int
 }
 
-/** This abstract class encapsulates common functions needed to read Neuralynx files (NCS, NEV, NEX, NSE, NST, NTT).
-  * It mainly provides file handle management and header reading.
- *
-* @author ktakagaki
-*/
-abstract class FileNeuralynx(val file: File) extends LoggingExt {
-  def this(fileName: String) {   this(new File(fileName))  }
+object FileNeuralynx {
+  val headerBytes = 16384
+}
 
-  /** Re-definition of FileNeuralynx$.headerBytes so that it can be used in chlidren.
-    */
-  val headerBytes = FileNeuralynx.headerBytes
+/**
+  * This abstract class encapsulates common functions needed to read Neuralynx files (NCS, NEV, NEX, NSE, NST, NTT).
+  * It mainly provides file handle management and header text reading infrastructure.
+  *
+  * @param recordSize Number of bytes per record, should agree with
+  *                   text information in NNHeaderNeuralynx.headerRecordSize.
+  * @author ktakagaki
+  *
+  */
+abstract class FileNeuralynx(val file: File, val recordSize: Int) extends LoggingExt with FileNeuralynxInfo{
 
-  /**Number of bytes per record, specified in each child class, and should agree with
-    * text information in NNHeaderNeuralynx.headerRecordSize .*/
-  val recordSize: Int
+  //def this(fileName: String) {   this(new File(fileName))  }
 
   //ToDo 1: check the following
   /**The byte within a file where a specific record should start.
     * Depends upon FileNeuralynx.headerBytes and recordSize, which is specified in each child class.
     */
-  final def recordStartByte(record: Int): Long = (FileNeuralynx.headerBytes.toLong + recordSize.toLong * record.toLong)
+  final def recordStartByte(record: Int): Long = (headerBytes.toLong + recordSize.toLong * record.toLong)
 
   /** The Neuralynx file handle, either a reading handle or a writing handle.
     * This val construct is somewhat delicate, since
@@ -53,14 +54,24 @@ abstract class FileNeuralynx(val file: File) extends LoggingExt {
     * can be encapsulated in this trait (trait initialization order is
     * complex, but we can assume that lazy values are handled at the end.
     */
-  val handle: RandomAccessFile
+  protected val handle: RandomAccessFile
 
   final lazy val fileName = file.getCanonicalPath
 
 }
 
-/**Abstract class to read Neuralynx files, including some generic header checks.*/
-abstract class FileReadNeuralynx[T <: NNHeaderNeuralynx](override val file: File) extends FileNeuralynx(file) {
+/**
+  * Abstract class to read Neuralynx files.
+  *
+  * Already in the default constructor, children of this class will create a
+  * read file handle and read the header text
+  * (child class implementations can use this to access header values.
+  *
+  */
+abstract class FileReadNeuralynx[T <: NNHeaderNeuralynx](
+                 file: File,
+                 recordSize: Int
+               ) extends FileNeuralynx(file, recordSize) with LoggingExt {
 
   val handle: RandomAccessFile = new RandomAccessFile(file, "r")(ByteConverterLittleEndian)
 
@@ -83,26 +94,36 @@ abstract class FileReadNeuralynx[T <: NNHeaderNeuralynx](override val file: File
   protected var _header: T
 
   //Beware that the following MUST be initialized BEFORE children rely on it, but AFTER the handle object.
-  val originalHeaderText: String = {
-    val tempString = new String(handle.readUInt8(FileNeuralynx.headerBytes).map(_.toChar))
+  protected val originalHeaderText: String = {
+    val tempString = new String(handle.readUInt8(headerBytes).map(_.toChar))
     tempString.replaceAll( """(?m)[\s\x00]+$""", "")
   }
 
   /**
     * [Header value Neuralynx] The number of records in the file, depends on the file length of the handle.
     */
-  lazy val headerRecordCount = ((handle.length - FileNeuralynx.headerBytes).toDouble/recordSize.toDouble).toInt
+  lazy val headerRecordCount = ((handle.length - headerBytes).toDouble/recordSize.toDouble).toInt
   loggerRequire(header.getHeaderRecordSize == recordSize, s"File with non-standard record size: ${header.getHeaderRecordSize}")
 
 }
 
-/**Abstract class to write Neuralynx files.*/
-abstract class FileWriteNeuralynx(override val file: File, header: NNHeaderNeuralynx) extends FileNeuralynx(file) {
+/**
+  * Abstract class to write Neuralynx files.
+  *
+  * Already in the default constructor, children of this class will create a
+  * read/write file handle and write header information to the file
+  * (from child class implementations in getNeuralynxHeaderString().
+  *
+  */
+class FileWriteNeuralynx(
+                 file: File,
+                 header: NNHeaderNeuralynx,
+                 recordSize: Int
+               ) extends FileNeuralynx(file, recordSize) {
 
   val handle: RandomAccessFile = new RandomAccessFile(file, "rw")(ByteConverterLittleEndian)
   handle.seek(0)
   //handle.writeChars( header.getNeuralynxHeaderString() )
   handle.writeUInt8( header.getNeuralynxHeaderString().toCharArray.map(_.toShort) )
-
 
 }

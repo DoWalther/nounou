@@ -22,7 +22,8 @@ object FileNCS extends FileNCS
   * File handler for reading Neuralynx NCS files, to be used by file adapter.
   */
 abstract class FileReadNCS(file: File)
-  extends FileReadNeuralynx[NNHeaderNCS](file) with FileNCS with NNDataChannel with NNDataChannelNumbered  {
+  extends FileReadNeuralynx[NNHeaderNCS](file, FileNCS.recordSize)
+  with NNDataChannel with NNDataChannelNumbered  {
 
   //The following lazy initialization done by hand to avoid var/val initialization order issues
   override final var _header: NNHeaderNCS = null

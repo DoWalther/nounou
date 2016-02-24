@@ -12,7 +12,7 @@ import org.scalatest.FunSuite
  */
 class NNFilterDecimateTest extends FunSuite with NNTestLoaderNCS_Tet4 {
 
-  val filtObj = new NNFilterDecimate( dataObj, 5 )
+  val filtObj = new NNFilterDecimate( dataObjTet4, 5 )
 
 
   test("timing info"){
@@ -34,7 +34,7 @@ class NNFilterDecimateTest extends FunSuite with NNTestLoaderNCS_Tet4 {
 
   test("readTrace"){
 
-    assert( dataObj.readTraceDV(0, NN.NNRange(0,10,1,0)) ==
+    assert( dataObjTet4.readTraceDV(0, NN.NNRange(0,10,1,0)) ==
       DenseVector(-27.100428000000004, -18.4026555, -3.2654795000000005, 0.030518500000000004, -3.1434055000000005,
                   -3.1128870000000006, -4.486219500000001, -11.169771, -16.937767500000003, -15.869620000000001,
                   -7.751699000000001) )

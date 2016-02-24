@@ -3,7 +3,7 @@ package nounou.io.neuralynx.headers
 /**
   * A header trait for [[nounou.io.neuralynx.headers.NNHeaderNeuralynx NNHeaderNeuralynx]]
   * objects which include the common sampling items in the header for Neuralynx
-  * continuous (*.nsc) and spike (*.nse, *.nst, *.ntt) files
+  * continuous (*.nsc) and spike files (*.nse, *.nst, *.ntt)
   *
   * Created by ktakagaki on 16/01/27.
   */
@@ -25,6 +25,8 @@ trait NNHeaderNeuralynxDAQ extends NNHeaderNeuralynx{
   /** [Header value NCS/NSE/NST/NTT: "ADBitVolts"] volts/short bit to convert internal file Int16 to values */
   def getHeaderADBitVolts: Double
 
+  /** [Header value NCS/NSE/NST/NTT: "NumADChannels"] */
+  def getHeaderNumADChannels: Int
   /** [Header value NCS/NSE/NST/NTT: "ADChannel"] */
   def getHeaderADChannel: Int
   /** [Header value NCS/NSE/NST/NTT: "InputRange"] input range in +/- mV */
@@ -44,7 +46,8 @@ trait NNHeaderNeuralynxDAQ extends NNHeaderNeuralynx{
       s"-HardwareSubSystemType $getHeaderHardwareSubSystemType\n" +
       s"-SamplingFrequency ${getHeaderSamplingFrequency.toInt}\n" +
       s"-ADMaxValue 32767\n" +
-      s"-ADBitVolts ${"%6.3e".format(getHeaderADBitVolts)}\n" +
+      s"-ADBitVolts ${"%6.3e".format(getHeaderADBitVolts)}\n\n" +
+      s"-NumADChannels $getHeaderNumADChannels\n" +
       s"-ADChannel $getHeaderADChannel\n" +
       s"-InputRange $getHeaderInputRange\n" +
       s"-InputInverted ${if(getHeaderInputInverted) "True" else "False"}\n" +
@@ -92,14 +95,14 @@ abstract class NNHeaderNeuralynxDAQConcrete( override val getHeaderCheetahRev: S
                                              override val getHeaderADMaxValue: Double,
                                              override val getHeaderADBitVolts: Double,
 
+                                             override val getHeaderNumADChannels: Int,
                                              override val getHeaderADChannel: Int,
                                              override val getHeaderInputRange: Int,
                                              override val getHeaderInputInverted: Boolean,
                                              override val getHeaderDspDelayCompensation: Boolean,
                                              override val getHeaderDspFilterDelay: Int
                                            )
-  extends NNHeaderNeuralynxConcrete(
-    getHeaderCheetahRev, getHeaderFileType, getHeaderRecordSize)
+  extends NNHeaderNeuralynxConcrete(getHeaderCheetahRev, getHeaderFileType, getHeaderRecordSize)
   with NNHeaderNeuralynxDAQ{
 
 

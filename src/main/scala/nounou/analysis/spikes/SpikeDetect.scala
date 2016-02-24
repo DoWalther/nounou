@@ -8,7 +8,7 @@ import java.math.BigInteger
 
 import nounou.NNOpt.AlignmentPoint
 import nounou.NNOpt.{BlackoutFrames, AlignmentPoint, WaveformFrames}
-import nounou.Options.{BlackoutFrames, AlignmentPoint, WaveformFrames, MedianSDThresholdPeak}
+import nounou.Options._
 import nounou.options._
 import nounou.analysis.{Threshold}
 import nounou.elements.data.{NNDataChannel, NNData}
@@ -26,12 +26,15 @@ trait OptSpikeDetect extends Opt
 object SpikeDetect extends LoggingExt
   with OptHandler {
 
+  //Options handling wrong!!
   def apply(data: Array[Double], opts: OptSpikeDetect*): Array[Int] = {
-    val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
+    //val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
+    val optMethod = readOptString[SpikeDetectMethod](opts, "MedianSDThresholdPeak")
+
     optMethod match {
-      case MedianSDThresholdPeak =>{
-        val optMedianFactor = readOptDouble(opts, 3)
-        val optPeakWindow = readOptInt(opts, 32)
+      case "MedianSDThresholdPeak" => {
+        val optMedianFactor = readOptDouble[MedianFactor](opts, 3d)
+        val optPeakWindow = readOptInt[PeakWindow](opts, 32)
         medianSDThresholdPeakDetect(data, optMedianFactor, optPeakWindow)
       }
       case _ => throw loggerError(s"option method $optMethod is not valid")
@@ -42,28 +45,52 @@ object SpikeDetect extends LoggingExt
             range: NNRangeSpecifier,
             channel: Int,
             opts: OptSpikeDetect*): Array[BigInteger] = {
-    val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
+    //val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
+    val optMethod = readOptString[SpikeDetectMethod](opts, "MedianSDThresholdPeak")
+
     optMethod match {
-      case MedianSDThresholdPeak =>{
-        val optMedianFactor = readOptDouble(opts, 3)
-        val optPeakWindow = readOptInt(opts, 32)
+      case "MedianSDThresholdPeak" => {
+        val optMedianFactor = readOptDouble[MedianFactor](opts, 3d)
+        val optPeakWindow = readOptInt[PeakWindow](opts, 32)
         medianSDThresholdPeakDetect(data, range, channel, optMedianFactor, optPeakWindow)
       }
     }
   }
 
+  def apply(data: NNData,
+            range: NNRangeSpecifier,
+            channels: Array[Int],
+            opts: OptSpikeDetect*): Array[BigInteger] = {
+    val optMethod = readOptString[SpikeDetectMethod](opts, "MedianSDThresholdPeak")
+
+    optMethod match {
+      case "MedianSDThresholdPeak" => {
+        val optMedianFactor = readOptDouble[MedianFactor](opts, 3d)
+        val optPeakWindow = readOptInt[PeakWindow](opts, 32)
+        medianSDThresholdPeakDetect(data, range, channels, optMedianFactor, optPeakWindow)
+      }
+      case _ => throw loggerError(s"method $optMethod not implemented yet")
+    }
+
+  }
+
   def apply(dataChannel: NNDataChannel,
             range: NNRangeSpecifier,
             opts: OptSpikeDetect*): Array[BigInteger] = {
-    val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
+    //val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
+    val optMethod = readOptString[SpikeDetectMethod](opts, "MedianSDThresholdPeak")
+
     optMethod match {
-      case MedianSDThresholdPeak =>{
-        val optMedianFactor = readOptDouble(opts, 3)
-        val optPeakWindow = readOptInt(opts, 32)
+      case "MedianSDThresholdPeak" => {
+        val optMedianFactor = readOptDouble[MedianFactor](opts, 3d)
+        val optPeakWindow = readOptInt[PeakWindow](opts, 32)
         medianSDThresholdPeakDetect(dataChannel, range, optMedianFactor, optPeakWindow)
       }
     }
   }
+
+
+
 
   // <editor-fold defaultstate="collapsed" desc=" medianSDThresholdPeakDetect ">
 
@@ -78,7 +105,9 @@ object SpikeDetect extends LoggingExt
       val tempTrigLast = tempTrig + peakWindow -1
       val maxPos =
         if( tempTrigLast < absData.length ) {
+          //if threshold trigger value is over zero, abs threshold is positive
           if( data(tempTrig) > 0) maxPosition(data, tempTrig, tempTrigLast)
+          //if threshold trigger value is less than zero, abs threshold is negative
           else minPosition(data, tempTrig, tempTrigLast)
         } else Int.MaxValue
       if( maxPos < tempTrigLast) tempret.+=( maxPos )
@@ -86,6 +115,27 @@ object SpikeDetect extends LoggingExt
     }
 
     tempret.toArray
+  }
+
+  def medianSDThresholdPeakDetect(data: Array[Array[Double]], medianFactor: Double, peakWindow: Int): Array[Int] = {
+    val absData = data.map((a: Array[Double]) => abs( DenseVector( a ) ) )
+    val absMedianThreshold = absData.map( medianFactor * median( _ ) / 0.6745 )
+    val tempTriggers = (absData zip absMedianThreshold).flatMap(
+                          (t: (DenseVector[Double], Double)) => Threshold(t._1.toArray, t._2 )
+                       ).toSet[Int].toArray[Int].sorted
+    val tempReturn = ArrayBuffer[Int]()
+    var c = 0
+    while( c < tempTriggers.length ){
+      val tempTrig = tempTriggers(c)
+      val tempTrigLast = tempTrig + peakWindow -1
+      val maxPos = if( tempTrigLast < absData(0).length ) {
+                      maxPosition(absData, tempTrig, tempTrigLast)
+                    } else Int.MaxValue
+      if( maxPos < tempTrigLast ) tempReturn.+=( maxPos )
+      c += 1
+    }
+
+    tempReturn.toArray
   }
 
   def medianSDThresholdPeakDetect(data: NNData,
@@ -105,6 +155,29 @@ object SpikeDetect extends LoggingExt
                                                   r.start + frame,
                                                   r.segment
                                                          ).bigInteger
+        )
+      }
+    ).toArray.sorted
+
+  }
+
+  def medianSDThresholdPeakDetect(data: NNData,
+                                  range: NNRangeSpecifier,
+                                  channels: Array[Int],
+                                  medianFactor: Double,
+                                  peakWindow: Int): Array[BigInteger] = {
+
+    //split range up for calculation
+    val rangesInstantiated = range.getInstantiatedRange(data).split(320000, 64).toSet
+
+    rangesInstantiated.flatMap(
+      (r: NNRangeInstantiated) => {
+        val tempFrames = medianSDThresholdPeakDetect(data.readPage(channels, r), medianFactor, peakWindow)
+        tempFrames.map( (frame: Int) =>
+          data.timing().convertFrsgToTs(
+            r.start + frame,
+            r.segment
+          ).bigInteger
         )
       }
     ).toArray.sorted
@@ -158,6 +231,24 @@ object SpikeDetect extends LoggingExt
       if( array(c) > maxVal ){
         maxPos = c
         maxVal = array(c)
+      }
+      c += 1
+    }
+    maxPos
+  }
+  private def maxPosition(array: Array[DenseVector[Double]], start: Int, last: Int): Int = {
+    //loggerRequire(array != null, "input cannot be null!")
+    //loggerRequire(start < array.length, "start must be within array range!")
+
+    var maxPos = start
+    var maxVal = Double.NegativeInfinity
+    var c = start
+    while (c <= last){
+      for(ch <- 0 until array.length ){
+        if( array(ch)(c) > maxVal ) {
+          maxPos = c
+          maxVal = array(ch)(c)
+        }
       }
       c += 1
     }

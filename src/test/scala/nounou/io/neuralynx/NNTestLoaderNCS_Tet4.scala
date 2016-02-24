@@ -15,10 +15,10 @@ trait NNTestLoaderNCS_Tet4 extends FunSuite {
   private val testFileTet4c = getClass.getResource("/nounou/Neuralynx/t130911/Tet4c.ncs").getPath()
   private val testFileTet4d = getClass.getResource("/nounou/Neuralynx/t130911/Tet4d.ncs").getPath()
 
-  val data = NN.load( Array(testFileTet4a, testFileTet4b, testFileTet4c, testFileTet4d) ).apply(0)
-  assert(data.isInstanceOf[NNDataChannelArray])
-  private val _dataObj = data.asInstanceOf[NNDataChannelArray]
-  def dataObj: NNData = _dataObj
+  val dataTet4 = NN.load( Array(testFileTet4a, testFileTet4b, testFileTet4c, testFileTet4d) ).apply(0)
+  assert(dataTet4.isInstanceOf[NNDataChannelArray])
+  private val _dataObj = dataTet4.asInstanceOf[NNDataChannelArray]
+  def dataObjTet4: NNData = _dataObj
 
 
 }
