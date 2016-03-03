@@ -1,7 +1,8 @@
 package nounou.elements.data
 
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements.traits.{NNTiming, NNScaling}
+import nounou.elements.data.traits.{NNTiming, NNScaling}
+import nounou.elements.traits.NNTiming
 
 /**
  * Created by ktakagaki on 15/05/21.

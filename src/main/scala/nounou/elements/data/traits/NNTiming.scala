@@ -1,11 +1,11 @@
-package nounou.elements.traits
+package nounou.elements.data.traits
 
 import java.math.BigInteger
 
 import breeze.numerics.round
 import nounou.elements.NNElement
 import nounou.ranges.NNRangeSpecifier
-import nounou.util.{leftPadSpace}
+import nounou.util.leftPadSpace
 
 
 object NNTiming {
@@ -27,7 +27,7 @@ object NNTiming {
   *           segment. From this information, it can calculate the timestamp of any event in between
   *
   * This class should be used within [[nounou.elements.NNElement NNElement]] children by expanding the
-  * [[nounou.elements.traits.NNTimingElement NNTimingElement]] trait, which will allows one NNTiming
+  * [[NNTimingElement NNTimingElement]] trait, which will allows one NNTiming
   * object to be returned for each NNTimingElement.
   *
   * Envisioned uses are for the following children of [[nounou.elements.NNElement]]:

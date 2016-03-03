@@ -1,10 +1,11 @@
 package nounou.io.neuralynx
 
 import breeze.linalg.DenseVector
-import nounou.elements.traits.NNScaling
+import nounou.elements.data.traits
+import nounou.elements.data.traits.NNScaling
 
 /**
-  * This trait extends [[nounou.elements.traits.NNScaling]] to include
+  * This trait extends [[traits.NNScaling]] to include
   * values <=> short conversion for writing to Neuralynx files.
   *
   * @param unit The units of absolute measurements, i.e. µV)

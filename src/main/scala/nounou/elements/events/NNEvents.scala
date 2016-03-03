@@ -1,16 +1,15 @@
 package nounou.elements.events
 
 import java.math.BigInteger
-
 import nounou.elements.NNElement
+import nounou.elements.data.traits.NNElementCompatibilityCheck
 import nounou.elements.headers.NNHeader
-import nounou.elements.traits.NNConcatenableElement
 import nounou.util.{leftPadSpace, leftPadZero}
 import scala.collection.immutable.TreeMap
 import scala.collection.mutable
-import scala.collection.mutable.TreeSet
 
-/** Mutable database object to encapsulate marked events in data recordings.
+/**
+  * Mutable database object to encapsulate marked events in data recordings.
   *
   * Events are stored as [[NNEvent]] objects, which are immutable objects encapsulating
   * timestamp, duration, code, and comment string.
@@ -21,12 +20,12 @@ import scala.collection.mutable.TreeSet
   *
   * @author ktakagaki
  */
-class NNEvents extends NNConcatenableElement {
+final class NNEvents(private var _database: TreeMap[Int, mutable.TreeSet[NNEvent]])
+  extends NNElement with NNElementCompatibilityCheck {
 
   // <editor-fold defaultstate="collapsed" desc=" Default constructor ">
 
-  private var _database: TreeMap[Int, TreeSet[NNEvent]] = new TreeMap[Int, TreeSet[NNEvent]]()
-
+  def this() = this(new TreeMap[Int, mutable.TreeSet[NNEvent]]())
 
   var header: NNHeader = null
 //  private var _header: NNHeader = null
@@ -40,15 +39,15 @@ class NNEvents extends NNConcatenableElement {
   /**
     * Gets the underlying TreeSet representing the list of events for a given port
     */
-  def getPort(port: Int): TreeSet[NNEvent] = {
+  def getPort(port: Int): mutable.TreeSet[NNEvent] = {
     if( _database.contains(port) ) _database(port)
-    else new TreeSet[NNEvent]()
+    else new mutable.TreeSet[NNEvent]()
   }
 
   /**
     * Gets a TreeSet subset representing the list of events for a given port
     */
-  def getPortFilteredByCode(port: Int, code: Int): TreeSet[NNEvent] = {
+  def getPortFilteredByCode(port: Int, code: Int): mutable.TreeSet[NNEvent] = {
     getPort(port).filter(p => p.code == code )
   }
 
@@ -84,7 +83,7 @@ class NNEvents extends NNConcatenableElement {
   private def addPort( port: Int ): Unit = {
     if( !_database.contains(port) ){
       loggerRequire(port >= 0, "port specification {} must be >= zero!", port.toString)
-      _database = _database.+(port -> new TreeSet[NNEvent]())
+      _database = _database.+(port -> new mutable.TreeSet[NNEvent]())
     }
   }
 
@@ -133,8 +132,8 @@ class NNEvents extends NNConcatenableElement {
    * one with the port code for the beginning, and one resetting it to port code=0.
    */
   def expandDurationEventsToStartAndReset(): Unit = {
-    _database = _database.map( ( ev:(Int, TreeSet[NNEvent]) ) => ( ev._1, {
-      var tempTreeSet = TreeSet[NNEvent]()
+    _database = _database.map( ( ev:(Int, mutable.TreeSet[NNEvent]) ) => ( ev._1, {
+      var tempTreeSet = mutable.TreeSet[NNEvent]()
       ev._2.foreach(
         (x: NNEvent) => {
           if (x.duration != 0) {
@@ -150,28 +149,14 @@ class NNEvents extends NNConcatenableElement {
 
   // </editor-fold>
 
+  //ToDo: expand Events... is this object immutable or not???
+  override def clone(): NNEvents = new NNEvents(_database)
 
-
-  // <editor-fold desc="XConcatenatable">
-
-  //override def :::(that: NNElement): NNEvents = ???
-//    that match {
-//      case x: XEvents => {
-//        new XEvents( this._database ++ x._database)
-//      }
-//      case _ => {
-//        require(false, "cannot concatenate different types!")
-//        this
-//      }
-//    }
-//  }
+  // <editor-fold desc="NNElementCompatibilityCheck">
 
   override def isCompatible(that: NNElement): Boolean =
     that match {
       case x: NNEvents => true
-//      {
-//        (super[XDiscrete].isCompatible(x) && super[XDiscrete].isCompatible(x))
-//      }
       case _ => false
     }
 

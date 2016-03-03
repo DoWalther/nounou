@@ -9,16 +9,18 @@ import nounou.elements.spikes.NNSpike
 trait NNDataSpikeReader {
 
   //self type infers that this trait assumes mixin to NNData
+  //this construct allows a mixin trait to use class functionality without inheriting the parent class
   this: NNData =>
 
-  /**Reads a [[nounou.elements.spikes.NNSpike]] object from the data
+  /**
+    * Reads a [[nounou.elements.spikes.NNSpike]] object from the data
    */
   def readSpike(channel: Int, frame: Int, segment: Int, spikeLength: Int): NNSpike = {
     loggerRequire( 0 < spikeLength && spikeLength < 100, s"spikeLength=$spikeLength should have been (0, 100]" )
 
     new NNSpike(
       /*timestamp =*/ timing().convertFrsgToTs(frame, segment),
-      /*waveform =*/ readTrace( channel, new NNRangeInstantiated(frame, frame + spikeLength - 1, step = 1, segment)   ),
+      /*waveform =*/ readTraceDV( channel, new NNRangeInstantiated(frame, frame + spikeLength - 1, step = 1, segment)   ),
       /*channels =*/ 1,
       0L
     )
@@ -30,7 +32,7 @@ trait NNDataSpikeReader {
 
     new NNSpike(
       /*timestamp =*/ timing().convertFrsgToTs(frame, segment),
-      /*waveform =*/ readPage( channels, new NNRangeInstantiated(frame, frame + spikeLength - 1, step = 1, segment)   ).flatten,
+      /*waveform =*/ readPage( channels, new NNRangeInstantiated(frame, frame + spikeLength - 1, step = 1, segment)   ).flatten.toVector,
       /*channels =*/ channels.length,
       0L
     )

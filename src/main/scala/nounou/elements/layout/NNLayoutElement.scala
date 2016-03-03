@@ -1,6 +1,6 @@
-package nounou.elements.traits.layout
+package nounou.elements.layout
 
-import nounou.elements.traits.NNChannelsElement
+import nounou.elements.data.traits.NNChannelsElement
 
 /**
  * Created by ktakagaki on 15/03/12.

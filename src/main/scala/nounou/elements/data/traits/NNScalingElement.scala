@@ -1,4 +1,4 @@
-package nounou.elements.traits
+package nounou.elements.data.traits
 
 import nounou.elements.NNElement
 
@@ -26,7 +26,7 @@ trait NNScalingElement extends NNElement {
   }
 
   /**
-    * '''[NNScalingElement]''' Java alias for [[nounou.elements.traits.NNScalingElement.scaling]].
+    * '''[NNScalingElement]''' Java alias for [[NNScalingElement.scaling]].
     * */
   final def getScale(): NNScaling = scaling()
 

@@ -1,6 +1,7 @@
 package nounou.analysis
 
-import nounou.Options.{PeakWindow, MedianFactor}
+import nounou.options.Options
+import Options.{PeakWindow, MedianFactor}
 import nounou._
 import nounou.elements.data.filters.NNFilterBuffer
 import nounou.elements.data.{NNDataChannel, NNDataChannelArray}

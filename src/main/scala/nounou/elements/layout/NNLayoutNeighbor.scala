@@ -1,4 +1,4 @@
-package nounou.elements.traits.layout
+package nounou.elements.layout
 
 /**
  */

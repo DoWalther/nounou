@@ -3,7 +3,7 @@ package nounou.elements
 import java.io.File
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
-import nounou.elements.traits.layout.NNLayoutHexagonal
+import nounou.elements.layout.NNLayoutHexagonal
 import nounou.util.LoggingExt
 
 /** Base class for all data elements.

@@ -1,10 +1,12 @@
 package nounou.elements.spikes
 
 import java.math.BigInteger
+import nounou.elements.data.traits.{NNTiming, NNScaling}
 import nounou.elements.data.{NNDataChannel, NNData}
 import nounou.elements.traits._
 import nounou.NN
-import nounou.Options.{OverlapWindow, AlignmentPoint, WaveformFrames}
+import nounou.options.{Options, Opt}
+import Options.{OverlapWindow, AlignmentPoint, WaveformFrames}
 import nounou.options.Opt
 import nounou.util.LoggingExt
 import scala.collection.mutable.{ArrayBuffer, TreeSet}
@@ -66,7 +68,9 @@ object NNSpikes extends LoggingExt {
         val startFr = frsg._1 - optAlignmentPoint + 1
         val sampleRange = NN.NNRange(startFr, startFr + optWaveformFrames -1, 1, frsg._2)
         val wf = channels.flatMap(data.readTrace(_, sampleRange ))
-        tempReturn.add( new NNSpike( data.timing.convertFrToTs(frsg._1), wf, channels = channels.length, unitNo = 0L) )
+        tempReturn.add(
+          new NNSpike( data.timing.convertFrToTs(frsg._1), wf.toVector, channels = channels.length, unitNo = 0L)
+        )
         Unit
       })
 
@@ -133,7 +137,7 @@ object NNSpikes extends LoggingExt {
       val startFr = frsg._1 - optAlignmentPoint  + 1
       val sampleRange = NN.NNRange(startFr, startFr + optWaveformFrames -1, 1, frsg._2)
       val wf = dataChannel.readTrace( sampleRange )
-      tempReturn.add( new NNSpike( dataChannel.timing.convertFrToTs(frsg._1), wf, channels = 1, unitNo = 0L) )
+      tempReturn.add( new NNSpike( dataChannel.timing.convertFrToTs(frsg._1), wf.toVector, channels = 1, unitNo = 0L) )
       Unit
     })
 

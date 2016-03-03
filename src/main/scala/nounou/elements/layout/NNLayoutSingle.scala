@@ -1,4 +1,4 @@
-package nounou.elements.traits.layout
+package nounou.elements.layout
 
 /**XLayout object for detector fields with non-square, channel-by-channel layouts.
  * @author takagaki

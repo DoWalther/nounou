@@ -1,6 +1,8 @@
 package nounou.elements.data.traits
 
 /**
+  * Encapsulates functions for chaining NNData objects into a filter chain.
+  *
   * Created by ktakagaki on 16/01/10.
   */
 trait NNDataNode {

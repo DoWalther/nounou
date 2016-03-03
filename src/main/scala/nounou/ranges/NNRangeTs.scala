@@ -1,10 +1,12 @@
 package nounou.ranges
 
 import java.math.BigInteger
-import nounou.elements.traits.NNTiming
+
+import nounou.elements.data.traits.NNTiming
 
 
 /**Encapsulates a Ts (timestamp in BigInt)-based frame range, with appropriate values.
+ *
  * @author ktakagaki
  * //@date 3/19/14.
  */

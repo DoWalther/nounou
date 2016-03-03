@@ -2,8 +2,8 @@ package nounou.elements.data.filters
 
 import breeze.linalg.DenseVector
 import nounou.elements.data.NNData
+import nounou.elements.data.traits.NNTiming
 import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
-import nounou.elements.traits.NNTiming
 
 import scala.collection.mutable.{ArrayBuffer, WeakHashMap}
 

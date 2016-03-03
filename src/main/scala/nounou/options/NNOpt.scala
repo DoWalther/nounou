@@ -1,7 +1,6 @@
-package nounou
+package nounou.options
 
-import nounou.Options.{BlackoutFrames, WaveformFrames, AlignmentPoint}
-import nounou.options._
+import Options.{AlignmentPoint, BlackoutFrames, WaveformFrames}
 
 /**
   * Convenience access class for various option objects in nounou

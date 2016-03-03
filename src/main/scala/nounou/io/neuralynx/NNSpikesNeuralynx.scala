@@ -1,8 +1,9 @@
 package nounou.io.neuralynx
 
 
+import nounou.elements.data.traits.{NNTiming, NNScaling}
 import nounou.elements.spikes.{NNSpikes, NNSpikesParent, NNSpike}
-import nounou.elements.traits.{NNTiming, NNScaling}
+import nounou.elements.traits.NNTiming
 import scala.collection._
 
 object NNSpikesNeuralynx {

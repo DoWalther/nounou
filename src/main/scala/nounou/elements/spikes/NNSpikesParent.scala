@@ -2,24 +2,29 @@ package nounou.elements.spikes
 
 import java.math.BigInteger
 import nounou.elements.NNElement
+import nounou.elements.data.traits._
 import nounou.elements.traits._
 import scala.collection._
 
 /**
   * Parent class for a mutable database of [[nounou.elements.spikes.NNSpike NNSpike]] objects.
-  * Based on a [scala.collection.mutable.TreeSet[A] mutable.TreeSet], with enforcing of element compatiblity.
+  * Based on a [[scala.collection.mutable.TreeSet[A] mutable.TreeSet]], with enforcing of element compatiblity.
   *
   * The bulk of functionality is defined here (in an abstract parent class)
   * so that implementations can deal transparently with generic NNSpike children types
   * (such as NNSpikeNlx for Neuralynx files), without the API itself being generic.
   *
+  * This class is implemented as mutable to allow easy reassignment of individual spike unit identities
+  * during sorting, etc.
+  *
   * @param alignmentPoint sample number at which the timestamp is read
+  *
   */
 abstract class NNSpikesParent[S <: NNSpike]( protected[nounou] val _database: mutable.SortedSet[S],
                                              val alignmentPoint: Int,
                                              override val scaling: NNScaling,
                                              override val timing: NNTiming)
-  extends NNConcatenableElement with NNScalingElement with NNTimingElement {
+  extends NNElement with NNElementCompatibilityCheck with NNScalingElement with NNTimingElement {
 
 
   def this(alignmentPoint: Int, scaling: NNScaling, timing: NNTiming) {

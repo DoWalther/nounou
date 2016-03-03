@@ -3,7 +3,8 @@ package nounou
 import breeze.linalg.DenseVector
 import breeze.numerics.sin
 import java.math.BigInteger
-import nounou.Options.{AlignmentPoint, WaveformFrames}
+import nounou.options.{Options, Opt}
+import Options.{AlignmentPoint, WaveformFrames}
 import nounou.analysis.spikes.OptSpikeDetect
 import nounou.elements.NNElement
 import nounou.elements.data.{NNDataChannel, NNData}
@@ -18,18 +19,22 @@ import scala.collection.mutable.ArrayBuffer
 import scala.reflect.ClassTag
 
 
-/** The static convenience frontend to use all main functionality of nounou from Mathematica/MatLab/Java
-  * (with avoidance of Java-unfriendly Scala constructs).
+/**
+  * The static convenience frontend to use all main functionality of nounou from Mathematica/MatLab/Java
+  * (with avoidance of Java-unfriendly Scala constructs). Methods in this static frontend
+  * will feature standard Java classes such as BigInteger (instead of the scala BigInt)
+  * and Array (instead of internal immutable representations such as scala Vector or breeze DenseVector).
   *
   * In idiomatic Scala, Many of these functions would be put in
   * companion objects as an apply method (i.e. SampleRange.apply(start, last, step, segment). These are
   * consolidated here instead to facilitate access through Java.
   *
  * @author ktakagaki
+  *
  */
 object NN extends LoggingExt {
 
-  //ToDo 2: this is currently not using active git info. update
+  //ToDo SL: this is currently not using active git info. update through reading of .git folder of
   override final def toString(): String =
       "Welcome to nounou, a Scala/Java adapter for neurophysiological data.\n" +
       NNGit.infoPrintout
@@ -53,25 +58,30 @@ object NN extends LoggingExt {
 
   // <editor-fold defaultstate="collapsed" desc=" file loading/saving ">
 
-  /**Load a file into appropriate subtypes of [[nounou.elements.NNElement]]
+  /**
+    * Load a file into appropriate subtypes of [[nounou.elements.NNElement]]
     *
     * @return an array of [[nounou.elements.NNElement]] objects
     */
   final def load(fileName: String): Array[NNElement] = FileLoader.load(fileName)
-  /**Load a list of files into appropriate subtypes of [[nounou.elements.NNElement]].
+
+  /**
+    * Load a list of files into appropriate subtypes of [[nounou.elements.NNElement]].
     * If multiple files are compatible (e.g. multiple Neuralynx channel data files with compatible timings),
     * they will be joined.
     *
     * @return an array of [[nounou.elements.NNElement]] objects
     */
   final def load(fileNames: Array[String]): Array[NNElement] = FileLoader.load(fileNames)
-  /**Save an [[nounou.elements.NNElement]] object into the given file.
+  /**
+    * Save an [[nounou.elements.NNElement]] object into the given file.
     *File type will be inferred from the filename extension.
     *
     * @return an array of [[nounou.elements.NNElement]] objects
     */
   final def save(fileName: String, data: NNElement): Unit  = FileSaver.save( fileName, data)
-  /**Save an array of [[nounou.elements.NNElement]] object into the given file.
+  /**
+    * Save an array of [[nounou.elements.NNElement]] object into the given file.
     *This allows you to specify multiple types of data Array(NNData, NNEvents, NNSpikes)
     *for saving into compound file formats (e.g. NEX).
     */

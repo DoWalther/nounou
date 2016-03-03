@@ -28,7 +28,7 @@ trait OptHandler {
   def readOptString[T <: OptString](opts: Seq[Opt], default: String): String = { //(implicit tag: ClassTag[T])
   val tempRet = opts.find( _.isInstanceOf[T] )
     tempRet match {
-      case Some(x: T) => x.value
+      case Some(x: T) => x.valueString
       case None => default
     }
   }
@@ -36,7 +36,7 @@ trait OptHandler {
   def readOptDouble[T <: OptDouble](opts: Seq[Opt], default: Double): Double = {
     val tempRet = opts.find( _.isInstanceOf[T] )
     tempRet match {
-      case Some(x: T) => x.value
+      case Some(x: T) => x.valueDouble
       case None => default
     }
   }
@@ -44,7 +44,7 @@ trait OptHandler {
   def readOptInt[T <: OptInt](opts: Seq[Opt], default: Int): Int = {
     val tempRet = opts.find( _.isInstanceOf[T] )
     tempRet match {
-      case Some(x: T) => x.value
+      case Some(x: T) => x.valueInt
       case None => default
     }
   }

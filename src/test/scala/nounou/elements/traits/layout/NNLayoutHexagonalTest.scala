@@ -1,5 +1,6 @@
 package nounou.elements.traits.layout
 
+import nounou.elements.layout.NNLayoutHexagonal
 import org.scalatest.FunSuite
 
 /**

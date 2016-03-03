@@ -3,15 +3,18 @@ package nounou.io.neuralynx
 import java.io.File
 
 import breeze.linalg.{DenseVector => DV, convert}
-import nounou.elements.traits.{NNTiming, NNScaling}
+import nounou.elements.data.traits.NNTiming
+import nounou.elements.traits.NNTiming
 import nounou.io.neuralynx.fileObjects.{FileReadNCS, FileReadNeuralynx}
 import nounou.io.neuralynx.headers.NNHeaderNCS
 import nounou.ranges.NNRangeValid
 
 
-/** A specialized immutable [[nounou.elements.data.NNDataChannel]] for NCS files.
+/**
+  * A specialized immutable [[nounou.elements.data.NNDataChannel]] for NCS files.
   * This class encapsulates a reference to the file handle,
   * and can load data from file dynamically on request.
+  *
   */
 class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( file ) {
 
@@ -154,15 +157,11 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
     )
 
   override val scaling: NNScalingNeuralynx =
+
     new NNScalingNeuralynx( unit = this.absUnit,
-                            absolutePerShort = 1.0E6 *
-                              header.getHeaderADBitVolts *
-                              {if(header.getHeaderInputInverted) -1d else 1d} )
-//  setScale( new NNScaling(Short.MinValue.toInt*xBits, Short.MaxValue.toInt*xBits,
-//                            absGain = 1.0E6 * getHeader.getHeaderADBitVolts / xBitsD,
-//                            absOffset = this.absOffset,
-//                            unit = this.absUnit)
-//  )
+                            absolutePerShort = 1.0E6 * header.getHeaderADBitVolts *
+                                  {if(header.getHeaderInputInverted) -1d else 1d}
+    )
 
   logger.info( "loaded {}", this )
 

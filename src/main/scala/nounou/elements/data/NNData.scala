@@ -3,9 +3,9 @@ package nounou.elements.data
 import breeze.linalg.{DenseVector => DV}
 import nounou._
 import nounou.elements.NNElement
-import nounou.elements.data.traits.NNDataNode
-import nounou.elements.traits.layout.{NNLayoutElement, NNLayout}
-import nounou.elements.traits.{NNConcatenableElement, NNTimingElement, NNScalingElement, NNChannelsElement}
+import nounou.elements.data.traits._
+import nounou.elements.layout.NNLayoutElement
+import nounou.elements.traits._
 import nounou.ranges.{NNRange, NNRangeSpecifier, NNRangeValid}
 
 /** Base trait for data encoded as Int arrays, this is the main data element for an experiment,
@@ -20,7 +20,7 @@ import nounou.ranges.{NNRange, NNRangeSpecifier, NNRangeValid}
   *
   */
 trait NNData extends NNDataNode
-  with NNConcatenableElement
+  with NNElementCompatibilityCheck
   with NNChannelsElement
   with NNLayoutElement
   with NNScalingElement

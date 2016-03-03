@@ -1,8 +1,8 @@
-package nounou.elements.traits.layout
+package nounou.elements.layout
 
 import java.util
 
-import nounou.elements.traits.NNChannelsElement
+import nounou.elements.data.traits.NNChannelsElement
 
 import scala.collection.mutable.ArrayBuffer
 

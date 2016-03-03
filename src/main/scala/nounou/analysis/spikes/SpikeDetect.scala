@@ -6,9 +6,10 @@ import breeze.stats.median
 
 import java.math.BigInteger
 
-import nounou.NNOpt.AlignmentPoint
-import nounou.NNOpt.{BlackoutFrames, AlignmentPoint, WaveformFrames}
-import nounou.Options._
+import nounou.options._
+import NNOpt.AlignmentPoint
+import NNOpt.{BlackoutFrames, AlignmentPoint, WaveformFrames}
+import Options._
 import nounou.options._
 import nounou.analysis.{Threshold}
 import nounou.elements.data.{NNDataChannel, NNData}

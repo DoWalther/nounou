@@ -2,8 +2,8 @@ package nounou.io.neuralynx.fileAdapters
 
 import java.io.{IOException, File}
 import nounou.elements.NNElement
+import nounou.elements.data.traits.NNTiming
 import nounou.elements.spikes.{NNSpike, NNSpikesParent, NNSpikes}
-import nounou.elements.traits.NNTiming
 import nounou.io.neuralynx.fileObjects.{FileNeuralynxSpikeInfo, FileWriteNeuralynx, FileReadNeuralynxSpike}
 import nounou.io.neuralynx.headers.NNHeaderNeuralynxSpikeConcrete
 import nounou.io.neuralynx.{NNSpikeNeuralynx, NNSpikesNeuralynx, NNScalingNeuralynx}

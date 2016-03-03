@@ -2,11 +2,12 @@ package nounou.elements.data
 
 import breeze.linalg.{DenseVector => DV}
 import nounou._
-import nounou.elements.traits.{NNConcatenableElement, NNTimingElement, NNScalingElement}
+import nounou.elements.data.traits.{NNTimingElement, NNScalingElement, NNElementCompatibilityCheck}
+import nounou.elements.traits.NNTimingElement
 import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.elements.NNElement
 
-//ToDo 1: make NNDataChannel a subclass of NNData
+//ToDo 1: make NNDataChannel a subclass of NNData for easier access to single channels
 /**
   * This object represents a single channel of data.
   * Most data formats represent an array of data (with multiple channels)
@@ -21,16 +22,10 @@ import nounou.elements.NNElement
   * + [[NNDataChannelExtracted]]: Extract a single channel from a NNData object and present it as an NNDataChannel
   *
   */
-trait NNDataChannel extends NNConcatenableElement
-    with NNTimingElement
-    with NNScalingElement {
+trait NNDataChannel extends NNElement with NNElementCompatibilityCheck with NNTimingElement with NNScalingElement {
 
   /**MUST OVERRIDE: name of the given channel.*/
   val channelName: String
-
-//  @deprecated
-//  def readPointIntImpl(frame: Int, segment: Int): Int =
-//    scale().convertAbsoluteToInt( readPointImpl(frame, segment) )
 
   /**
     * MUST OVERRIDE: Read a single point from the data.

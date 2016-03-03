@@ -2,12 +2,13 @@ package nounou.elements.spikes
 
 import java.math.BigInteger
 
-import breeze.linalg.{max, min}
+import breeze.linalg.{DenseVector, max, min}
 import breeze.numerics.abs
 import nounou.elements.NNElement
-import nounou.elements.traits.NNConcatenableElement
+import nounou.elements.data.traits.NNElementCompatibilityCheck
 
-/**An immutable class to encapsulate a single spike waveform in a neurophysiological recording,
+/**
+  * An immutable class to encapsulate a single spike waveform in a neurophysiological recording,
   * to be accumulated into a [[nounou.elements.spikes.NNSpikes]] database.
   *
   * @param timestamp the timestamp corresponding to the beginning of the waveform window: note that this is not the threshold crossing point
@@ -18,8 +19,7 @@ import nounou.elements.traits.NNConcatenableElement
 class NNSpike(val timestamp: BigInt,
               val waveform: Vector[Double],
               val channels: Int,
-              val unitNo: Long)
-  extends NNConcatenableElement {
+              val unitNo: Long)  extends NNElement with NNElementCompatibilityCheck {
 
   // <editor-fold defaultstate="collapsed" desc=" argument checks ">
 
@@ -30,6 +30,8 @@ class NNSpike(val timestamp: BigInt,
 
   // </editor-fold>
 
+  // <editor-fold defaultstate="collapsed" desc=" transient waveform variables (max/min/length/etc.) ">
+
   @transient
   val singleWaveformLength = waveform.length / channels
   @transient
@@ -39,32 +41,35 @@ class NNSpike(val timestamp: BigInt,
   @transient
   lazy val waveformAbsMax: Double = max( waveform.map( abs(_) ) )
 
+  // </editor-fold>
+
   // <editor-fold defaultstate="collapsed" desc=" alternate constructors ">
 
-  def this(timestamp: BigInt, waveform: Array[Double], channels: Int, unitNo: Long) =
-    this(timestamp, waveform.toVector, channels, unitNo)
+  //ToDo 4: This alternate constructor should be eliminated, all alternate constructors to nounou.NN
+  def this(timestamp: BigInt, waveform: DenseVector[Double], channels: Int, unitNo: Long) =
+    this(timestamp, waveform.toScalaVector(), channels, unitNo)
 
-  def this(timestamp: BigInteger, waveform: Array[Double], channels: Int, unitNo: Long) =
-    this(BigInt(timestamp), waveform.toVector, channels, unitNo)
-
-
-  def this(timestamp: BigInteger, waveform: Vector[Double], channels: Int, unitNo: Long) =
-    this(BigInt(timestamp), waveform, channels, unitNo)
+//  def this(timestamp: BigInteger, waveform: Array[Double], channels: Int, unitNo: Long) =
+//    this(BigInt(timestamp), waveform.toVector, channels, unitNo)
+//
+//  def this(timestamp: BigInteger, waveform: Vector[Double], channels: Int, unitNo: Long) =
+//    this(BigInt(timestamp), waveform, channels, unitNo)
 
   // </editor-fold>
+
+  // <editor-fold defaultstate="collapsed" desc=" toString related ">
 
 
   def toStringImpl() = s"ts=${timestamp}, ch=${channels}, swflen=${singleWaveformLength}, unitNo=${unitNo}"
 
   def toStringFullImpl() = ""
 
+  // </editor-fold>
+
   // <editor-fold defaultstate="collapsed" desc=" //Java accessors ">
 
   /**Java accessor for timestamp, returns a [java.math.BigInteger], which is immutable.*/
   final def getTimestamp(): BigInteger = timestamp.bigInteger
-
-//  /**Java accessor for waveform, returns an Array[Double] clone.*/
-//  def getWaveform(): Array[Double] = waveform.toArray//[Double]
 
   /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.channels]].*/
   final def getChannels(): Int = channels
@@ -72,8 +77,10 @@ class NNSpike(val timestamp: BigInt,
   /**Java accessor for channels, alias for [[nounou.elements.spikes.NNSpike.unitNo]].*/
   final def getUnitNo(): Long = unitNo
 
+  /**Java accessor for flattened waveform, returns an Array[Double] clone.*/
   final def readWaveformFlat(): Array[Double] = waveform.toArray
 
+  /**Java accessor for waveforms.*/
   def readWaveform(): Array[Array[Double]] = {
     val tempReturn = new Array[Array[Double]](channels)
     for( ch <- 0 until channels ){
@@ -100,23 +107,3 @@ class NNSpike(val timestamp: BigInt,
   }
 
 }
-
-
-
-
-//object NNSpike extends LoggingExt {
-//
-//  //  def toArray(xSpike : XSpike): Array[Array[Int]] = xSpike.toArray
-//  //  def toArray(xSpikes: Array[XSpike]): Array[Array[Array[Int]]] = xSpikes.map( _.toArray )
-//  //  def readSpikeFrames(xData: NNData, channels: Array[Int], xFrames: Array[Int], length: Int, trigger: Int) = {
-//  //    xFrames.map( readSpikeFrame(xData, channels, _, length, trigger))
-//  //  }
-//  //  def readSpikeFrame(xData: NNData, channels: Array[Int], frame: Int, segment: Int, length: Int): NNSpike = {
-//  //    loggerRequire( frame > 0, s"frame must be >0, not ${frame}")
-//  //    loggerRequire( length > 0, s"length must be >0, not ${length}")
-//  //
-//  //    val tempWF = channels.map( ch => xData.readTrace( ch, SampleRangeReal(frame, frame+length-1, step=1, segment) ))
-//  //    new NNSpikeFrame( frame, tempWF, frame, segment)
-//  //  }
-//
-//}

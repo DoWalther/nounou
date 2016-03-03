@@ -1,8 +1,6 @@
-package nounou.elements.traits.layout
+package nounou.elements.layout
 
 import javafx.scene.shape.Rectangle
-
-import nounou.elements.NNElement
 
 /**Immutable layout object, encapsulating how different channels are
  * laid out across the detector field.

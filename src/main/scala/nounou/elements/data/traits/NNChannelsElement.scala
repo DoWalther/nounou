@@ -1,4 +1,4 @@
-package nounou.elements.traits
+package nounou.elements.data.traits
 
 import nounou.elements.NNElement
 
@@ -8,7 +8,7 @@ import nounou.elements.NNElement
   *
   * Envisioned uses are for:
   * - [[nounou.elements.data.NNData]],
-  * - [[nounou.elements.traits.layout.NNLayout]].
+  * - [[NNLayout]].
   *
   * Channel names/count are intentionally mutable for [[nounou.elements.data.filters.NNFilter]]
   * objects which conduct binning and therefore may change dynamically.
@@ -20,7 +20,7 @@ trait NNChannelsElement extends NNElement {
     */
   def getChannelCount: Int
 
-  /** '''[NNChannelsElement]''' Alias for [[nounou.elements.traits.NNChannelsElement!.getChannelCount]].
+  /** '''[NNChannelsElement]''' Alias for [[NNChannelsElement!.getChannelCount]].
     */
   final def channelCount(): Int = getChannelCount
 

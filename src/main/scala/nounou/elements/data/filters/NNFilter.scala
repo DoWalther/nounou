@@ -1,14 +1,15 @@
 package nounou.elements.data.filters
 
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements.traits.NNScaling
+import nounou.elements.data.traits.NNScaling
+import nounou.elements.layout.NNLayout
 import nounou.elements.data.NNData
 import nounou.ranges.{NNRangeSpecifier, NNRangeValid}
 import nounou.elements.NNElement
-import nounou.elements.traits.layout.NNLayout
 
 /** A passthrough object, which is inherited by various NNDataFilter
   * objects to create a filter block for the filter chain.
+ *
   * @param parentVar the parent data object
   */
 abstract class NNFilter(private var parentVar: NNData ) extends NNData {

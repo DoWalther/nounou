@@ -1,6 +1,6 @@
 package nounou.ranges
 
-import nounou.elements.traits.NNTiming
+import nounou.elements.data.traits.NNTiming
 
 
 /**Encapsulates a range based on one trigger frame and segment, with an event range specified with frames,
