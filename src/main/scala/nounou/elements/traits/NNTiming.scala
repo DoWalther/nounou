@@ -1,4 +1,4 @@
-package nounou.elements.data.traits
+package nounou.elements.traits
 
 import java.math.BigInteger
 
@@ -224,10 +224,11 @@ class NNTiming(val sampleRate: Double,
     * Overhangs allowed, ie, invalid timestamps may be given.
     */
   final def convertFrsgToTs(frame:Int, segment: Int): BigInt = {
-    //loggerRequire( isValidFrsg(frame, segment), "Not valid frame/segment specification!" )
+    loggerRequire( isRealisticFrsg(frame, segment), "Not a realistic frame/segment specification!" )
     segmentStartTss(segment) + ((frame/*-1*/).toDouble * factorTsPerFr).round
   }
 
+  final def convertTsToFrsg(timestamp: BigInteger): (Int, Int) = convertTsToFrsg(BigInt(timestamp))
   /** Closest frame/segment index to the given absolute timestamp. Will give frames which are out of range (i.e. negative, etc)
   * if necessary.
   *

@@ -37,8 +37,8 @@ class FileAdapterNeuralynxHeaderTest extends FunSuite {
    test("headerHandling") {
 
      val data = FileAdapterNCS.load( testFileE04LC_CSC1 ).apply(0)
-     assert( data.isInstanceOf[NNDataChannelFileReadNCS] )
-     val dataObj = data.asInstanceOf[NNDataChannelFileReadNCS]
+     assert( data.isInstanceOf[NNChannelFileReadNCS] )
+     val dataObj = data.asInstanceOf[NNChannelFileReadNCS]
 
      //assert( dataObj.header.originalFileHeader.length == 760)
      assert( dataObj.headerBytes == 16384 )

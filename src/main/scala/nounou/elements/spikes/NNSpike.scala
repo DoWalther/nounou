@@ -1,11 +1,10 @@
 package nounou.elements.spikes
 
-import java.math.BigInteger
-
 import breeze.linalg.{DenseVector, max, min}
 import breeze.numerics.abs
+import java.math.BigInteger
 import nounou.elements.NNElement
-import nounou.elements.data.traits.NNElementCompatibilityCheck
+import nounou.elements.traits.NNElementCompatibilityCheck
 
 /**
   * An immutable class to encapsulate a single spike waveform in a neurophysiological recording,

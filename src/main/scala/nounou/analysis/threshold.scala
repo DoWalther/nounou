@@ -3,8 +3,6 @@ package nounou.analysis
 import nounou.options._
 import scala.collection.mutable.ArrayBuffer
 
-trait ThresholdOpt extends Opt
-
 /** Thresholds a data array.
   * To be transferred to breeze in the near future, once options are cleared up.
   * Created by ktakagaki on 15/09/15.
@@ -18,15 +16,16 @@ object Threshold {
 //  val OptThresholdDirectionBoth = OptThresholdDirection(0)
 //  val OptThresholdDirectionNegative = OptThresholdDirection(-1)
 
-  def apply(data: Array[Double], threshold: Double, opts: ThresholdOpt*): Array[Int] = {
+  def apply(data: Array[Double], threshold: Double, opts: OptThreshold*): Array[Int] = {
 
-    var optThresholdBlackout = 1
-    for (opt <- opts) opt match {
-      case OptBlackout(frames: Int) => optThresholdBlackout = frames
-      case _ => {}
-    }
+    val optBlackout = OptHandler.readOptInt[OptBlackoutInt](opts, 1)
+//    var optThresholdBlackout = 1
+//    for (opt <- opts) opt match {
+//      case OptBlackout(frames: Int) => optThresholdBlackout = frames
+//      case _ => {}
+//    }
 
-    thresholdWithBlackout(data, threshold, optThresholdBlackout)
+    thresholdWithBlackout(data, threshold, optBlackout)
 
   }
 

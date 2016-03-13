@@ -2,7 +2,7 @@ package nounou.elements.events
 
 import java.math.BigInteger
 import nounou.elements.NNElement
-import nounou.elements.data.traits.NNElementCompatibilityCheck
+import nounou.elements.traits.NNElementCompatibilityCheck
 import nounou.elements.headers.NNHeader
 import nounou.util.{leftPadSpace, leftPadZero}
 import scala.collection.immutable.TreeMap

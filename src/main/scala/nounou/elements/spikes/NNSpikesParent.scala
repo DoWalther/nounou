@@ -2,7 +2,6 @@ package nounou.elements.spikes
 
 import java.math.BigInteger
 import nounou.elements.NNElement
-import nounou.elements.data.traits._
 import nounou.elements.traits._
 import scala.collection._
 
@@ -17,7 +16,7 @@ import scala.collection._
   * This class is implemented as mutable to allow easy reassignment of individual spike unit identities
   * during sorting, etc.
   *
-  * @param alignmentPoint sample number at which the timestamp is read
+  * @param alignmentPoint sample number at which the timestamp is read (1-indexed)
   *
   */
 abstract class NNSpikesParent[S <: NNSpike]( protected[nounou] val _database: mutable.SortedSet[S],

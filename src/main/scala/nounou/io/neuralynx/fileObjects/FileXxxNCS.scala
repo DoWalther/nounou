@@ -2,7 +2,7 @@ package nounou.io.neuralynx.fileObjects
 
 import java.io.File
 import nounou.elements.data.NNDataChannel
-import nounou.elements.data.traits.NNDataChannelNumbered
+import nounou.elements.traits.NNChannelNumbered
 import nounou.io.neuralynx.headers.{NNHeaderNCSRead, NNHeaderNCS}
 
 /**
@@ -23,7 +23,7 @@ object FileNCS extends FileNCS
   */
 abstract class FileReadNCS(file: File)
   extends FileReadNeuralynx[NNHeaderNCS](file, FileNCS.recordSize)
-  with NNDataChannel with NNDataChannelNumbered  {
+  with NNDataChannel with NNChannelNumbered  {
 
   //The following lazy initialization done by hand to avoid var/val initialization order issues
   override final var _header: NNHeaderNCS = null

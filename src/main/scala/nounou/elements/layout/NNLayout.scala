@@ -2,7 +2,7 @@ package nounou.elements.layout
 
 import java.util
 
-import nounou.elements.data.traits.NNChannelsElement
+import nounou.elements.traits.NNChannelsElement
 
 import scala.collection.mutable.ArrayBuffer
 

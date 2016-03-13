@@ -1,4 +1,4 @@
-package nounou.elements.data.traits
+package nounou.elements.traits
 
 import nounou.elements.NNElement
 

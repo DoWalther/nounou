@@ -7,7 +7,7 @@ import org.scalatest.FunSuite
 /**
  * @author ktakagaki
  */
-class FrRangeTest extends FunSuite {
+class NNRangeTest extends FunSuite {
 
   test("length odd"){
 

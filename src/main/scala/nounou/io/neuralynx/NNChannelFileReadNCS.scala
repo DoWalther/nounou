@@ -3,7 +3,7 @@ package nounou.io.neuralynx
 import java.io.File
 
 import breeze.linalg.{DenseVector => DV, convert}
-import nounou.elements.data.traits.NNTiming
+import nounou.elements.traits.NNTiming
 import nounou.elements.traits.NNTiming
 import nounou.io.neuralynx.fileObjects.{FileReadNCS, FileReadNeuralynx}
 import nounou.io.neuralynx.headers.NNHeaderNCS
@@ -16,7 +16,7 @@ import nounou.ranges.NNRangeValid
   * and can load data from file dynamically on request.
   *
   */
-class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( file ) {
+class NNChannelFileReadNCS(override val file: File)  extends FileReadNCS( file ) {
 
   // <editor-fold defaultstate="collapsed" desc=" toString related ">
 
@@ -51,7 +51,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
   override val channelName = file.getCanonicalFile.toString
   override var channelNumber = -1
 
-  def NNDataChannelNCS(fileName: String) = new NNDataChannelFileReadNCS( new File(fileName) )
+  def NNDataChannelNCS(fileName: String) = new NNChannelFileReadNCS( new File(fileName) )
 
   //final val xBits = 1024
   //final lazy val xBitsD = xBits.toDouble
@@ -153,7 +153,7 @@ class NNDataChannelFileReadNCS(override val file: File)  extends FileReadNCS( fi
     new NNTiming( sampleRate = header.getHeaderSamplingFrequency,
                   _segmentLengths = tempLengths.toArray,
                   _segmentStartTss = tempStartTimestamps.toArray,
-                  filterDelay = if(header.getHeaderDspDelayCompensation) 0 else header.getHeaderDspFilterDelay
+                  filterDelay = if(header.getHeaderDspDelayCompensation) header.getHeaderDspFilterDelay else 0
     )
 
   override val scaling: NNScalingNeuralynx =

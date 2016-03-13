@@ -3,14 +3,11 @@ package nounou
 import breeze.linalg.DenseVector
 import breeze.numerics.sin
 import java.math.BigInteger
-import nounou.options.{Options, Opt}
-import Options.{AlignmentPoint, WaveformFrames}
-import nounou.analysis.spikes.OptSpikeDetect
 import nounou.elements.NNElement
 import nounou.elements.data.{NNDataChannel, NNData}
 import nounou.elements.data.filters.NNFilterMedianSubtract
 import nounou.elements.spikes.{OptReadSpikes, NNSpikes}
-import nounou.options.Opt
+import nounou.options._
 import nounou.ranges._
 import nounou.io.{FileLoader, FileSaver}
 import nounou.util.{LoggingExt, NNGit}
@@ -164,36 +161,27 @@ object NN extends LoggingExt {
 
   // </editor-fold>
 
-//  def readSpikes(data: NNData, timestamps: Array[BigInteger], channel: Int): NNSpikes = {
-//    NNSpikes.readSpikes(data, timestamps, channel )
-//  }
-//  def readSpikes(data: NNData, timestamps: Array[BigInteger], channels: Array[Int]): NNSpikes = {
-//    NNSpikes.readSpikes(data, timestamps, channels)
-//  }
-//  def readSpikes(dataChannel: NNDataChannel , timestamps: Array[BigInteger]): NNSpikes = {
-//    NNSpikes.readSpikes(dataChannel, timestamps)
-//  }
   def readSpikes(data: NNData, timestamps: Array[BigInteger], channel: Int,
                  waveformFrames: Int, alignmentPoint: Int): NNSpikes = {
-    NNSpikes.readSpikes(data, timestamps, channel, WaveformFrames(waveformFrames), AlignmentPoint(alignmentPoint))
+    NNSpikes.readSpikes(data, timestamps.map( BigInt(_) ), channel, OptWaveformFramesInt(waveformFrames), OptAlignmentPointInt(alignmentPoint))
   }
   def readSpikes(data: NNData, timestamps: Array[BigInteger], channels: Array[Int],
                  waveformFrames: Int, alignmentPoint: Int): NNSpikes = {
-    NNSpikes.readSpikes(data, timestamps, channels, WaveformFrames(waveformFrames), AlignmentPoint(alignmentPoint) )
+    NNSpikes.readSpikes(data, timestamps.map( BigInt(_) ), channels, OptWaveformFramesInt(waveformFrames), OptAlignmentPointInt(alignmentPoint) )
   }
   def readSpikes(dataChannel: NNDataChannel , timestamps: Array[BigInteger],
                  waveformFrames: Int, alignmentPoint: Int): NNSpikes = {
-    NNSpikes.readSpikes(dataChannel, timestamps, WaveformFrames(waveformFrames), AlignmentPoint(alignmentPoint) )
+    NNSpikes.readSpikes(dataChannel, timestamps.map( BigInt(_) ), OptWaveformFramesInt(waveformFrames), OptAlignmentPointInt(alignmentPoint) )
   }
 
   def readSpikes(data: NNData, timestamps: Array[BigInteger], channel: Int, opts: OptReadSpikes*): NNSpikes = {
-    NNSpikes.readSpikes(data, timestamps, channel, opts: _* )
+    NNSpikes.readSpikes(data, timestamps.map( BigInt(_) ), channel, opts: _* )
   }
   def readSpikes(data: NNData, timestamps: Array[BigInteger], channels: Array[Int], opts: OptReadSpikes*): NNSpikes = {
-    NNSpikes.readSpikes(data, timestamps, channels, opts: _* )
+    NNSpikes.readSpikes(data, timestamps.map( BigInt(_) ), channels, opts: _* )
   }
   def readSpikes(dataChannel: NNDataChannel , timestamps: Array[BigInteger], opts: OptReadSpikes*): NNSpikes = {
-    NNSpikes.readSpikes(dataChannel, timestamps, opts: _* )
+    NNSpikes.readSpikes(dataChannel, timestamps.map( BigInt(_) ), opts: _* )
   }
 
 

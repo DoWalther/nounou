@@ -1,8 +1,8 @@
 package nounou.ranges
 
 import java.math.BigInteger
-import nounou.elements.data.traits
-import nounou.elements.data.traits.{NNTimingElement, NNTiming}
+import nounou.elements.traits
+import nounou.elements.traits.{NNTimingElement, NNTiming}
 import nounou.elements.traits.NNTimingElement
 import nounou.util.LoggingExt
 
@@ -39,7 +39,7 @@ trait NNRangeSpecifier extends LoggingExt {
 
   /**
     * Returns the concrete real sample range with start (can be negative, starting before the data),
-    * end (can be beyond end of assumed data as specified in [[traits.NNTiming NNTiming]]),
+    * end (can be beyond end of assumed data as specified in [[nounou.elements.traits.NNTiming NNTiming]]),
     * steps (must be positive int), and segment (present within assumed data).
     */
   def getInstantiatedRange(nnTiming: NNTiming): NNRangeInstantiated

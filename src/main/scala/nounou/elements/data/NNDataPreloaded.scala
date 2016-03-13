@@ -1,7 +1,7 @@
 package nounou.elements.data
 
 import breeze.linalg.{DenseMatrix => DM, DenseVector => DV}
-import nounou.elements.data.traits.{NNTiming, NNScaling}
+import nounou.elements.traits.{NNTiming, NNScaling}
 import nounou.elements.traits.NNTiming
 import nounou.ranges.NNRangeValid
 

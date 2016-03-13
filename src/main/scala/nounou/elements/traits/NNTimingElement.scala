@@ -1,11 +1,11 @@
-package nounou.elements.data.traits
+package nounou.elements.traits
 
 import nounou.elements.NNElement
-import nounou.elements.data.traits
+import nounou.elements.traits
 
 /**This trait specifies that an [[nounou.elements.NNElement NNElement]] can return an
   * immutable
-  * [[traits.NNTiming NNTiming]] object to specify sampling information for data.
+  * [[nounou.elements.traits.NNTiming NNTiming]] object to specify sampling information for data.
   * Although the NNTiming object is immutable, the immutable return value may change.
   *
  * Created by ktakagaki on 15/03/12.

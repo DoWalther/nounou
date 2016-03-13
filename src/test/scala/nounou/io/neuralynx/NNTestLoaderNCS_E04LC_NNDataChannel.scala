@@ -13,8 +13,8 @@ trait NNTestLoaderNCS_E04LC_NNDataChannel extends FunSuite {
   private val testFileE04LC_CSC1 = getClass.getResource("/nounou/Neuralynx/E04LC/CSC1.ncs").getPath()
   private val data = NN.load(testFileE04LC_CSC1).apply(0)
   assert(data.isInstanceOf[NNDataChannel])
-  assert(data.isInstanceOf[NNDataChannelFileReadNCS])
-  val dataChannelNCSObj = data.asInstanceOf[NNDataChannelFileReadNCS]
+  assert(data.isInstanceOf[NNChannelFileReadNCS])
+  val dataChannelNCSObj = data.asInstanceOf[NNChannelFileReadNCS]
   val dataChannelObj: NNDataChannel = dataChannelNCSObj
 
   assert(dataChannelNCSObj.header.getHeaderDspFilterDelay == 484)

@@ -1,7 +1,7 @@
 package nounou.ranges
 
 import nounou._
-import nounou.elements.data.traits.NNTiming
+import nounou.elements.traits.NNTiming
 import nounou.util.LoggingExt
 
 import scala.collection.mutable.ArrayBuffer

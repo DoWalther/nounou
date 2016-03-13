@@ -1,4 +1,4 @@
-package nounou.elements.data.traits
+package nounou.elements.data
 
 /**
   * Encapsulates functions for chaining NNData objects into a filter chain.

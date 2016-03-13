@@ -1,6 +1,6 @@
 package nounou.ranges
 
-import nounou.elements.data.traits.NNTiming
+import nounou.elements.traits.NNTiming
 
 
 class NNRangeAll(val step: Int, val segment: Int) extends NNRangeSpecifier {

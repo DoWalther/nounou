@@ -1,5 +1,7 @@
 package nounou.io.neuralynx.headers
 
+import java.text.DecimalFormat
+
 /**
   * A header trait for [[nounou.io.neuralynx.headers.NNHeaderNeuralynx NNHeaderNeuralynx]]
   * objects which include the common sampling items in the header for Neuralynx
@@ -38,6 +40,8 @@ trait NNHeaderNeuralynxDAQ extends NNHeaderNeuralynx{
   /** [Header value NCS/NSE/NST/NTT: "DspFilterDelay_µs"] filter delay in timestamps (microsec) */
   def getHeaderDspFilterDelay: Int
 
+  private val formatNlxDouble = new DecimalFormat("0.#####E000;-0.#####E000")
+
   override def getNeuralynxHeaderStringImpl() = {
     super[NNHeaderNeuralynx].getNeuralynxHeaderStringImpl() +
       s"-AcqEntName $getHeaderAcqEntName\n" +
@@ -46,10 +50,10 @@ trait NNHeaderNeuralynxDAQ extends NNHeaderNeuralynx{
       s"-HardwareSubSystemType $getHeaderHardwareSubSystemType\n" +
       s"-SamplingFrequency ${getHeaderSamplingFrequency.toInt}\n" +
       s"-ADMaxValue 32767\n" +
-      s"-ADBitVolts ${"%6.3e".format(getHeaderADBitVolts)}\n\n" +
+      s"-ADBitVolts ${formatNlxDouble.format(getHeaderADBitVolts).replace("E", "e")} \n\n" +
       s"-NumADChannels $getHeaderNumADChannels\n" +
-      s"-ADChannel $getHeaderADChannel\n" +
-      s"-InputRange $getHeaderInputRange\n" +
+      s"-ADChannel $getHeaderADChannel \n" +
+      s"-InputRange $getHeaderInputRange \n" +
       s"-InputInverted ${if(getHeaderInputInverted) "True" else "False"}\n" +
       s"-DspDelayCompensation " + {if(getHeaderDspDelayCompensation) "Enabled" else "Disabled"} + " \n" +
       s"-DspFilterDelay_µs $getHeaderDspFilterDelay\n"

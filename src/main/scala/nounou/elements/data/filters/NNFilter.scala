@@ -1,7 +1,7 @@
 package nounou.elements.data.filters
 
 import breeze.linalg.{DenseVector => DV}
-import nounou.elements.data.traits.NNScaling
+import nounou.elements.traits.NNScaling
 import nounou.elements.layout.NNLayout
 import nounou.elements.data.NNData
 import nounou.ranges.{NNRangeSpecifier, NNRangeValid}

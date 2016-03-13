@@ -21,7 +21,7 @@ object FileNeuralynxSpikeInfo extends LoggingExt {
   final def getRecordSize(trodeCount: Int): Int = trodeCount match {
     case 1 => 112
     case 2 => 176
-    case 3 => 304
+    case 4 => 304
     case n: Int => throw loggerError(s"The trodeCount ${n} is not a valid neuralynx trode count!")
   }
 

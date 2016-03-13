@@ -3,7 +3,7 @@ package nounou.io.neuralynx.fileAdapters
 import java.io.File
 import nounou.elements.NNElement
 import nounou.elements.data.{NNData, NNDataChannel}
-import nounou.io.neuralynx.NNDataChannelFileReadNCS
+import nounou.io.neuralynx.NNChannelFileReadNCS
 import nounou.io.{FileLoader, FileSaver}
 import nounou.util.LoggingExt
 
@@ -11,7 +11,7 @@ import nounou.util.LoggingExt
 class FileAdapterNCS  extends FileLoader with FileSaver with LoggingExt {
 
   override val canLoadExtensions = Array("ncs")
-  override def loadImpl(file: File): Array[NNElement] = Array(new NNDataChannelFileReadNCS(file))
+  override def loadImpl(file: File): Array[NNElement] = Array(new NNChannelFileReadNCS(file))
 
   override val canSaveExtensions = Array("ncs")
   override def canSaveObjectArray(data: Array[NNElement]): Boolean =

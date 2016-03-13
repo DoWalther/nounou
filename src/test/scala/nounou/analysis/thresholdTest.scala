@@ -16,9 +16,9 @@ class thresholdTest  extends FunSuite {
   test("threshold"){
     assert( Threshold( test01, 50 ).toList == List(2,4,8) )
     assert( Threshold( test01, 100 ).toList == List(2,4,8) )
-    assert( Threshold( test01, 50, OptBlackout(3) ).toList == List(2,8) )
-    assert( Threshold( test01, 50, OptBlackout(2) ).toList == List(2,8) )
-    assert( Threshold( test01, 50, OptBlackout(1) ).toList == List(2,4,8) )
+    assert( Threshold( test01, 50, OptBlackoutInt(3) ).toList == List(2,8) )
+    assert( Threshold( test01, 50, OptBlackoutInt(2) ).toList == List(2,8) )
+    assert( Threshold( test01, 50, OptBlackoutInt(1) ).toList == List(2,4,8) )
   }
 
 }

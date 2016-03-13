@@ -2,7 +2,7 @@ package nounou.io.neuralynx.fileAdapters
 
 import java.io.{IOException, File}
 import nounou.elements.NNElement
-import nounou.elements.data.traits.NNTiming
+import nounou.elements.traits.NNTiming
 import nounou.elements.spikes.{NNSpike, NNSpikesParent, NNSpikes}
 import nounou.io.neuralynx.fileObjects.{FileNeuralynxSpikeInfo, FileWriteNeuralynx, FileReadNeuralynxSpike}
 import nounou.io.neuralynx.headers.NNHeaderNeuralynxSpikeConcrete
@@ -152,6 +152,8 @@ class FileAdapterNeuralynxSpikes extends FileLoader with FileSaver with LoggingE
         headerInputRange = inputRange,
         headerDspDelayCompensation = true, //if(dataElem.timing.filterDelay == 0) false else true,
         headerDspFilterDelay = dataElem.timing.filterDelay
+
+
       )
     }/*
       case _ => throw loggerError("NNSpikeNeuralynx object does not have a valid NNHeaderNSE object!")

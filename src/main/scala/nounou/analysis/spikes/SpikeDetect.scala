@@ -3,13 +3,8 @@ package nounou.analysis.spikes
 import breeze.linalg.DenseVector
 import breeze.numerics.abs
 import breeze.stats.median
-
 import java.math.BigInteger
 
-import nounou.options._
-import NNOpt.AlignmentPoint
-import NNOpt.{BlackoutFrames, AlignmentPoint, WaveformFrames}
-import Options._
 import nounou.options._
 import nounou.analysis.{Threshold}
 import nounou.elements.data.{NNDataChannel, NNData}
@@ -19,79 +14,77 @@ import nounou.util.LoggingExt
 
 import scala.collection.mutable.ArrayBuffer
 
-trait OptSpikeDetect extends Opt
-
 /**
   * @author ktakagaki
   */
-object SpikeDetect extends LoggingExt
-  with OptHandler {
+object SpikeDetect extends LoggingExt /*with OptHandler*/ {
 
-  //Options handling wrong!!
+  // <editor-fold defaultstate="collapsed" desc=" apply ">
+
   def apply(data: Array[Double], opts: OptSpikeDetect*): Array[Int] = {
-    //val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
-    val optMethod = readOptString[SpikeDetectMethod](opts, "MedianSDThresholdPeak")
+    val optMethod = OptHandler.readOptString[OptSpikeDetectMethodString](opts: Seq[Opt], "MedianSDThresholdPeak")
 
     optMethod match {
       case "MedianSDThresholdPeak" => {
-        val optMedianFactor = readOptDouble[MedianFactor](opts, 3d)
-        val optPeakWindow = readOptInt[PeakWindow](opts, 32)
+        val optMedianFactor = OptHandler.readOptDouble[OptMedianFactorDouble](opts: Seq[Opt], 3d)
+        val optPeakWindow = OptHandler.readOptInt[OptPeakWindowInt](opts: Seq[Opt], 32)
         medianSDThresholdPeakDetect(data, optMedianFactor, optPeakWindow)
       }
-      case _ => throw loggerError(s"option method $optMethod is not valid")
+      case _ => throw new IllegalArgumentException("only MedianSDThresholdPeak is supported")
     }
+
   }
 
   def apply(data: NNData,
-            range: NNRangeSpecifier,
-            channel: Int,
+            range: NNRangeSpecifier, channel: Int,
             opts: OptSpikeDetect*): Array[BigInteger] = {
     //val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
-    val optMethod = readOptString[SpikeDetectMethod](opts, "MedianSDThresholdPeak")
+    val optMethod = OptHandler.readOptString[OptSpikeDetectMethodString](opts, "MedianSDThresholdPeak")
 
     optMethod match {
       case "MedianSDThresholdPeak" => {
-        val optMedianFactor = readOptDouble[MedianFactor](opts, 3d)
-        val optPeakWindow = readOptInt[PeakWindow](opts, 32)
+        val optMedianFactor = OptHandler.readOptDouble[OptMedianFactorDouble](opts: Seq[Opt], 3d)
+        val optPeakWindow = OptHandler.readOptInt[OptPeakWindowInt](opts: Seq[Opt], 32)
         medianSDThresholdPeakDetect(data, range, channel, optMedianFactor, optPeakWindow)
       }
+      case _ => throw new IllegalArgumentException("only MedianSDThresholdPeak is supported")
     }
+
   }
 
   def apply(data: NNData,
             range: NNRangeSpecifier,
             channels: Array[Int],
             opts: OptSpikeDetect*): Array[BigInteger] = {
-    val optMethod = readOptString[SpikeDetectMethod](opts, "MedianSDThresholdPeak")
+    val optMethod = OptHandler.readOptString[OptSpikeDetectMethodString](opts, "MedianSDThresholdPeak")
 
     optMethod match {
       case "MedianSDThresholdPeak" => {
-        val optMedianFactor = readOptDouble[MedianFactor](opts, 3d)
-        val optPeakWindow = readOptInt[PeakWindow](opts, 32)
+        val optMedianFactor = OptHandler.readOptDouble[OptMedianFactorDouble](opts: Seq[Opt], 3d)
+        val optPeakWindow = OptHandler.readOptInt[OptPeakWindowInt](opts: Seq[Opt], 32)
         medianSDThresholdPeakDetect(data, range, channels, optMedianFactor, optPeakWindow)
       }
-      case _ => throw loggerError(s"method $optMethod not implemented yet")
+      case _ => throw new IllegalArgumentException("only MedianSDThresholdPeak is supported")
     }
-
   }
 
   def apply(dataChannel: NNDataChannel,
             range: NNRangeSpecifier,
             opts: OptSpikeDetect*): Array[BigInteger] = {
     //val optMethod: OptSpikeDetect = readOptObject[OptSpikeDetect](opts, MedianSDThresholdPeak)
-    val optMethod = readOptString[SpikeDetectMethod](opts, "MedianSDThresholdPeak")
+    val optMethod = OptHandler.readOptString[OptSpikeDetectMethodString](opts, "MedianSDThresholdPeak")
 
     optMethod match {
       case "MedianSDThresholdPeak" => {
-        val optMedianFactor = readOptDouble[MedianFactor](opts, 3d)
-        val optPeakWindow = readOptInt[PeakWindow](opts, 32)
+        val optMedianFactor = OptHandler.readOptDouble[OptMedianFactorDouble](opts: Seq[Opt], 3d)
+        val optPeakWindow = OptHandler.readOptInt[OptPeakWindowInt](opts: Seq[Opt], 32)
         medianSDThresholdPeakDetect(dataChannel, range, optMedianFactor, optPeakWindow)
       }
+      case _ => throw new IllegalArgumentException("only MedianSDThresholdPeak is supported")
     }
   }
 
-
-
+  // </editor-fold>
 
   // <editor-fold defaultstate="collapsed" desc=" medianSDThresholdPeakDetect ">
 
@@ -119,9 +112,9 @@ object SpikeDetect extends LoggingExt
   }
 
   def medianSDThresholdPeakDetect(data: Array[Array[Double]], medianFactor: Double, peakWindow: Int): Array[Int] = {
-    val absData = data.map((a: Array[Double]) => abs( DenseVector( a ) ) )
-    val absMedianThreshold = absData.map( medianFactor * median( _ ) / 0.6745 )
-    val tempTriggers = (absData zip absMedianThreshold).flatMap(
+    val absData: Array[DenseVector[Double]] = data.map((a: Array[Double]) => abs( DenseVector( a ) ) )
+    val absMedianThreshold: Array[Double] = absData.map( medianFactor * median( _ ) / 0.6745 )
+    val tempTriggers: Array[Int] = (absData zip absMedianThreshold).flatMap(
                           (t: (DenseVector[Double], Double)) => Threshold(t._1.toArray, t._2 )
                        ).toSet[Int].toArray[Int].sorted
     val tempReturn = ArrayBuffer[Int]()
@@ -146,16 +139,13 @@ object SpikeDetect extends LoggingExt
                                   peakWindow: Int): Array[BigInteger] = {
 
     //split range up for calculation
-    val rangesInstantiated = range.getInstantiatedRange(data).split(320000, 64).toSet
+    val rangesInstantiated = range.getInstantiatedRange(data).split(16000, 64).toSet
 
     rangesInstantiated.flatMap(
       (r: NNRangeInstantiated) => {
-        val tempFrames = medianSDThresholdPeakDetect(data.readTrace(channel, r), medianFactor, peakWindow)
+        val tempFrames = medianSDThresholdPeakDetect( data.readTrace(channel, r), medianFactor, peakWindow )
         tempFrames.map( (frame: Int) =>
-                            data.timing().convertFrsgToTs(
-                                                  r.start + frame,
-                                                  r.segment
-                                                         ).bigInteger
+            data.timing().convertFrsgToTs( r.start + frame, r.segment ).bigInteger
         )
       }
     ).toArray.sorted
@@ -169,16 +159,13 @@ object SpikeDetect extends LoggingExt
                                   peakWindow: Int): Array[BigInteger] = {
 
     //split range up for calculation
-    val rangesInstantiated = range.getInstantiatedRange(data).split(320000, 64).toSet
+    val rangesInstantiated = range.getInstantiatedRange(data).split(16000, 64).toSet
 
     rangesInstantiated.flatMap(
       (r: NNRangeInstantiated) => {
-        val tempFrames = medianSDThresholdPeakDetect(data.readPage(channels, r), medianFactor, peakWindow)
+        val tempFrames = medianSDThresholdPeakDetect( data.readPage(channels, r), medianFactor, peakWindow )
         tempFrames.map( (frame: Int) =>
-          data.timing().convertFrsgToTs(
-            r.start + frame,
-            r.segment
-          ).bigInteger
+          data.timing().convertFrsgToTs( r.start + frame, r.segment ).bigInteger
         )
       }
     ).toArray.sorted
@@ -190,7 +177,7 @@ object SpikeDetect extends LoggingExt
                                   medianFactor: Double,
                                   peakWindow: Int): Array[BigInteger] = {
     //split range up for calculation
-    val rangesInstantiated = range.getInstantiatedRange(dataChannel).split(3200000, 64).toSet
+    val rangesInstantiated = range.getInstantiatedRange(dataChannel).split(16000, 64).toSet
 
     rangesInstantiated.flatMap(
       (r: NNRangeInstantiated) => {
@@ -274,6 +261,10 @@ object SpikeDetect extends LoggingExt
 
   // </editor-fold>
 
+  // </editor-fold>
+
+
+
   def thresholdSpikes(data: NNData,
                       channels: Array[Int],
                       frameRange: NNRangeSpecifier,
@@ -281,16 +272,20 @@ object SpikeDetect extends LoggingExt
 
     // <editor-fold defaultstate="collapsed" desc=" Option handling ">
 
-    var optWaveformFrames = 32
-    var optAlignmentPoint  = 8
-    var optBlackoutFrames = 16
+    val optWaveformFrames = OptHandler.readOptInt[OptWaveformFramesInt](opts, 32)
+    val optAlignmentPoint  = OptHandler.readOptInt[OptAlignmentPointInt](opts, 8)
+    val optBlackoutFrames = OptHandler.readOptInt[OptBlackoutFramesInt](opts, 16)
 
-    for( opt <- opts ) opt match {
-      case WaveformFrames(frames: Int) => optWaveformFrames = frames
-      case AlignmentPoint(frames: Int) => optAlignmentPoint = frames
-      case BlackoutFrames(frames: Int) => optBlackoutFrames = frames
-      case _ => {}
-    }
+    //    var optWaveformFrames = 32
+//    var optAlignmentPoint  = 8
+//    var optBlackoutFrames = 16
+//
+//    for( opt <- opts ) opt match {
+//      case WaveformFrames(frames: Int) => optWaveformFrames = frames
+//      case OptAlignmentPoint(frames: Int) => optAlignmentPoint = frames
+//      case OptBlackoutFrames(frames: Int) => optBlackoutFrames = frames
+//      case _ => {}
+//    }
 
     val tempPosttriggerFr = optWaveformFrames -optAlignmentPoint -1
     loggerRequire( tempPosttriggerFr >=0, s"OptWaveformFr ($optWaveformFrames) must be strictly larger than OptPretriggerFr ($optAlignmentPoint)!")
@@ -338,18 +333,21 @@ object SpikeDetect extends LoggingExt
 
     // <editor-fold defaultstate="collapsed" desc=" Handle options ">
 
-    var optDetectionWindow = 320000
-    var optDetectionWindowOverlap = 320
-    var optThresholdSDFactor = 3d
-    var optAlignmentPoint  = 8
+    val optDetectionWindow = OptHandler.readOptInt[OptDetectionWindowInt](opts, 3200000)
+    val optAlignmentPoint  = OptHandler.readOptInt[OptAlignmentPointInt](opts, 8)
+    val optBlackoutFrames = OptHandler.readOptInt[OptBlackoutFramesInt](opts, 16)
+    var optDetectionWindowOverlap = OptHandler.readOptInt[OptDetectionWindowOverlapInt](opts, 320)
+    var optThresholdSDFactor = OptHandler.readOptDouble[OptThresholdSDFactorDouble](opts, 3d)
 
-    for (opt <- opts) opt match {
-      case OptDetectionWindow(fr) => optDetectionWindow = fr
-      case OptDetectionWindowOverlap(fr) => optDetectionWindowOverlap = fr
-      case OptThresholdSDFactor(factor: Double) => optThresholdSDFactor = factor
-      case AlignmentPoint(value: Int) => optAlignmentPoint = value
-      case _ => {}
-    }
+//    //    var optDetectionWindow = 320000
+//    //var optAlignmentPoint  = 8
+//    for (opt <- opts) opt match {
+//      case OptDetectionWindow(fr) => optDetectionWindow = fr
+//      case OptDetectionWindowOverlap(fr) => optDetectionWindowOverlap = fr
+//      case OptThresholdSDFactor(factor: Double) => optThresholdSDFactor = factor
+//      case OptAlignmentPoint(value: Int) => optAlignmentPoint = value
+//      case _ => {}
+//    }
 
     if (optDetectionWindow < 32000) throw loggerError("optDetectionWindow must be 32000 or larger!")
     if (optDetectionWindowOverlap > optDetectionWindow / 10) throw

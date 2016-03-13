@@ -1,6 +1,6 @@
 package nounou.ranges
 
-import nounou.elements.data.traits.NNTiming
+import nounou.elements.traits.NNTiming
 
 
 /** Encapsulates a range based on one trigger Ts (timestamp in BigInt), with an event range specified with frames,
