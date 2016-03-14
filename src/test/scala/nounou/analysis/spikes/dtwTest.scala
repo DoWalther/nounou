@@ -13,15 +13,11 @@ class dtwTest extends FunSuite {
 
   val test03 = Array(4d, -19d, 5d, -9d)
   val test04 = Array(23d, 14d)
-
   test("cost"){
-
     assert( cost(test01, test02) == 5d )
     assert( cost(test03, test04) == 84d)
     assert( cost(test01, test03) == 41d)
     assert( cost(test02, test03) == 40d)
-    //DW: noch eins komplizierter
-
   }
 
 }

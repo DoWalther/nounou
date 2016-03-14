@@ -9,16 +9,23 @@ import breeze.linalg.{min, DenseMatrix}
 object dtwScala {
 
   def cost(template: Array[Double], data: Array[Double]): Double = {
+    /**
+      * Calculate the difference between two sequences.*
+      *
+      * @return Total cost between template and data.
+      */
 
     val sizeTemplate: Int = template.length
     val sizeData: Int = data.length
-    val costMatrix = DenseMatrix.zeros[Double](sizeTemplate, sizeData) //Array[Array[Double]](sizeTemplate)//, sizeData)
-    val cumulativeCostMatrix = DenseMatrix.zeros[Double](sizeTemplate, sizeData) //new Array[Array[Double]](sizeTemplate)//, sizeData)
+    val costMatrix = DenseMatrix.zeros[Double](sizeTemplate, sizeData)
+    val cumulativeCostMatrix = DenseMatrix.zeros[Double](sizeTemplate, sizeData)
 
+    // Calculate the costMatrix, each entry of the costMatrix is the absolute difference between template[i] and data[j]
     for (i <- 0 until sizeTemplate; j <- 0 until sizeData) {
       costMatrix(i, j) = Math.abs(template(i) - data(j))
     }
 
+    // Calculate the cumulativeCostMatrix from the upper left to the lower right.
     for (i <- 0 until sizeTemplate; j <- 0 until sizeData) {
       cumulativeCostMatrix(i, j) = (i, j) match {
         case (0, 0) => costMatrix(i, j)
