@@ -27,6 +27,14 @@ object OptHandler {
 
   // </editor-fold>
 
+  // <editor-fold defaultstate="collapsed" desc=" filterOptSeq ">
+
+  def filterOptSeq[T <: Opt](opts: Seq[Opt])(implicit tag: ClassTag[T]): Seq[Opt] = {
+    opts.filter( isOptType[T](_) )
+  }
+
+  // </editor-fold>
+
   // <editor-fold defaultstate="collapsed" desc=" readOptXXX ">
 
   def readOpt[T <: Opt](opts: Seq[Opt])(implicit tag: ClassTag[T]): Option[T] = {

@@ -78,6 +78,13 @@ class NNSpike(val timestamp: BigInt,
 
   /**Java accessor for flattened waveform, returns an Array[Double] clone.*/
   final def readWaveformFlat(): Array[Double] = waveform.toArray
+  final def readWaveformFlat(waveformMajor: Boolean): Array[Double] = {
+    if(waveformMajor) readWaveformFlat()
+    else{
+      val temp = readWaveform()
+      (for(waveform <- 0 until temp(0).length; channel <- 0 until temp.length) yield temp(channel)(waveform)).toArray
+    }
+  }
 
   /**Java accessor for waveforms.*/
   def readWaveform(): Array[Array[Double]] = {

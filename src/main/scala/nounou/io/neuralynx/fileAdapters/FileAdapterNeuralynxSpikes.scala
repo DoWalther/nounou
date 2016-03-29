@@ -41,6 +41,7 @@ class FileAdapterNeuralynxSpikes extends FileLoader with FileSaver with LoggingE
     val fileAdapter = new FileReadNeuralynxSpike(file)
     val fHand = fileAdapter.handle
     fHand.seek( fileAdapter.headerBytes )
+    val tempChannelCount =fileAdapter.header.getHeaderNumADChannels
 
     //unit also specified in NNDataChannelFileReadNCS
     val tempScaling = new NNScalingNeuralynx( unit = "µV",
@@ -78,7 +79,14 @@ class FileAdapterNeuralynxSpikes extends FileLoader with FileSaver with LoggingE
       //The classified cell number for this record. If no cells have been classified, this number will be zero.
       val readDnParams: Array[Long] = fHand.readUInt32(8)
       //The classified cell number for this record. If no cells have been classified, this number will be zero.
-      val readSnData: Array[Short] = fHand.readInt16(32*fileAdapter.header.getHeaderNumADChannels)
+      val readSnData: Array[Short] = fHand.readInt16(32*tempChannelCount)
+      val snDataTransposed = {
+        if(tempChannelCount==1) readSnData
+        else{
+          (for(channel <- 0 until tempChannelCount; waveform <- 0 until 32)
+            yield readSnData(waveform*tempChannelCount +  channel)).toArray
+        }
+      }
 
       tempReturn.add(
         new NNSpikeNeuralynx(
@@ -86,7 +94,7 @@ class FileAdapterNeuralynxSpikes extends FileLoader with FileSaver with LoggingE
             readDwScNumber, //dwScNumber
             readDwCellNumber, //dwCellNumber
             readDnParams.toVector, //dnParams
-            tempScaling.convertShortToAbsolute(readSnData).toVector, //snData
+            tempScaling.convertShortToAbsolute(snDataTransposed).toVector, //snData
             fileAdapter.header.getHeaderNumADChannels //channels
            )
       )
@@ -186,7 +194,7 @@ class FileAdapterNeuralynxSpikes extends FileLoader with FileSaver with LoggingE
         spike.waveform.length == trodeCount * 32,
         s"Waveform must be ${trodeCount * 32} elements long, not ${spike.waveform.length}"
       )
-      fHand.writeInt16( saveScale.convertAbsoluteToShort( spike.readWaveformFlat() ) )
+      fHand.writeInt16( saveScale.convertAbsoluteToShort( spike.readWaveformFlat(false) ) )
     }
 
     //ToDo 4: The following is workaround for file being too long, seeks past EOF at some point in header code????

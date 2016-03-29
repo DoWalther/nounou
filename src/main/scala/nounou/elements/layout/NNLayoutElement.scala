@@ -7,12 +7,12 @@ import nounou.elements.traits.NNChannelsElement
  */
 trait NNLayoutElement extends NNChannelsElement {
 
-  private var _layout: NNLayout = null
+  protected var _layout: NNLayout = null
 
   def layout(): NNLayout = getLayout()
   def getLayout(): NNLayout = {
     if( _layout == null ) throw loggerError(
-      s"Cannot use timing-related functions in ${this.getClass.getCanonicalName} without first calling setTiming()")
+      s"Cannot use layout-related functions in this ${this.getClass.getCanonicalName} because layout is not set! Call setLayout(xxx) first!")
     else _layout
   }
   def setLayout(layout: NNLayout) = {

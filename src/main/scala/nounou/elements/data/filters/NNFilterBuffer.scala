@@ -4,7 +4,6 @@ import breeze.linalg.DenseVector
 import nounou.elements.data.NNData
 import nounou.elements.traits.NNTiming
 import nounou.ranges.{NNRangeInstantiated, NNRangeValid}
-
 import scala.collection.mutable.{ArrayBuffer, WeakHashMap}
 
 

@@ -8,11 +8,13 @@ import scala.collection.mutable.ArrayBuffer
 /**A hexagonal detector layout, useful for hexagonally packed
   * imaging arrays or ECoG arrays.
   *
- */
+  */
+
 class NNLayoutHexagonal extends NNLayoutSpatial {
 
   /** Main variable for this layout.
-    * This {{{Array[Array[Int]]}}} should contain the channels laid out in tilted hexagonal space.
+    * This {{{Array[Array[Int]]}}} should contain the channels laid out in tilted hexagonalspace,
+    * with the first dimension being the x coordinate, and starting from the upper left corner.
     */
   protected var layoutArray: Array[Array[Int]] = null
 
@@ -64,11 +66,15 @@ class NNLayoutHexagonal extends NNLayoutSpatial {
     loggerRequire( layoutArray != null, "layoutArray must be specified in order to initialize this object!" )
     for( layArrY <- 0 until layoutArray.length ){
       val layArrRow = layoutArray(layArrY)
-      if( layArrRow == null || layArrRow.length == 0){ updateMaxMin(0, layArrY)  }
-      else for(layArrX <- 0 until layArrRow.length){
-        val chVal = layoutArray(layArrY)(layArrX)
-        if( chVal >= 0 ){
-          writeNewChannelCache(chVal, (layArrX, layArrY) )
+      if( layArrRow != null && layArrRow.length != 0) {
+        // updateMaxMin(0, layArrY)  }
+        //      else
+        for (layArrX <- 0 until layArrRow.length) {
+          val chVal = layoutArray(layArrY)(layArrX)
+          if (chVal >= 0) {
+            writeNewChannelCache(chVal, (layArrX, layArrY))
+            updateMaxMin(layArrX, layArrY)
+          }
         }
       }
     }
@@ -85,8 +91,10 @@ class NNLayoutHexagonal extends NNLayoutSpatial {
 
   }
 
+  def getChannelHexCoordinates(ch: Int): (Int, Int) = layoutLookupCache(ch)
+
   override def getChannelCoordinatesImpl(ch: Int): Array[Double] = {
-   getCoordinatesFromHexCoordinates( layoutLookupCache(ch) )
+   getCoordinatesFromHexCoordinates( getChannelHexCoordinates(ch) )
   }
 
   private def getCoordinatesFromHexCoordinates( hexCoord: (Int, Int) ): Array[Double] = {

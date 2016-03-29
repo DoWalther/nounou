@@ -264,7 +264,6 @@ object SpikeDetect extends LoggingExt /*with OptHandler*/ {
   // </editor-fold>
 
 
-
   def thresholdSpikes(data: NNData,
                       channels: Array[Int],
                       frameRange: NNRangeSpecifier,

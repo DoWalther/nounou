@@ -14,8 +14,8 @@ class OptInt(val value: Int) extends Opt
 class OptDouble(val value: Double) extends Opt
 class OptString(val value: String) extends Opt
 class OptBoolean(val value: Boolean) extends Opt
-class OptAutomatic extends Opt
-class OptNone extends Opt
+object OptAutomatic extends Opt
+object OptNone extends Opt
 
 
 

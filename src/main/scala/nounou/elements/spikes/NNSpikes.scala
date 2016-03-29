@@ -1,6 +1,5 @@
 package nounou.elements.spikes
 
-import java.math.BigInteger
 import nounou.elements.traits.{NNTiming, NNScaling}
 import nounou.elements.data.{NNDataChannel, NNData}
 import nounou.NN
@@ -8,7 +7,6 @@ import nounou.options._
 import nounou.util.LoggingExt
 import scala.collection.mutable
 import scala.collection.mutable.{TreeSet}
-
 
 trait OptReadSpikes extends Opt
 
@@ -41,31 +39,16 @@ object NNSpikes extends LoggingExt {
     val optAlignmentPoint = OptHandler.readOptInt[OptAlignmentPointInt](opts, 8)
     val optWaveformFrames = OptHandler.readOptInt[OptWaveformFramesInt](opts, 32)
 
-    //    var optWaveformFrames = 32
-//    var optAlignmentPoint = 8
-////    var optOverlapWindow = optWaveformFrames
-//    for( opt <- opts ) opt match {
-//      case WaveformFrames(value: Int) => optWaveformFrames = value
-//      case OptAlignmentPoint(value: Int) => optAlignmentPoint = value
-////      case OverlapWindow(value: Int) => optOverlapWindow = value
-//      case _ => {}
-//    }
-//println("optWaveformFrames = " + optWaveformFrames)
-//println("optAlignmentPoint = " + optAlignmentPoint)
     // </editor-fold>
 
-
     val tempReturn = new NNSpikes(optAlignmentPoint, data.scaling, data.timing)
-//println( "tempReturn0 " + tempReturn.size.toString )
-//println( "frameSegments " + frameSegments.size.toString )
 
     frameSegments.foreach( (frsg: (Int, Int) ) => {
         val startFr = frsg._1 - optAlignmentPoint + 1
         val sampleRange = NN.NNRange(startFr, startFr + optWaveformFrames -1, 1, frsg._2)
 //        val wf = channels.flatMap( data.readTrace( _, sampleRange ) )
-        val wfs = channels
-                    .map( data.readTrace( _, sampleRange ) )
-                    .map( (d: Array[Double])=> d.map( _ - d(optAlignmentPoint+1) ) )
+        val wfs = channels.map( data.readTrace( _, sampleRange ) )
+                          .map( (d: Array[Double])=> d.map( _ - d(optAlignmentPoint - 1) ) )
         tempReturn.add(
           new NNSpike(
             data.timing.convertFrsgToTs(frsg._1, frsg._2),
@@ -76,31 +59,6 @@ object NNSpikes extends LoggingExt {
         )
         Unit
       })
-//println( "tempReturn " + tempReturn.size.toString )
-    //Filter spikes which are closer than optOverlapWindow frames apart
-    //take spike which has bigger maximum, remove rest
-//    if(optOverlapWindow > 0){
-//      val filteredReturn = ArrayBuffer[NNSpike]()
-//      val iterator = tempReturn._database.iterator
-//      var lastSpike: NNSpike = if( iterator.hasNext ) iterator.next() else null
-//
-//      while( iterator.hasNext ){
-//        val nextSpike = iterator.next
-//
-//        if( nextSpike.timestamp - lastSpike.timestamp > optOverlapWindow ){
-//          filteredReturn.+=( lastSpike )
-//        }else{
-//          if( nextSpike.waveformMax > lastSpike.waveformMax ) lastSpike = nextSpike
-//        }
-//      }
-//      if( filteredReturn.last != lastSpike ) filteredReturn.+=( lastSpike )
-//println( "tempReturnFiltered " + tempReturn.size.toString )
-//
-//      new NNSpikes( filteredReturn.toArray, optAlignmentPoint, data.scaling, data.timing)
-//
-//    }else{
-//      tempReturn
-//    }
 
     tempReturn
 

@@ -41,7 +41,7 @@ trait NNData extends NNDataNode
     * Assumes that channel, frame, and segment are all valid and within range.
     *
     */
-  def readPointImpl(channel: Int, frame: Int, segment: Int): Double
+  /*protected*/ def readPointImpl(channel: Int, frame: Int, segment: Int): Double
 
   //<editor-fold defaultstate="collapsed" desc="reading a point">
 
@@ -116,7 +116,7 @@ trait NNData extends NNDataNode
     * to return a breeze.linalg.DenseVector.
     * Should return a defensive clone. Assumes that channel and range are within the data range!
     */
-  def readTraceDVImpl(channel: Int, rangeFrValid: NNRangeValid): DV[Double] = {
+  /*protected*/ def readTraceDVImpl(channel: Int, rangeFrValid: NNRangeValid): DV[Double] = {
     val res = DV.zeros[Double](rangeFrValid.length)
     nounou.util.forJava(rangeFrValid.start, rangeFrValid.last + 1, rangeFrValid.step, (c: Int) => (res(c) = readPointImpl(channel, c, rangeFrValid.segment)))
     res

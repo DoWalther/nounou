@@ -22,9 +22,11 @@ abstract class NNLayoutSpatial extends NNLayout {
   protected var channelDistance: Double = 100d
 
   /**Should use given parameters to initialize this object, namely
-    * fieldCache, channelCountCache,
-    * and then set initialized to true.
-   */
+    * fieldCache, channelCountCache, and then set initialized to true.
+    * This code should only be run once for each class instance.
+    * This is used instead of the standard constructor to ensure
+    * the order of evaluation.
+    */
   def initialize(): Unit
 
   @transient final lazy val getChannelCount: Int = {
