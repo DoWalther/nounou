@@ -12,7 +12,7 @@ class NNDataChannelPreloaded(val data: DV[Double], timingEntry: NNTiming, scaleE
                               )  extends NNDataChannel {
 
   override val timing = timingEntry
-  setScale(scaleEntry)
+  setScaling(scaleEntry)
 
   //ToDo2 test the DV length against segment lengths
   //override lazy val segmentLengths = Array( data.length )

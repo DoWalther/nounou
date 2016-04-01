@@ -50,6 +50,10 @@ class NNTiming(val sampleRate: Double,
                val filterDelay: Int
                     ) extends NNElement {
 
+  def this(sampleRate: Double, totalLength: Int) {
+    this(sampleRate, Array(totalLength), Array(BigInt(0)), 0)
+  }
+
   // <editor-fold defaultstate="collapsed" desc=" variable checks and initialization ">
 
   if(sampleRate <= 0d ) throw loggerError("Sample rate must be non-negative!")

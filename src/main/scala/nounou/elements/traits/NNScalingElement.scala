@@ -33,7 +33,7 @@ trait NNScalingElement extends NNElement {
   /**
     * '''[NNScalingElement]''' Set physical scaling information for data.
     * */
-  def setScale(scale: NNScaling) = {
+  def setScaling(scale: NNScaling) = {
     _scale = scale
 
     //ToDo 2: child change hierarchy in NNElement

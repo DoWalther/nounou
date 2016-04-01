@@ -19,7 +19,7 @@ import nounou.ranges.NNRangeValid
 
   override val timing = array(0).timing
 //  setTiming( array(0).timing() )
-  setScale( array(0).scaling() )
+  setScaling( array(0).scaling() )
 
   override def toStringImpl() = s"${timing.segmentCount} segments, fs=${timing.sampleRate},  "
   override def toStringFullImpl() = ""

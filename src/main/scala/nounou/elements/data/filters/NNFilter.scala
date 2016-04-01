@@ -90,7 +90,7 @@ abstract class NNFilter(private var parentVar: NNData ) extends NNData {
 
 //  final override def setTiming( timing: NNDataTiming ) =
 //    throw loggerError("Cannot set timing for a data filter manually")
-  final override def setScale( scale: NNScaling ) =
+  final override def setScaling(scale: NNScaling ) =
     throw loggerError("Cannot set scale for data filter for a data filter manually")
   final override def setLayout( layout: NNLayout ) =
     throw loggerError("Cannot set layout for data filter for a data filter manually")
