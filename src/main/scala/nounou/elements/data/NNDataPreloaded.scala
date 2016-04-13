@@ -5,12 +5,17 @@ import nounou.elements.traits.{NNTiming, NNScaling}
 import nounou.elements.traits.NNTiming
 import nounou.ranges.NNRangeValid
 
-/**NNData class with internal representation as data array.
+/**
+  * NNData class with internal representation as data array.
  */
-class NNDataPreloaded(val data: Array[DV[Double]], override val timing: NNTiming, scalingInput: NNScaling)
-  extends NNData  {
+class NNDataPreloaded(
+    val data: Array[DV[Double]],
+    override val timing: NNTiming,
+    scalingInput: NNScaling) extends NNData  {
 
   loggerRequire(data != null, "input data must be non-null")
+  loggerRequire(timing != null, "input timing must be non-null")
+  loggerRequire(scalingInput != null, "input scaling must be non-null")
 
   setScaling(scalingInput)
 
