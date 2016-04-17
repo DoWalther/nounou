@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core.iml" filepath="$PROJECT_DIR$/.idea/modules/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core-build.iml" filepath="$PROJECT_DIR$/.idea/modules/core-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gui.iml" filepath="$PROJECT_DIR$/.idea/modules/gui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gui-build.iml" filepath="$PROJECT_DIR$/.idea/modules/gui-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/nounou.iml" filepath="$PROJECT_DIR$/.idea/modules/nounou.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/nounou-build.iml" filepath="$PROJECT_DIR$/.idea/modules/nounou-build.iml" />
     </modules>

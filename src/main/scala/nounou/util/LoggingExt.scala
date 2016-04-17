@@ -1,6 +1,7 @@
 package nounou.util
 
-import com.typesafe.scalalogging.slf4j.LazyLogging
+import com.typesafe.scalalogging.LazyLogging
+//import com.typesafe.scalalogging.slf4j.LazyLogging
 
 /**Trait to implement logging within [[nounou.elements.NNElement]] children.
  * @author ktakagaki
