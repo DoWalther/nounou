@@ -1,5 +1,6 @@
-package nounou.analysis
+package nounou.analysis.spikes
 
+import nounou.analysis.Threshold
 import nounou.options._
 import org.scalatest.FunSuite
 
