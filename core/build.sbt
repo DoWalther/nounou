@@ -1,3 +1,5 @@
+import com.atlassian.labs.gitstamp.GitStampPlugin._
+
 organization := "com.github.ktakagaki.nounou"
 
 name := "nounou-core"
@@ -27,6 +29,8 @@ libraryDependencies ++= Seq(
   "org.eclipse.jgit" % "org.eclipse.jgit" % "4.1.1.201511131810-r",
   "commons-io" % "commons-io" % "2.4"
 )
+
+Seq( gitStampSettings: _* )
 
 
 //unmanagedBase <<= baseDirectory {base => base/"lib"}
