@@ -1,11 +1,11 @@
 <component name="ArtifactManager">
   <artifact build-on-make="true" name="nounou-lib">
-    <output-path>$PROJECT_DIR$/out/artifacts/nounou</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts</output-path>
     <root id="root">
-      <element id="directory" name="dependencies" />
       <element id="module-output" name="core-build" />
       <element id="library" level="module" name="SBT: sbt-and-plugins" module-name="core-build" />
       <element id="module-output" name="nounou-build" />
+      <element id="module-output" name="gui-build" />
     </root>
   </artifact>
 </component>

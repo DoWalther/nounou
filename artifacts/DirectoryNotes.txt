@@ -1,7 +1,8 @@
 //This directory is to be used to keep
 //jar artifacts copied by xerial.sbt-pack
 //
-//   ./pack will contain compiled *.jar files and dependency files
-//   ./packArchive will contain *.zip for distribution
+//   ./ will contain *.zip of ./pack/lib for distribution
+//   ./pack/lib will contain compiled *.jar files and dependency files
+//   ./pack/bin will contain calling scripts, although currently, no real main class is specified so no meaning
 //
 //The directory is listed in .gitignore

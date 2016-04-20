@@ -57,7 +57,7 @@ publishMavenStyle := true
 
 packAutoSettings
 
-packTargetDir := file("artifacts/pack")
+packTargetDir := file("artifacts")
 
 //packCopyDependenciesTarget := file("artifacts/dependencies")
 
