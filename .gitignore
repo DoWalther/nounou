@@ -76,3 +76,5 @@ project/boot/
 resources/
 out/
 .idea
+pack
+packArchive

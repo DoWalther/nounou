@@ -15,3 +15,5 @@ resolvers ++= Seq(
 //addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.8.5")
 
 addSbtPlugin("com.atlassian.labs" % "sbt-git-stamp" % "0.1.2")
+
+addSbtPlugin("org.xerial.sbt" % "sbt-pack" % "0.7.9")

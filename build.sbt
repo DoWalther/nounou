@@ -4,7 +4,9 @@ name := "nounou-parent"
 
 scalaVersion := Common.scalaVersion
 
-import com.atlassian.labs.gitstamp.GitStampPlugin._
+//Doing the git stamping here will lead to multiple Manifest.MF,
+//which causes packageBin to choke: git stamp only once, in core\build
+//    import com.atlassian.labs.gitstamp.GitStampPlugin._
 
 resolvers ++= Seq(
   Resolver.mavenLocal,
@@ -36,7 +38,31 @@ lazy val gui      = project.in( file("gui") ).dependsOn(core)
 
 publishMavenStyle := true
 
-Seq( gitStampSettings: _* )
+//Doing the git stamping here will lead to multiple Manifest.MF files,
+//which causes packageBin to choke: git stamp only once, in core\build
+//   Seq( gitStampSettings: _* )
+
+//Assembly of dependency artifacts using the following would be an option...
+//but it is not ideal, given that the directory structure becomes very complex
+//and cannot be specified as a single java classpath entry.
+//We will use xerial.sbt-pack instead.
+//   retrieveManaged := true
+
+//Assembly of dependency artifacts using sbt-assembly or proguard was
+//also considered, however, the fat *.jar files created are simply
+//too fat, and the assembly takes too much time
+//   assemblyJarName in assembly := "nounou.jar"
+//
+//   test in assembly := {}
+
+packAutoSettings
+
+packTargetDir := file("artifacts/pack")
+
+//packCopyDependenciesTarget := file("artifacts/dependencies")
+
+packArchive := Seq( /*packArchiveTgz.value,*/  packArchiveZip.value )
+
 
 //publishArtifact in (Compile, packageBin) := true
 
@@ -45,14 +71,13 @@ Seq( gitStampSettings: _* )
 //publishArtifact in (Compile, packageSrc) := true
 
 
+//assemblyOption in assembly :=
+//  (assemblyOption in assembly).value.copy(includeScala = false, includeDependency = false)
 
 //libraryDependencies ++= Seq(
 //    "com.atlassian.labs" % "sbt-git-stamp" % "0.1.2"
 //)
 
-//assemblyJarName in assembly := "nounou.jar"
-//
-//test in assembly := {}
 
 //settings = standardSettings ++ SbtOneJar.oneJarSettings
 

@@ -22,6 +22,3 @@ libraryDependencies ++= Seq(
   "org.eclipse.jgit" % "org.eclipse.jgit" % "4.1.1.201511131810-r",
   "commons-io" % "commons-io" % "2.4"
 )
-
-
-//unmanagedBase <<= baseDirectory {base => base/"lib"}
