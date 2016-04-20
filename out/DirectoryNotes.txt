@@ -1,0 +1,4 @@
+//This directory is currently used to keep
+//intellij-generated artifacts for NounouW(Mathematica).
+//It will be deprecated to use ./artifacts
+//instead in the near future
