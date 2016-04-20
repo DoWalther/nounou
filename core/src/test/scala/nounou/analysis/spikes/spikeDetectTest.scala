@@ -1,6 +1,6 @@
 package nounou.analysis.spikes
 
-import nounou.Options.{MedianFactor, PeakWindow}
+//import nounou.Options.{MedianFactor, PeakWindow}
 import nounou.io.neuralynx.NNTestLoaderNCS_Tet4
 import nounou.ranges.NNRange
 import org.scalatest.FunSuite
@@ -19,10 +19,10 @@ class spikeDetectTest extends FunSuite with NNTestLoaderNCS_Tet4 {
 
   test("xxx"){
 
-    val spikeTimestamps = nounou.analysis.spikes.SpikeDetect(
-      dataObjTet4, new NNRange(0, 3200000, 1, 0), Array(0,1,2,3), MedianFactor(3d), PeakWindow(32)
-    )
-    println(spikeTimestamps.toList)
+//    val spikeTimestamps = nounou.analysis.spikes.SpikeDetect(
+//      dataObjTet4, new NNRange(0, 3200000, 1, 0), Array(0,1,2,3), MedianFactor(3d), PeakWindow(32)
+//    )
+//    println(spikeTimestamps.toList)
 
   }
 }

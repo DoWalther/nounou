@@ -4,8 +4,6 @@
     <root id="archive" name="nounou.jar">
       <element id="module-output" name="nounou" />
       <element id="module-output" name="nounou-build" />
-      <element id="module-output" name="core" />
-      <element id="module-output" name="gui" />
     </root>
   </artifact>
 </component>
