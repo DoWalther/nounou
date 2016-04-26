@@ -6,6 +6,10 @@ name := "nounou-core"
 
 scalaVersion := Common.scalaVersion
 
+//scalacOptions += "-target:jvm-1.7"
+
+//javacOptions ++= Seq("-source", "1.7", "-target", "1.7", "-Xlint")
+
 publishMavenStyle := true
 
 resolvers ++= Seq(
@@ -17,9 +21,11 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
 //  "ch.qos.logback" % "logback-classic" % "1.1.3",
+  //"com.typesafe.scala-logging" %% "scala-logging-slf4j_2.11" % "2.1.2",
+//  "ch.qos.logback" % "logback-classic" % "1.1.7",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.4.0",
 //  "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
-  "ch.qos.logback" % "logback-classic" % "1.1.7",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",
+  "org.slf4j" % "slf4j-simple" % "1.7.21",
   //breeze from custom *.jar
   //"org.scalanlp" %% "breeze" % "0.11.2",
   //"org.scalanlp" %% "breeze-natives" % "0.11.2",

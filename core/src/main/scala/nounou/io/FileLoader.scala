@@ -22,7 +22,7 @@ object FileLoader extends LoggingExt {
 
   /** List of valid loaders available in the system (from /resources/META-INF/services/nounou.io.FileLoader)
     */
-  private lazy val loaders = ServiceLoader.load(classOf[FileLoader])
+  private lazy val loaders = ServiceLoader.load( classOf[FileLoader] )
 
   private var possibleLoaderBuffer = new immutable.HashMap[String, FileLoader]()
 

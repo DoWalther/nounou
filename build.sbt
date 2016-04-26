@@ -4,6 +4,10 @@ name := "nounou-parent"
 
 scalaVersion := Common.scalaVersion
 
+//scalacOptions += "-target:jvm-1.7"
+
+//javacOptions ++= Seq("-source", "1.7s", "-target", "1.7", "-Xlint")
+
 //Doing the git stamping here will lead to multiple Manifest.MF,
 //which causes packageBin to choke: git stamp only once, in core\build
 //    import com.atlassian.labs.gitstamp.GitStampPlugin._
@@ -16,8 +20,10 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "ch.qos.logback" % "logback-classic" % "1.1.7",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",
+  //"com.typesafe.scala-logging" %% "scala-logging-slf4j_2.11" % "2.1.2",
+//  "ch.qos.logback" % "logback-classic" % "1.1.7",
+//  "ch.qos.logback" % "logback-classic" % "1.1.7",
+//  "com.typesafe.scala-logging" %% "scala-logging" % "3.4.0",
 //  "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
   "com.github.ktakagaki.breeze" % "breeze_2.11" % "0.13-SNAPSHOT",
   "org.scalatest" %% "scalatest" % "2.1.7" % "test",

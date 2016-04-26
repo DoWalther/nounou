@@ -4,6 +4,10 @@ name := "nounou-gui"
 
 scalaVersion := Common.scalaVersion
 
+//scalacOptions += "-target:jvm-1.7"
+
+//javacOptions ++= Seq("-source", "1.7", "-target", "1.7", "-Xlint")
+
 publishMavenStyle := true
 
 resolvers ++= Seq(
@@ -14,8 +18,8 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "ch.qos.logback" % "logback-classic" % "1.1.3",
-  "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
+//  "ch.qos.logback" % "logback-classic" % "1.1.3",
+//  "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
   "com.github.ktakagaki.breeze" % "breeze_2.11" % "0.13-SNAPSHOT",
   "org.scalatest" %% "scalatest" % "2.1.7" % "test",
   "com.google.code.gson" % "gson" % "2.3.1",

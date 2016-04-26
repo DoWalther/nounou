@@ -27,7 +27,7 @@ public class NounouFX extends Application {
     public void launchStage() {
         if( primaryStage == null ) launch();
         else {
-            Stage stage = new Stage();
+            final Stage stage = new Stage();
             stage.setScene( scene );
             Platform.runLater( new Runnable() {
                 public void run(){
