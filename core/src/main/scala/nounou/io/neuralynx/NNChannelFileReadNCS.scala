@@ -69,7 +69,7 @@ class NNChannelFileReadNCS(override val file: File)  extends FileReadNCS( file )
 
   @transient
   private var dwChannelNum: Long = -1
-  private def readNCSRecordHeaderTS(record: Int): BigInt = {
+  private def readNCSRecordHeaderTS( record: Int ): BigInt = {
 
     handle.seek( recordStartByte(record) )
     val qwTimestamp = handle.readUInt64()

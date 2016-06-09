@@ -74,7 +74,7 @@ trait NNElement extends LoggingExt {
     val tempTail =
       if( toStringFullImpl() == "" ){ "" }
       else {
-        "\n================================================================================\n" +
+        "\n==================================================\n" +
         toStringFullImpl()
       }
     toString(false).dropRight(1) + s", $gitHeadShort)" + tempTail

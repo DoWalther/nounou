@@ -43,19 +43,20 @@ class NNRangeTs(val startTs: BigInt, val lastTs: BigInt, val stepTs: BigInt) ext
     }
     realStepFramesBuffer
   }
-  override final def getInstantiatedRange(xDataTiming: NNTiming): NNRangeValid = {
-    getValidRange(xDataTiming)
-    //realSegmentBufferRefresh(xDataTiming)
-    //Range.inclusive( realStartFrameBuffer, realLastFrameBuffer, getRealStep(xDataTiming))
-    //Range.inclusive( 0, xDataTiming.segmentLength(getRealSegment(xDataTiming)), getRealStep(xDataTiming))
+  override final def getInstantiatedRange(nnTiming: NNTiming): NNRangeValid = {
+    //ToDo: This is not strictly correct? Should the instantiated range be shorter if overhang?
+    getValidRange(nnTiming)
+    //realSegmentBufferRefresh(nnTiming)
+    //Range.inclusive( realStartFrameBuffer, realLastFrameBuffer, getRealStep(nnTiming))
+    //Range.inclusive( 0, nnTiming.segmentLength(getRealSegment(nnTiming)), getRealStep(nnTiming))
   }
 
   override final def getValidRange(xDataTiming: NNTiming): NNRangeValid = {
     realSegmentBufferRefresh(xDataTiming)
     new NNRangeValid( realStartFrameBuffer, realLastFrameBuffer, getInstantiatedStep(xDataTiming), realSegmentBuffer )
-//    realSegmentBufferRefresh(xDataTiming)
-//    val realSegment = new SampleRangeReal(realStartFrameBuffer, realLastFrameBuffer, getRealStep(xDataTiming), realSegmentBuffer)
-//    realSegment.getSampleRangeValid(xDataTiming)
+//    realSegmentBufferRefresh(nnTiming)
+//    val realSegment = new SampleRangeReal(realStartFrameBuffer, realLastFrameBuffer, getRealStep(nnTiming), realSegmentBuffer)
+//    realSegment.getSampleRangeValid(nnTiming)
   }
   
   // </editor-fold>
@@ -65,16 +66,16 @@ class NNRangeTs(val startTs: BigInt, val lastTs: BigInt, val stepTs: BigInt) ext
   private var realStartFrameBuffer = -1
   private var realLastFrameBuffer = -1
 
-  private def realSegmentBufferRefresh(xDataTiming: NNTiming): Unit = {
-    if( timingBuffer != xDataTiming) {
-      val fs1 = xDataTiming.convertTsToFrsg(startTs)
-      val fs2 = xDataTiming.convertTsToFrsg(lastTs)
+  private def realSegmentBufferRefresh(nnTiming: NNTiming): Unit = {
+    if( timingBuffer != nnTiming) {
+      val fs1 = nnTiming.convertTsToFrsg(startTs)
+      val fs2 = nnTiming.convertTsToFrsg(lastTs)
       loggerRequire(fs1._2 == fs2._2, "The two specified timestamps belong to different recording segments " +
         fs1._2.toString + " and " + fs2._2.toString)
-      timingBuffer = xDataTiming
+      timingBuffer = nnTiming
       realSegmentBuffer = fs1._2
 
-      val tempLen = xDataTiming.segmentLength( realSegmentBuffer )
+      val tempLen = nnTiming.segmentLength( realSegmentBuffer )
       if(fs1._1 < 0 || fs2._1 > tempLen )
         logger.warn("The TS specified frames [{}, {}] are out of range, this might be unintended.", fs1.toString(), fs2.toString())
       realStartFrameBuffer = fs1._1

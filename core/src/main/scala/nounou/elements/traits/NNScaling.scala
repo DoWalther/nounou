@@ -24,6 +24,8 @@ class NNScaling( /**
 
   // </editor-fold>
 
+  def getUnit(): String = unit
+
 //  /**(xBits:Int).toDouble
 //    */
 //  @deprecated

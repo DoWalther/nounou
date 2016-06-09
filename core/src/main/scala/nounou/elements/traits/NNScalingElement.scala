@@ -30,6 +30,8 @@ trait NNScalingElement extends NNElement {
     * */
   final def getScale(): NNScaling = scaling()
 
+  final def getUnit(): String = scaling().getUnit()
+
   /**
     * '''[NNScalingElement]''' Set physical scaling information for data.
     * */

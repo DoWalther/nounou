@@ -26,7 +26,7 @@ class NNRangeTsEvent(val triggerTs: BigInt, val startOffset: Int, val lastOffset
   // toString related
   ///////////////////////////////////////////////////////////////////////////
 
-  override def toString() = s"NNRangeTsEvent($triggerTs, startOffset=$startOffset, lastOffset=$lastOffset, step=$step)"
+  override def toString() = s"NNRangeTsEvent(triggerTs=$triggerTs, startOffset=$startOffset, lastOffset=$lastOffset, step=$step)"
 
   ///////////////////////////////////////////////////////////////////////////
   // NNRangeSpecifier methods

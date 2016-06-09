@@ -85,45 +85,42 @@ trait NNRangeSpecifier extends LoggingExt {
     * Default is to read all timepoints including overhang, but for override by NNRangeSpecifierValid,
     * only "valid" timepoints will be read.
     */
-  final def readTimepoints(nnDataTiming: NNTiming): Array[Int] ={
-    val tempInstantiated = getInstantiatedRange(nnDataTiming: NNTiming)
+  final def readTimepoints(nnTiming: NNTiming): Array[Int] ={
+    val tempInstantiated = getInstantiatedRange(nnTiming: NNTiming)
     (for(c <- tempInstantiated.start to tempInstantiated.last by tempInstantiated.step ) yield c).toArray
   }
 
   /**
     * Alias for [[nounou.ranges.NNRangeSpecifier.readTimepoints(nnDataTiming:* readSampleRangeTimes]]
     */
-  final def readTimepoints(nnDataTimingElement: NNTimingElement): Array[Int] =
-    readTimepoints(nnDataTimingElement.timing())
+  final def readTimepoints(nnTimingElement: NNTimingElement): Array[Int] = readTimepoints(nnTimingElement.timing())
 
   /**
     * Reads out a list of the timepoints specified by this NNRangeSpecifier in units of ms.
     * Default is to read "real" timepoints including overhang, but for override by NNRangeSpecifierValid,
     * only "valid" timepoints will be read.
     */
-  final def readTimepointsMs(nnDataTiming: NNTiming): Array[Double] ={
-    readTimepoints(nnDataTiming).map( nnDataTiming.convertFrToMs(_))
-  }
+  final def readTimepointsMs(nnTiming: NNTiming): Array[Double] = readTimepoints(nnTiming).map( nnTiming.convertFrToMs(_))
+
   /**
     * Alias for [[nounou.ranges.NNRangeSpecifier.readTimepointsMs(nnDataTiming:* readSampleRangeTimesFr]]
     */
-  final def readTimepointsMs(nnDataTimingElement: NNTimingElement): Array[Double] =
-    readTimepointsMs(nnDataTimingElement.timing())
+  final def readTimepointsMs(nnTimingElement: NNTimingElement): Array[Double] = readTimepointsMs( nnTimingElement.timing() )
 
   /**
     * Reads out a list of the timepoints specified by this NNRangeSpecifier in units of timestamps.
     * Default is to read "real" timepoints including overhang, but for override by NNRangeSpecifierValid,
     * only "valid" timepoints will be read.
     */
-  final def readTimepointsTs(nnDataTiming: NNTiming): Array[BigInteger] ={
-    val realSegment = this.getInstantiatedSegment(nnDataTiming)
-    readTimepoints(nnDataTiming).map( nnDataTiming.convertFrsgToTs(_, realSegment ).bigInteger )
+  final def readTimepointsTs(nnTiming: NNTiming): Array[BigInteger] ={
+    val realSegment = this.getInstantiatedSegment(nnTiming)
+    readTimepoints(nnTiming).map( nnTiming.convertFrsgToTs(_, realSegment ).bigInteger )
   }
+
   /**
     * Alias for [[nounou.ranges.NNRangeSpecifier.readTimepointsTs(nnDataTiming:* readNNRangeTimepointsFr]]
     */
-  final def readTimepointsTs(nnDataTimingElement: NNTimingElement): Array[BigInteger] =
-    readTimepointsTs(nnDataTimingElement.timing())
+  final def readTimepointsTs(nnTimingElement: NNTimingElement): Array[BigInteger] = readTimepointsTs(nnTimingElement.timing())
 
   // </editor-fold>
 

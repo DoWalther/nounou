@@ -31,7 +31,7 @@ import scala.reflect.ClassTag
  */
 object NN extends LoggingExt {
 
-  //ToDo SL: this is currently not using active git info. update through reading of .git folder of
+  //ToDo SL: this is currently using jgit via NNGit. Update to reading of .git folder or tagged info from sbt-git-stamp
   override final def toString(): String =
       "Welcome to nounou, a Scala/Java adapter for neurophysiological data.\n" +
       NNGit.infoPrintout
@@ -70,6 +70,7 @@ object NN extends LoggingExt {
     * @return an array of [[nounou.elements.NNElement]] objects
     */
   final def load(fileNames: Array[String]): Array[NNElement] = FileLoader.load(fileNames)
+
   /**
     * Save an [[nounou.elements.NNElement]] object into the given file.
     *File type will be inferred from the filename extension.
@@ -220,11 +221,6 @@ object NN extends LoggingExt {
 //  def toArray(xSpikes: Array[XSpike]) = XSpike.toArray( xSpikes )
 
   // </editor-fold>
-
-
-//
-//  //final def XTrodes( trodeGroup: Array[Array[Int]] ): XTrodes = data.XTrodes( trodeGroup )
-//  final def XTrodeN( trodeGroup: Array[Int] ): NNTrodeN = new elements.NNTrodeN( trodeGroup.toVector )
 
 
 }

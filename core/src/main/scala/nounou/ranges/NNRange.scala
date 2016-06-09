@@ -38,7 +38,7 @@ object NNRange {
 class NNRange(val start: Int, val last: Int, val step: Int, val segment: Int)
   extends NNRangeSpecifier with LoggingExt {
 
-  override def toString() = s"FrameRange($start, $last, step=$step, segment=$segment)"
+  override def toString() = s"NNRange(frames=$start to $last, step=$step, segment=$segment)"
 
   loggerRequire( start <= last, s"FrameRange requires start <= last. start=$start, last=$last")
   loggerRequire( step >= 1 || step == -1, s"step must be -1 (automatic) or positive. Invalid value: $step")
@@ -284,7 +284,7 @@ class NNRangeValid(override val start: Int, override val last: Int, override val
 
   loggerRequire(0 <= start, s"Start $start must be >= 0")
 
-  override def toString() = s"SampleRangeValid($start, $last, step=$step, segment=$segment)"
+  override def toString() = s"NNRangeValid(frames=$start to $last, step=$step, segment=$segment)"
 
   final def toRangeInclusive() = new Range.Inclusive(start, last, step)
   final def toRangeInclusive(increment: Int) = new Range.Inclusive(start + increment, last + increment, step)
