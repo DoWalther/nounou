@@ -52,5 +52,6 @@
     <orderEntry type="library" exported="" name="SBT: org.eclipse.jdt:org.eclipse.jdt.annotation:1.1.0:jar" level="project" />
     <orderEntry type="library" exported="" name="SBT: org.eclipse.jgit:org.eclipse.jgit:4.1.1.201511131810-r:jar" level="project" />
     <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.11.8:jar" level="project" />
+    <orderEntry type="library" name="scala-sdk-2.11.8" level="application" />
   </component>
 </module>

@@ -40,7 +40,7 @@ trait NNData extends NNDataNode
     * '''__MUST OVERRIDE__''' Read a single point from the data, in internal integer scaling.
     * Assumes that channel, frame, and segment are all valid and within range.
     *
-    */
+  */
   /*protected*/ def readPointImpl(channel: Int, frame: Int, segment: Int): Double
 
   //<editor-fold defaultstate="collapsed" desc="reading a point">
@@ -167,7 +167,7 @@ trait NNData extends NNDataNode
   //    scale().convertAbsoluteToInt( readTraceDV(channel, NN.NNRangeAll()) )
 
   // </editor-fold>
-
+  //ToDo: /DW explain rfc, pre, post, DVPVPImpl and DVImpl
   private final def readTraceDVPVPImpl(channel: Int, preValidPost: (Int, NNRangeValid, Int)): DV[Double] = {
     val validTrace = readTraceDVImpl(channel, preValidPost._2)
     preValidPost match {
